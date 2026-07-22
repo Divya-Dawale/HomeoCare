@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="appointment-hero">
+
+    <h1>Book An Appointment</h1>
+
+    <p>
+        Request an appointment with HomeoCare and our team will contact you
+        to confirm your visit.
+    </p>
+
+<section class="appointment-section">
+
+    <div class="appointment-container">
+
+        <div class="info-box">
+            <h3>Need An Appointment?</h3>
+            <p>
+                First-time visitors should choose <strong>New Patient</strong>.
+                Returning patients can choose <strong>Existing Patient</strong>
+                and use their Patient ID.
+            </p>
+        </div>
+
+        <div class="tabs">
+
+            <button class="tab-btn active" onclick="showForm('new')">
+                New Patient
+            </button>
+
+            <button class="tab-btn" onclick="showForm('existing')">
+                Existing Patient
+            </button>
+
+        </div>
+
+        <!-- NEW PATIENT FORM -->
+
+        <div id="new-patient-form" class="form-card">
+
+            <h2>New Patient Appointment</h2>
+
+            <form>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Gender</label>
+
+                        <select>
+                            <option>Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <input type="date">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason For Visit</label>
+                    <textarea rows="5"></textarea>
+                </div>
+
+                <button class="appointment-btn">
+                    Request Appointment
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- EXISTING PATIENT FORM -->
+
+        <div id="existing-patient-form" class="form-card hidden">
+
+            <h2>Existing Patient Appointment</h2>
+
+            <form>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Patient ID</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Reason For Visit</label>
+                        <input type="text">
+                    </div>
+
+                </div>
+
+                <button class="appointment-btn">
+                    Request Follow-Up Appointment
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+function showForm(type){
+
+    const newForm =
+        document.getElementById('new-patient-form');
+
+    const existingForm =
+        document.getElementById('existing-patient-form');
+
+    const buttons =
+        document.querySelectorAll('.tab-btn');
+
+    buttons.forEach(btn=>{
+        btn.classList.remove('active');
+    });
+
+    if(type === 'new'){
+
+        newForm.classList.remove('hidden');
+        existingForm.classList.add('hidden');
+
+        buttons[0].classList.add('active');
+    }
+    else{
+
+        existingForm.classList.remove('hidden');
+        newForm.classList.add('hidden');
+
+        buttons[1].classList.add('active');
+    }
+}
+
+</script>
+
+{% endblock %}

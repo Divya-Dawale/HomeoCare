@@ -18,10 +18,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from HomeoCare import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('public.urls')),
+    path(
+    'book-appointment/',
+    views.book_appointment,
+    name='book_appointment'
+),
 ]
 if settings.DEBUG:
     urlpatterns += static(

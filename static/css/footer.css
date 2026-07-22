@@ -1,0 +1,89 @@
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+    background:#0F172A;
+    color:white;
+    padding-top:70px;
+}
+
+.footer-container{
+    width:90%;
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:
+        2fr
+        1fr
+        1fr;
+
+    gap:60px;
+
+    padding-bottom:50px;
+}
+
+/* Brand Section */
+
+.footer-section h2{
+    margin-bottom:18px;
+    font-size:2rem;
+}
+
+.footer-section h3{
+    margin-bottom:18px;
+    font-size:1.2rem;
+}
+
+.footer-section p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* Links */
+
+.footer-section ul{
+    list-style:none;
+}
+
+.footer-section ul li{
+    margin-bottom:12px;
+}
+
+.footer-section a{
+    color:#cbd5e1;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.footer-section a:hover{
+    color:white;
+}
+
+/* Bottom */
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+
+    text-align:center;
+
+    padding:25px 0;
+}
+
+.footer-bottom p{
+    color:#94a3b8;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .footer-container{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+}
