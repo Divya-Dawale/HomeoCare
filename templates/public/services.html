@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="services-hero">
+
+    <h1>Our Services</h1>
+
+    <p>
+        Comprehensive homeopathic care designed to support
+        your health and wellness journey.
+    </p>
+
+</section>
+
+<section class="services-grid-section">
+
+    <div class="container">
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <h3>General Consultation</h3>
+                <p>Initial assessment and treatment planning.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Follow-Up Consultation</h3>
+                <p>Monitor progress and adjust treatment plans.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Chronic Disease Care</h3>
+                <p>Long-term support for ongoing health conditions.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Child Healthcare</h3>
+                <p>Gentle and personalized care for children.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Women's Health</h3>
+                <p>Support for a variety of women's health concerns.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Preventive Healthcare</h3>
+                <p>Promoting overall wellness and healthy living.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="process">
+
+    <div class="container">
+
+        <h2>Treatment Process</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <span>1</span>
+                <h3>Book Appointment</h3>
+            </div>
+
+            <div class="step">
+                <span>2</span>
+                <h3>Consultation</h3>
+            </div>
+
+            <div class="step">
+                <span>3</span>
+                <h3>Treatment Plan</h3>
+            </div>
+
+            <div class="step">
+                <span>4</span>
+                <h3>Follow-Up Care</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="service-cta">
+
+    <h2>Ready To Begin Your Health Journey?</h2>
+
+    <a href="{% url 'book_appointment' %}" class="cta-btn">
+        Book Appointment
+    </a>
+
+</section>
+
+{% endblock %}

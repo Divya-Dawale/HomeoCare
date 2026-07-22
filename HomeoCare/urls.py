@@ -26,7 +26,16 @@ urlpatterns = [
     'book-appointment/',
     views.book_appointment,
     name='book_appointment'
+    
 ),
+
+path(
+    'patient-status/',
+    views.patient_status,
+    name='patient_status'
+),
+path('about/', views.about, name='about'),
+path('services/', views.services, name='services'),
 ]
 if settings.DEBUG:
     urlpatterns += static(

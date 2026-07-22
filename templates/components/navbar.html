@@ -7,19 +7,19 @@
 
     <ul class="nav-links">
 
-        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
 
-        <li><a href="#">About</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
 
-        <li><a href="#">Services</a></li>
+        <li><a href="{% url 'services' %}">Services</a></li>
 
-        <li><a href="#">Patient Status</a></li>
+        <li><a href="{% url 'patient_status' %}">Patient Status</a></li>
 
-        <li><a href="/templates/public/appointment.html">Book Appointment</a></li>
+        <li><a href="{% url 'book_appointment' %}">Book Appointment</a></li>
 
     </ul>
-
-    <a href="#" class="contact-btn">
+     <a href="#contact" class="contact-btn">
+                
         Contact
     </a>
 

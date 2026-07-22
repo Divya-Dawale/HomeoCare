@@ -1,0 +1,163 @@
+/* ==========================
+   HERO
+========================== */
+
+.status-hero{
+    background:#162544;
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.status-hero h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.status-hero p{
+    color:rgba(255,255,255,0.8);
+}
+
+/* ==========================
+   SECTION
+========================== */
+
+.status-section{
+    background:#f8fafc;
+    padding:70px 20px;
+}
+
+.status-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+/* ==========================
+   FORM CARD
+========================== */
+
+.status-form-card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom:30px;
+}
+
+.status-form-card h2{
+    text-align:center;
+    color:#162544;
+    margin-bottom:30px;
+}
+
+/* ==========================
+   FORM
+========================== */
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#162544;
+}
+
+.form-group input{
+    padding:14px;
+    border:1px solid #dbe2ea;
+    border-radius:12px;
+    outline:none;
+}
+
+.form-group input:focus{
+    border-color:#162544;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.status-btn{
+    width:100%;
+    background:#162544;
+    color:white;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:600;
+}
+
+/* ==========================
+   RESULT CARD
+========================== */
+
+.status-result-card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.status-result-card h2{
+    color:#162544;
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.status-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.status-item{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:12px;
+}
+
+.status-item span{
+    display:block;
+    color:#64748b;
+    margin-bottom:8px;
+}
+
+.status-item strong{
+    color:#162544;
+}
+
+.pending{
+    color:#f59e0b !important;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .status-grid{
+        grid-template-columns:1fr;
+    }
+
+    .status-hero h1{
+        font-size:2.2rem;
+    }
+
+}
