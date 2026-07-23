@@ -1,0 +1,126 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block title %}Appointment Request{% endblock %}
+
+{% block page_title %}
+Appointment Request
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/request_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="request-card">
+
+    <h2>
+        Appointment Request #{{ appointment_request.id }}
+    </h2>
+
+    <div class="status">
+
+        Status :
+
+        <span class="{{ appointment_request.status }}">
+
+            {{ appointment_request.status }}
+
+        </span>
+
+    </div>
+
+    <hr>
+
+    <h3>Patient Information</h3>
+
+    <div class="details-grid">
+
+        <div>
+
+            <strong>Full Name</strong>
+
+            <p>{{ appointment_request.full_name }}</p>
+
+        </div>
+
+        <div>
+
+            <strong>Phone</strong>
+
+            <p>{{ appointment_request.phone }}</p>
+
+        </div>
+
+        <div>
+
+            <strong>Email</strong>
+
+            <p>{{ appointment_request.email }}</p>
+
+        </div>
+
+        <div>
+
+            <strong>Age</strong>
+
+            <p>{{ appointment_request.age }}</p>
+
+        </div>
+
+        <div>
+
+            <strong>Gender</strong>
+
+            <p>{{ appointment_request.gender }}</p>
+
+        </div>
+
+    </div>
+
+    <h3>Address</h3>
+
+    <p>
+
+        {{ appointment_request.address }}
+
+    </p>
+
+    <hr>
+
+    <h3>Appointment Details</h3>
+
+    <p>
+
+        <strong>Preferred Date:</strong>
+
+        {{ appointment_request.preferred_date }}
+
+    </p>
+
+    <p>
+
+        <strong>Reason:</strong>
+
+        {{ appointment_request.reason_for_visit }}
+
+    </p>
+
+    <div class="actions">
+
+        <a href="{% url 'reject_request' appointment_request.id %}"
+              class="reject-btn">
+            Reject
+        </a>
+
+        <a href="{% url 'approve_request' appointment_request.id %}" class="approve-btn">
+            Approve
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

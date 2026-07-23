@@ -21,18 +21,19 @@
 
             <h2>Check Appointment Status</h2>
 
-            <form>
+            <form method="POST">
+                {%csrf_token%}
 
                 <div class="form-row">
 
                     <div class="form-group">
                         <label>Patient ID</label>
-                        <input type="text" placeholder="Enter Patient ID">
+                        <input type="text"name="patient_id" placeholder="Enter Patient ID" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" placeholder="Enter Phone Number">
+                        <input type="tel" name="phone" placeholder="Enter Phone Number"required>
                     </div>
 
                 </div>
@@ -46,36 +47,48 @@
         </div>
 
         <!-- Sample Status Card -->
+     {% if appointment %}
+{% if error %}
+<div class="error-message">
+    {{ error }}
+</div>
+{% endif %}
+<div class="status-result-card">
 
-        <div class="status-result-card">
+    <h2>Appointment Information</h2>
 
-            <h2>Appointment Information</h2>
+    <div class="status-grid">
 
-            <div class="status-grid">
+        <div class="status-item">
+            <span>Patient Name</span>
+            <strong>{{ appointment.patient.full_name }}</strong>
+        </div>
 
-                <div class="status-item">
-                    <span>Status</span>
-                    <strong class="pending">Pending Approval</strong>
-                </div>
+        <div class="status-item">
+            <span>Status</span>
+            <strong class="{{ appointment.status }}">
+                {{ appointment.status|title }}
+            </strong>
+        </div>
 
-                <div class="status-item">
-                    <span>Appointment Date</span>
-                    <strong>Not Assigned</strong>
-                </div>
+        <div class="status-item">
+            <span>Appointment Date</span>
+            <strong>{{ appointment.appointment_date }}</strong>
+        </div>
 
-                <div class="status-item">
-                    <span>Doctor Review</span>
-                    <strong>Waiting</strong>
-                </div>
-
-                <div class="status-item">
-                    <span>Prescription</span>
-                    <strong>Not Available</strong>
-                </div>
-
-            </div>
+        <div class="status-item">
+            <span>Reason</span>
+            <strong>{{ appointment.reason_for_visit }}</strong>
+        </div>
 
         </div>
+
+     </div>
+
+       {% endif %}
+        
+
+    
 
     </div>
 

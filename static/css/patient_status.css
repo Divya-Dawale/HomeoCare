@@ -161,3 +161,12 @@
     }
 
 }
+.error-message{
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:15px;
+    border-radius:12px;
+    margin-top:20px;
+    text-align:center;
+    font-weight:600;
+}

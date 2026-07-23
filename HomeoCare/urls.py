@@ -19,6 +19,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from HomeoCare import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('public.urls')),
@@ -36,6 +37,11 @@ path(
 ),
 path('about/', views.about, name='about'),
 path('services/', views.services, name='services'),
+path('', include('public.urls')),
+path(
+    'receptionist/',
+    include('receptionist.urls')
+),
 ]
 if settings.DEBUG:
     urlpatterns += static(

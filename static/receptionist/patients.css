@@ -1,0 +1,91 @@
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h2{
+    color:#1E293B;
+}
+
+.page-header p{
+    color:#64748B;
+}
+
+.table-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#F8FAFC;
+
+    color:#475569;
+
+    padding:16px;
+
+    text-align:left;
+
+}
+
+td{
+
+    padding:16px;
+
+    border-top:1px solid #E2E8F0;
+
+}
+
+tbody tr{
+
+    transition:.25s;
+
+}
+
+tbody tr:hover{
+
+    background:#F8FAFC;
+
+}
+
+.view-btn{
+
+    display:inline-block;
+
+    background:#2563EB;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:8px 18px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.view-btn:hover{
+
+    background:#1D4ED8;
+
+    transform:translateY(-2px);
+
+}

@@ -1,0 +1,98 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block title %}
+Patients
+{% endblock %}
+
+{% block page_title %}
+Patients
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/patients.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h2>Registered Patients</h2>
+
+    <p>
+        View all registered patients.
+    </p>
+
+</div>
+
+<div class="table-card">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Patient ID</th>
+
+<th>Name</th>
+
+<th>Phone</th>
+
+<th>Gender</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for patient in patients %}
+
+<tr>
+
+<td>{{ patient.patient_id }}</td>
+
+<td>{{ patient.full_name }}</td>
+
+<td>{{ patient.phone }}</td>
+
+<td>{{ patient.gender }}</td>
+
+<td>
+
+<a href="{% url 'patient_detail' patient.id %}"
+class="view-btn">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5">
+
+No patients registered.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

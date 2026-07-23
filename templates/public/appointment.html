@@ -11,11 +11,11 @@
         Request an appointment with HomeoCare and our team will contact you
         to confirm your visit.
     </p>
+</section>
 
 <section class="appointment-section">
 
     <div class="appointment-container">
-
         <div class="info-box">
             <h3>Need An Appointment?</h3>
             <p>
@@ -41,20 +41,34 @@
 
         <div id="new-patient-form" class="form-card">
 
-            <h2>New Patient Appointment</h2>
+    <h2>New Patient Appointment</h2>
 
-            <form>
+    {% if success and request_type == "new" %}
+    <div class="success-card">
+        <div class="success-icon">✓</div>
+        <div class="success-content">
+            <h3>Appointment Request Submitted</h3>
+            <p>
+                Thank you for choosing HomeoCare.
+                Our team will contact you shortly.
+            </p>
+        </div>
+    </div>
+    {% endif %}
 
+    <form method="POST">
+                {%csrf_token%}
+                 <input type="hidden" name="request_type" value="new">
                 <div class="form-row">
 
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text">
+                        <input type="text"  name="full_name" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel">
+                        <input type="tel" name="phone" required>
                     </div>
 
                 </div>
@@ -63,12 +77,12 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email">
+                        <input type="email"  name="email">
                     </div>
 
                     <div class="form-group">
                         <label>Age</label>
-                        <input type="number">
+                        <input type="number" name="age" required>
                     </div>
 
                 </div>
@@ -78,7 +92,7 @@
                     <div class="form-group">
                         <label>Gender</label>
 
-                        <select>
+                        <select name="gender" required>
                             <option>Select Gender</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -89,22 +103,22 @@
 
                     <div class="form-group">
                         <label>Preferred Date</label>
-                        <input type="date">
+                        <input type="date" name="preferred_date" required>
                     </div>
 
                 </div>
 
                 <div class="form-group">
                     <label>Address</label>
-                    <textarea rows="3"></textarea>
+                    <textarea rows="3" name="address"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Reason For Visit</label>
-                    <textarea rows="5"></textarea>
+                    <textarea rows="5" name="reason_for_visit" required></textarea>
                 </div>
 
-                <button class="appointment-btn">
+                <button class="appointment-btn" type="submit">
                     Request Appointment
                 </button>
 
@@ -116,20 +130,37 @@
 
         <div id="existing-patient-form" class="form-card hidden">
 
-            <h2>Existing Patient Appointment</h2>
+    <h2>Existing Patient Appointment</h2>
 
-            <form>
+    {% if success and request_type == "existing" %}
+    <div class="success-card">
+        <div class="success-icon">✓</div>
+        <div class="success-content">
+            <h3>Follow-Up Appointment Requested</h3>
+            <p>
+                Your request has been submitted successfully.
+                Our team will contact you shortly.
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+    <form method="POST">
+
+             {% csrf_token %}
+
+                 <input type="hidden" name="request_type" value="existing">
 
                 <div class="form-row">
 
                     <div class="form-group">
                         <label>Patient ID</label>
-                        <input type="text">
+                        <input type="text" name="patient_id" required>
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel">
+                        <input type="tel" name="phone" required>
                     </div>
 
                 </div>
@@ -138,12 +169,12 @@
 
                     <div class="form-group">
                         <label>Preferred Date</label>
-                        <input type="date">
+                        <input type="date" name="preferred_date" required>
                     </div>
 
                     <div class="form-group">
                         <label>Reason For Visit</label>
-                        <input type="text">
+                        <input type="text" name="reason_for_visit" required>
                     </div>
 
                 </div>

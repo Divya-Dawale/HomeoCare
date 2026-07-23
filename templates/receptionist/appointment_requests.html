@@ -1,0 +1,124 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block title %}Appointment Requests{% endblock %}
+
+{% block page_title %}
+Appointment Requests
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'receptionist/appointment_requests.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h2>All Appointment Requests</h2>
+
+    <p>
+        View and manage patient appointment requests.
+    </p>
+
+</div>
+
+<div class="table-card">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Type</th>
+
+<th>Phone</th>
+
+<th>Preferred Date</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for request in requests %}
+
+<tr>
+
+<td>{{ request.id }}</td>
+
+<td>{{ request.full_name|default:request.patient_id }}</td>
+
+<td>{{ request.get_request_type_display }}</td>
+
+<td>{{ request.phone }}</td>
+
+<td>{{ request.preferred_date }}</td>
+
+<td>
+
+{% if request.status == "pending" %}
+
+<span class="badge pending">
+Pending
+</span>
+
+{% elif request.status == "approved" %}
+
+<span class="badge approved">
+Approved
+</span>
+
+{% else %}
+
+<span class="badge rejected">
+Rejected
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="{% url 'request_detail' request.id %}" class="view-btn">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="7">
+
+No appointment requests available.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'receptionist/dashboard.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="stats-grid">
+
+    <div class="card">
+        <h4>Pending Requests</h4>
+        <h2>{{ pending_requests }}</h2>
+    </div>
+
+    <div class="card">
+        <h4>Approved Appointments</h4>
+        <h2>{{ approved_appointments }}</h2>
+    </div>
+
+    <div class="card">
+        <h4>Total Patients</h4>
+        <h2>{{ total_patients }}</h2>
+    </div>
+
+    <div class="card">
+        <h4>Total Appointments</h4>
+        <h2>{{ today_appointments }}</h2>
+    </div>
+
+</div>
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h2>Recent Appointment Requests</h2>
+
+        <a href="{% url 'appointment_requests' %}">
+            View All
+        </a>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Name</th>
+
+            <th>Phone</th>
+
+            <th>Date</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for request in recent_requests %}
+
+        <tr>
+
+            <td>{{ request.full_name }}</td>
+
+            <td>{{ request.phone }}</td>
+
+            <td>{{ request.preferred_date }}</td>
+
+            <td>{{ request.status }}</td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="4">
+                No appointment requests available.
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="quick-actions">
+
+    <a href="{% url 'patients' %}" class="action-btn">
+        Add Patient
+    </a>
+
+    <a href="{% url 'appointment_requests' %}" class="action-btn">
+        View Requests
+    </a>
+
+    <a href="{% url 'appointments' %}" class="action-btn">
+        Appointments
+    </a>
+
+</div>
+
+{% endblock %}

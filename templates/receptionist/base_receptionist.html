@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}HomeoCare Receptionist{% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{% static 'receptionist/base.css' %}">
+
+    {% block css %}{% endblock %}
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-hospital"></i>
+                </div>
+
+                <h2>HomeoCare</h2>
+
+                <p>Receptionist Panel</p>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <nav>
+
+                <a href="{% url 'receptionist_dashboard' %}">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+
+                <a href="{% url 'appointment_requests' %}">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Appointment Requests
+                </a>
+
+                <a href="{% url 'patients' %}">
+                    <i class="fa-solid fa-users"></i>
+                    Patients
+                </a>
+
+                <a href="{% url 'appointments' %}">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Appointments
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-file-medical"></i>
+                    Prescriptions
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    Billing
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div>
+
+            <div class="divider"></div>
+
+            <nav>
+
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    {% block page_title %}
+                    Dashboard
+                    {% endblock %}
+                </h1>
+
+                <span>
+                    Welcome back to HomeoCare
+                </span>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar">
+
+                        R
+
+                    </div>
+
+                    <div>
+
+                        <strong>Receptionist</strong>
+
+                        <p>HomeoCare</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <div class="content">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

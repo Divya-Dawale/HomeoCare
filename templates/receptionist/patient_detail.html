@@ -1,0 +1,27 @@
+{% extends 'receptionist/base_receptionist.html' %}
+
+{% block title %}
+Patient Details
+{% endblock %}
+
+{% block page_title %}
+Patient Details
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ patient.full_name }}</h2>
+
+<p><strong>Patient ID:</strong> {{ patient.patient_id }}</p>
+
+<p><strong>Phone:</strong> {{ patient.phone }}</p>
+
+<p><strong>Email:</strong> {{ patient.email }}</p>
+
+<p><strong>Age:</strong> {{ patient.age }}</p>
+
+<p><strong>Gender:</strong> {{ patient.gender }}</p>
+
+<p><strong>Address:</strong> {{ patient.address }}</p>
+
+{% endblock %}
