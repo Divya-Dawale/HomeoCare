@@ -1,0 +1,78 @@
+.patient-card,
+.appointments-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
+
+}
+
+.patient-info{
+
+    display:grid;
+
+    gap:12px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th,
+td{
+
+    padding:14px;
+
+    border-bottom:1px solid #E2E8F0;
+
+    text-align:left;
+
+}
+.action-card{
+
+    margin-top:25px;
+
+}
+
+.edit-btn{
+
+    display:inline-block;
+
+    background:#2563EB;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 4px 12px rgba(37,99,235,.25);
+
+}
+
+.edit-btn:hover{
+
+    background:#1D4ED8;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(37,99,235,.3);
+
+}

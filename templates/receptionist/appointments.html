@@ -1,0 +1,198 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/appointments.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Appointments
+{% endblock %}
+
+{% block content %}
+<div class="search-filter-wrapper">
+<div class="search-card">
+
+    <form method="GET">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search by Name, Patient ID or Phone"
+            value="{{ search|default:'' }}"
+        >
+
+        {% if selected_status %}
+        <input
+            type="hidden"
+            name="status"
+            value="{{ selected_status }}"
+        >
+        {% endif %}
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</div>
+<div class="filter-bar">
+
+    <a href="{% url 'appointments' %}"
+       class="{% if not selected_status %}active-filter{% endif %}">
+        All
+    </a>
+
+    <a href="?status=waiting"
+       class="{% if selected_status == 'waiting' %}active-filter{% endif %}">
+        Waiting
+    </a>
+
+    <a href="?status=consulting"
+       class="{% if selected_status == 'consulting' %}active-filter{% endif %}">
+        Consulting
+    </a>
+
+    <a href="?status=completed"
+       class="{% if selected_status == 'completed' %}active-filter{% endif %}">
+        Completed
+    </a>
+
+    <a href="?status=cancelled"
+       class="{% if selected_status == 'cancelled' %}active-filter{% endif %}">
+        Cancelled
+    </a>
+
+</div>
+</div>
+<div class="table-card">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Queue</th>
+
+                <th>Patient</th>
+
+                <th>Patient ID</th>
+
+                <th>Phone</th>
+
+                <th>Date</th>
+
+                <th>Status</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for appointment in appointments %}
+
+            <tr>
+
+                <td>{{ forloop.counter }}</td>
+
+                <td>{{ appointment.patient.full_name }}</td>
+
+                <td>{{ appointment.patient.patient_id }}</td>
+
+                <td>{{ appointment.patient.phone }}</td>
+
+                <td>{{ appointment.appointment_date }}</td>
+
+                <td>
+
+                    {% if appointment.status == "waiting" %}
+
+                        <span class="waiting-badge">
+                            Waiting
+                        </span>
+
+                    {% elif appointment.status == "consulting" %}
+
+                        <span class="consulting-badge">
+                            Consulting
+                        </span>
+
+                    {% elif appointment.status == "completed" %}
+
+                        <span class="completed-badge">
+                            Completed
+                        </span>
+
+                    {% elif appointment.status == "cancelled" %}
+
+                        <span class="cancelled-badge">
+                            Cancelled
+                        </span>
+
+                    {% else %}
+
+                        <span class="status-badge">
+                            {{ appointment.status }}
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    {% if appointment.status == "waiting" %}
+
+                        <a href="{% url 'start_consultation' appointment.id %}"
+                           class="start-btn">
+
+                            Start
+
+                        </a>
+
+                    {% elif appointment.status == "consulting" %}
+
+                        <a href="{% url 'complete_appointment' appointment.id %}"
+                           class="complete-btn">
+
+                            Complete
+
+                        </a>
+
+                    {% else %}
+
+                        -
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr class="empty-row">
+
+                <td colspan="7">
+
+                    No appointments found.
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

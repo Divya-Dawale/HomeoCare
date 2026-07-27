@@ -16,26 +16,35 @@ def staff_login(request):
             username=username,
             password=password
         )
-        print("USERNAME:", username)
-        print("PASSWORD:", password)
-        print("USER:", user)
 
         if user:
 
             login(request, user)
 
-            if user.role == "receptionist":
-                return redirect("receptionist_dashboard")
+            if user.groups.filter(
+                name="Receptionist"
+            ).exists():
 
-            elif user.role == "doctor":
-                return redirect("doctor_dashboard")
+                return redirect(
+                    "receptionist_dashboard"
+                )
+
+            elif user.groups.filter(
+                name="Doctor"
+            ).exists():
+
+                return redirect(
+                    "doctor_dashboard"
+                )
 
         else:
 
-            error = "Invalid username or password"
+            error = "Invalid username or password."
 
     return render(
         request,
-        "accounts/login.html",
-        {"error": error}
+        "users/login.html",
+        {
+            "error": error
+        }
     )

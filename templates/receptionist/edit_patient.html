@@ -1,0 +1,73 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/edit_patient.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Edit Patient
+{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text"
+                   name="full_name"
+                   value="{{ patient.full_name }}">
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text"
+                   name="phone"
+                   value="{{ patient.phone }}">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email"
+                   name="email"
+                   value="{{ patient.email }}">
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number"
+                   name="age"
+                   value="{{ patient.age }}">
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <input type="text"
+                   name="gender"
+                   value="{{ patient.gender }}">
+        </div>
+
+        <div class="form-group full-width">
+            <label>Address</label>
+            <textarea name="address">{{ patient.address }}</textarea>
+        </div>
+
+    </div>
+
+    <button type="submit" class="save-btn">
+        Save Changes
+    </button>
+
+</form>
+
+</div>
+
+{% endblock %}

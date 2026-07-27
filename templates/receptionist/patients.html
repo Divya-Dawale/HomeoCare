@@ -1,5 +1,6 @@
 {% extends 'receptionist/base_receptionist.html' %}
 {% load static %}
+    
 
 {% block title %}
 Patients
@@ -23,6 +24,24 @@ href="{% static 'receptionist/patients.css' %}">
     <p>
         View all registered patients.
     </p>
+
+</div>
+<div class="search-card">
+
+    <form method="GET">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search by Name, Patient ID or Phone"
+            value="{{ search|default:'' }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
 
 </div>
 

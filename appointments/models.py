@@ -5,11 +5,11 @@ from patients.models import Patient
 class Appointment(models.Model):
 
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
-        ('completed', 'Completed'),
-        ('cancelled', 'Cancelled'),
-    ]
+    ('waiting', 'Waiting'),
+    ('consulting', 'Consulting'),
+    ('completed', 'Completed'),
+    ('cancelled', 'Cancelled'),
+]
 
     patient = models.ForeignKey(
         Patient,
@@ -24,7 +24,7 @@ class Appointment(models.Model):
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default='pending'
+        default='waiting'
     )
 
     created_at = models.DateTimeField(

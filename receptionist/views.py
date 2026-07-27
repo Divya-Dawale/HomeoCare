@@ -3,6 +3,7 @@ from appointments.models import AppointmentRequest, Appointment
 from patients.models import Patient
 from django.shortcuts import get_object_or_404
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
 def dashboard(request):
 
@@ -50,6 +51,8 @@ def appointment_requests(request):
         {"requests": requests},
     )
 
+from appointments.models import Appointment
+
 def patient_detail(request, patient_id):
 
     patient = get_object_or_404(
@@ -57,32 +60,113 @@ def patient_detail(request, patient_id):
         id=patient_id
     )
 
+    appointments = Appointment.objects.filter(
+        patient=patient
+    ).order_by("-appointment_date")
+
     return render(
         request,
         "receptionist/patient_detail.html",
         {
-            "patient": patient
+            "patient": patient,
+            "appointments": appointments,
         }
     )
 from patients.models import Patient
+def edit_patient(request, patient_id):
+
+    patient = get_object_or_404(
+        Patient,
+        id=patient_id
+    )
+
+    if request.method == "POST":
+
+        patient.full_name = request.POST.get("full_name")
+        patient.phone = request.POST.get("phone")
+        patient.email = request.POST.get("email")
+        patient.age = request.POST.get("age")
+        patient.gender = request.POST.get("gender")
+        patient.address = request.POST.get("address")
+
+        patient.save()
+
+        return redirect(
+            "patient_detail",
+            patient_id=patient.id
+        )
+
+    return render(
+        request,
+        "receptionist/edit_patient.html",
+        {
+            "patient": patient
+        }
+    )
+from django.db.models import Q
 
 def patients(request):
 
-    patients = Patient.objects.all().order_by("patient_id")
+    search = request.GET.get("search")
+
+    patients = Patient.objects.all().order_by("-id")
+
+    if search:
+
+        patients = patients.filter(
+            Q(full_name__icontains=search) |
+            Q(patient_id__icontains=search) |
+            Q(phone__icontains=search)
+        )
 
     return render(
         request,
         "receptionist/patients.html",
         {
-            "patients": patients
+            "patients": patients,
+            "search": search
         }
     )
 
 
+from appointments.models import Appointment
+
+from appointments.models import Appointment
+
 def appointments(request):
+
+    status = request.GET.get("status")
+    search = request.GET.get("search")
+
+    appointments = Appointment.objects.all().order_by(
+        "appointment_date",
+        "created_at"
+    )
+
+    if status:
+
+        appointments = appointments.filter(
+            status=status
+        )
+
+    if search:
+
+        appointments = appointments.filter(
+            patient__full_name__icontains=search
+        ) | appointments.filter(
+            patient__patient_id__icontains=search
+        ) | appointments.filter(
+            patient__phone__icontains=search
+        )
+
     return render(
         request,
-        "receptionist/appointments.html"
+        "receptionist/appointments.html",
+        {
+            "appointments": appointments,
+            "selected_status": status,
+            "search": search
+        }
     )
 def request_detail(request, request_id):
 
@@ -116,7 +200,7 @@ def approve_request(request, request_id):
         id=request_id
     )
 
-    # If already approved, do nothing
+    # Already approved
     if appointment_request.status == "approved":
         return redirect("appointment_requests")
 
@@ -125,15 +209,26 @@ def approve_request(request, request_id):
         phone=appointment_request.phone
     ).first()
 
-    # Create new patient if not found
+    # Create patient if not found
     if not patient:
 
-        last_patient = Patient.objects.order_by("-id").first()
+        last_patient = Patient.objects.order_by(
+            "-id"
+        ).first()
 
         if last_patient:
-            last_number = int(last_patient.patient_id.replace("HC", ""))
+
+            last_number = int(
+                last_patient.patient_id.replace(
+                    "HC",
+                    ""
+                )
+            )
+
             new_id = f"HC{last_number + 1:04d}"
+
         else:
+
             new_id = "HC0001"
 
         patient = Patient.objects.create(
@@ -146,16 +241,42 @@ def approve_request(request, request_id):
             address=appointment_request.address,
         )
 
-    # Create Appointment
+    # Create appointment
     Appointment.objects.create(
         patient=patient,
         appointment_date=appointment_request.preferred_date,
         reason_for_visit=appointment_request.reason_for_visit,
-        status="approved"
+        status="waiting"
     )
 
-    # Update request status
+    # Mark request as approved
     appointment_request.status = "approved"
     appointment_request.save()
 
-    return redirect("appointment_requests")
+    return redirect(
+        "appointment_requests"
+    )
+def start_consultation(request, appointment_id):
+
+    appointment = get_object_or_404(
+        Appointment,
+        id=appointment_id
+    )
+
+    appointment.status = "consulting"
+    appointment.save()
+
+    return redirect("appointments")
+
+
+def complete_appointment(request, appointment_id):
+
+    appointment = get_object_or_404(
+        Appointment,
+        id=appointment_id
+    )
+
+    appointment.status = "completed"
+    appointment.save()
+
+    return redirect("appointments")

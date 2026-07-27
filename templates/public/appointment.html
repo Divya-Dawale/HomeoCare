@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block css %}
+<style>
+body{
+    background:red !important;
+}
+</style>
+<link rel="stylesheet"
+href="{% static 'receptionist/appointments.css' %}">
+{% endblock %}
 {% block content %}
 
 <section class="appointment-hero">

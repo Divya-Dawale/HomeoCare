@@ -42,6 +42,7 @@ path(
     'receptionist/',
     include('receptionist.urls')
 ),
+path('', include('accounts.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(
