@@ -7,13 +7,38 @@ from .forms import MedicalHistoryForm
 from .forms import MedicalRecordForm
 from prescriptions.forms import PrescriptionForm
 from prescriptions.models import Prescription
+from doctors.models import MedicalRecord
+from django.utils import timezone
 
 def doctor_dashboard(request):
 
+    waiting_patients = Appointment.objects.filter(
+        status="waiting"
+    ).count()
+
+    consulting_patients = Appointment.objects.filter(
+        status="consulting"
+    ).count()
+
+    completed_today = Appointment.objects.filter(
+        status="completed",
+        appointment_date=timezone.now().date()
+    ).count()
+
+    total_records = MedicalRecord.objects.count()
+
+    context = {
+        "waiting_patients": waiting_patients,
+        "consulting_patients": consulting_patients,
+        "completed_today": completed_today,
+        "total_records": total_records,
+    }
+
     return render(
         request,
-        'doctor/dashboard.html'
-    )
+        "doctor/dashboard.html",
+        context
+    )  
 
 
 def patient_queue(request):

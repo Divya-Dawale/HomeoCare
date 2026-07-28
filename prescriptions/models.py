@@ -47,5 +47,9 @@ class Prescription(models.Model):
     default=""
     )
 
+    medicine_given = models.BooleanField(
+    default=False
+    )
+    
     def __str__(self):
         return f"{self.patient.full_name} - {self.medicine_name}"

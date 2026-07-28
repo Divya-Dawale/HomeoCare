@@ -5,10 +5,12 @@ from patients.models import Patient
 class Appointment(models.Model):
 
     STATUS_CHOICES = [
-    ('waiting', 'Waiting'),
-    ('consulting', 'Consulting'),
-    ('completed', 'Completed'),
-    ('cancelled', 'Cancelled'),
+      ("pending", "Pending"),
+    ("approved", "Approved"),
+    ("waiting", "Waiting"),
+    ("consulting", "Consulting"),
+    ("completed", "Completed"),
+    ("cancelled", "Cancelled"),
 ]
 
     patient = models.ForeignKey(
