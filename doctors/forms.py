@@ -1,6 +1,5 @@
 from django import forms
-from .models import MedicalHistory
-from .models import MedicalRecord
+from .models import MedicalHistory, MedicalRecord
 
 class MedicalHistoryForm(forms.ModelForm):
 

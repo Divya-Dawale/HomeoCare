@@ -37,4 +37,9 @@ urlpatterns = [
     views.create_medical_history,
     name="create_medical_history",
     ),
+    path(
+    "create-history/<int:appointment_id>/",
+    views.create_medical_history,
+    name="create_medical_history"
+    ),
 ]

@@ -1,56 +1,425 @@
-.history-card{
+/* Page Layout */
+
+.section-card,
+.patient-card{
 
     background:white;
 
-    padding:25px;
+    border-radius:20px;
 
-    border-radius:15px;
+    padding:30px;
 
-    margin-top:20px;
+    margin-bottom:25px;
 
     box-shadow:0 4px 15px rgba(0,0,0,.06);
 }
 
-.history-card p{
+/* Patient Header */
 
-    margin:12px 0;
+.patient-header{
 
-    color:#334155;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
 }
 
-.empty-card{
+.patient-header h2{
 
-    margin-top:20px;
+    color:#0F172A;
 
-    padding:30px;
+    font-size:28px;
+}
+
+.patient-id{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+}
+
+/* Patient Grid */
+
+.patient-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+}
+
+.patient-grid label,
+.history-grid label{
+
+    display:block;
+
+    color:#64748B;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.patient-grid p,
+.history-grid p{
+
+    color:#0F172A;
+
+    font-weight:600;
+}
+
+/* Section Headings */
+
+.section-card h3{
+
+    color:#0F172A;
+
+    margin-bottom:20px;
+
+    font-size:22px;
+}
+
+/* History Grid */
+
+.history-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+}
+
+/* Empty State */
+
+.empty-state{
 
     text-align:center;
 
-    background:#F8FAFC;
+    padding:30px;
 
     border:2px dashed #CBD5E1;
 
     border-radius:15px;
+
+    background:#F8FAFC;
 }
 
-.create-btn{
+.empty-state h4{
 
-    display:inline-block;
+    color:#0F172A;
 
-    margin-top:20px;
+    margin-bottom:10px;
+}
 
-    padding:12px 22px;
+.empty-state p{
 
-    background:#10B981;
+    color:#64748B;
+
+    margin-bottom:20px;
+}
+
+/* Buttons */
+
+.action-btn,
+.save-btn{
+
+    background:#2563EB;
 
     color:white;
 
-    text-decoration:none;
+    border:none;
+
+    padding:12px 24px;
 
     border-radius:10px;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
 }
 
-.create-btn:hover{
+.action-btn:hover,
+.save-btn:hover{
 
-    background:#059669;
+    background:#1D4ED8;
+
+    transform:translateY(-2px);
+}
+
+/* Form Styling */
+
+form p{
+
+    margin-bottom:18px;
+}
+
+form label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#334155;
+
+    font-weight:600;
+}
+
+form input,
+form textarea,
+form select{
+
+    width:100%;
+
+    padding:12px 15px;
+
+    border:1px solid #CBD5E1;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus{
+
+    border-color:#2563EB;
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .patient-grid,
+    .history-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .patient-header{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        align-items:flex-start;
+    }
+}
+.prescription-card{
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+.prescription-card h3{
+    color: #0f766e;
+    margin-bottom: 20px;
+}
+
+.prescription-card p{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.prescription-card label{
+    font-weight: 600;
+    color: #374151;
+}
+
+.prescription-card input,
+.prescription-card textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.prescription-card input:focus,
+.prescription-card textarea:focus{
+    outline: none;
+    border-color: #14b8a6;
+    box-shadow: 0 0 10px rgba(20,184,166,0.2);
+}
+
+.save-btn{
+    background: linear-gradient(
+        135deg,
+        #14b8a6,
+        #0ea5e9
+    );
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.save-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(14,165,233,0.3);
+}
+form{
+    margin-top: 20px;
+}
+
+.section-card + .section-card{
+    margin-top: 30px;
+}
+/* =========================
+   Previous Visits Section
+========================= */
+
+.visit-card{
+    background: #ffffff;
+    border-left: 5px solid #22c55e;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.visit-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.visit-card h4{
+    color: #1e3a5f;
+    font-size: 18px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 8px;
+}
+
+.visit-card p{
+    margin: 10px 0;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.visit-card strong{
+    color: #111827;
+}
+
+.coming-soon{
+    text-align: center;
+    padding: 25px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Optional Timeline Effect */
+
+.previous-visits-wrapper{
+    position: relative;
+    padding-left: 25px;
+}
+
+.previous-visits-wrapper::before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: #22c55e;
+    border-radius: 10px;
+}
+
+.visit-card{
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:18px;
+    margin-top:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.visit-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    padding-bottom:10px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.visit-header h4{
+    margin:0;
+    color:#2563eb;
+}
+
+.visit-id{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.visit-body p{
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+.visit-body strong{
+    color:#111827;
+}
+
+.coming-soon{
+    text-align:center;
+    color:#6b7280;
+    padding:20px;
+}
+.visit-id{
+
+    display:inline-block;
+
+    margin-bottom:12px;
+
+    padding:4px 10px;
+
+    background:#eef2ff;
+
+    color:#4338ca;
+
+    border-radius:8px;
+
+    font-size:12px;
+
+    font-weight:600;
+
 }

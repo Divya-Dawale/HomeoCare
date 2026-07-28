@@ -1,53 +1,284 @@
 {% extends 'doctor/base_doctor.html' %}
+{% load static %}
 
 {% block page_title %}
 Patient Consultation
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'doctor/consultation.css' %}">
+{% endblock %}
+
 {% block content %}
-<h3>Medical History</h3>
 
-{% if history %}
+<!-- Patient Information -->
 
-<div class="history-card">
+<div class="patient-card">
 
-    <p><strong>Allergies:</strong> {{ history.allergies }}</p>
+    <div class="patient-header">
 
-    <p><strong>Past Diseases:</strong> {{ history.past_diseases }}</p>
+        <h2>{{ patient.full_name }}</h2>
 
-    <p><strong>Family History:</strong> {{ history.family_history }}</p>
+        <span class="patient-id">
+            {{ patient.patient_id }}
+        </span>
 
-    <p><strong>Blood Pressure:</strong> {{ history.blood_pressure }}</p>
+    </div>
 
-    <p><strong>Weight:</strong> {{ history.weight }}</p>
+    <div class="patient-grid">
 
-    <p><strong>Current Problem:</strong> {{ history.current_problem }}</p>
+        <div>
+            <label>Phone Number</label>
+            <p>{{ patient.phone }}</p>
+        </div>
 
-    <p><strong>Notes:</strong> {{ history.additional_notes }}</p>
+        <div>
+            <label>Appointment Date</label>
+            <p>{{ appointment.appointment_date }}</p>
+        </div>
+
+    </div>
 
 </div>
 
-{% else %}
+<!-- Medical History -->
 
-<div class="empty-card">
+<div class="section-card">
 
-    <h4>No Medical History Found</h4>
+    <h3>🩺 Medical History</h3>
 
-    <p>
+    {% if history %}
 
-        This patient has never been examined before.
+        <div class="history-grid">
 
-    </p>
+            <div>
+                <label>Allergies</label>
+                <p>{{ history.allergies }}</p>
+            </div>
 
-    <a href="{% url 'create_medical_history' appointment.id %}"
-                           class="create-btn">
+            <div>
+                <label>Past Diseases</label>
+                <p>{{ history.past_diseases }}</p>
+            </div>
 
-    Create Medical History
+            <div>
+                <label>Family History</label>
+                <p>{{ history.family_history }}</p>
+            </div>
 
-        </a>
-       
+            <div>
+                <label>Blood Pressure</label>
+                <p>{{ history.blood_pressure }}</p>
+            </div>
+
+            <div>
+                <label>Weight</label>
+                <p>{{ history.weight }}</p>
+            </div>
+
+            <div>
+                <label>Current Problem</label>
+                <p>{{ history.current_problem }}</p>
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-state">
+
+            <h4>No Medical History Found</h4>
+
+            <p>
+                This patient does not have a medical history yet.
+            </p>
+
+            <a href="{% url 'create_medical_history' appointment.id %}"
+               class="action-btn">
+
+                Create Medical History
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
 </div>
 
-{% endif %}
+<!-- Consultation + Prescription Form -->
+
+<!-- Today's Consultation -->
+
+<div class="section-card">
+
+    <h3>📝 Today's Consultation</h3>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ record_form.as_p }}
+
+        <button
+            type="submit"
+            name="save_record"
+            class="save-btn">
+
+            Save Medical Record
+
+        </button>
+
+    </form>
+
+</div>
+
+<!-- Prescription -->
+
+<div class="section-card">
+
+    <h3>💊 Prescription</h3>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ prescription_form.as_p }}
+
+        <button
+            type="submit"
+            name="save_prescription"
+            class="save-btn">
+
+            Save Prescription
+
+        </button>
+
+    </form>
+
+</div>
+
+<!-- Previous Visits -->
+
+<div class="section-card">
+
+    <h3>📋 Previous Visits</h3>
+
+    {% if previous_visits %}
+
+        {% for visit in previous_visits %}
+
+            <div class="visit-card">
+
+                <div class="visit-header">
+
+                    <h4>
+                        Visit on {{ visit.created_at|date:"d M Y" }}
+                    </h4>
+
+                    <span class="visit-id">
+                        #{{ visit.id }}
+                    </span>
+
+                </div>
+
+                <div class="visit-body">
+
+                    <p>
+                        <strong>Symptoms:</strong><br>
+                        {{ visit.symptoms }}
+                    </p>
+
+                    <p>
+                        <strong>Diagnosis:</strong><br>
+                        {{ visit.diagnosis_notes }}
+                    </p>
+
+                    {% if visit.observations %}
+                    <p>
+                        <strong>Observations:</strong><br>
+                        {{ visit.observations }}
+                    </p>
+                    {% endif %}
+
+                    {% if visit.follow_up_notes %}
+                    <p>
+                        <strong>Follow Up Notes:</strong><br>
+                        {{ visit.follow_up_notes }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="coming-soon">
+            No previous visits found.
+        </p>
+
+    {% endif %}
+
+</div>
+<!-- Previous Prescriptions -->
+<div class="section-card">
+
+    <h3>💊 Previous Prescriptions</h3>
+
+    {% if previous_prescriptions %}
+
+        {% for prescription in previous_prescriptions %}
+
+            <div class="visit-card">
+
+                <h4>
+                    Prescription on {{ prescription.created_at|date:"d M Y" }}
+                </h4>
+
+                <span class="visit-id">
+                    #{{ prescription.id }}
+                </span>
+
+                <p>
+                    <strong>Medicine Name:</strong>
+                    {{ prescription.medicine_name }}
+                </p>
+
+                <p>
+                    <strong>Dosage:</strong>
+                    {{ prescription.dosage }}
+                </p>
+
+                <p>
+                    <strong>Frequency:</strong>
+                    {{ prescription.frequency }}
+                </p>
+
+                <p>
+                    <strong>Duration:</strong>
+                    {{ prescription.duration }}
+                </p>
+
+                <p>
+                    <strong>Instructions:</strong>
+                    {{ prescription.instructions }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="coming-soon">
+            No previous prescriptions found.
+        </p>
+
+    {% endif %}
+
+</div>
 
 {% endblock %}

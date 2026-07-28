@@ -5,6 +5,8 @@ from .models import MedicalHistory
 from django.shortcuts import redirect
 from .forms import MedicalHistoryForm
 from .forms import MedicalRecordForm
+from prescriptions.forms import PrescriptionForm
+from prescriptions.models import Prescription
 
 def doctor_dashboard(request):
 
@@ -60,26 +62,6 @@ def consultation(request, appointment_id):
         id=appointment_id
     )
 
-    context = {
-        "appointment": appointment,
-        "patient": appointment.patient,
-    }
-
-    record_form = MedicalRecordForm()
-    
-    return render(
-        request,
-        "doctor/consultation.html",
-        context
-    )
-
-def consultation(request, appointment_id):
-
-    appointment = get_object_or_404(
-        Appointment,
-        id=appointment_id
-    )
-
     patient = appointment.patient
 
     try:
@@ -88,9 +70,65 @@ def consultation(request, appointment_id):
         )
 
     except MedicalHistory.DoesNotExist:
-
         history = None
 
+    record_form = MedicalRecordForm()
+    prescription_form = PrescriptionForm()
+
+    if request.method == "POST":
+
+        # Save Medical Record
+        if "save_record" in request.POST:
+
+            record_form = MedicalRecordForm(
+                request.POST
+            )
+
+            if record_form.is_valid():
+
+                record = record_form.save(
+                    commit=False
+                )
+
+                record.patient = patient
+                record.appointment = appointment
+
+                record.save()
+
+                return redirect(
+                    "consultation",
+                    appointment_id=appointment.id
+                )
+
+        # Save Prescription
+        elif "save_prescription" in request.POST:
+
+            prescription_form = PrescriptionForm(
+                request.POST
+            )
+
+            if prescription_form.is_valid():
+
+                latest_record = patient.medical_records.last()
+
+                if latest_record:
+
+                    prescription = prescription_form.save(
+                        commit=False
+                    )
+
+                    prescription.patient = patient
+                    prescription.appointment = appointment
+                    prescription.medical_record = latest_record
+
+                    prescription.save()
+
+                return redirect(
+                    "consultation",
+                    appointment_id=appointment.id
+                )
+    previous_visits = patient.medical_records.all().order_by("-created_at")
+    previous_prescriptions = patient.prescriptions.all().order_by( "-created_at")
     context = {
 
         "appointment": appointment,
@@ -99,6 +137,12 @@ def consultation(request, appointment_id):
 
         "history": history,
 
+        "record_form": record_form,
+
+        "prescription_form": prescription_form,
+
+        "previous_visits": previous_visits,
+        "previous_prescriptions": previous_prescriptions,
     }
 
     return render(
@@ -106,6 +150,10 @@ def consultation(request, appointment_id):
         "doctor/consultation.html",
         context
     )
+
+
+
+    
 
 def create_medical_history(request, appointment_id):
 
@@ -116,20 +164,17 @@ def create_medical_history(request, appointment_id):
 
     patient = appointment.patient
 
-    if MedicalHistory.objects.filter(patient=patient).exists():
-
-        return redirect(
-            "consultation",
-            appointment_id=appointment.id
-        )
-
     if request.method == "POST":
 
-        form = MedicalHistoryForm(request.POST)
+        form = MedicalHistoryForm(
+            request.POST
+        )
 
         if form.is_valid():
 
-            history = form.save(commit=False)
+            history = form.save(
+                commit=False
+            )
 
             history.patient = patient
 
@@ -144,18 +189,16 @@ def create_medical_history(request, appointment_id):
 
         form = MedicalHistoryForm()
 
-    context = {
-
-        "form": form,
-
-        "patient": patient,
-
-        "appointment": appointment,
-
-    }
-
     return render(
+
         request,
+
         "doctor/create_history.html",
-        context
+
+        {
+            "form": form,
+            "patient": patient
+        }
+
     )
+

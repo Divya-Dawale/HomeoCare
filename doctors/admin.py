@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import MedicalRecord
-from .models import MedicalHistory
+from .models import MedicalHistory, MedicalRecord
+
 
 admin.site.register(MedicalRecord)
 admin.site.register(MedicalHistory)

@@ -41,5 +41,11 @@ class Prescription(models.Model):
         auto_now_add=True
     )
 
+    frequency = models.CharField(
+    max_length=100,
+     blank=True,
+    default=""
+    )
+
     def __str__(self):
         return f"{self.patient.full_name} - {self.medicine_name}"

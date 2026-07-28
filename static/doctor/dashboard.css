@@ -50,3 +50,124 @@
 
     color:#0F172A;
 }
+/* Previous Prescription Section */
+
+.prescription-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+}
+
+.prescription-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+.prescription-header h4 {
+
+    margin: 0;
+
+    color: #1f2937;
+
+    font-size: 20px;
+
+}
+
+.prescription-date {
+
+    background: #e0f2fe;
+
+    color: #0369a1;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+.prescription-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+.prescription-grid label {
+
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+
+}
+
+.prescription-grid p {
+
+    margin: 0;
+
+    font-weight: 600;
+
+    color: #111827;
+
+}
+
+.instructions-box {
+
+    background: #f9fafb;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+}
+
+.instructions-box label {
+
+    display: block;
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+    margin-bottom: 8px;
+
+}
+
+.instructions-box p {
+
+    margin: 0;
+
+    color: #374151;
+
+    line-height: 1.6;
+
+}

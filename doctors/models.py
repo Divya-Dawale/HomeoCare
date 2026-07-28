@@ -84,4 +84,3 @@ class MedicalHistory(models.Model):
         return f"Medical History - {self.patient.full_name}"
 
 
-   
