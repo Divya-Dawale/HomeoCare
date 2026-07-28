@@ -1,0 +1,95 @@
+{% extends 'doctor/base_doctor.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'doctor/patient_queue.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Patient Queue
+{% endblock %}
+
+{% block content %}
+
+<div class="table-card">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Queue</th>
+
+                <th>Patient</th>
+
+                <th>Patient ID</th>
+
+                <th>Date</th>
+
+                <th>Status</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for appointment in appointments %}
+
+            <tr>
+
+                <td>{{ forloop.counter }}</td>
+
+                <td>{{ appointment.patient.full_name }}</td>
+
+                <td>{{ appointment.patient.patient_id }}</td>
+
+                <td>{{ appointment.appointment_date }}</td>
+
+                <td>
+
+                    <span class="waiting-badge">
+
+                        Waiting
+
+                    </span>
+
+                </td>
+
+                <td>
+                    <a href="{% url 'consultation' appointment.id %}"
+                    class="open-btn">
+
+                        Open
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+
+                <td colspan="6">
+
+                    No waiting patients.
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

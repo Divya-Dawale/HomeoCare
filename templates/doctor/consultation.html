@@ -1,0 +1,53 @@
+{% extends 'doctor/base_doctor.html' %}
+
+{% block page_title %}
+Patient Consultation
+{% endblock %}
+
+{% block content %}
+<h3>Medical History</h3>
+
+{% if history %}
+
+<div class="history-card">
+
+    <p><strong>Allergies:</strong> {{ history.allergies }}</p>
+
+    <p><strong>Past Diseases:</strong> {{ history.past_diseases }}</p>
+
+    <p><strong>Family History:</strong> {{ history.family_history }}</p>
+
+    <p><strong>Blood Pressure:</strong> {{ history.blood_pressure }}</p>
+
+    <p><strong>Weight:</strong> {{ history.weight }}</p>
+
+    <p><strong>Current Problem:</strong> {{ history.current_problem }}</p>
+
+    <p><strong>Notes:</strong> {{ history.additional_notes }}</p>
+
+</div>
+
+{% else %}
+
+<div class="empty-card">
+
+    <h4>No Medical History Found</h4>
+
+    <p>
+
+        This patient has never been examined before.
+
+    </p>
+
+    <a href="{% url 'create_medical_history' appointment.id %}"
+                           class="create-btn">
+
+    Create Medical History
+
+        </a>
+       
+</div>
+
+{% endif %}
+
+{% endblock %}

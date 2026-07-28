@@ -43,6 +43,11 @@ path(
     include('receptionist.urls')
 ),
 path('', include('accounts.urls')),
+
+path(
+    'doctors/',
+    include('doctors.urls')
+),
 ]
 if settings.DEBUG:
     urlpatterns += static(

@@ -1,0 +1,60 @@
+{% extends 'doctor/base_doctor.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'doctor/dashboard.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Doctor Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-user-clock"></i>
+
+        <h3>Waiting Patients</h3>
+
+        <h1>12</h1>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-stethoscope"></i>
+
+        <h3>Consulting</h3>
+
+        <h1>2</h1>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <h3>Completed Today</h3>
+
+        <h1>9</h1>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-file-medical"></i>
+
+        <h3>Total Records</h3>
+
+        <h1>152</h1>
+
+    </div>
+
+</div>
+
+{% endblock %}

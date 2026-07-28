@@ -1,0 +1,30 @@
+{% extends 'doctor/base_doctor.html' %}
+
+{% block page_title %}
+Create Medical History
+{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h2>{{ patient.full_name }}</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit"
+                class="save-btn">
+
+            Save Medical History
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

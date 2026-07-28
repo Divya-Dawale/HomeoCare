@@ -1,0 +1,56 @@
+.history-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    margin-top:20px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.history-card p{
+
+    margin:12px 0;
+
+    color:#334155;
+}
+
+.empty-card{
+
+    margin-top:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    background:#F8FAFC;
+
+    border:2px dashed #CBD5E1;
+
+    border-radius:15px;
+}
+
+.create-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:12px 22px;
+
+    background:#10B981;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+}
+
+.create-btn:hover{
+
+    background:#059669;
+}
