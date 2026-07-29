@@ -9,6 +9,11 @@ urlpatterns = [
         name="billing"
     ),
 
-    
+    path(
+        "receipt/<int:bill_id>/",
+        views.receipt,
+        name="receipt"
+    ),
 
+    
 ]

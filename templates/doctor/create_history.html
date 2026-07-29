@@ -1,27 +1,39 @@
 {% extends 'doctor/base_doctor.html' %}
+{% load static %}
 
 {% block page_title %}
 Create Medical History
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'doctor/create_history.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<h2>
-    Create Medical History
-</h2>
+<div class="history-container">
 
-<form method="POST">
+    <div class="history-card">
 
-    {% csrf_token %}
+        <h2>🩺 Create Medical History</h2>
 
-    {{ form.as_p }}
+        <form method="POST">
 
-    <button type="submit">
+            {% csrf_token %}
 
-        Save History
+            {{ form.as_p }}
 
-    </button>
+            <button type="submit" class="save-btn">
 
-</form>
+                Save History
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
 
 {% endblock %}

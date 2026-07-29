@@ -19,6 +19,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from HomeoCare import views
+from appointments.views import appointment_history
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -51,6 +52,10 @@ path(
 path(
     "billing/",
     include("billing.urls")
+),
+path(
+    "appointments/",
+    include("appointments.urls")
 ),
 ]
 if settings.DEBUG:

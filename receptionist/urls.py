@@ -71,4 +71,19 @@ urlpatterns = [
     views.mark_medicine_given,
     name="mark_medicine_given"
     ),
+    path(
+    "settings/",
+    views.settings,
+    name="receptionist_settings"
+    ),
+    path(
+    "profile/",
+    views.profile,
+    name="receptionist_profile"
+    ),
+    path(
+    "profile/edit/",
+    views.edit_profile,
+    name="edit_profile"
+    ),
 ]

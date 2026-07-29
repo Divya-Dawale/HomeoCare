@@ -42,9 +42,15 @@ class Bill(models.Model):
         default="paid"
     )
 
+    printed = models.BooleanField(
+        default=False
+    )
+
+
     created_at = models.DateTimeField(
         auto_now_add=True
     )
 
     def __str__(self):
-        return f"Bill #{self.id}"
+         return f"{self.patient.patient_id} - {self.patient.full_name}"
+    

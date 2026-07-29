@@ -8,5 +8,9 @@ urlpatterns = [
         views.staff_login,
         name="staff_login"
     ),
-
+    path(
+    "logout/",
+    views.logout_user,
+    name="logout"
+    ),
 ]

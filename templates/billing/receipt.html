@@ -1,0 +1,137 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block page_title %}
+Receipt
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'billing/receipt.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="receipt-container">
+
+    <div class="receipt-card">
+
+        <h1>🏥 HomeoCare Clinic</h1>
+
+        <p class="subtitle">
+            Payment Receipt
+        </p>
+
+        <hr>
+
+        <div class="section">
+
+            <h3>Patient Details</h3>
+
+            <p>
+                <strong>Name:</strong>
+                {{ bill.patient.full_name }}
+            </p>
+
+            <p>
+                <strong>Patient ID:</strong>
+                {{ bill.patient.patient_id }}
+            </p>
+
+        </div>
+
+        <div class="section">
+
+            <h3>Prescription Details</h3>
+
+            <p>
+                <strong>Medicine:</strong>
+                {{ bill.prescription.medicine_name }}
+            </p>
+
+            <p>
+                <strong>Duration:</strong>
+                {{ bill.prescription.duration }}
+            </p>
+
+        </div>
+
+        <div class="section">
+
+            <h3>Payment Summary</h3>
+
+            <p>
+                Consultation Fee :
+                ₹{{ bill.consultation_fee }}
+            </p>
+
+            <p>
+                Medicine Fee :
+                ₹{{ bill.medicine_fee }}
+            </p>
+
+            <h2>
+                Total :
+                ₹{{ bill.total_amount }}
+            </h2>
+
+        </div>
+
+        <div class="section">
+
+            <p>
+                <strong>Payment Method:</strong>
+                {{ bill.payment_method }}
+            </p>
+            
+            <p>
+                <strong>Status:</strong>
+                Paid
+            </p>
+            <p>
+               <strong>Printed:</strong>
+                      {% if bill.printed %}
+                            Yes
+                        {% else %}
+                             No
+                            {% endif %}
+            </p>
+            <p>
+                <strong>Date:</strong>
+                {{ bill.created_at|date:"d M Y" }}
+            </p>
+
+        </div>
+
+        <div class="btn-group">
+
+        <form method="POST">
+
+    {% csrf_token %}
+
+    <button
+        type="submit"
+        onclick="window.print()"
+        class="print-btn">
+
+        🖨 Print Receipt
+
+    </button>
+
+</form>    
+
+            <a
+                href="{% url 'billing' %}"
+                class="back-btn">
+
+                Back to Billing
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

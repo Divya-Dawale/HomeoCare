@@ -1,0 +1,101 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block page_title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                {{ request.user.username|first|upper }}
+            </div>
+
+            <h2>
+                {{ request.user.get_full_name|default:request.user.username }}
+            </h2>
+
+            <p>
+                Receptionist
+            </p>
+
+        </div>
+
+        <div class="profile-details">
+
+            <div class="detail-row">
+
+                <label>Username</label>
+
+                <span>
+                    {{ request.user.username }}
+                </span>
+
+            </div>
+
+
+<div class="detail-row">
+
+    <label>Email</label>
+
+    <span>
+        {{ request.user.email }}
+    </span>
+
+</div>
+
+<div class="detail-row">
+
+    <label>Role</label>
+
+    <span>
+        {{ request.user.role|title }}
+    </span>
+
+</div>
+
+<div class="detail-row">
+
+    <label>Date Joined</label>
+
+    <span>
+        {{ request.user.date_joined|date:"d M Y" }}
+    </span>
+
+</div>
+
+<div class="detail-row">
+
+    <label>Last Login</label>
+
+    <span>
+        {{ request.user.last_login|date:"d M Y H:i" }}
+    </span>
+
+</div>   
+
+        
+    <div class="profile-actions">
+
+    <a href="{% url 'edit_profile' %}"
+       class="setting-btn">
+       Edit Profile
+    </a>
+
+     </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -347,3 +347,51 @@ def mark_medicine_given(
     return redirect(
         "receptionist_prescriptions"
     )
+
+def settings(request):
+
+    return render(
+        request,
+        "receptionist/settings.html"
+    )
+
+@login_required
+def profile(request):
+
+    return render(
+        request,
+        "receptionist/profile.html"
+    )
+from .forms import ProfileForm
+from django.shortcuts import render, redirect
+
+def edit_profile(request):
+
+    if request.method == "POST":
+
+        form = ProfileForm(
+            request.POST,
+            instance=request.user
+        )
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect(
+                "receptionist_settings"
+            )
+
+    else:
+
+        form = ProfileForm(
+            instance=request.user
+        )
+
+    return render(
+        request,
+        "receptionist/edit_profile.html",
+        {
+            "form": form
+        }
+    )

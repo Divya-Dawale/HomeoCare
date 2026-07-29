@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import logout
 
 def staff_login(request):
 
@@ -40,3 +40,9 @@ def staff_login(request):
         "accounts/login.html",
         {"error": error}
     )
+
+def logout_user(request):
+
+    logout(request)
+
+    return redirect("staff_login")

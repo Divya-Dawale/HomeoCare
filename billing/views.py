@@ -79,8 +79,7 @@ def billing_list(request):
                 medicine_fee * 0.90,
                 -1
             )
-
-        Bill.objects.create(
+        bill = Bill.objects.create(
 
             patient=prescription.patient,
 
@@ -101,9 +100,9 @@ def billing_list(request):
         prescription.save()
 
         return redirect(
-            "billing"
-        )
-
+    "receipt",
+    bill_id=bill.id
+    )
     for prescription in prescriptions:
 
         duration_days = get_duration_days(
@@ -151,3 +150,28 @@ def billing_list(request):
             "prescriptions": prescriptions
         }
     )
+
+
+def receipt(
+    request,
+    bill_id
+):
+
+    bill = get_object_or_404(
+        Bill,
+        id=bill_id
+    )
+
+    if request.method == "POST":
+
+        bill.printed = True
+        bill.save()
+
+    return render(
+        request,
+        "billing/receipt.html",
+        {
+            "bill": bill
+        }
+    )
+    

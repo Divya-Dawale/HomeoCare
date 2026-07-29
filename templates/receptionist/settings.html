@@ -1,0 +1,91 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+{% block page_title %}
+Settings
+{% endblock %}
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/settings.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="settings-page">
+
+    
+
+    <div class="settings-grid">
+
+        <div class="settings-card">
+
+            <h3>Profile Information</h3>
+
+            <p>
+                Update your personal details.
+            </p>
+
+            <a href="{% url 'receptionist_profile' %}"
+               class="history-btn">
+
+                Profile
+
+            </a>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>Change Password</h3>
+
+            <p>
+                Update your account password.
+            </p>
+
+            <button>
+                Change Password
+            </button>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>Theme Settings</h3>
+
+            <p>
+                Switch between light and dark mode.
+            </p>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="themeToggle"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+        <div class="settings-card">
+
+            <h3>Appointment History</h3>
+
+            <p>
+                View previous patient appointments.
+            </p>
+
+           <a href="{% url 'appointment_history' %}"
+                class="history-btn">
+
+                     Open History
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
