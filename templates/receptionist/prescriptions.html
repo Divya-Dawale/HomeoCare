@@ -1,0 +1,215 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block page_title %}
+Prescription Distribution
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/prescriptions.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Stats -->
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <h3>Pending</h3>
+        <h1>{{ pending_count }}</h1>
+    </div>
+
+    <div class="stat-card">
+        <h3>Given</h3>
+        <h1>{{ given_count }}</h1>
+    </div>
+
+    <div class="stat-card">
+        <h3>Total</h3>
+        <h1>{{ total_count }}</h1>
+    </div>
+
+</div>
+
+<!-- Search -->
+
+<div class="toolbar">
+
+    <form method="GET" class="search-form">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search Patient Name or Patient ID"
+            value="{{ search|default:'' }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</div>
+
+<!-- Filters -->
+
+<div class="filter-bar">
+
+    <a href="?"
+       class="{% if not selected_status %}active-filter{% endif %}">
+       All
+    </a>
+
+    <a href="?status=pending"
+       class="{% if selected_status == 'pending' %}active-filter{% endif %}">
+       Pending
+    </a>
+
+    <a href="?status=given"
+       class="{% if selected_status == 'given' %}active-filter{% endif %}">
+       Given
+    </a>
+
+</div>
+
+<!-- Prescription Cards -->
+
+{% for prescription in prescriptions %}
+
+<div class="prescription-card">
+
+    <!-- Header -->
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>{{ prescription.patient.full_name }}</h3>
+
+            <span class="patient-id">
+                {{ prescription.patient.patient_id }}
+            </span>
+
+        </div>
+
+        {% if prescription.status == "given" %}
+
+            <span class="given-badge">
+                Given
+            </span>
+
+        {% else %}
+
+            <span class="pending-badge">
+                Pending
+            </span>
+
+        {% endif %}
+
+    </div>
+
+    <!-- Medicine Highlight -->
+
+    <div class="medicine-box">
+
+        <div class="medicine-label">
+            Medicine
+        </div>
+
+        <div class="medicine-name">
+            💊 {{ prescription.medicine_name }}
+        </div>
+
+    </div>
+
+    <!-- Details -->
+
+    <div class="details-grid">
+
+        <div class="detail-item">
+            <span>Dosage</span>
+            <strong>{{ prescription.dosage }}</strong>
+        </div>
+
+        <div class="detail-item">
+            <span>Frequency</span>
+            <strong>{{ prescription.frequency }}</strong>
+        </div>
+
+        <div class="detail-item">
+            <span>Duration</span>
+            <strong>{{ prescription.duration }}</strong>
+        </div>
+
+    </div>
+
+    <!-- Instructions -->
+
+    <div class="instruction-box">
+
+        <strong>Instructions</strong>
+
+        <p>
+            {{ prescription.instructions }}
+        </p>
+
+    </div>
+
+    <!-- Dates -->
+
+    <div class="date-row">
+
+        <span>
+            Appointment:
+            {{ prescription.appointment.appointment_date }}
+        </span>
+
+        <span>
+            Prescription:
+            {{ prescription.created_at|date:"d M Y" }}
+        </span>
+
+    </div>
+
+    <!-- Action -->
+
+    {% if prescription.status == "pending" %}
+
+        <a
+            href="{% url 'mark_medicine_given' prescription.id %}"
+            class="give-btn">
+
+            ✓ Mark as Distributed
+
+        </a>
+
+    {% else %}
+
+        <div class="given-message">
+
+            ✓ Medicine Successfully Distributed
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% empty %}
+
+<div class="empty-card">
+
+    <h3>No Prescriptions Found</h3>
+
+    <p>
+        No prescriptions available.
+    </p>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

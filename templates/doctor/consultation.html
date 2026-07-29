@@ -239,7 +239,7 @@ Patient Consultation
                 </h4>
 
                 <span class="visit-id">
-                    #{{ prescription.id }}
+                    Prescription #{{ forloop.counter }}
                 </span>
 
                 <p>
@@ -280,5 +280,19 @@ Patient Consultation
     {% endif %}
 
 </div>
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button
+        type="submit"
+        name="complete_consultation"
+        class="complete-btn">
+
+        ✅ Complete Consultation
+
+    </button>
+
+</form>
 
 {% endblock %}

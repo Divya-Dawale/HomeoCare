@@ -12,6 +12,24 @@ Patient Queue
 
 {% block content %}
 
+<div class="filter-bar">
+
+    <a href="?"
+       class="filter-btn {% if not selected_status %}active-filter{% endif %}">
+        All Patients
+    </a>
+
+    <a href="?status=waiting"
+       class="filter-btn {% if selected_status == 'waiting' %}active-filter{% endif %}">
+        Waiting
+    </a>
+
+    <a href="?status=completed"
+       class="filter-btn {% if selected_status == 'completed' %}active-filter{% endif %}">
+        Completed
+    </a>
+
+</div>
 <div class="table-card">
 
     <table>
@@ -50,15 +68,21 @@ Patient Queue
 
                 <td>{{ appointment.appointment_date }}</td>
 
-                <td>
+                <td> 
+                        {% if appointment.status == "completed" %}
 
-                    <span class="waiting-badge">
+                            <span class="completed-badge">
+                               Completed
+                            </span>
 
-                        Waiting
+                        {% else %}
+                        <span class="waiting-badge">
+                             Waiting
+                        </span>
 
-                    </span>
+                         {% endif %}
 
-                </td>
+               </td>
 
                 <td>
                     <a href="{% url 'consultation' appointment.id %}"

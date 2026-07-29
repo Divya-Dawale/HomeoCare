@@ -423,3 +423,36 @@ form{
     font-weight:600;
 
 }
+.complete-btn{
+
+    width:100%;
+
+    background:#22c55e;
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-top:20px;
+
+    transition:0.3s;
+
+}
+
+.complete-btn:hover{
+
+    background:#16a34a;
+
+    transform:translateY(-2px);
+
+}

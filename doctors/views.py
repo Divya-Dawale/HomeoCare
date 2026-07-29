@@ -66,12 +66,20 @@ def prescriptions(request):
 
 def patient_queue(request):
 
-    appointments = Appointment.objects.filter(
-        status="waiting"
-    ).order_by("appointment_date")
+    status = request.GET.get("status")
+
+    appointments = Appointment.objects.all().order_by(
+        "-appointment_date"
+    )
+
+    if status:
+        appointments = appointments.filter(
+            status=status
+        )
 
     context = {
-        "appointments": appointments
+        "appointments": appointments,
+        "selected_status": status,
     }
 
     return render(
@@ -152,8 +160,31 @@ def consultation(request, appointment_id):
                     "consultation",
                     appointment_id=appointment.id
                 )
-    previous_visits = patient.medical_records.all().order_by("-created_at")
-    previous_prescriptions = patient.prescriptions.all().order_by( "-created_at")
+
+        # Complete Consultation
+        elif "complete_consultation" in request.POST:
+
+            prescription_exists = Prescription.objects.filter(
+                appointment=appointment
+            ).exists()
+
+            if prescription_exists:
+
+                appointment.status = "completed"
+                appointment.save()
+
+                return redirect(
+                    "patient_queue"
+                )
+
+    previous_visits = patient.medical_records.all().order_by(
+        "-created_at"
+    )
+
+    previous_prescriptions = patient.prescriptions.all().order_by(
+        "-created_at"
+    )
+
     context = {
 
         "appointment": appointment,
@@ -167,7 +198,9 @@ def consultation(request, appointment_id):
         "prescription_form": prescription_form,
 
         "previous_visits": previous_visits,
+
         "previous_prescriptions": previous_prescriptions,
+
     }
 
     return render(
@@ -175,7 +208,6 @@ def consultation(request, appointment_id):
         "doctor/consultation.html",
         context
     )
-
 
 
     

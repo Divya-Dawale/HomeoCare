@@ -61,6 +61,14 @@ urlpatterns = [
     views.complete_appointment,
     name="complete_appointment"
     ), 
-
-
+    path(
+    "prescriptions/",
+    views.prescriptions,
+    name="receptionist_prescriptions"
+    ),
+    path(
+    "prescriptions/given/<int:prescription_id>/",
+    views.mark_medicine_given,
+    name="mark_medicine_given"
+    ),
 ]

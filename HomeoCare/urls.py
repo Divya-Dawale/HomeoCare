@@ -48,6 +48,10 @@ path(
     'doctors/',
     include('doctors.urls')
 ),
+path(
+    "billing/",
+    include("billing.urls")
+),
 ]
 if settings.DEBUG:
     urlpatterns += static(

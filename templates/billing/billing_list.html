@@ -1,0 +1,188 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+
+{% block page_title %}
+Billing
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet"
+href="{% static 'billing/billing.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+```
+<h2>💳 Billing Management</h2>
+
+<p>
+    Generate bills for medicines already distributed to patients.
+</p>
+```
+
+</div>
+
+{% for prescription in prescriptions %}
+
+<form method="POST" class="billing-card">
+
+```
+{% csrf_token %}
+
+<input
+type="hidden"
+name="prescription_id"
+value="{{ prescription.id }}"
+>
+
+<div class="card-header">
+
+    <div>
+
+        <h3>
+            {{ prescription.patient.full_name }}
+        </h3>
+
+        <span class="patient-id">
+            {{ prescription.patient.patient_id }}
+        </span>
+
+    </div>
+
+    <span class="ready-badge">
+        Ready For Billing
+    </span>
+
+</div>
+
+<div class="medicine-box">
+
+    <h4>
+        💊 {{ prescription.medicine_name }}
+    </h4>
+
+    <p>
+        Duration:
+        <strong>
+            {{ prescription.duration }}
+        </strong>
+    </p>
+
+</div>
+
+<div class="amount-grid">
+
+    <div class="amount-card">
+
+        <span>
+            Consultation Fee
+        </span>
+
+        <h3>
+            ₹{{ prescription.consultation_fee }}
+        </h3>
+
+    </div>
+
+    <div class="amount-card">
+
+        <span>
+            Medicine Fee
+        </span>
+
+        <h3>
+            ₹{{ prescription.medicine_fee }}
+        </h3>
+
+    </div>
+
+    <div class="amount-card total-card">
+
+        <span>
+            Total Amount
+        </span>
+
+        <h2>
+            ₹{{ prescription.total_amount }}
+        </h2>
+
+    </div>
+
+</div>
+
+<div class="payment-section">
+
+    <label>
+
+        <input
+        type="radio"
+        name="payment_method"
+        value="cash"
+        required>
+
+        Cash
+
+    </label>
+
+    <label>
+
+        <input
+        type="radio"
+        name="payment_method"
+        value="online">
+
+        Online
+
+    </label>
+
+</div>
+
+<div class="override-section">
+
+    <label>
+
+        Final Amount
+
+    </label>
+
+    <input
+    type="number"
+    name="final_amount"
+    value="{{ prescription.total_amount }}"
+    required>
+
+</div>
+
+<button
+type="submit"
+class="bill-btn">
+
+    Generate Bill
+
+</button>
+```
+
+</form>
+
+{% empty %}
+
+<div class="empty-card">
+
+```
+<h3>
+    No Bills Pending
+</h3>
+
+<p>
+    All distributed medicines have already been billed.
+</p>
+```
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -280,3 +280,70 @@ def complete_appointment(request, appointment_id):
     appointment.save()
 
     return redirect("appointments")
+
+from prescriptions.models import Prescription
+from prescriptions.models import Prescription
+from django.db.models import Q
+
+def prescriptions(request):
+
+    status = request.GET.get("status")
+    search = request.GET.get("search")
+
+    prescriptions = Prescription.objects.select_related(
+        "patient",
+        "appointment"
+    ).order_by("-created_at")
+
+    if status:
+        prescriptions = prescriptions.filter(
+            status=status
+        )
+
+    if search:
+        prescriptions = prescriptions.filter(
+            Q(patient__full_name__icontains=search) |
+            Q(patient__patient_id__icontains=search)
+        )
+
+    pending_count = Prescription.objects.filter(
+        status="pending"
+    ).count()
+
+    given_count = Prescription.objects.filter(
+        status="given"
+    ).count()
+
+    context = {
+        "prescriptions": prescriptions,
+        "pending_count": pending_count,
+        "given_count": given_count,
+        "total_count": pending_count + given_count,
+        "selected_status": status,
+        "search": search,
+    }
+
+    return render(
+        request,
+        "receptionist/prescriptions.html",
+        context
+    )
+def mark_medicine_given(
+    request,
+    prescription_id
+):
+
+    prescription = get_object_or_404(
+        Prescription,
+        id=prescription_id
+    )
+
+    prescription.medicine_given = True
+
+    prescription.status = "given"
+
+    prescription.save()
+
+    return redirect(
+        "receptionist_prescriptions"
+    )

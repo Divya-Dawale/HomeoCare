@@ -76,3 +76,76 @@ tbody tr:hover{
 
     background:#059669;
 }
+.queue-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.status-badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    text-transform:capitalize;
+}
+
+.status-waiting{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.status-completed{
+    background:#d4edda;
+    color:#155724;
+}
+
+.completed-text{
+    display:inline-block;
+    margin-top:10px;
+    color:#28a745;
+    font-weight:600;
+}
+.waiting-badge{
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.completed-badge{
+    background: #d4edda;
+    color: #155724;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.filter-bar{
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.filter-btn{
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    background:#f1f5f9;
+    color:#475569;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.filter-btn:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.active-filter{
+    background:#2563eb;
+    color:white !important;
+}

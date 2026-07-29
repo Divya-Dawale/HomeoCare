@@ -1,0 +1,184 @@
+.page-header{
+    margin-bottom:25px;
+}
+
+.page-header h2{
+    margin-bottom:8px;
+    color:#1e293b;
+}
+
+.page-header p{
+    color:#64748b;
+}
+
+.billing-card{
+    background:#fff;
+    border-radius:20px;
+    padding:24px;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    border:1px solid #eef2f7;
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.card-header h3{
+    margin:0;
+    font-size:22px;
+    color:#111827;
+}
+
+.patient-id{
+    color:#64748b;
+    font-size:14px;
+    font-weight:600;
+}
+
+.ready-badge{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.medicine-box{
+    background:#f8fafc;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:20px;
+    border-left:5px solid #2563eb;
+}
+
+.medicine-box h4{
+    margin:0 0 8px 0;
+    font-size:20px;
+    color:#111827;
+}
+
+.medicine-box p{
+    margin:0;
+    color:#475569;
+}
+
+.amount-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.amount-card{
+    background:#f8fafc;
+    padding:18px;
+    border-radius:14px;
+    text-align:center;
+}
+
+.amount-card span{
+    display:block;
+    color:#64748b;
+    margin-bottom:8px;
+    font-size:13px;
+}
+
+.amount-card h3{
+    margin:0;
+    color:#1e293b;
+}
+
+.total-card{
+    background:#2563eb;
+    color:white;
+}
+
+.total-card span{
+    color:white;
+}
+
+.total-card h2{
+    margin:0;
+    font-size:28px;
+}
+
+.payment-section{
+    display:flex;
+    gap:25px;
+    margin-bottom:20px;
+    padding:15px;
+    background:#f8fafc;
+    border-radius:12px;
+}
+
+.payment-section label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.override-section{
+    margin-bottom:20px;
+}
+
+.override-section label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#374151;
+}
+
+.override-section input{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.override-section input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+.bill-btn{
+    width:100%;
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.bill-btn:hover{
+    transform:translateY(-2px);
+    opacity:0.95;
+}
+
+.empty-card{
+    background:white;
+    border-radius:20px;
+    padding:50px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.empty-card h3{
+    margin-bottom:10px;
+    color:#1e293b;
+}
+
+.empty-card p{
+    color:#64748b;
+}
