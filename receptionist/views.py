@@ -4,6 +4,9 @@ from patients.models import Patient
 from django.shortcuts import get_object_or_404
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from .forms import ProfileForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 def dashboard(request):
 
@@ -362,9 +365,8 @@ def profile(request):
         request,
         "receptionist/profile.html"
     )
-from .forms import ProfileForm
-from django.shortcuts import render, redirect
 
+@login_required
 def edit_profile(request):
 
     if request.method == "POST":
@@ -391,6 +393,51 @@ def edit_profile(request):
     return render(
         request,
         "receptionist/edit_profile.html",
+        {
+            "form": form
+        }
+    )
+
+
+def change_password(request):
+
+    if request.method == "POST":
+
+        form = PasswordChangeForm(
+            request.user,
+            request.POST
+        )
+
+        print("FORM VALID:", form.is_valid())
+
+        if form.is_valid():
+
+            print("PASSWORD CHANGED")
+
+            user = form.save()
+
+            update_session_auth_hash(
+                request,
+                user
+            )
+
+            return redirect(
+                "receptionist_settings"
+            )
+
+        else:
+
+            print(form.errors)
+
+    else:
+
+        form = PasswordChangeForm(
+            request.user
+        )
+
+    return render(
+        request,
+        "receptionist/change_password.html",
         {
             "form": form
         }

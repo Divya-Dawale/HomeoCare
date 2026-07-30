@@ -5,27 +5,38 @@
 Edit Profile
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'receptionist/edit_profile.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<div class="settings-card">
+<div class="edit-profile-container">
 
-    <h2>Edit Profile</h2>
+    <div class="edit-profile-card">
 
-    <form method="POST">
+        <h2>Edit Profile</h2>
 
-        {% csrf_token %}
+        <form method="POST">
 
-        {{ form.as_p }}
+            {% csrf_token %}
 
-        <button type="submit"
-                class="setting-btn">
+            {{ form.as_p }}
 
-            Save Changes
+            <button
+                type="submit"
+                class="save-btn">
 
-        </button>
+                Save Changes
 
-    </form>
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
+
 
 {% endblock %}

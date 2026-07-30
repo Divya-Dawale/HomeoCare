@@ -40,9 +40,11 @@ href="{% static 'receptionist/settings.css' %}">
                 Update your account password.
             </p>
 
-            <button>
-                Change Password
-            </button>
+            <a href="{% url 'change_password' %}"
+                 class="history-btn">
+                   Change Password
+
+            </a>
 
         </div>
 
