@@ -3,6 +3,8 @@ from appointments.models import AppointmentRequest
 from django.shortcuts import render, redirect
 from patients.models import Patient
 from appointments.models import Appointment
+from doctors.models import DoctorSettings
+from appointments.models import Appointment
 
 def home(request):
     return render(request, 'public/home.html')
@@ -16,11 +18,38 @@ from datetime import date
 def book_appointment(request):
 
     success = None
+    error_message = None
     request_type = None
 
     if request.method == "POST":
 
-        request_type = request.POST.get("request_type")
+        request_type = request.POST.get(
+            "request_type"
+        )
+
+        doctor_settings = DoctorSettings.objects.first()
+
+        booking_closed = False
+
+        if doctor_settings:
+
+           today_count = AppointmentRequest.objects.filter(
+              preferred_date=date.today()
+            ).count()
+
+           booking_closed = (
+           today_count >= doctor_settings.max_patients_per_day
+            )
+
+        return render(
+                request,
+                "public/appointment.html",
+                {
+                    "success": success,
+                    "request_type": request_type,
+                    "booking_closed": booking_closed,
+                }
+            )
 
         # -----------------------------
         # NEW PATIENT
@@ -28,18 +57,44 @@ def book_appointment(request):
         if request_type == "new":
 
             AppointmentRequest.objects.create(
+
                 request_type="new",
-                full_name=request.POST.get("full_name"),
-                phone=request.POST.get("phone"),
-                email=request.POST.get("email"),
-                age=request.POST.get("age"),
-                gender=request.POST.get("gender"),
-                address=request.POST.get("address"),
+
+                full_name=request.POST.get(
+                    "full_name"
+                ),
+
+                phone=request.POST.get(
+                    "phone"
+                ),
+
+                email=request.POST.get(
+                    "email"
+                ),
+
+                age=request.POST.get(
+                    "age"
+                ),
+
+                gender=request.POST.get(
+                    "gender"
+                ),
+
+                address=request.POST.get(
+                    "address"
+                ),
+
                 preferred_date=date.today(),
-                reason_for_visit=request.POST.get("reason_for_visit")
+
+                reason_for_visit=request.POST.get(
+                    "reason_for_visit"
+                )
+
             )
 
-            success = "Appointment request submitted successfully."
+            success = (
+                "Appointment request submitted successfully."
+            )
 
         # -----------------------------
         # EXISTING PATIENT
@@ -47,31 +102,62 @@ def book_appointment(request):
         else:
 
             patient = Patient.objects.filter(
-                patient_id=request.POST.get("patient_id"),
-                phone=request.POST.get("phone")
+
+                patient_id=request.POST.get(
+                    "patient_id"
+                ),
+
+                phone=request.POST.get(
+                    "phone"
+                )
+
             ).first()
 
             if patient:
 
-                Appointment.objects.create(
-                       patient=patient,
-                     appointment_date=date.today(),
-                     reason_for_visit=request.POST.get("reason_for_visit"),
-                     status="waiting"
+                AppointmentRequest.objects.create(
+
+                    request_type="existing",
+
+                    patient_id=patient.patient_id,
+
+                    full_name=patient.full_name,
+
+                    phone=patient.phone,
+
+                    email=patient.email,
+
+                    age=patient.age,
+
+                    gender=patient.gender,
+
+                    address=patient.address,
+
+                    preferred_date=date.today(),
+
+                    reason_for_visit=request.POST.get(
+                        "reason_for_visit"
+                    )
+
                 )
 
-                success = "Follow-up appointment booked successfully."
+                success = (
+                    "Follow-up appointment booked successfully."
+                )
 
             else:
 
-                success = "Invalid Patient ID or Phone Number."
+                error_message = (
+                    "Invalid Patient ID or Phone Number."
+                )
 
     return render(
         request,
         "public/appointment.html",
         {
             "success": success,
-            "request_type": request_type
+            "error_message": error_message,
+            "request_type": request_type,
         }
     )
 def patient_status(request):

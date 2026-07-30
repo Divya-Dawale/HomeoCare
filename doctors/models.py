@@ -106,9 +106,10 @@ class DoctorSettings(models.Model):
         default=200
     )
 
+    max_patients_per_day = models.PositiveIntegerField(
+        default=20
+    )
+
     dark_mode = models.BooleanField(
         default=False
     )
-
-    def __str__(self):
-        return self.doctor.username

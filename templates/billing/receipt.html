@@ -62,17 +62,17 @@ href="{% static 'billing/receipt.css' %}">
 
             <p>
                 Consultation Fee :
-                ₹{{ bill.consultation_fee }}
+                ₹{{ bill.consultation_fee|floatformat:0 }}
             </p>
 
             <p>
                 Medicine Fee :
-                ₹{{ bill.medicine_fee }}
+                ₹{{ bill.medicine_fee|floatformat:0 }}
             </p>
 
             <h2>
                 Total :
-                ₹{{ bill.total_amount }}
+                ₹{{ bill.total_amount|floatformat:0 }}
             </h2>
 
         </div>

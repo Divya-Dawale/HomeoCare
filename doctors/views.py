@@ -489,6 +489,21 @@ def doctor_change_password(request):
 
         if form.is_valid():
 
+            print("VALID")
+
+            user = form.save()
+
+            update_session_auth_hash(
+            request,
+            user
+            )
+
+            return redirect("doctor_settings")
+
+        else:
+
+            print(form.errors)
+
             user = form.save()
 
             update_session_auth_hash(

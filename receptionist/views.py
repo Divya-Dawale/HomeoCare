@@ -474,3 +474,119 @@ def change_password(request):
             "form": form
         }
     )
+
+from patients.models import Patient
+from appointments.models import Appointment
+from .forms import PatientAppointmentForm
+
+
+def add_patient(request):
+
+    success = None
+    search_result = None
+
+    form = PatientAppointmentForm()
+
+    if request.method == "POST":
+
+        # NEW PATIENT
+
+        if "register_patient" in request.POST:
+
+            form = PatientAppointmentForm(
+                request.POST
+            )
+
+            if form.is_valid():
+
+                patient = form.save()
+
+                Appointment.objects.create(
+
+                    patient=patient,
+
+                    appointment_date=form.cleaned_data[
+                        "appointment_date"
+                    ],
+
+                    reason_for_visit=form.cleaned_data[
+                        "reason_for_visit"
+                    ],
+
+                    status="waiting"
+
+                )
+
+                success = (
+                    f"Patient Registered "
+                    f"({patient.patient_id})"
+                )
+
+                form = PatientAppointmentForm()
+
+            else:
+
+                print(form.errors)
+
+        # SEARCH EXISTING PATIENT
+
+        elif "search_patient" in request.POST:
+
+            search = request.POST.get(
+                "search"
+            )
+
+            search_result = Patient.objects.filter(
+                patient_id__icontains=search
+            ).first()
+
+        # BOOK APPOINTMENT FOR EXISTING PATIENT
+
+        elif "book_existing" in request.POST:
+
+            patient_id = request.POST.get(
+                "patient_id"
+            )
+
+            patient = Patient.objects.get(
+                id=patient_id
+            )
+
+            Appointment.objects.create(
+
+                patient=patient,
+
+                appointment_date=request.POST.get(
+                    "appointment_date"
+                ),
+
+                reason_for_visit=request.POST.get(
+                    "reason_for_visit"
+                ),
+
+                status="waiting"
+
+            )
+
+            success = (
+                f"Appointment Booked "
+                f"for {patient.patient_id}"
+            )
+
+    return render(
+
+        request,
+
+        "receptionist/add_patient.html",
+
+        {
+
+            "form": form,
+
+            "success": success,
+
+            "search_result": search_result
+
+        }
+
+    )

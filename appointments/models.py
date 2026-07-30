@@ -35,6 +35,8 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"{self.patient.full_name} - {self.appointment_date}"
+
+
 class AppointmentRequest(models.Model):
 
     REQUEST_TYPE = [

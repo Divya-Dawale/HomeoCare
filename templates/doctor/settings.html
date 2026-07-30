@@ -73,35 +73,29 @@ Doctor Settings
         </form>
 
     </div>
+     <div class="settings-card">
 
-</div>
-<div class="settings-card">
+        <h2>🎨 Appearance</h2>
 
-    <h2>🎨 Appearance</h2>
+        <div class="theme-setting">
 
-    <div class="theme-setting">
+            <span>Dark Mode</span>
 
-        <div>
+            <label class="switch">
 
-            <h4>Dark Mode</h4>
+                <input
+                    type="checkbox"
+                    id="themeToggle">
 
-            <p>
-                Switch between light and dark theme.
-            </p>
+                <span class="slider"></span>
+
+            </label>
 
         </div>
 
-        <label class="switch">
-
-            <input
-                type="checkbox"
-                id="themeToggle">
-
-            <span class="slider"></span>
-
-        </label>
-
     </div>
 
+    </div>
 </div>
+
 {% endblock %}

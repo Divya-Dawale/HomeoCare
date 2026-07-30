@@ -6,7 +6,31 @@
 href="{% static 'receptionist/appointments.css' %}">
 {% endblock %}
 {% block content %}
+{% if booking_closed %}
 
+<div class="booking-closed">
+
+    <div class="closed-card">
+
+        <h2>📅 Today's Booking is Closed</h2>
+
+        <p>
+            The doctor has reached today's appointment limit.
+        </p>
+
+        <p>
+            Please visit again tomorrow or contact the clinic.
+        </p>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<!-- EVERYTHING that currently exists on the page -->
+
+{% endif %}  at which place it should be added
 <section class="appointment-hero">
 
     <h1>Book An Appointment</h1>
@@ -123,10 +147,29 @@ href="{% static 'receptionist/appointments.css' %}">
                     <label>Reason For Visit</label>
                     <textarea rows="5" name="reason_for_visit" required></textarea>
                 </div>
+                {% if booking_closed %}
 
-                <button class="appointment-btn" type="submit">
-                    Request Appointment
-                </button>
+<button
+    type="submit"
+    class="appointment-btn" 
+    disabled>
+
+    Today's Booking Closed
+
+</button>
+
+{% else %}
+
+<button
+    type="submit"
+    class="appointment-btn" >
+
+    Book Appointment
+
+</button>
+
+{% endif %}
+                
 
             </form>
 
@@ -187,9 +230,28 @@ href="{% static 'receptionist/appointments.css' %}">
 
                 </div>
 
-                <button class="appointment-btn">
-                    Request Follow-Up Appointment
-                </button>
+               {% if booking_closed %}
+
+<button
+    type="submit"
+    class="appointment-btn"
+    disabled>
+
+    Today's Booking Closed
+
+</button>
+
+{% else %}
+
+<button
+    type="submit"
+    class="appointment-btn">
+
+    Book Appointment
+
+</button>
+
+{% endif %}
 
             </form>
 

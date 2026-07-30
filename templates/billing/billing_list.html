@@ -82,7 +82,7 @@ value="{{ prescription.id }}"
         </span>
 
         <h3>
-            ₹{{ prescription.consultation_fee }}
+           ₹{{ prescription.consultation_fee|floatformat:0 }}
         </h3>
 
     </div>
@@ -94,7 +94,7 @@ value="{{ prescription.id }}"
         </span>
 
         <h3>
-            ₹{{ prescription.medicine_fee }}
+            ₹{{ prescription.medicine_fee|floatformat:0 }}
         </h3>
 
     </div>
@@ -106,7 +106,7 @@ value="{{ prescription.id }}"
         </span>
 
         <h2>
-            ₹{{ prescription.total_amount }}
+        ₹{{ prescription.total_amount|floatformat:0 }}
         </h2>
 
     </div>
@@ -151,7 +151,7 @@ value="{{ prescription.id }}"
     <input
     type="number"
     name="final_amount"
-    value="{{ prescription.total_amount }}"
+    value="{{ prescription.total_amount|floatformat:0 }}"
     required>
 
 </div>

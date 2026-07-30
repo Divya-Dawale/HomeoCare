@@ -96,4 +96,9 @@ urlpatterns = [
     views.cancel_appointment,
     name="cancel_appointment"
     ),
+    path(
+    "patients/add/",
+    views.add_patient,
+    name="add_patient"
+    ),
 ]

@@ -158,6 +158,18 @@
     margin-top:10px;
     transition:0.3s;
 }
+.appointment-btn:disabled{
+
+    background:#bdbdbd;
+
+    color:#fff;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+}
 
 .appointment-btn:hover{
     opacity:0.9;
@@ -252,4 +264,45 @@
 .success-content p{
     color:#64748b;
     line-height:1.6;
+}
+.booking-closed{
+
+    min-height:70vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.closed-card{
+
+    width:500px;
+
+    background:#fff;
+
+    padding:45px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.closed-card h2{
+
+    color:#dc2626;
+
+    margin-bottom:15px;
+}
+
+.closed-card p{
+
+    color:#64748b;
+
+    font-size:16px;
+
+    line-height:1.8;
 }

@@ -1,13 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
-
+from doctors.models import DoctorSettings
 from prescriptions.models import Prescription
 from .models import Bill
-
-
-CONSULTATION_FEE = 100
-WEEKLY_MEDICINE_FEE = 150
+from decimal import Decimal
 
 
 def get_duration_days(duration):
@@ -29,7 +26,27 @@ def get_duration_days(duration):
     return 7
 
 
+from decimal import Decimal
+
 def billing_list(request):
+
+    doctor_settings = DoctorSettings.objects.first()
+
+    if doctor_settings:
+
+        consultation_fee = (
+            doctor_settings.consultation_fee
+        )
+
+        weekly_medicine_fee = (
+            doctor_settings.medicine_fee_7_days
+        )
+
+    else:
+
+        consultation_fee = Decimal("500")
+
+        weekly_medicine_fee = Decimal("200")
 
     prescriptions = Prescription.objects.filter(
         status="given",
@@ -59,33 +76,29 @@ def billing_list(request):
             prescription.duration
         )
 
-        daily_rate = WEEKLY_MEDICINE_FEE / 7
-
         medicine_fee = round(
-            daily_rate * duration_days,
-            -1
+        (weekly_medicine_fee / Decimal("7")) * duration_days
         )
 
         if duration_days >= 60:
 
-            medicine_fee = round(
-                medicine_fee * 0.85,
-                -1
+            medicine_fee = (
+                medicine_fee * Decimal("0.85"),-1
             )
 
         elif duration_days >= 30:
 
-            medicine_fee = round(
-                medicine_fee * 0.90,
-                -1
+            medicine_fee = (
+                medicine_fee * Decimal("0.90"),-1
             )
+
         bill = Bill.objects.create(
 
             patient=prescription.patient,
 
             prescription=prescription,
 
-            consultation_fee=CONSULTATION_FEE,
+            consultation_fee=consultation_fee,
 
             medicine_fee=medicine_fee,
 
@@ -96,42 +109,41 @@ def billing_list(request):
             payment_status="paid"
 
         )
+
         prescription.billing_done = True
         prescription.save()
 
         return redirect(
-    "receipt",
-    bill_id=bill.id
-    )
+            "receipt",
+            bill_id=bill.id
+        )
+
     for prescription in prescriptions:
 
         duration_days = get_duration_days(
             prescription.duration
         )
 
-        daily_rate = WEEKLY_MEDICINE_FEE / 7
+        daily_rate = weekly_medicine_fee / Decimal("7")
 
-        medicine_fee = round(
-            daily_rate * duration_days,
-            -1
+        medicine_fee = (
+            daily_rate * duration_days
         )
 
         if duration_days >= 60:
 
-            medicine_fee = round(
-                medicine_fee * 0.85,
-                -1
+            medicine_fee = (
+                medicine_fee * Decimal("0.85")
             )
 
         elif duration_days >= 30:
 
-            medicine_fee = round(
-                medicine_fee * 0.90,
-                -1
+            medicine_fee = (
+                medicine_fee * Decimal("0.90")
             )
 
         prescription.consultation_fee = (
-            CONSULTATION_FEE
+            consultation_fee
         )
 
         prescription.medicine_fee = (
@@ -139,8 +151,8 @@ def billing_list(request):
         )
 
         prescription.total_amount = (
-            CONSULTATION_FEE
-            + medicine_fee
+            consultation_fee +
+            medicine_fee
         )
 
     return render(
@@ -150,6 +162,8 @@ def billing_list(request):
             "prescriptions": prescriptions
         }
     )
+    
+        
 
 
 def receipt(

@@ -80,7 +80,7 @@ class DoctorSettingsForm(forms.ModelForm):
         fields = [
             "consultation_fee",
             "medicine_fee_7_days",
-            "dark_mode"
+            "max_patients_per_day",
         ]
 from accounts.models import User
 

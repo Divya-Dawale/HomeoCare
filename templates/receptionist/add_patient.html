@@ -1,0 +1,51 @@
+{% extends 'receptionist/base_receptionist.html' %}
+{% load static %}
+{% block page_title %}
+Patient Registration & Appointment
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'receptionist/add-patient.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="patient-card">
+
+    <h2>Register New Patient</h2>
+
+    {% if success %}
+
+    <div class="success-box">
+
+        Patient Registered Successfully
+
+        <br>
+
+        Patient ID:
+        <strong>{{ success }}</strong>
+
+    </div>
+
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button
+    type="submit"
+    name="register_patient"
+    class="submit-btn">
+
+    <i class="fa-solid fa-user-plus"></i>
+
+    Register & Book Appointment
+
+</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
