@@ -315,3 +315,18 @@ body{
 }
 
 }
+.profile-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+.profile-link:hover .profile{
+    background:#f1f5f9;
+    cursor:pointer;
+    border-radius:12px;
+}
+
+.profile{
+    padding:8px 12px;
+    transition:0.3s;
+}

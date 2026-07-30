@@ -1,0 +1,107 @@
+{% extends 'doctor/base_doctor.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{% static 'doctor/settings.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Doctor Settings
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+    <div class="settings-card">
+
+        <h2>👤 My Profile</h2>
+
+        <p>
+            <strong>Name:</strong>
+
+            {{ request.user.first_name }}
+            {{ request.user.last_name }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+
+            {{ request.user.email }}
+        </p>
+
+        <a href="{% url 'edit_doctor_profile' %}"
+           class="settings-btn">
+
+            Edit Profile
+
+        </a>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h2>🔒 Security</h2>
+
+        <a href="{% url 'doctor_change_password' %}"
+           class="settings-btn">
+
+            Change Password
+
+        </a>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h2>💰 Fee Settings</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button
+                type="submit"
+                class="save-btn">
+
+                Save Settings
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<div class="settings-card">
+
+    <h2>🎨 Appearance</h2>
+
+    <div class="theme-setting">
+
+        <div>
+
+            <h4>Dark Mode</h4>
+
+            <p>
+                Switch between light and dark theme.
+            </p>
+
+        </div>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="themeToggle">
+
+            <span class="slider"></span>
+
+        </label>
+
+    </div>
+
+</div>
+{% endblock %}

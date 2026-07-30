@@ -12,7 +12,7 @@ def about(request):
 
 def services(request):
     return render(request, 'public/services.html')
-
+from datetime import date
 def book_appointment(request):
 
     success = None
@@ -35,7 +35,7 @@ def book_appointment(request):
                 age=request.POST.get("age"),
                 gender=request.POST.get("gender"),
                 address=request.POST.get("address"),
-                preferred_date=request.POST.get("preferred_date"),
+                preferred_date=date.today(),
                 reason_for_visit=request.POST.get("reason_for_visit")
             )
 
@@ -54,10 +54,10 @@ def book_appointment(request):
             if patient:
 
                 Appointment.objects.create(
-                    patient=patient,
-                    appointment_date=request.POST.get("preferred_date"),
-                    reason_for_visit=request.POST.get("reason_for_visit"),
-                    status="pending"
+                       patient=patient,
+                     appointment_date=date.today(),
+                     reason_for_visit=request.POST.get("reason_for_visit"),
+                     status="waiting"
                 )
 
                 success = "Follow-up appointment booked successfully."

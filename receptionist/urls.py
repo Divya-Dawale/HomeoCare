@@ -90,5 +90,10 @@ urlpatterns = [
     "change-password/",
     views.change_password,
     name="change_password"
-),
+    ),
+    path(
+    "appointments/cancel/<int:appointment_id>/",
+    views.cancel_appointment,
+    name="cancel_appointment"
+    ),
 ]

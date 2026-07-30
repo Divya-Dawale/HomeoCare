@@ -7,20 +7,27 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from datetime import date
+
+from datetime import date
 
 def dashboard(request):
 
     pending_requests = AppointmentRequest.objects.filter(
-        status="pending"
+        status="pending",
+        preferred_date=date.today()
     ).count()
 
     approved_appointments = Appointment.objects.filter(
-        status="approved"
+    appointment_date=date.today(),
+    status="completed"
     ).count()
 
     total_patients = Patient.objects.count()
 
-    today_appointments = Appointment.objects.count()
+    today_appointments = Appointment.objects.filter(
+        appointment_date=date.today()
+    ).count()
 
     recent_requests = AppointmentRequest.objects.order_by(
         "-created_at"
@@ -134,16 +141,17 @@ def patients(request):
 
 from appointments.models import Appointment
 
-from appointments.models import Appointment
+
 
 def appointments(request):
 
     status = request.GET.get("status")
     search = request.GET.get("search")
 
-    appointments = Appointment.objects.all().order_by(
-        "appointment_date",
-        "created_at"
+    appointments = Appointment.objects.filter(
+    appointment_date=date.today()
+    ).order_by(
+    "created_at"
     )
 
     if status:
@@ -170,6 +178,26 @@ def appointments(request):
             "selected_status": status,
             "search": search
         }
+    )
+from django.shortcuts import get_object_or_404, redirect
+from appointments.models import Appointment
+
+def cancel_appointment(
+    request,
+    appointment_id
+):
+
+    appointment = get_object_or_404(
+        Appointment,
+        id=appointment_id
+    )
+
+    appointment.status = "cancelled"
+
+    appointment.save()
+
+    return redirect(
+        "appointments"
     )
 def request_detail(request, request_id):
 
@@ -294,8 +322,10 @@ def prescriptions(request):
     search = request.GET.get("search")
 
     prescriptions = Prescription.objects.select_related(
-        "patient",
-        "appointment"
+    "patient",
+    "appointment"
+    ).filter(
+    appointment__appointment_date=date.today()
     ).order_by("-created_at")
 
     if status:
@@ -310,11 +340,13 @@ def prescriptions(request):
         )
 
     pending_count = Prescription.objects.filter(
-        status="pending"
+    appointment__appointment_date=date.today(),
+    status="pending"
     ).count()
 
     given_count = Prescription.objects.filter(
-        status="given"
+    appointment__appointment_date=date.today(),
+    status="given"
     ).count()
 
     context = {

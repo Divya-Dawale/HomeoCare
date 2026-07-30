@@ -1,0 +1,31 @@
+{% extends 'doctor/base_doctor.html' %}
+
+{% block page_title %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-card">
+
+    <h2>Edit Profile</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button
+            type="submit"
+            class="save-btn">
+
+            Save Changes
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

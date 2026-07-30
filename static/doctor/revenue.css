@@ -1,0 +1,247 @@
+/* Page Layout */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+/* Revenue Cards */
+
+.stat-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+    border-left:5px solid #22c55e;
+}
+
+.stat-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.12);
+}
+
+/* Heading */
+
+.stat-card h3{
+    font-size:15px;
+    color:#64748b;
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+/* Amount */
+
+.stat-card h2{
+    font-size:32px;
+    color:#0f172a;
+    font-weight:700;
+    margin:0;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+/* Filter Buttons */
+
+.filter-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.filter-bar a{
+    text-decoration:none;
+    padding:10px 18px;
+    background:#ffffff;
+    color:#0f172a;
+    border-radius:10px;
+    font-weight:600;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.filter-bar a:hover{
+    background:#22c55e;
+    color:white;
+    transform:translateY(-2px);
+}
+
+/* Custom Date Filter */
+
+.custom-filter{
+    background:#ffffff;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+
+.custom-filter form{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.custom-filter input[type="date"]{
+    padding:12px;
+    border:1px solid #dbe2ea;
+    border-radius:10px;
+    font-size:14px;
+    background:#f8fafc;
+}
+
+.custom-filter input[type="date"]:focus{
+    outline:none;
+    border-color:#22c55e;
+}
+
+.custom-filter button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.custom-filter button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(34,197,94,0.25);
+}
+
+/* Revenue Cards */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:#ffffff;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+    border-left:5px solid #22c55e;
+}
+
+.stat-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.12);
+}
+
+.stat-card h3{
+    color:#64748b;
+    font-size:15px;
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+.stat-card h2{
+    margin:0;
+    font-size:30px;
+    color:#0f172a;
+    font-weight:700;
+}
+.stats-panel{
+    background:#ffffff;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    margin-top:20px;
+}
+
+.stats-panel h3{
+    margin-bottom:20px;
+    color:#0f172a;
+}
+
+.stats-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.stats-row:last-child{
+    border-bottom:none;
+}
+
+.stats-row span{
+    color:#64748b;
+    font-weight:500;
+}
+
+.stats-row strong{
+    color:#0f172a;
+    font-size:18px;
+}
+.chart-card,
+.table-card{
+    background:#fff;
+    padding:24px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    margin-top:20px;
+}
+
+.chart-card h3,
+.table-card h3{
+    margin-bottom:20px;
+}
+
+.table-card table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table-card th{
+    background:#f8fafc;
+    padding:14px;
+    text-align:left;
+}
+
+.table-card td{
+    padding:14px;
+    border-top:1px solid #e2e8f0;
+}
+
+.table-card tr:hover{
+    background:#f8fafc;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .custom-filter form{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .custom-filter button{
+        width:100%;
+    }
+
+}

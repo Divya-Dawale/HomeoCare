@@ -149,27 +149,35 @@ Appointments
 
                     {% if appointment.status == "waiting" %}
 
-                        <a href="{% url 'start_consultation' appointment.id %}"
-                           class="start-btn">
+                   <a href="{% url 'start_consultation' appointment.id %}"
+                   class="start-btn">
 
-                            Start
+                     Start
 
-                        </a>
+                    </a>
 
-                    {% elif appointment.status == "consulting" %}
+                 <a href="{% url 'cancel_appointment' appointment.id %}"
+                     class="cancel-btn"
+                    onclick="return confirm('Are you sure you want to cancel this appointment?')">
 
-                        <a href="{% url 'complete_appointment' appointment.id %}"
-                           class="complete-btn">
+                      Cancel
+ 
+                 </a>
+               {% elif appointment.status == "consulting" %}
 
-                            Complete
+                 <a href="{% url 'complete_appointment' appointment.id %}"
+                   class="complete-btn">
 
-                        </a>
+                   Complete
 
-                    {% else %}
+                  </a>
 
-                        -
 
-                    {% endif %}
+{% else %}
+
+    -
+
+{% endif %}
 
                 </td>
 

@@ -9,6 +9,17 @@ from prescriptions.forms import PrescriptionForm
 from prescriptions.models import Prescription
 from doctors.models import MedicalRecord
 from django.utils import timezone
+from datetime import date
+from billing.models import Bill
+from datetime import date, timedelta
+from django.db.models import Sum, Max, Min, Avg
+from django.db.models.functions import TruncDate
+from django.db.models import Sum
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from accounts.models import User
+from .forms import DoctorProfileForm
+
 
 def doctor_dashboard(request):
 
@@ -68,8 +79,10 @@ def patient_queue(request):
 
     status = request.GET.get("status")
 
-    appointments = Appointment.objects.all().order_by(
-        "-appointment_date"
+    appointments = Appointment.objects.filter(
+    appointment_date=date.today()
+    ).order_by(
+    "created_at"
     )
 
     if status:
@@ -96,6 +109,13 @@ def consultation(request, appointment_id):
     )
 
     patient = appointment.patient
+
+    # Automatically move patient to Consulting
+    if appointment.status == "waiting":
+
+        appointment.status = "consulting"
+
+        appointment.save()
 
     try:
         history = MedicalHistory.objects.get(
@@ -171,6 +191,7 @@ def consultation(request, appointment_id):
             if prescription_exists:
 
                 appointment.status = "completed"
+
                 appointment.save()
 
                 return redirect(
@@ -208,7 +229,6 @@ def consultation(request, appointment_id):
         "doctor/consultation.html",
         context
     )
-
 
     
 
@@ -259,3 +279,237 @@ def create_medical_history(request, appointment_id):
 
     )
 
+def doctor_revenue(request):
+
+    today = date.today()
+
+    bills = Bill.objects.filter(
+        payment_status="paid"
+    )
+
+    filter_type = request.GET.get("filter")
+
+    start_date = request.GET.get("start_date")
+    end_date = request.GET.get("end_date")
+
+    if filter_type == "today":
+
+        bills = bills.filter(
+            created_at__date=today
+        )
+
+    elif filter_type == "7days":
+
+        bills = bills.filter(
+            created_at__date__gte=today - timedelta(days=7)
+        )
+
+    elif filter_type == "15days":
+
+        bills = bills.filter(
+            created_at__date__gte=today - timedelta(days=15)
+        )
+
+    elif filter_type == "month":
+
+        bills = bills.filter(
+            created_at__year=today.year,
+            created_at__month=today.month
+        )
+
+    elif filter_type == "year":
+
+        bills = bills.filter(
+            created_at__year=today.year
+        )
+
+    elif filter_type == "all":
+
+        pass
+
+    if start_date and end_date:
+
+        bills = bills.filter(
+            created_at__date__range=[
+                start_date,
+                end_date
+            ]
+        )
+
+    revenue = bills.aggregate(
+        total=Sum("total_amount")
+    )["total"] or 0
+
+    consultation_revenue = bills.aggregate(
+        total=Sum("consultation_fee")
+    )["total"] or 0
+
+    medicine_revenue = bills.aggregate(
+        total=Sum("medicine_fee")
+    )["total"] or 0
+
+    total_bills = bills.count()
+
+    average_bill = bills.aggregate(
+        avg=Avg("total_amount")
+    )["avg"] or 0
+
+    highest_bill = bills.aggregate(
+        highest=Max("total_amount")
+    )["highest"] or 0
+
+    lowest_bill = bills.aggregate(
+        lowest=Min("total_amount")
+    )["lowest"] or 0
+
+    chart_data = (
+          bills
+          .annotate(day=TruncDate("created_at"))
+          .values("day")
+          .annotate(total=Sum("total_amount"))
+          .order_by("day")
+      )
+
+    revenue_labels = [
+          item["day"].strftime("%d %b")
+          for item in chart_data
+    ]
+
+    revenue_values = [
+          float(item["total"])
+          for item in chart_data
+    ]
+    context = {
+
+        "revenue": revenue,
+
+        "consultation_revenue": consultation_revenue,
+
+        "medicine_revenue": medicine_revenue,
+
+        "total_bills": total_bills,
+
+        "average_bill": average_bill,
+
+        "highest_bill": highest_bill,
+
+        "lowest_bill": lowest_bill,
+
+        "selected_filter": filter_type,
+
+        "revenue_labels": revenue_labels,
+         
+        "revenue_values": revenue_values,
+
+        "bills": bills.order_by("-created_at")
+
+    }
+
+    return render(
+        request,
+        "doctor/revenue.html",
+        context
+    )
+from .models import DoctorSettings
+from .forms import DoctorSettingsForm
+def doctor_settings(request):
+
+    settings_obj, created = (
+        DoctorSettings.objects.get_or_create(
+            doctor=request.user
+        )
+    )
+
+    if request.method == "POST":
+
+        form = DoctorSettingsForm(
+            request.POST,
+            instance=settings_obj
+        )
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect(
+                "doctor_settings"
+            )
+
+    else:
+
+        form = DoctorSettingsForm(
+            instance=settings_obj
+        )
+
+    return render(
+        request,
+        "doctor/settings.html",
+        {
+            "form": form
+        }
+    )
+def edit_doctor_profile(request):
+
+    if request.method == "POST":
+
+        form = DoctorProfileForm(
+            request.POST,
+            instance=request.user
+        )
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect(
+                "doctor_settings"
+            )
+
+    else:
+
+        form = DoctorProfileForm(
+            instance=request.user
+        )
+
+    return render(
+        request,
+        "doctor/edit_profile.html",
+        {
+            "form": form
+        }
+    )
+def doctor_change_password(request):
+
+    if request.method == "POST":
+
+        form = PasswordChangeForm(
+            request.user,
+            request.POST
+        )
+
+        if form.is_valid():
+
+            user = form.save()
+
+            update_session_auth_hash(
+                request,
+                user
+            )
+
+            return redirect(
+                "doctor_settings"
+            )
+
+    else:
+
+        form = PasswordChangeForm(
+            request.user
+        )
+
+    return render(
+        request,
+        "doctor/change_password.html",
+        {
+            "form": form
+        }
+    )

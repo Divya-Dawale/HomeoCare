@@ -68,3 +68,30 @@ class MedicalRecordForm(forms.ModelForm):
             "follow_up_notes": forms.Textarea(attrs={"rows":4}),
 
         }
+from django import forms
+from .models import DoctorSettings
+
+class DoctorSettingsForm(forms.ModelForm):
+
+    class Meta:
+
+        model = DoctorSettings
+
+        fields = [
+            "consultation_fee",
+            "medicine_fee_7_days",
+            "dark_mode"
+        ]
+from accounts.models import User
+
+class DoctorProfileForm(forms.ModelForm):
+
+    class Meta:
+
+        model = User
+
+        fields = [
+            "first_name",
+            "last_name",
+            "email"
+        ]

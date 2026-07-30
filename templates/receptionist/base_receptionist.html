@@ -132,23 +132,28 @@
 
                 </button>
 
-                <div class="profile">
+                <a href="{% url 'receptionist_profile' %}"
+                      class="profile-link">
 
-                    <div class="avatar">
+                     <div class="profile">
 
-                        R
+                             <div class="avatar">
 
-                    </div>
+                                     R
 
-                    <div>
+                             </div>
 
-                        <strong>Receptionist</strong>
+                     <div>
 
-                        <p>HomeoCare</p>
+                     <strong>{{ request.user.username }}</strong>
 
-                    </div>
+                      <p>{{ request.user.role|title }}</p>
 
-                </div>
+        </div>
+
+    </div>
+
+</a>
 
             </div>
 

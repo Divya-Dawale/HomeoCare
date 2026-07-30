@@ -84,3 +84,31 @@ class MedicalHistory(models.Model):
         return f"Medical History - {self.patient.full_name}"
 
 
+from django.db import models
+from accounts.models import User
+
+class DoctorSettings(models.Model):
+
+    doctor = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    consultation_fee = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=500
+    )
+
+    medicine_fee_7_days = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=200
+    )
+
+    dark_mode = models.BooleanField(
+        default=False
+    )
+
+    def __str__(self):
+        return self.doctor.username

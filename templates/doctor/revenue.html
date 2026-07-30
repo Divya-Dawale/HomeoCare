@@ -1,0 +1,158 @@
+{% extends 'doctor/base_doctor.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{% static 'doctor/revenue.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Revenue Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="filter-bar">
+
+    <a href="?filter=today">Today</a>
+
+    <a href="?filter=7days">Last 7 Days</a>
+
+    <a href="?filter=15days">Last 15 Days</a>
+
+    <a href="?filter=month">This Month</a>
+
+    <a href="?filter=year">This Year</a>
+
+    <a href="?filter=all">All Time</a>
+
+</div>
+
+<div class="custom-filter">
+
+    <form method="GET">
+
+        <input
+            type="date"
+            name="start_date"
+        >
+
+        <input
+            type="date"
+            name="end_date"
+        >
+
+        <button type="submit">
+            Apply
+        </button>
+
+    </form>
+
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <h3>Total Revenue</h3>
+        <h2>₹{{ revenue }}</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Consultation Revenue</h3>
+        <h2>₹{{ consultation_revenue }}</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Medicine Revenue</h3>
+        <h2>₹{{ medicine_revenue }}</h2>
+    </div>
+
+</div>
+
+<div class="stats-panel">
+
+    <h3>Revenue Statistics</h3>
+
+    <div class="stats-row">
+        <span>Total Bills</span>
+        <strong>{{ total_bills }}</strong>
+    </div>
+
+    <div class="stats-row">
+        <span>Average Bill</span>
+        <strong>₹{{ average_bill|floatformat:2 }}</strong>
+    </div>
+
+    <div class="stats-row">
+        <span>Highest Bill</span>
+        <strong>₹{{ highest_bill }}</strong>
+    </div>
+
+    <div class="stats-row">
+        <span>Lowest Bill</span>
+        <strong>₹{{ lowest_bill }}</strong>
+    </div>
+
+</div>
+
+<div class="chart-card">
+
+    <h3>Revenue Trend</h3>
+
+    <canvas id="revenueChart"></canvas>
+
+</div>
+<div class="table-card">
+
+    <h3>Revenue Records</h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Patient</th>
+                <th>Consultation</th>
+                <th>Medicine</th>
+                <th>Total</th>
+                <th>Date</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for bill in bills %}
+
+            <tr>
+
+                <td>
+                    {{ bill.patient.full_name }}
+                </td>
+
+                <td>
+                    ₹{{ bill.consultation_fee }}
+                </td>
+
+                <td>
+                    ₹{{ bill.medicine_fee }}
+                </td>
+
+                <td>
+                    ₹{{ bill.total_amount }}
+                </td>
+
+                <td>
+                    {{ bill.created_at|date:"d M Y" }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+{% endblock %}

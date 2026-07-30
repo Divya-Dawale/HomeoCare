@@ -351,6 +351,18 @@ td:first-child{
     color:#64748B;
 
 }
+.cancel-btn{
+    background:#ef4444;
+    color:white;
+    padding:8px 12px;
+    border-radius:8px;
+    text-decoration:none;
+    margin-left:8px;
+}
+
+.cancel-btn:hover{
+    background:#dc2626;
+}
 
 /* Responsive */
 

@@ -3,10 +3,13 @@ from datetime import datetime
 from .models import Appointment
 from django.db.models import Q
 
+from datetime import date
+from django.db.models import Q
+
 def appointment_history(request):
 
     appointments = Appointment.objects.filter(
-        status="completed"
+        appointment_date__lt=date.today()
     )
 
     search = request.GET.get("search")

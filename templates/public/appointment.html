@@ -105,9 +105,11 @@ href="{% static 'receptionist/appointments.css' %}">
 
                     </div>
 
-                    <div class="form-group">
-                        <label>Preferred Date</label>
-                        <input type="date" name="preferred_date" required>
+                   <div class="form-group">
+                        <label>Appointment Date</label>
+                        <input type="text"
+                         value="Today's Appointment"
+                          readonly>
                     </div>
 
                 </div>
@@ -172,8 +174,10 @@ href="{% static 'receptionist/appointments.css' %}">
                 <div class="form-row">
 
                     <div class="form-group">
-                        <label>Preferred Date</label>
-                        <input type="date" name="preferred_date" required>
+                        <label>Appointment Date</label>
+                        <input type="text"
+                         value="Today's Appointment"
+                         readonly>
                     </div>
 
                     <div class="form-group">
