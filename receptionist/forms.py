@@ -4,13 +4,30 @@ from accounts.models import User
 class ProfileForm(forms.ModelForm):
 
     class Meta:
+
         model = User
 
         fields = [
+
             "first_name",
             "last_name",
+            "username",
             "email",
+            "phone"
+
         ]
+
+        widgets = {
+
+            "phone": forms.TextInput(
+                attrs={
+                    "maxlength": "10",
+                    "pattern": "[0-9]{10}",
+                    "placeholder": "Enter Phone Number"
+                }
+            )
+
+        }
 
 from django import forms
 from patients.models import Patient

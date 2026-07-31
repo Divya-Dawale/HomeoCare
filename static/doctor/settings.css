@@ -269,3 +269,63 @@
 
     transform:translateX(28px);
 }
+.section-title{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#0f766e;
+
+    margin:18px 0 12px;
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:15px;
+}
+
+.form-group label{
+
+    font-weight:600;
+
+    margin-bottom:6px;
+
+    color:#374151;
+}
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:10px;
+
+    font-size:15px;
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.settings-card hr{
+
+    margin:25px 0;
+
+    border:none;
+
+    border-top:1px solid #e5e7eb;
+}

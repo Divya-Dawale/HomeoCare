@@ -19,4 +19,9 @@ urlpatterns = [
         views.patient_status,
         name='patient_status'
     ),
+    path(
+    "contact/",
+    views.contact,
+    name="contact"
+    ),
 ]

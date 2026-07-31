@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block css %}
+
 <link rel="stylesheet"
 href="{% static 'receptionist/appointments.css' %}">
 {% endblock %}
@@ -11,9 +12,12 @@ Appointments
 {% endblock %}
 
 {% block content %}
+
 <div class="search-filter-wrapper">
+
+```
 <div class="search-card">
-    
+
     <form method="GET">
 
         <input
@@ -38,6 +42,7 @@ Appointments
     </form>
 
 </div>
+
 <div class="filter-bar">
 
     <a href="{% url 'appointments' %}"
@@ -48,11 +53,6 @@ Appointments
     <a href="?status=waiting"
        class="{% if selected_status == 'waiting' %}active-filter{% endif %}">
         Waiting
-    </a>
-
-    <a href="?status=consulting"
-       class="{% if selected_status == 'consulting' %}active-filter{% endif %}">
-        Consulting
     </a>
 
     <a href="?status=completed"
@@ -66,136 +66,117 @@ Appointments
     </a>
 
 </div>
+```
+
 </div>
+
 <div class="table-card">
 
-    <table>
+```
+<table>
 
-        <thead>
+    <thead>
 
-            <tr>
+        <tr>
 
-                <th>Queue</th>
+            <th>Queue</th>
+            <th>Patient</th>
+            <th>Patient ID</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
 
-                <th>Patient</th>
+        </tr>
 
-                <th>Patient ID</th>
+    </thead>
 
-                <th>Phone</th>
+    <tbody>
 
-                <th>Date</th>
+        {% for appointment in appointments %}
 
-                <th>Status</th>
+        <tr>
 
-                <th>Action</th>
+            <td>{{ forloop.counter }}</td>
 
-            </tr>
+            <td>{{ appointment.patient.full_name }}</td>
 
-        </thead>
+            <td>{{ appointment.patient.patient_id }}</td>
 
-        <tbody>
+            <td>{{ appointment.patient.phone }}</td>
 
-            {% for appointment in appointments %}
+            <td>{{ appointment.appointment_date }}</td>
 
-            <tr>
+            <td>
 
-                <td>{{ forloop.counter }}</td>
+                {% if appointment.status == "waiting" %}
 
-                <td>{{ appointment.patient.full_name }}</td>
+                    <span class="waiting-badge">
+                        Waiting
+                    </span>
 
-                <td>{{ appointment.patient.patient_id }}</td>
+                {% elif appointment.status == "completed" %}
 
-                <td>{{ appointment.patient.phone }}</td>
+                    <span class="completed-badge">
+                        Completed
+                    </span>
 
-                <td>{{ appointment.appointment_date }}</td>
+                {% elif appointment.status == "cancelled" %}
 
-                <td>
+                    <span class="cancelled-badge">
+                        Cancelled
+                    </span>
 
-                    {% if appointment.status == "waiting" %}
+                {% else %}
 
-                        <span class="waiting-badge">
-                            Waiting
-                        </span>
+                    <span class="status-badge">
+                        {{ appointment.status|title }}
+                    </span>
 
-                    {% elif appointment.status == "consulting" %}
+                {% endif %}
 
-                        <span class="consulting-badge">
-                            Consulting
-                        </span>
+            </td>
 
-                    {% elif appointment.status == "completed" %}
+            <td>
 
-                        <span class="completed-badge">
-                            Completed
-                        </span>
+                {% if appointment.status == "waiting" %}
 
-                    {% elif appointment.status == "cancelled" %}
+                    <a href="{% url 'cancel_appointment' appointment.id %}"
+                       class="cancel-btn"
+                       onclick="return confirm('Are you sure you want to cancel this appointment?')">
 
-                        <span class="cancelled-badge">
-                            Cancelled
-                        </span>
-
-                    {% else %}
-
-                        <span class="status-badge">
-                            {{ appointment.status }}
-                        </span>
-
-                    {% endif %}
-
-                </td>
-
-                <td>
-
-                    {% if appointment.status == "waiting" %}
-
-                   <a href="{% url 'start_consultation' appointment.id %}"
-                   class="start-btn">
-
-                     Start
+                        Cancel
 
                     </a>
 
-                 <a href="{% url 'cancel_appointment' appointment.id %}"
-                     class="cancel-btn"
-                    onclick="return confirm('Are you sure you want to cancel this appointment?')">
+                {% else %}
 
-                      Cancel
- 
-                 </a>
+                    -
 
-                {% elif appointment.status == "consulting" %}
+                {% endif %}
 
-                <span class="consulting-badge">
-                    In Doctor Consultation
-                </span>
-{% else %}
+            </td>
 
-    -
+        </tr>
 
-{% endif %}
+        {% empty %}
 
-                </td>
+        <tr class="empty-row">
 
-            </tr>
+            <td colspan="7">
 
-            {% empty %}
+                No appointments found.
 
-            <tr class="empty-row">
+            </td>
 
-                <td colspan="7">
+        </tr>
 
-                    No appointments found.
+        {% endfor %}
 
-                </td>
+    </tbody>
 
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-
-    </table>
+</table>
+```
 
 </div>
 

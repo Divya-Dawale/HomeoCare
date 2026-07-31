@@ -20,17 +20,152 @@ href="{% static 'doctor/create_history.css' %}">
 
         <form method="POST">
 
-            {% csrf_token %}
+    {% csrf_token %}
 
-            {{ form.as_p }}
+    <div class="form-section">
 
-            <button type="submit" class="save-btn">
+        <h3>🩺 Physical Metrics</h3>
 
-                Save History
+        {{ form.height.label_tag }}
+        {{ form.height }}
 
-            </button>
+        {{ form.weight.label_tag }}
+        {{ form.weight }}
 
-        </form>
+        {{ form.blood_group.label_tag }}
+        {{ form.blood_group }}
+
+        {{ form.blood_pressure.label_tag }}
+        {{ form.blood_pressure }}
+
+        {{ form.physical_build.label_tag }}
+        {{ form.physical_build }}
+
+        {{ form.side_affinity.label_tag }}
+        {{ form.side_affinity }}
+
+        {{ form.thermal_state.label_tag }}
+        {{ form.thermal_state }}
+
+    </div>
+
+
+    <div class="form-section">
+
+        <h3>📋 Chief Complaint</h3>
+
+        {{ form.current_problem.label_tag }}
+        {{ form.current_problem }}
+
+        {{ form.location_extension.label_tag }}
+        {{ form.location_extension }}
+
+        {{ form.concomitants.label_tag }}
+        {{ form.concomitants }}
+
+        {{ form.etiology.label_tag }}
+        {{ form.etiology }}
+
+        {{ form.etiology_notes.label_tag }}
+        {{ form.etiology_notes }}
+
+    </div>
+
+
+    <div class="form-section">
+
+        <h3>🍎 Diet & Lifestyle</h3>
+
+        {{ form.diet_type.label_tag }}
+        {{ form.diet_type }}
+
+        {{ form.meal_pattern.label_tag }}
+        {{ form.meal_pattern }}
+
+        {{ form.appetite_scale.label_tag }}
+        {{ form.appetite_scale }}
+
+        {{ form.thirst_pattern.label_tag }}
+        {{ form.thirst_pattern }}
+
+        <label>Food Cravings</label>
+
+        <div class="checkbox-group">
+            {{ form.food_cravings }}
+        </div>
+
+        {{ form.sleep_posture.label_tag }}
+        {{ form.sleep_posture }}
+
+    </div>
+
+
+    <div class="form-section">
+
+        <h3>🧠 Personality & Psychology</h3>
+
+        {{ form.social_disposition.label_tag }}
+        {{ form.social_disposition }}
+
+        <label>Temperament</label>
+
+        <div class="checkbox-group">
+            {{ form.temperament }}
+        </div>
+
+        <label>Fears</label>
+
+        <div class="checkbox-group">
+            {{ form.fears }}
+        </div>
+
+        {{ form.pace_of_actions.label_tag }}
+        {{ form.pace_of_actions }}
+
+        {{ form.orderliness.label_tag }}
+        {{ form.orderliness }}
+
+        {{ form.self_perception.label_tag }}
+        {{ form.self_perception }}
+
+        {{ form.criticism_response.label_tag }}
+        {{ form.criticism_response }}
+
+        {{ form.ambition.label_tag }}
+        {{ form.ambition }}
+
+        {{ form.future_outlook.label_tag }}
+        {{ form.future_outlook }}
+
+        {{ form.anger_reaction.label_tag }}
+        {{ form.anger_reaction }}
+
+        {{ form.consolation_reaction.label_tag }}
+        {{ form.consolation_reaction }}
+
+        {{ form.weeping_tendency.label_tag }}
+        {{ form.weeping_tendency }}
+
+    </div>
+
+
+    
+
+
+    <div class="form-section">
+
+        <h3>📝 Additional Notes</h3>
+
+        {{ form.additional_notes.label_tag }}
+        {{ form.additional_notes }}
+
+    </div>
+
+    <button type="submit" class="save-btn">
+        Save History
+    </button>
+
+</form>
 
     </div>
 

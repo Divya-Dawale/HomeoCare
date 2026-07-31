@@ -198,3 +198,18 @@ def patient_status(request):
         'error': error
     }
 )
+from doctors.models import DoctorSettings
+
+
+
+def contact(request):
+
+    settings = DoctorSettings.objects.last()
+
+    return render(
+        request,
+        "public/contact.html",
+        {
+            "settings": settings
+        }
+    )
