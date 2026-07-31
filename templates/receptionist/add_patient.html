@@ -31,7 +31,49 @@ Patient Registration & Appointment
 
         {% csrf_token %}
 
-        {{ form.as_p }}
+        <p>
+    <label>Full Name</label>
+    {{ form.full_name }}
+</p>
+
+<p>
+    <label>Phone Number</label>
+
+    <div class="phone-input-wrapper">
+        <span>+91</span>
+        {{ form.phone }}
+    </div>
+</p>
+
+<p>
+    <label>Email</label>
+    {{ form.email }}
+</p>
+
+<p>
+    <label>Age</label>
+    {{ form.age }}
+</p>
+
+<p>
+    <label>Gender</label>
+    {{ form.gender }}
+</p>
+
+<p>
+    <label>Address</label>
+    {{ form.address }}
+</p>
+
+<p>
+    <label>Appointment Date</label>
+    {{ form.appointment_date }}
+</p>
+
+<p>
+    <label>Reason For Visit</label>
+    {{ form.reason_for_visit }}
+</p>
 
         <button
     type="submit"

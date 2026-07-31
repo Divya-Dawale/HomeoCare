@@ -20,36 +20,39 @@ def book_appointment(request):
     success = None
     error_message = None
     request_type = None
+    doctor_settings = DoctorSettings.objects.first()
 
+    today_count = AppointmentRequest.objects.filter(
+                preferred_date=date.today()
+                ).count()
+
+    booking_closed = (
+          doctor_settings and
+              today_count >= doctor_settings.max_patients_per_day
+                  )
+    
     if request.method == "POST":
 
         request_type = request.POST.get(
             "request_type"
         )
+        if booking_closed:
 
-        doctor_settings = DoctorSettings.objects.first()
-
-        booking_closed = False
-
-        if doctor_settings:
-
-           today_count = AppointmentRequest.objects.filter(
-              preferred_date=date.today()
-            ).count()
-
-           booking_closed = (
-           today_count >= doctor_settings.max_patients_per_day
+            error_message = (
+                 "Today's appointment booking limit has been reached."
             )
 
-        return render(
+            return render(
                 request,
                 "public/appointment.html",
-                {
-                    "success": success,
+                        {
+                    "error_message": error_message,
                     "request_type": request_type,
                     "booking_closed": booking_closed,
                 }
             )
+    
+    
 
         # -----------------------------
         # NEW PATIENT
@@ -91,7 +94,7 @@ def book_appointment(request):
                 )
 
             )
-
+            print("NEW REQUEST SAVED")
             success = (
                 "Appointment request submitted successfully."
             )
@@ -140,7 +143,7 @@ def book_appointment(request):
                     )
 
                 )
-
+                
                 success = (
                     "Follow-up appointment booked successfully."
                 )
@@ -158,6 +161,7 @@ def book_appointment(request):
             "success": success,
             "error_message": error_message,
             "request_type": request_type,
+            "booking_closed": booking_closed,
         }
     )
 def patient_status(request):

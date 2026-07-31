@@ -315,3 +315,46 @@ body{
 }
 
 }
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.notification{
+    border:none;
+    background:white;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.profile-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#22c55e;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:600;
+}

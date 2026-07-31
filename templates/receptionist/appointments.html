@@ -163,16 +163,12 @@ Appointments
                       Cancel
  
                  </a>
-               {% elif appointment.status == "consulting" %}
 
-                 <a href="{% url 'complete_appointment' appointment.id %}"
-                   class="complete-btn">
+                {% elif appointment.status == "consulting" %}
 
-                   Complete
-
-                  </a>
-
-
+                <span class="consulting-badge">
+                    In Doctor Consultation
+                </span>
 {% else %}
 
     -

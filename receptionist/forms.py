@@ -18,6 +18,18 @@ from patients.models import Patient
 
 class PatientAppointmentForm(forms.ModelForm):
 
+    phone = forms.CharField(
+    max_length=10,
+    widget=forms.TextInput(
+        attrs={
+            "maxlength": "10",
+            "pattern": "[6-9][0-9]{9}",
+            "placeholder": "9876543210",
+            "oninput": "this.value=this.value.replace(/[^0-9]/g,'')"
+        }
+    )
+)
+
     GENDER_CHOICES = [
 
         ("Male", "Male"),

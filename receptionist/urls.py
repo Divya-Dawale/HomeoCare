@@ -56,11 +56,7 @@ urlpatterns = [
     views.start_consultation,
     name="start_consultation"
     ),
-    path(
-    "appointments/complete/<int:appointment_id>/",
-    views.complete_appointment,
-    name="complete_appointment"
-    ), 
+
     path(
     "prescriptions/",
     views.prescriptions,

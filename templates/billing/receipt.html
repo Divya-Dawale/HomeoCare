@@ -12,8 +12,30 @@ href="{% static 'billing/receipt.css' %}">
 
 {% block content %}
 
-<div class="receipt-container">
+<div class="receipt-container" >
+<style>
 
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    .receipt-container,
+    .receipt-container * {
+        visibility: visible;
+    }
+
+    .receipt-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+}
+
+</style>
     <div class="receipt-card">
 
         <h1>🏥 HomeoCare Clinic</h1>

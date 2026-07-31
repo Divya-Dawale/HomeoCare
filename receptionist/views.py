@@ -300,17 +300,6 @@ def start_consultation(request, appointment_id):
     return redirect("appointments")
 
 
-def complete_appointment(request, appointment_id):
-
-    appointment = get_object_or_404(
-        Appointment,
-        id=appointment_id
-    )
-
-    appointment.status = "completed"
-    appointment.save()
-
-    return redirect("appointments")
 
 from prescriptions.models import Prescription
 from prescriptions.models import Prescription

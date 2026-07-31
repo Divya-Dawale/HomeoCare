@@ -27,10 +27,6 @@ href="{% static 'receptionist/appointments.css' %}">
 </div>
 
 {% else %}
-
-<!-- EVERYTHING that currently exists on the page -->
-
-{% endif %}  at which place it should be added
 <section class="appointment-hero">
 
     <h1>Book An Appointment</h1>
@@ -96,7 +92,22 @@ href="{% static 'receptionist/appointments.css' %}">
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" name="phone" required>
+                        <div class="phone-field">
+
+    <span class="country-code">+91</span>
+
+    <input
+        type="tel"
+        name="phone"
+        maxlength="10"
+        pattern="[0-9]{10}"
+        placeholder="9876543210"
+        required
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+    required
+    >
+
+</div>
                     </div>
 
                 </div>
@@ -209,7 +220,22 @@ href="{% static 'receptionist/appointments.css' %}">
 
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" name="phone" required>
+                        <div class="phone-field">
+
+    <span class="country-code">+91</span>
+
+    <input
+        type="tel"
+        name="phone"
+        maxlength="10"
+        pattern="[0-9]{10}"
+        placeholder="9876543210"
+        required
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+    required
+    >
+
+</div>
                     </div>
 
                 </div>
@@ -230,19 +256,7 @@ href="{% static 'receptionist/appointments.css' %}">
 
                 </div>
 
-               {% if booking_closed %}
-
-<button
-    type="submit"
-    class="appointment-btn"
-    disabled>
-
-    Today's Booking Closed
-
-</button>
-
-{% else %}
-
+               
 <button
     type="submit"
     class="appointment-btn">
@@ -250,8 +264,6 @@ href="{% static 'receptionist/appointments.css' %}">
     Book Appointment
 
 </button>
-
-{% endif %}
 
             </form>
 
@@ -295,5 +307,5 @@ function showForm(type){
 }
 
 </script>
-
+{% endif %}
 {% endblock %}

@@ -64,9 +64,9 @@ def billing_list(request):
             id=prescription_id
         )
 
-        final_amount = request.POST.get(
-            "final_amount"
-        )
+        final_amount = Decimal(
+            request.POST.get("final_amount")
+            )
 
         payment_method = request.POST.get(
             "payment_method"
@@ -83,14 +83,14 @@ def billing_list(request):
         if duration_days >= 60:
 
             medicine_fee = (
-                medicine_fee * Decimal("0.85"),-1
-            )
+             medicine_fee * Decimal("0.85")
+                 )
 
         elif duration_days >= 30:
 
-            medicine_fee = (
-                medicine_fee * Decimal("0.90"),-1
-            )
+              medicine_fee = (
+                 medicine_fee * Decimal("0.90")
+                )
 
         bill = Bill.objects.create(
 

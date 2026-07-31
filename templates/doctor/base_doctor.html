@@ -41,15 +41,15 @@
                 <h2>HomeoCare</h2>
 
                 <p>Doctor Panel</p>
-
+    
             </div>
-
+            
             <div class="divider"></div>
 
             <nav>
 
                 <a href="{% url 'doctor_dashboard' %}">
-                    <i class="fa-solid fa-chart-line"></i>
+                    <i class="fa-solid fa-house"></i>
                     Dashboard
                 </a>
 
@@ -58,15 +58,6 @@
                     Patient Queue
                 </a>
 
-                <a href="{% url 'medical_records' %}">
-                    <i class="fa-solid fa-file-medical"></i>
-                    Medical Records
-                </a>
-
-                <a href="{% url 'prescriptions' %}">
-                    <i class="fa-solid fa-prescription-bottle-medical"></i>
-                    Prescriptions
-                </a>
 
                 <a href="{% url 'doctor_revenue' %}">
                      <i class="fa-solid fa-chart-line"></i>
@@ -116,7 +107,38 @@
                 </span>
 
             </div>
+            <div class="topbar-right">
 
+    <button class="notification">
+
+        <i class="fa-regular fa-bell"></i>
+
+    </button>
+
+    <a href="{% url 'doctor_settings' %}"
+       class="profile-link">
+
+        <div class="profile">
+
+            <div class="avatar">
+
+                D
+
+            </div>
+
+            <div>
+
+                <strong>{{ request.user.username }}</strong>
+
+                <p>Doctor</p>
+
+            </div>
+
+        </div>
+
+    </a>
+
+</div>
         </header>
 
         <div class="content">

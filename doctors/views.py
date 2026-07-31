@@ -23,21 +23,26 @@ from .forms import DoctorProfileForm
 
 def doctor_dashboard(request):
 
+    today = timezone.now().date()
+
     waiting_patients = Appointment.objects.filter(
+        appointment_date=today,
         status="waiting"
     ).count()
 
     consulting_patients = Appointment.objects.filter(
+        appointment_date=today,
         status="consulting"
     ).count()
 
     completed_today = Appointment.objects.filter(
-        status="completed",
-        appointment_date=timezone.now().date()
+        appointment_date=today,
+        status="completed"
     ).count()
 
-    total_records = MedicalRecord.objects.count()
-
+    total_records = Appointment.objects.filter(
+        status="completed"
+    ).count()
     context = {
         "waiting_patients": waiting_patients,
         "consulting_patients": consulting_patients,
@@ -412,8 +417,13 @@ def doctor_revenue(request):
     )
 from .models import DoctorSettings
 from .forms import DoctorSettingsForm
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def doctor_settings(request):
 
+    print(request.user)
+    print(request.user.is_authenticated)
     settings_obj, created = (
         DoctorSettings.objects.get_or_create(
             doctor=request.user
@@ -448,6 +458,8 @@ def doctor_settings(request):
             "form": form
         }
     )
+
+
 def edit_doctor_profile(request):
 
     if request.method == "POST":
