@@ -49,58 +49,194 @@ Patient Consultation
 
     {% if history %}
 
-        <div class="history-grid">
+    <div class="history-grid">
 
-            <div>
-                <label>Allergies</label>
-                <p>{{ history.allergies }}</p>
-            </div>
-
-            <div>
-                <label>Past Diseases</label>
-                <p>{{ history.past_diseases }}</p>
-            </div>
-
-            <div>
-                <label>Family History</label>
-                <p>{{ history.family_history }}</p>
-            </div>
-
-            <div>
-                <label>Blood Pressure</label>
-                <p>{{ history.blood_pressure }}</p>
-            </div>
-
-            <div>
-                <label>Weight</label>
-                <p>{{ history.weight }}</p>
-            </div>
-
-            <div>
-                <label>Current Problem</label>
-                <p>{{ history.current_problem }}</p>
-            </div>
-
+        <div>
+            <label>Height</label>
+            <p>{{ history.height }} cm</p>
         </div>
+
+        <div>
+            <label>Weight</label>
+            <p>{{ history.weight }} kg</p>
+        </div>
+
+        <div>
+            <label>Blood Group</label>
+            <p>{{ history.blood_group }}</p>
+        </div>
+
+        <div>
+            <label>Blood Pressure</label>
+            <p>{{ history.blood_pressure }}</p>
+        </div>
+
+        <div>
+            <label>Physical Build</label>
+            <p>{{ history.physical_build }}</p>
+        </div>
+
+        <div>
+            <label>Thermal State</label>
+            <p>{{ history.thermal_state }}</p>
+        </div>
+
+        <div>
+            <label>Side Affinity</label>
+            <p>{{ history.side_affinity }}</p>
+        </div>
+
+        <div>
+            <label>Current Problem</label>
+            <p>{{ history.current_problem }}</p>
+        </div>
+
+        <div>
+            <label>Location & Extension</label>
+            <p>{{ history.location_extension }}</p>
+        </div>
+
+        <div>
+            <label>Concomitants</label>
+            <p>{{ history.concomitants }}</p>
+        </div>
+
+        <div>
+            <label>Etiology</label>
+            <p>{{ history.etiology }}</p>
+        </div>
+
+        <div>
+            <label>Etiology Notes</label>
+            <p>{{ history.etiology_notes }}</p>
+        </div>
+
+        <div>
+            <label>Diet Type</label>
+            <p>{{ history.diet_type }}</p>
+        </div>
+
+        <div>
+            <label>Meal Pattern</label>
+            <p>{{ history.meal_pattern }}</p>
+        </div>
+
+        <div>
+            <label>Appetite</label>
+            <p>{{ history.appetite_scale }}</p>
+        </div>
+
+        <div>
+            <label>Thirst Pattern</label>
+            <p>{{ history.thirst_pattern }}</p>
+        </div>
+
+        <div>
+            <label>Sleep Posture</label>
+            <p>{{ history.sleep_posture }}</p>
+        </div>
+
+        <div>
+            <label>Food Cravings</label>
+            <p>{{ history.food_cravings|join:", " }}</p>
+        </div>
+
+        <div>
+            <label>Temperament</label>
+            <p>{{ history.temperament|join:", " }}</p>
+        </div>
+
+        <div>
+            <label>Fears</label>
+            <p>{{ history.fears|join:", " }}</p>
+        </div>
+
+        <div>
+            <label>Social Disposition</label>
+            <p>{{ history.social_disposition }}</p>
+        </div>
+
+        <div>
+            <label>Pace of Actions</label>
+            <p>{{ history.pace_of_actions }}</p>
+        </div>
+
+        <div>
+            <label>Orderliness</label>
+            <p>{{ history.orderliness }}</p>
+        </div>
+
+        <div>
+            <label>Self Perception</label>
+            <p>{{ history.self_perception }}</p>
+        </div>
+
+        <div>
+            <label>Reaction to Criticism</label>
+            <p>{{ history.criticism_response }}</p>
+        </div>
+
+        <div>
+            <label>Ambition</label>
+            <p>{{ history.ambition }}</p>
+        </div>
+
+        <div>
+            <label>Future Outlook</label>
+            <p>{{ history.future_outlook }}</p>
+        </div>
+
+        <div>
+            <label>Reaction to Anger</label>
+            <p>{{ history.anger_reaction }}</p>
+        </div>
+
+        <div>
+            <label>Reaction to Consolation</label>
+            <p>{{ history.consolation_reaction }}</p>
+        </div>
+
+        <div>
+            <label>Weeping Tendency</label>
+            <p>{{ history.weeping_tendency }}</p>
+        </div>
+
+        <div>
+            <label>Allergies</label>
+            <p>{{ history.allergies }}</p>
+        </div>
+
+        <div>
+            <label>Past Diseases</label>
+            <p>{{ history.past_diseases }}</p>
+        </div>
+
+        <div>
+            <label>Family History</label>
+            <p>{{ history.family_history }}</p>
+        </div>
+
+        <div>
+            <label>Additional Notes</label>
+            <p>{{ history.additional_notes }}</p>
+        </div>
+
+    </div>
 
     {% else %}
 
-        <div class="empty-state">
+    <div class="empty-state">
 
-            <h4>No Medical History Found</h4>
+        <h4>No Medical History Found</h4>
 
-            <p>
-                This patient does not have a medical history yet.
-            </p>
+        <p>This patient does not have a medical history yet.</p>
 
-            <a href="{% url 'create_medical_history' appointment.id %}"
-               class="action-btn">
+        <a href="{% url 'create_medical_history' appointment.id %}"
+           class="action-btn">
+            Create Medical History
+        </a>
 
-                Create Medical History
-
-            </a>
-
-        </div>
+    </div>
 
     {% endif %}
 

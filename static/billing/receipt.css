@@ -1,66 +1,113 @@
+body{
+    background:#f1f5f9;
+}
 
+.receipt-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 0;
+}
 
 .receipt-card{
+    width:100%;
+    max-width:700px;
     background:white;
-    width:700px;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
 .receipt-card h1{
     text-align:center;
-    margin-bottom:8px;
+    color:#162544;
+    margin-bottom:5px;
 }
 
 .subtitle{
     text-align:center;
-    color:#666;
+    color:#64748b;
     margin-bottom:20px;
 }
 
+hr{
+    border:none;
+    border-top:2px dashed #dbe2ea;
+    margin:20px 0;
+}
+
 .section{
-    margin-top:25px;
+    margin:25px 0;
 }
 
 .section h3{
+    color:#162544;
     margin-bottom:12px;
-    color:#2563eb;
+    padding-bottom:8px;
+    border-bottom:2px solid #22c55e;
 }
 
 .section p{
-    margin-bottom:10px;
+    margin:8px 0;
+    color:#334155;
 }
 
 .section h2{
-    margin-top:15px;
+    margin-top:20px;
     color:#16a34a;
 }
 
 .btn-group{
     display:flex;
-    gap:12px;
+    justify-content:center;
+    gap:15px;
     margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.print-btn,
+.back-btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:600;
 }
 
 .print-btn{
-    flex:1;
-    border:none;
-    background:#16a34a;
+    background:#22c55e;
     color:white;
-    padding:14px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
 }
 
 .back-btn{
-    flex:1;
-    text-decoration:none;
-    text-align:center;
-    background:#2563eb;
+    background:#162544;
     color:white;
-    padding:14px;
-    border-radius:10px;
-    font-weight:600;
+}
+
+@media print{
+
+    body *{
+        visibility:hidden;
+    }
+
+    .receipt-card,
+    .receipt-card *{
+        visibility:visible;
+    }
+
+    .receipt-card{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        max-width:100%;
+        box-shadow:none;
+        border-radius:0;
+    }
+
+    .btn-group{
+        display:none;
+    }
 }

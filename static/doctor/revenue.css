@@ -244,4 +244,70 @@
         width:100%;
     }
 
+}/* ===========================
+   Receipt Layout
+=========================== */
+
+body{
+    background:#f1f5f9;
+}
+
+.receipt-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:30px 20px;
+}
+
+.dashboard-container{
+    width:100%;
+    max-width:700px;
+    background:#ffffff;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.10);
+}
+
+.dashboard-container h1{
+    text-align:center;
+    color:#162544;
+}
+
+.subtitle{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+.section{
+    margin:25px 0;
+}
+
+.section h3{
+    color:#162544;
+    margin-bottom:12px;
+    border-bottom:2px solid #22c55e;
+    padding-bottom:8px;
+}
+
+.section p{
+    margin:10px 0;
+    color:#334155;
+}
+
+.btn-group{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+@media(max-width:768px){
+
+    .dashboard-container{
+        padding:25px;
+    }
+
 }
