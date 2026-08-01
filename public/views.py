@@ -204,7 +204,8 @@ from doctors.models import DoctorSettings
 
 def contact(request):
 
-    settings = DoctorSettings.objects.get(id=2)
+    settings = DoctorSettings.objects.first()
+
 
     return render(
         request,
