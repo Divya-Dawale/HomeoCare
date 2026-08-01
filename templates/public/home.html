@@ -3,130 +3,905 @@
 
 {% block content %}
 
+<!-- ================= HERO ================= -->
+
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-bg"></div>
+    <div class="blur blur1"></div>
+    <div class="blur blur2"></div>
 
-        <h1>
-            Personalized Homeopathic Care
-            For Every Stage Of Life
-        </h1>
+    <div class="container hero-container">
 
-        <p>
-            Book appointments easily, maintain continuity in your treatment,
-            and receive compassionate homeopathic care focused on your well-being.
-        </p>
+        <!-- LEFT -->
 
-        <div class="hero-buttons">
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                🌿 Trusted Homeopathic Clinic
+            </span>
+
+            <h1>
+
+                Your Journey Towards
+                <span>Natural Healing</span>
+                Starts Here.
+
+            </h1>
+
+            <p>
+
+                HomeoCare combines traditional homeopathic principles with
+                modern digital healthcare management. Experience
+                personalized consultations, seamless appointment booking,
+                and organized medical records—all designed to make your
+                healthcare journey simple and comfortable.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'book_appointment' %}" class="btn-primary">
+
+                    Book Appointment →
+
+                </a>
+
+                <a href="{% url 'services' %}" class="btn-secondary">
+
+                    Explore Services
+
+                </a>
+
+            </div>
+
+            <div class="hero-features">
+
+                <div class="mini-card">
+
+                    <div class="icon">
+                        🌿
+                    </div>
+
+                    <div>
+
+                        <h4>Natural Treatment</h4>
+
+                        <span>Safe & Effective</span>
+
+                    </div>
+
+                </div>
+
+                <div class="mini-card">
+
+                    <div class="icon">
+                        📅
+                    </div>
+
+                    <div>
+
+                        <h4>Easy Booking</h4>
+
+                        <span>Online Appointment</span>
+
+                    </div>
+
+                </div>
+
+                <div class="mini-card">
+
+                    <div class="icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h4>Digital Records</h4>
+
+                        <span>Secure History</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="hero-image">
+
+            <div class="doctor-card">
+
+                <img src="{% static 'images/doctor-hero.jpe' %}" alt="Doctor">
+
+            </div>
+
+            <div class="floating-card card1">
+
+                <h2>2500+</h2>
+
+                <p>Happy Patients</p>
+
+            </div>
+
+            <div class="floating-card card2">
+
+                <h2>15+</h2>
+
+                <p>Years of Care</p>
+
+            </div>
+
+            <div class="floating-card card3">
+
+                ⭐ 4.9 Rating
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TRUST ================= -->
+
+<section class="trust-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Why Patients Choose HomeoCare</span>
+
+            <h2>
+
+                Personalized Care,
+                Trusted by Families.
+
+            </h2>
+
+            <p>
+
+                We believe every patient deserves compassionate treatment,
+                accurate diagnosis, and long-term care tailored to their
+                individual needs.
+
+            </p>
+
+        </div>
+
+        <div class="trust-grid">
+
+            <div class="trust-card">
+
+                <div class="trust-icon">
+
+                    🌿
+
+                </div>
+
+                <h3>
+
+                    Personalized Treatment
+
+                </h3>
+
+                <p>
+
+                    Every treatment plan is carefully designed according to
+                    your unique health condition.
+
+                </p>
+
+            </div>
+
+            <div class="trust-card">
+
+                <div class="trust-icon">
+
+                    👨‍⚕️
+
+                </div>
+
+                <h3>
+
+                    Experienced Doctor
+
+                </h3>
+
+                <p>
+
+                    Receive professional consultation focused on holistic
+                    healing and wellness.
+
+                </p>
+
+            </div>
+
+            <div class="trust-card">
+
+                <div class="trust-icon">
+
+                    💻
+
+                </div>
+
+                <h3>
+
+                    Smart Digital Records
+
+                </h3>
+
+                <p>
+
+                    Access organized patient history for better treatment
+                    continuity.
+
+                </p>
+
+            </div>
+
+            <div class="trust-card">
+
+                <div class="trust-icon">
+
+                    ❤️
+
+                </div>
+
+                <h3>
+
+                    Compassion First
+
+                </h3>
+
+                <p>
+
+                    We focus on creating a warm, caring, and stress-free
+                    healthcare experience.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <div class="stat-box">
+
+            <h2>2500+</h2>
+
+            <span>Patients Served</span>
+
+        </div>
+
+        <div class="stat-box">
+
+            <h2>15+</h2>
+
+            <span>Years Experience</span>
+
+        </div>
+
+        <div class="stat-box">
+
+            <h2>98%</h2>
+
+            <span>Patient Satisfaction</span>
+
+        </div>
+
+        <div class="stat-box">
+
+            <h2>24/7</h2>
+
+            <span>Appointment Support</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NEXT PART CONTINUES HERE -->
+ <!-- ================= OUR SERVICES ================= -->
+
+<section class="services-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Our Services</span>
+
+            <h2>Comprehensive Homeopathic Care</h2>
+
+            <p>
+                We provide personalized homeopathic treatments designed to
+                improve your overall health and support long-term wellness.
+            </p>
+
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+
+                <div class="service-icon">🩺</div>
+
+                <h3>General Consultation</h3>
+
+                <p>
+                    Professional consultation for acute and chronic
+                    health conditions with individualized treatment.
+                </p>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">🌿</div>
+
+                <h3>Chronic Disease Care</h3>
+
+                <p>
+                    Long-term treatment plans focused on treating the
+                    root cause naturally.
+                </p>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">📅</div>
+
+                <h3>Follow-Up Visits</h3>
+
+                <p>
+                    Regular monitoring to evaluate progress and update
+                    treatment when needed.
+                </p>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">💚</div>
+
+                <h3>Preventive Care</h3>
+
+                <p>
+                    Strengthen immunity and maintain overall health through
+                    holistic homeopathic care.
+                </p>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">👨‍⚕️</div>
+
+                <h3>Personalized Treatment</h3>
+
+                <p>
+                    Every patient receives medicines based on their
+                    unique symptoms and lifestyle.
+                </p>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-icon">📋</div>
+
+                <h3>Digital Medical Records</h3>
+
+                <p>
+                    Secure electronic records ensure continuity of care
+                    during every consultation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT DOCTOR ================= -->
+
+<section class="doctor-section">
+
+    <div class="container doctor-container">
+
+        <div class="doctor-image">
+
+            <img src="{% static 'images/doctor.png' %}" alt="Doctor">
+
+        </div>
+
+        <div class="doctor-content">
+
+            <span class="section-tag">
+                Meet Our Doctor
+            </span>
+
+            <h2>
+
+                Caring Beyond Treatment
+
+            </h2>
+
+            <p>
+
+                At HomeoCare, our approach goes beyond prescribing medicines.
+                We carefully understand every patient's physical, emotional,
+                and lifestyle concerns to provide holistic and compassionate
+                treatment.
+
+            </p>
+
+            <div class="doctor-features">
+
+                <div class="feature-item">
+
+                    ✅ Personalized Consultation
+
+                </div>
+
+                <div class="feature-item">
+
+                    ✅ Scientific Homeopathic Approach
+
+                </div>
+
+                <div class="feature-item">
+
+                    ✅ Friendly Patient Care
+
+                </div>
+
+                <div class="feature-item">
+
+                    ✅ Continuous Follow-Up
+
+                </div>
+
+            </div>
 
             <a href="{% url 'book_appointment' %}" class="btn-primary">
-                Book Appointment
+
+                Schedule Consultation
+
             </a>
 
-            <a href="{% url 'about' %}" class="btn-secondary">
-                Learn More
-            </a>
-
         </div>
 
     </div>
 
 </section>
 
-<section class="features">
+<!-- ================= PROCESS ================= -->
 
-    <h2>Why Choose HomeoCare?</h2>
+<section class="process-section">
 
-    <div class="feature-grid">
+    <div class="container">
 
-        <div class="feature-card">
-            <h3>Personalized Treatment</h3>
+        <div class="section-header">
+
+            <span>Simple Process</span>
+
+            <h2>
+
+                Your Healing Journey
+
+            </h2>
+
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card">
+
+                <div class="step-number">
+
+                    01
+
+                </div>
+
+                <h3>
+
+                    Book Appointment
+
+                </h3>
+
+                <p>
+
+                    Request an appointment online in just a few clicks.
+
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="step-number">
+
+                    02
+
+                </div>
+
+                <h3>
+
+                    Clinic Confirmation
+
+                </h3>
+
+                <p>
+
+                    Our receptionist reviews and confirms your appointment.
+
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="step-number">
+
+                    03
+
+                </div>
+
+                <h3>
+
+                    Doctor Consultation
+
+                </h3>
+
+                <p>
+
+                    Meet the doctor and receive a personalized treatment plan.
+
+                </p>
+
+            </div>
+
+            <div class="process-card">
+
+                <div class="step-number">
+
+                    04
+
+                </div>
+
+                <h3>
+
+                    Continue Your Recovery
+
+                </h3>
+
+                <p>
+
+                    Attend follow-up visits while your progress is carefully monitored.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="testimonials-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Patient Testimonials</span>
+
+            <h2>
+                Trusted by Hundreds of Families
+            </h2>
+
             <p>
-                Every patient receives care tailored to their unique health needs.
+                Our commitment to compassionate care and personalized treatment
+                has helped many patients begin a healthier life.
             </p>
+
         </div>
 
-        <div class="feature-card">
-            <h3>Easy Appointments</h3>
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+
+                    "The appointment process was simple, and the doctor took
+                    time to understand every detail of my health. I truly felt
+                    cared for."
+
+                </p>
+
+                <div class="patient-info">
+
+                    <div class="patient-avatar">
+
+                        A
+
+                    </div>
+
+                    <div>
+
+                        <h4>Ananya Sharma</h4>
+
+                        <span>Patient</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="testimonial-card">
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+
+                    "The digital patient records make follow-up consultations
+                    very convenient. The clinic is organized and professional."
+
+                </p>
+
+                <div class="patient-info">
+
+                    <div class="patient-avatar">
+
+                        R
+
+                    </div>
+
+                    <div>
+
+                        <h4>Rahul Patil</h4>
+
+                        <span>Patient</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="testimonial-card">
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p>
+
+                    "I appreciate the personalized treatment and friendly
+                    environment. HomeoCare truly focuses on patient well-being."
+
+                </p>
+
+                <div class="patient-info">
+
+                    <div class="patient-avatar">
+
+                        S
+
+                    </div>
+
+                    <div>
+
+                        <h4>Sneha Joshi</h4>
+
+                        <span>Patient</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Frequently Asked Questions</span>
+
+            <h2>
+
+                Have Questions?
+
+            </h2>
+
+        </div>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    How can I book an appointment?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        You can easily request an appointment through our
+                        online appointment page. Our clinic will review
+                        and confirm your booking.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Can I view my previous records?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. Existing patients can access their medical
+                        records and treatment history securely.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Do I need an appointment before visiting?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Booking an appointment is recommended to reduce
+                        waiting time and ensure availability.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Are follow-up consultations available?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. Follow-up consultations help us monitor your
+                        recovery and adjust treatment whenever necessary.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-card">
+
+            <span>
+
+                Start Your Wellness Journey
+
+            </span>
+
+            <h2>
+
+                Experience Personalized Homeopathic Care Today
+
+            </h2>
+
             <p>
-                Request and manage appointments conveniently online.
+
+                Book your consultation and take the first step toward
+                better health with compassionate and professional care.
+
             </p>
-        </div>
 
-        <div class="feature-card">
-            <h3>Medical Records</h3>
-            <p>
-                Organized patient history helps ensure continuity of care.
-            </p>
-        </div>
+            <div class="cta-buttons">
 
-    </div>
+                <a href="{% url 'book_appointment' %}" class="btn-primary">
 
-</section>
+                    Book Appointment
 
-<section class="services">
+                </a>
 
-    <h2>Our Services</h2>
+                <a href="{% url 'contact' %}" class="btn-secondary">
 
-    <div class="service-grid">
+                    Contact Us
 
-        <div class="service-card">
-            <h3>General Consultation</h3>
-        </div>
+                </a>
 
-        <div class="service-card">
-            <h3>Follow-Up Visits</h3>
-        </div>
+            </div>
 
-        <div class="service-card">
-            <h3>Chronic Condition Care</h3>
-        </div>
-
-        <div class="service-card">
-            <h3>Preventive Healthcare</h3>
         </div>
 
     </div>
-
-</section>
-
-<section class="process">
-
-    <h2>How It Works</h2>
-
-    <div class="steps">
-
-        <div class="step">
-            <span>1</span>
-            <h3>Request Appointment</h3>
-        </div>
-
-        <div class="step">
-            <span>2</span>
-            <h3>Clinic Confirmation</h3>
-        </div>
-
-        <div class="step">
-            <span>3</span>
-            <h3>Visit The Clinic</h3>
-        </div>
-
-        <div class="step">
-            <span>4</span>
-            <h3>Receive Care</h3>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="cta">
-
-    <h2>Ready To Begin Your Journey To Better Health?</h2>
-
-    <a href="#" class="cta-btn">
-        Book Appointment
-    </a>
 
 </section>
 

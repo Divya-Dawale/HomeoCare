@@ -1,39 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
 <footer class="footer">
 
-    <div class="footer-container">
+    <div class="footer-wave"></div>
 
-        <div class="footer-section">
+    <div class="container footer-container">
 
-            <h2>HomeoCare</h2>
+        <div class="footer-about">
+
+            <a href="{% url 'home' %}" class="footer-logo">
+
+                <img src="{% static 'images/logo.png' %}" alt="HomeoCare">
+
+                <span>HomeoCare</span>
+
+            </a>
 
             <p>
-                Providing compassionate homeopathic care with a focus on
-                patient well-being, continuity of treatment, and convenient
-                healthcare management.
+
+                HomeoCare is dedicated to providing compassionate
+                homeopathic healthcare through personalized treatment,
+                modern digital records, and seamless appointment booking.
+
             </p>
 
         </div>
 
-        <div class="footer-section"> 
+        <div class="footer-links">
 
             <h3>Quick Links</h3>
 
-           <ul>
-                  <li><a href="{% url 'home' %}">Home</a></li>
-                  <li><a href="{% url 'about' %}">About</a></li>
-                 <li><a href="{% url 'services' %}">Services</a></li>
-                  <li><a href="{% url 'patient_status' %}">Patient Status</a></li>
-                    <li><a href="{% url 'book_appointment' %}">Book Appointment</a></li>
-           </ul>
+            <ul>
+
+                <li><a href="{% url 'home' %}">Home</a></li>
+
+                <li><a href="{% url 'about' %}">About</a></li>
+
+                <li><a href="{% url 'services' %}">Services</a></li>
+
+                <li><a href="{% url 'book_appointment' %}">Book Appointment</a></li>
+
+                <li><a href="{% url 'patient_status' %}">Patient Status</a></li>
+
+            </ul>
+
         </div>
 
-        <div class="footer-section">
+        <div class="footer-services">
+
+            <h3>Services</h3>
+
+            <ul>
+
+                <li>General Consultation</li>
+
+                <li>Chronic Care</li>
+
+                <li>Follow-up Visits</li>
+
+                <li>Preventive Care</li>
+
+                <li>Digital Records</li>
+
+            </ul>
+
+        </div>
+
+        <div class="footer-contact">
 
             <h3>Contact</h3>
 
-            <p>Email: info@homeocare.com</p>
-            <p>Phone: +91 XXXXX XXXXX</p>
-            <p>Kolhapur, Maharashtra</p>
+            <ul>
+
+                <li>📍 Kolhapur, Maharashtra</li>
+
+                <li>📞 +91 98765 43210</li>
+
+                <li>✉️ info@homeocare.com</li>
+
+                <li>🕒 Mon – Sat | 9:00 AM – 7:00 PM</li>
+
+            </ul>
 
         </div>
 
@@ -42,9 +90,13 @@
     <div class="footer-bottom">
 
         <p>
+
             © 2026 HomeoCare. All Rights Reserved.
+
         </p>
 
     </div>
-
+<button id="backToTop" class="back-to-top">
+    ↑
+</button>
 </footer>

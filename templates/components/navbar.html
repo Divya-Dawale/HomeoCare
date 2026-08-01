@@ -1,27 +1,63 @@
+{% load static %}
+
 <nav class="navbar">
 
-    <div class="logo">
-        <img src="" alt="HomeoCare Logo">
-        <span>HomeoCare</span>
+    <div class="nav-container">
+
+        <a href="{% url 'home' %}" class="logo">
+
+            <!-- Replace with your logo -->
+            <img src="{% static 'images/logo.png' %}" alt="HomeoCare">
+
+            <div class="logo-text">
+                <h2>HomeoCare</h2>
+                <span>Homeopathy Clinic</span>
+            </div>
+
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+
+            <li>
+                <a href="{% url 'about' %}">About</a>
+            </li>
+
+            <li>
+                <a href="{% url 'services' %}">Services</a>
+            </li>
+
+            <li>
+                <a href="{% url 'book_appointment' %}">
+                    Book Appointment
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'patient_status' %}">
+                    Patient Status
+                </a>
+            </li>
+
+        </ul>
+
+        <a href="{% url 'contact' %}" class="contact-btn">
+            Contact
+        </a>
+
+        <div class="menu-btn" id="menuBtn">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
     </div>
 
-    <ul class="nav-links">
-
-        <li><a href="{% url 'home' %}">Home</a></li>
-
-        <li><a href="{% url 'about' %}">About</a></li>
-
-        <li><a href="{% url 'services' %}">Services</a></li>
-
-        <li><a href="{% url 'book_appointment' %}">Book Appointment</a></li>
-
-        <li><a href="{% url 'patient_status' %}">Patient Status</a></li>
-
-    
-    </ul>
-     <a href="{% url 'contact' %}" class="contact-btn">
-                
-        Contact
-    </a>
-
 </nav>
+
+<script src="{% static 'js/navbar.js' %}"></script>

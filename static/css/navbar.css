@@ -1,72 +1,152 @@
-/* ==========================
-   NAVBAR
-========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 .navbar{
-    height:90px;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    position:fixed;
+    top:0;
+    left:0;
 
-    padding:0 7rem;
+    width:100%;
+
+    z-index:999;
+
+    transition:.35s;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(255,255,255,.4);
+
+}
+
+.navbar.scrolled{
 
     background:#ffffff;
 
-    border-bottom:1px solid #eef2f7;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+
 }
 
-/* ==========================
-   LOGO
-========================== */
+.nav-container{
 
-.logo img{
-    height:55px;
-    width:auto;
-    object-fit:contain;
-}
-.logo span{
-    font-size:1.7rem;
-    font-weight:700;
+    max-width:1300px;
 
-    color:#162544;
+    margin:auto;
 
-    letter-spacing:-0.5px;
-}
-
-/* ==========================
-   NAV LINKS
-========================== */
-
-.nav-links{
     display:flex;
+
     align-items:center;
 
-    gap:3.2rem;
+    justify-content:space-between;
+
+    padding:16px 40px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+}
+
+.logo img{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.logo-text h2{
+
+    color:#14532d;
+
+    font-size:25px;
+
+    font-weight:800;
+
+}
+
+.logo-text span{
+
+    font-size:12px;
+
+    color:#6b7280;
+
+}
+
+.nav-links{
+
+    display:flex;
 
     list-style:none;
+
+    gap:35px;
+
 }
 
 .nav-links a{
+
+    position:relative;
+
     text-decoration:none;
 
-    color:#162544;
+    color:#1f2937;
 
-    font-size:1rem;
-    font-weight:500;
+    font-weight:600;
 
-    letter-spacing:0.2px;
+    transition:.3s;
 
-    transition:0.25s ease;
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    background:#22c55e;
+
+    border-radius:50px;
+
+    transition:.35s;
+
 }
 
 .nav-links a:hover{
-    color:#31446e;
+
+    color:#16a34a;
+
 }
 
-/* ==========================
-   CONTACT BUTTON
-========================== */
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
 
 .contact-btn{
 
@@ -74,78 +154,104 @@
 
     color:white;
 
-    padding:15px 34px;
+    padding:14px 28px;
 
-    border-radius:999px;
+    border-radius:50px;
 
-    font-weight:600;
+    font-weight:700;
 
-    background:
-    linear-gradient(
-        135deg,
-        #0F1D3A 0%,
-        #1D335E 50%,
-        #2A4B86 100%
-    );
+    background:linear-gradient(135deg,#22c55e,#0f766e);
 
-    box-shadow:
-    0 10px 25px rgba(22,37,68,0.18);
+    transition:.35s;
 
-    transition:all .3s ease;
+    box-shadow:0 12px 25px rgba(34,197,94,.3);
+
 }
 
 .contact-btn:hover{
 
-    transform:translateY(-2px);
+    transform:translateY(-4px);
 
-    box-shadow:
-    0 16px 35px rgba(22,37,68,0.25);
-}
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:1200px){
-
-    .navbar{
-        padding:0 4rem;
-    }
-
-    .nav-links{
-        gap:2rem;
-    }
+    box-shadow:0 20px 35px rgba(34,197,94,.35);
 
 }
 
-@media(max-width:900px){
+.menu-btn{
 
-    .navbar{
-        padding:0 2rem;
-    }
+    display:none;
 
-    .nav-links{
-        gap:1.2rem;
+    cursor:pointer;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.menu-btn span{
+
+    width:28px;
+
+    height:3px;
+
+    background:#14532d;
+
+    border-radius:20px;
+
+}
+
+@media(max-width:980px){
+
+    .menu-btn{
+
+        display:flex;
+
     }
 
     .contact-btn{
-        padding:13px 24px;
-    }
 
-}
+        display:none;
 
-@media(max-width:768px){
-
-    .navbar{
-        flex-direction:column;
-        height:auto;
-        padding:20px;
-        gap:20px;
     }
 
     .nav-links{
-        flex-wrap:wrap;
-        justify-content:center;
+
+        position:absolute;
+
+        top:100%;
+
+        left:0;
+
+        width:100%;
+
+        background:white;
+
+        flex-direction:column;
+
+        text-align:center;
+
+        overflow:hidden;
+
+        max-height:0;
+
+        transition:.4s;
+
+        box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+    }
+
+    .nav-links.active{
+
+        max-height:500px;
+
+        padding:25px 0;
+
+    }
+
+    .nav-links li{
+
+        margin:18px 0;
+
     }
 
 }
