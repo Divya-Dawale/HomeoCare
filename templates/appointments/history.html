@@ -10,103 +10,239 @@ href="{% static 'appointments/history.css' %}">
 {% endblock %}
 {% block content %}
 
-<form method="GET" class="search-form">
+<div class="history-page">
 
-    <input
-        type="text"
-        name="search"
-        placeholder="Search by Patient Name or Patient ID"
-        value="{{ request.GET.search }}"
-    >
+    <!-- ================= HEADER ================= -->
 
-    <button type="submit">
-        Search
-    </button>
+    <div class="history-header">
 
-</form>
-<div class="history-card">
+        <div>
 
-    <table>
+            <span class="section-badge">
 
-        <thead>
+                Patient Records
 
-            <tr>
+            </span>
 
-                <th>Date</th>
-                <th>Patient Name</th>
-                <th>Patient ID</th>
-                <th>Reason For Visit</th>
-                <th>Status</th>
+            <h2>
 
-            </tr>
+                Appointment History
 
-        </thead>
+            </h2>
 
-        <tbody>
+            <p>
 
-            {% for appointment in appointments %}
+                Browse previous patient appointments and quickly search appointment records.
 
-            <tr>
+            </p>
 
-                <td>
-                    {{ appointment.appointment_date }}
-                </td>
+        </div>
 
-                <td>
+    </div>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="toolbar-card">
+
+        <form method="GET" class="search-form">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search by Patient Name or Patient ID"
+                    value="{{ request.GET.search }}">
+
+            </div>
+
+            <button type="submit">
+
+                Search
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- ================= TABLE ================= -->
+
+    <div class="history-card">
+
+        <div class="table-header">
+
+            <h3>
+
+                Appointment Records
+
+            </h3>
+
+            <span>
+
+                {{ appointments|length }} Record{{ appointments|length|pluralize }}
+
+            </span>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+                        <th>Patient</th>
+                        <th>Patient ID</th>
+                        <th>Reason for Visit</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    {% for appointment in appointments %}
+
+<tr>
+
+    <td>
+
+        <div class="date-cell">
+
+            <i class="fa-regular fa-calendar"></i>
+
+            {{ appointment.appointment_date }}
+
+        </div>
+
+    </td>
+
+    <td>
+
+        <div class="patient-cell">
+
+            <div class="patient-avatar">
+
+                {{ appointment.patient.full_name|first|upper }}
+
+            </div>
+
+            <div class="patient-info">
+
+                <strong>
+
                     {{ appointment.patient.full_name }}
-                </td>
 
-                <td>
-                    {{ appointment.patient.patient_id }}
-                </td>
+                </strong>
 
-                <td>
-                    {{ appointment.reason_for_visit }}
-                </td>
+            </div>
 
-                <td>
+        </div>
 
-                    {% if appointment.status == "completed" %}
+    </td>
 
-                        <span class="completed-badge">
-                            Completed
-                        </span>
+    <td>
 
-                    {% elif appointment.status == "cancelled" %}
+        <span class="patient-id">
 
-                        <span class="cancelled-badge">
-                            Cancelled
-                        </span>
+            {{ appointment.patient.patient_id }}
 
-                    {% else %}
+        </span>
 
-                        <span class="pending-badge">
-                            {{ appointment.status }}
-                        </span>
+    </td>
 
-                    {% endif %}
+    <td>
 
-                </td>
+        <div class="reason-text">
 
-            </tr>
+            {{ appointment.reason_for_visit }}
 
-            {% empty %}
+        </div>
 
-            <tr>
+    </td>
 
-                <td colspan="5">
+    <td>
 
-                    No Appointment History Found
+        {% if appointment.status == "completed" %}
 
-                </td>
+            <span class="status-badge completed">
 
-            </tr>
+                <i class="fa-solid fa-circle-check"></i>
 
-            {% endfor %}
+                Completed
 
-        </tbody>
+            </span>
 
-    </table>
+        {% elif appointment.status == "cancelled" %}
+
+            <span class="status-badge cancelled">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                Cancelled
+
+            </span>
+
+        {% else %}
+
+            <span class="status-badge pending">
+
+                <i class="fa-solid fa-clock"></i>
+
+                {{ appointment.status|title }}
+
+            </span>
+
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+    <td colspan="5">
+
+        <div class="empty-table">
+
+            <i class="fa-solid fa-calendar-xmark"></i>
+
+            <h3>
+
+                No Appointment History Found
+
+            </h3>
+
+            <p>
+
+                Previous appointment records will appear here.
+
+            </p>
+
+        </div>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
 
 </div>
 

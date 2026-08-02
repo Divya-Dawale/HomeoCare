@@ -1,184 +1,825 @@
-.page-header{
-    margin-bottom:25px;
+/*========================================
+        PAGE LAYOUT
+========================================*/
+
+.billing-page{
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
 }
 
-.page-header h2{
+
+
+/*========================================
+        PAGE HEADER
+========================================*/
+
+.billing-header{
+
+    margin-bottom:4px;
+
+}
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.billing-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
     margin-bottom:8px;
-    color:#1e293b;
+
 }
 
-.page-header p{
-    color:#64748b;
+.billing-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    max-width:650px;
+
 }
+
+
+
+/*========================================
+        STATISTICS
+========================================*/
+
+.billing-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:22px;
+
+}
+
+.stat-card{
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    border:1px solid #E8F1EC;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.stat-icon{
+
+    width:68px;
+
+    height:68px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:28px;
+
+}
+
+.pending-icon{
+
+    background:linear-gradient(
+        135deg,
+        #F59E0B,
+        #FBBF24
+    );
+
+}
+
+.success-icon{
+
+    background:linear-gradient(
+        135deg,
+        #22C55E,
+        #34D399
+    );
+
+}
+
+.total-icon{
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+}
+
+.stat-content span{
+
+    display:block;
+
+    color:#64748B;
+
+    margin-bottom:6px;
+
+    font-size:14px;
+
+}
+
+.stat-content h2{
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+/*========================================
+            BILLING LIST
+========================================*/
+
+.billing-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+
+
+/*========================================
+            BILLING CARD
+========================================*/
 
 .billing-card{
-    background:#fff;
-    border-radius:20px;
-    padding:24px;
-    margin-bottom:20px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    border:1px solid #eef2f7;
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.35s;
+
 }
 
-.card-header{
+.billing-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+
+
+/*========================================
+            CARD HEADER
+========================================*/
+
+.card-top{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
-    margin-bottom:20px;
+
+    gap:20px;
+
+    padding-bottom:22px;
+
+    margin-bottom:24px;
+
+    border-bottom:1px solid #EEF4F1;
+
 }
 
-.card-header h3{
-    margin:0;
+
+
+/*========================================
+            PATIENT INFO
+========================================*/
+
+.patient-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.patient-avatar{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color:#fff;
+
     font-size:22px;
-    color:#111827;
+
+    font-weight:800;
+
+    flex-shrink:0;
+
 }
 
-.patient-id{
-    color:#64748b;
-    font-size:14px;
-    font-weight:600;
+.patient-info h3{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:4px;
+
 }
+
+.patient-info span{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+
+/*========================================
+            STATUS
+========================================*/
 
 .ready-badge{
-    background:#dbeafe;
-    color:#1d4ed8;
-    padding:8px 16px;
-    border-radius:20px;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:#FFF7E6;
+
+    color:#B7791F;
+
     font-size:13px;
-    font-weight:600;
+
+    font-weight:700;
+
 }
 
-.medicine-box{
-    background:#f8fafc;
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:20px;
-    border-left:5px solid #2563eb;
+
+
+/*========================================
+            MEDICINE
+========================================*/
+
+.medicine-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:#F9FCFA;
+
+    border:1px solid #E8F1EC;
+
+    border-left:5px solid #2E8B57;
+
+    border-radius:18px;
+
+    padding:18px 22px;
+
+    margin-bottom:24px;
+
 }
 
-.medicine-box h4{
-    margin:0 0 8px 0;
-    font-size:20px;
-    color:#111827;
+.medicine-icon{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:24px;
+
+    flex-shrink:0;
+
 }
 
-.medicine-box p{
-    margin:0;
-    color:#475569;
+.medicine-label{
+
+    display:block;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    color:#64748B;
+
+    font-weight:700;
+
+    margin-bottom:5px;
+
 }
+
+.medicine-card h3{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:4px;
+
+}
+
+.medicine-card p{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+
+/*========================================
+            AMOUNT GRID
+========================================*/
 
 .amount-grid{
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:20px;
+
+    gap:18px;
+
+    margin-bottom:24px;
+
 }
 
-.amount-card{
-    background:#f8fafc;
-    padding:18px;
-    border-radius:14px;
-    text-align:center;
+.amount-box{
+
+    background:#FCFEFD;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    transition:.3s;
+
 }
 
-.amount-card span{
+.amount-box:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 14px 28px rgba(46,139,87,.08);
+
+}
+
+.amount-box small{
+
     display:block;
-    color:#64748b;
-    margin-bottom:8px;
-    font-size:13px;
+
+    color:#64748B;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
 }
 
-.amount-card h3{
-    margin:0;
-    color:#1e293b;
+.amount-box strong{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
 }
 
-.total-card{
-    background:#2563eb;
-    color:white;
+
+
+/*========================================
+            TOTAL
+========================================*/
+
+.amount-box.total{
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    border:none;
+
 }
 
-.total-card span{
-    color:white;
+.amount-box.total small{
+
+    color:rgba(255,255,255,.8);
+
 }
 
-.total-card h2{
-    margin:0;
+.amount-box.total strong{
+
+    color:#FFFFFF;
+
     font-size:28px;
-}
 
-.payment-section{
-    display:flex;
-    gap:25px;
+}
+/*========================================
+            PAYMENT CARD
+========================================*/
+
+.payment-card{
+
+    background:#FAFCFB;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:18px;
+
+    padding:20px;
+
     margin-bottom:20px;
-    padding:15px;
-    background:#f8fafc;
-    border-radius:12px;
+
 }
 
-.payment-section label{
+.payment-card h4{
+
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:16px;
+
+}
+
+
+
+/*========================================
+            PAYMENT OPTIONS
+========================================*/
+
+.payment-options{
+
     display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+}
+
+.payment-options label{
+
+    display:flex;
+
     align-items:center;
-    gap:8px;
-    font-weight:600;
+
+    gap:10px;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    border:1px solid #E8F1EC;
+
+    background:#FFFFFF;
+
     cursor:pointer;
-}
 
-.override-section{
-    margin-bottom:20px;
-}
-
-.override-section label{
-    display:block;
-    margin-bottom:8px;
     font-weight:600;
-    color:#374151;
+
+    color:#475569;
+
+    transition:.3s;
+
 }
 
-.override-section input{
-    width:100%;
-    padding:12px;
-    border:1px solid #d1d5db;
-    border-radius:10px;
+.payment-options label:hover{
+
+    border-color:#2E8B57;
+
+    background:#F4FBF7;
+
+}
+
+.payment-options input[type="radio"]{
+
+    accent-color:#2E8B57;
+
+    width:18px;
+
+    height:18px;
+
+}
+
+
+
+/*========================================
+            FINAL AMOUNT
+========================================*/
+
+.final-amount{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:24px;
+
+}
+
+.final-amount label{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+}
+
+.final-amount input{
+
+    height:58px;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:16px;
+
+    padding:0 18px;
+
     font-size:16px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+    outline:none;
+
+    background:#FFFFFF;
+
+    transition:.3s;
+
 }
 
-.override-section input:focus{
-    outline:none;
-    border-color:#2563eb;
+.final-amount input:focus{
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.10);
+
 }
+
+
+
+/*========================================
+            GENERATE BILL BUTTON
+========================================*/
 
 .bill-btn{
+
     width:100%;
+
+    height:58px;
+
     border:none;
-    background:#16a34a;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
     color:white;
-    padding:14px;
-    border-radius:12px;
+
     font-size:16px;
+
     font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
     cursor:pointer;
-    transition:0.2s;
+
+    transition:.3s;
+
+    box-shadow:0 12px 25px rgba(46,139,87,.22);
+
 }
 
 .bill-btn:hover{
-    transform:translateY(-2px);
-    opacity:0.95;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(46,139,87,.30);
+
 }
 
-.empty-card{
-    background:white;
-    border-radius:20px;
-    padding:50px;
+
+
+/*========================================
+            EMPTY STATE
+========================================*/
+
+.empty-state{
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:60px 30px;
+
     text-align:center;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
 }
 
-.empty-card h3{
-    margin-bottom:10px;
-    color:#1e293b;
+.empty-state i{
+
+    font-size:58px;
+
+    color:#2E8B57;
+
+    margin-bottom:20px;
+
 }
 
-.empty-card p{
-    color:#64748b;
+.empty-state h3{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+.empty-state p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+@media(max-width:768px){
+
+    .card-top{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .amount-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .medicine-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .payment-options{
+
+        flex-direction:column;
+
+    }
+
 }

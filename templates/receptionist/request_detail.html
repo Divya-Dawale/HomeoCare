@@ -1,122 +1,268 @@
 {% extends 'receptionist/base_receptionist.html' %}
 {% load static %}
 
-{% block title %}Appointment Request{% endblock %}
+{% block title %}
+Appointment Request
+{% endblock %}
 
 {% block page_title %}
 Appointment Request
 {% endblock %}
 
+{% block page_subtitle %}
+Review and manage appointment requests.
+{% endblock %}
+
 {% block css %}
-<link rel="stylesheet"
-href="{% static 'receptionist/request_detail.css' %}">
+<link rel="stylesheet" href="{% static 'receptionist/request_detail.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="request-card">
+<div class="request-detail-page">
 
-    <h2>
-        Appointment Request #{{ appointment_request.id }}
-    </h2>
+    <!-- ================= PAGE HEADER ================= -->
 
-    <div class="status">
+    <div class="patients-header">
 
-        Status :
+        <div>
 
-        <span class="{{ appointment_request.status }}">
+            <span class="section-badge">
+                Appointment Request
+            </span>
 
-            {{ appointment_request.status }}
+            <h2>
+                Request #{{ appointment_request.id }}
+            </h2>
+
+            <p>
+                Review patient information before approving or rejecting the appointment.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= REQUEST SUMMARY ================= -->
+
+   <!-- ================= REQUEST SUMMARY ================= -->
+
+<div class="request-summary-card">
+
+    <div class="summary-left">
+
+        <div class="patient-avatar-large">
+
+            {{ appointment_request.full_name|first|upper }}
+
+        </div>
+
+        <div class="summary-info">
+
+            <h3>
+
+                {{ appointment_request.full_name }}
+
+            </h3>
+
+            <p>
+
+                Appointment Request #{{ appointment_request.id }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="summary-right">
+
+        <span class="status-badge {{ appointment_request.status }}">
+
+            {{ appointment_request.status|title }}
 
         </span>
 
     </div>
 
-    <hr>
+</div>
 
-    <h3>Patient Information</h3>
 
-    <div class="details-grid">
 
-        <div>
+    <!-- ================= PATIENT INFORMATION ================= -->
 
-            <strong>Full Name</strong>
+    <div class="detail-card">
 
-            <p>{{ appointment_request.full_name }}</p>
+        <div class="card-title">
 
-        </div>
+            <i class="fa-solid fa-user"></i>
 
-        <div>
-
-            <strong>Phone</strong>
-
-            <p>{{ appointment_request.phone }}</p>
+            <h3>
+                Patient Information
+            </h3>
 
         </div>
 
-        <div>
+        <div class="details-grid">
 
-            <strong>Email</strong>
+            <div class="detail-item">
 
-            <p>{{ appointment_request.email }}</p>
+                <span class="detail-label">
+                    Full Name
+                </span>
 
-        </div>
+                <span class="detail-value">
+                    {{ appointment_request.full_name }}
+                </span>
 
-        <div>
+            </div>
 
-            <strong>Age</strong>
+            <div class="detail-item">
 
-            <p>{{ appointment_request.age }}</p>
+                <span class="detail-label">
+                    Phone Number
+                </span>
 
-        </div>
+                <span class="detail-value">
+                    {{ appointment_request.phone }}
+                </span>
 
-        <div>
+            </div>
 
-            <strong>Gender</strong>
+            <div class="detail-item">
 
-            <p>{{ appointment_request.gender }}</p>
+                <span class="detail-label">
+                    Email Address
+                </span>
+
+                <span class="detail-value">
+                    {{ appointment_request.email }}
+                </span>
+
+            </div>
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Age
+                </span>
+
+                <span class="detail-value">
+                    {{ appointment_request.age }}
+                </span>
+
+            </div>
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Gender
+                </span>
+
+                <span class="detail-value">
+                    {{ appointment_request.gender }}
+                </span>
+
+            </div>
 
         </div>
 
     </div>
 
-    <h3>Address</h3>
 
-    <p>
 
-        {{ appointment_request.address }}
+    <!-- ================= ADDRESS ================= -->
 
-    </p>
+    <div class="detail-card">
 
-    <hr>
+        <div class="card-title">
 
-    <h3>Appointment Details</h3>
+            <i class="fa-solid fa-location-dot"></i>
 
-    <p>
+            <h3>
+                Address
+            </h3>
 
-        <strong>Preferred Date:</strong>
+        </div>
 
-        {{ appointment_request.preferred_date }}
+        <div class="full-width-detail">
 
-    </p>
+            {{ appointment_request.address }}
 
-    <p>
+        </div>
 
-        <strong>Reason:</strong>
+    </div>
 
-        {{ appointment_request.reason_for_visit }}
 
-    </p>
 
-    <div class="actions">
+    <!-- ================= APPOINTMENT DETAILS ================= -->
+
+    <div class="detail-card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <h3>
+                Appointment Details
+            </h3>
+
+        </div>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Preferred Date
+                </span>
+
+                <span class="detail-value">
+                    {{ appointment_request.preferred_date }}
+                </span>
+
+            </div>
+
+            <div class="detail-item detail-full">
+
+                <span class="detail-label">
+                    Reason for Visit
+                </span>
+
+                <span class="detail-value">
+                    {{ appointment_request.reason_for_visit }}
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ACTION BUTTONS ================= -->
+
+    <div class="action-buttons">
 
         <a href="{% url 'reject_request' appointment_request.id %}"
-              class="reject-btn">
-            Reject
+           class="reject-btn">
+
+            <i class="fa-solid fa-xmark"></i>
+
+            Reject Request
+
         </a>
 
-        <a href="{% url 'approve_request' appointment_request.id %}" class="approve-btn">
-            Approve
+        <a href="{% url 'approve_request' appointment_request.id %}"
+           class="approve-btn">
+
+            <i class="fa-solid fa-check"></i>
+
+            Approve Request
+
         </a>
 
     </div>

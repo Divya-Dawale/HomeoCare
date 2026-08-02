@@ -15,6 +15,9 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet"
           href="{% static 'receptionist/base.css' %}">
 
     {% block css %}{% endblock %}
@@ -25,102 +28,160 @@
 
 <div class="layout">
 
-    <!-- Sidebar -->
+    <!-- ================= SIDEBAR ================= -->
 
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
 
-        <div>
+        <div class="sidebar-top">
 
             <div class="logo">
 
                 <div class="logo-icon">
-                    <i class="fa-solid fa-hospital"></i>
+
+                    <i class="fa-solid fa-leaf"></i>
+
                 </div>
 
-                <h2>HomeoCare</h2>
+                <div>
 
-                <p>Receptionist Panel</p>
+                    <h2>HomeoCare</h2>
+
+                    <p>Receptionist Panel</p>
+
+                </div>
 
             </div>
 
             <div class="divider"></div>
 
-            <nav>
+            
 
-                <a href="{% url 'receptionist_dashboard' %}">
+            <nav class="sidebar-menu">
+
+                <a href="{% url 'receptionist_dashboard' %}"class="menu-item {% if request.resolver_match.url_name == 'receptionist_dashboard' %}active{% endif %}">
+
                     <i class="fa-solid fa-house"></i>
-                    Dashboard
+
+                    <span>Dashboard</span>
+
                 </a>
 
-                <a href="{% url 'appointment_requests' %}">
+            </nav>
+
+            
+
+            <nav class="sidebar-menu">
+
+                <a href="{% url 'appointment_requests' %}" class="menu-item {% if request.resolver_match.url_name == 'appointment_requests' %}active{% endif %}">
+                    
                     <i class="fa-solid fa-calendar-check"></i>
-                    Appointment Requests
+
+                    <span>Appointment Requests</span>
+
                 </a>
 
-                <a href="{% url 'patients' %}">
+                <a href="{% url 'patients' %}" class="menu-item {% if request.resolver_match.url_name == 'patients' %}active{% endif %}">
+                    
                     <i class="fa-solid fa-users"></i>
-                    Patients
+
+                    <span>Patients</span>
+
                 </a>
 
-                <a href="{% url 'appointments' %}">
+                <a href="{% url 'appointments' %}"class="menu-item {% if request.resolver_match.url_name == 'appointments' %}active{% endif %}">
+                    
                     <i class="fa-solid fa-calendar-days"></i>
-                    Appointments
+
+                    <span>Appointments</span>
+
                 </a>
 
-                <a href="{% url 'receptionist_prescriptions' %}">
+                <a href="{% url 'receptionist_prescriptions' %}"class="menu-item {% if request.resolver_match.url_name == 'receptionist_prescriptions' %}active{% endif %}">
+                    
                     <i class="fa-solid fa-prescription-bottle-medical"></i>
-                    Prescriptions
+
+                    <span>Prescriptions</span>
+
                 </a>
 
-                <a href="{% url 'billing' %}">
-                       <i class="fa-solid fa-money-bill-wave"></i>
-                     Billing
+                <a href="{% url 'billing' %}"class="menu-item {% if request.resolver_match.url_name == 'billing' %}active{% endif %}">
+
+                    <i class="fa-solid fa-money-bill-wave"></i>
+
+                    <span>Billing</span>
+
                 </a>
-                
-                
+
             </nav>
 
         </div>
 
-        <div>
+        <div class="sidebar-bottom">
 
             <div class="divider"></div>
 
-            <nav>
+            
 
-                <a href="{% url 'receptionist_settings' %}">
+            <nav class="sidebar-menu">
+
+                <a href="{% url 'receptionist_settings' %}"class="menu-item {% if request.resolver_match.url_name == 'receptionist_settings' %}active{% endif %}">
+
                     <i class="fa-solid fa-gear"></i>
-                    Settings
+
+                    <span>Settings</span>
+
                 </a>
 
-                <a href="{% url 'logout' %}">
+                <a href="{% url 'logout' %}" class="menu-item">
+
                     <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
+
+                    <span>Logout</span>
+
                 </a>
 
             </nav>
+
 
         </div>
 
     </aside>
 
-    <!-- Main -->
+    <!-- ================= MAIN ================= -->
 
     <main class="main">
 
+        <!-- ================= TOPBAR ================= -->
+
         <header class="topbar">
 
-            <div>
+            <div class="topbar-left">
 
-                <h1>
-                    {% block page_title %}
-                    Dashboard
-                    {% endblock %}
-                </h1>
+                <button class="menu-toggle" id="menuToggle">
 
-                <span>
-                    Welcome back to HomeoCare
-                </span>
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div class="page-heading">
+
+                    <h1>
+
+                        {% block page_title %}
+                        Dashboard
+                        {% endblock %}
+
+                    </h1>
+
+                    <p>
+
+                        {% block page_subtitle %}
+                        Manage your clinic efficiently.
+                        {% endblock %}
+
+                    </p>
+
+                </div>
 
             </div>
 
@@ -130,39 +191,55 @@
 
                     <i class="fa-regular fa-bell"></i>
 
+                    <span class="notification-count">
+
+                        {{ notification_count|default:"0" }}
+
+                    </span>
+
                 </button>
 
-                <a href="{% url 'receptionist_profile' %}"
-                      class="profile-link">
+                <a href="{% url 'receptionist_profile' %}" class="profile-link">
 
-                     <div class="profile">
+                    <div class="profile">
 
-                             <div class="avatar">
+                        <div class="avatar">
 
-                                     R
+                            {{ request.user.username|first|upper }}
 
-                             </div>
+                        </div>
 
-                     <div>
+                        <div class="profile-details">
 
-                     <strong>{{ request.user.username }}</strong>
+                            <span class="profile-name">
 
-                      <p>{{ request.user.role|title }}</p>
+                                {{ request.user.username }}
 
-        </div>
+                            </span>
 
-    </div>
+                            <span class="profile-role">
 
-</a>
+                                {{ request.user.role|title }}
+
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+                    </div>
+
+                </a>
 
             </div>
 
         </header>
 
+        <!-- ================= PAGE CONTENT ================= -->
+
         <div class="content">
 
             {% block content %}
-
             {% endblock %}
 
         </div>
@@ -171,5 +248,11 @@
 
 </div>
 
+
+<script src="{% static 'js/receptionist.js' %}"></script>
+
+{% block js %}
+{% endblock %}
 </body>
+
 </html>

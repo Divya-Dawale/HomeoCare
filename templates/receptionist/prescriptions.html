@@ -12,204 +12,351 @@ href="{% static 'receptionist/prescriptions.css' %}">
 
 {% block content %}
 
-<!-- Stats -->
+<div class="prescriptions-page">
 
-<div class="stats-grid">
+    <!-- ================= HEADER ================= -->
 
-    <div class="stat-card">
-        <h3>Pending</h3>
-        <h1>{{ pending_count }}</h1>
-    </div>
-
-    <div class="stat-card">
-        <h3>Given</h3>
-        <h1>{{ given_count }}</h1>
-    </div>
-
-    <div class="stat-card">
-        <h3>Total</h3>
-        <h1>{{ total_count }}</h1>
-    </div>
-
-</div>
-
-<!-- Search -->
-
-<div class="toolbar">
-
-    <form method="GET" class="search-form">
-
-        <input
-            type="text"
-            name="search"
-            placeholder="Search Patient Name or Patient ID"
-            value="{{ search|default:'' }}"
-        >
-
-        <button type="submit">
-            Search
-        </button>
-
-    </form>
-
-</div>
-
-<!-- Filters -->
-
-<div class="filter-bar">
-
-    <a href="?"
-       class="{% if not selected_status %}active-filter{% endif %}">
-       All
-    </a>
-
-    <a href="?status=pending"
-       class="{% if selected_status == 'pending' %}active-filter{% endif %}">
-       Pending
-    </a>
-
-    <a href="?status=given"
-       class="{% if selected_status == 'given' %}active-filter{% endif %}">
-       Given
-    </a>
-
-</div>
-
-<!-- Prescription Cards -->
-
-{% for prescription in prescriptions %}
-
-<div class="prescription-card">
-
-    <!-- Header -->
-
-    <div class="card-header">
+    <div class="prescriptions-header">
 
         <div>
 
-            <h3>{{ prescription.patient.full_name }}</h3>
+            <span class="section-badge">
 
-            <span class="patient-id">
-                {{ prescription.patient.patient_id }}
+                Prescription Management
+
             </span>
+
+            <h2>
+
+                Prescription Distribution
+
+            </h2>
+
+            <p>
+
+                Review prescriptions prepared by doctors and manage medicine distribution for patients.
+
+            </p>
 
         </div>
 
-        {% if prescription.status == "given" %}
+    </div>
 
-            <span class="given-badge">
-                Given
-            </span>
 
-        {% else %}
+    <!-- ================= STATISTICS ================= -->
 
-            <span class="pending-badge">
+    <section class="stats-section">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon pending-icon">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Pending Distribution</span>
+
+                    <h2>{{ pending_count }}</h2>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon success-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Distributed</span>
+
+                    <h2>{{ given_count }}</h2>
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon total-icon">
+
+                    <i class="fa-solid fa-file-medical"></i>
+
+                </div>
+
+                <div class="stat-content">
+
+                    <span>Total Prescriptions</span>
+
+                    <h2>{{ total_count }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH + FILTER ================= -->
+
+    <div class="toolbar-card">
+
+        <form method="GET" class="search-form">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search by Patient Name or Patient ID"
+                    value="{{ search|default:'' }}"
+                >
+
+            </div>
+
+            <button type="submit">
+
+                Search
+
+            </button>
+
+        </form>
+
+        <div class="filter-bar">
+
+            <a href="?"
+               class="{% if not selected_status %}active-filter{% endif %}">
+                All
+            </a>
+
+            <a href="?status=pending"
+               class="{% if selected_status == 'pending' %}active-filter{% endif %}">
                 Pending
-            </span>
+            </a>
 
-        {% endif %}
+            <a href="?status=given"
+               class="{% if selected_status == 'given' %}active-filter{% endif %}">
+                Distributed
+            </a>
 
-    </div>
-
-    <!-- Medicine Highlight -->
-
-    <div class="medicine-box">
-
-        <div class="medicine-label">
-            Medicine
-        </div>
-
-        <div class="medicine-name">
-            💊 {{ prescription.medicine_name }}
         </div>
 
     </div>
 
-    <!-- Details -->
 
-    <div class="details-grid">
+    <!-- ================= PRESCRIPTIONS ================= -->
 
-        <div class="detail-item">
-            <span>Dosage</span>
-            <strong>{{ prescription.dosage }}</strong>
+    <div class="prescription-list">
+
+        {% for prescription in prescriptions %}
+
+        <div class="prescription-card">
+
+            <div class="card-top">
+
+                <div class="patient-info">
+
+                    <div class="patient-avatar">
+
+                        {{ prescription.patient.full_name|first|upper }}
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+
+                            {{ prescription.patient.full_name }}
+
+                        </h3>
+
+                        <span>
+
+                            Patient ID :
+                            {{ prescription.patient.patient_id }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% if prescription.status == "given" %}
+
+                    <span class="status-badge given">
+
+                        Given
+
+                    </span>
+
+                {% else %}
+
+                    <span class="status-badge pending">
+
+                        Pending
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="medicine-card">
+
+                <div class="medicine-icon">
+
+                    <i class="fa-solid fa-capsules"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="medicine-label">
+
+                        Prescribed Medicine
+
+                    </span>
+
+                    <h3>
+
+                        {{ prescription.medicine_name }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="details-grid">
+
+                <div class="detail-box">
+
+                    <small>Dosage</small>
+
+                    <strong>{{ prescription.dosage }}</strong>
+
+                </div>
+
+                <div class="detail-box">
+
+                    <small>Frequency</small>
+
+                    <strong>{{ prescription.frequency }}</strong>
+
+                </div>
+
+                <div class="detail-box">
+
+                    <small>Duration</small>
+
+                    <strong>{{ prescription.duration }}</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="instruction-card">
+
+                <h4>
+
+                    Doctor's Instructions
+
+                </h4>
+
+                <p>
+
+                    {{ prescription.instructions }}
+
+                </p>
+
+            </div>
+
+
+            <div class="date-info">
+
+                <div>
+
+                    <strong>Appointment</strong>
+
+                    <span>{{ prescription.appointment.appointment_date }}</span>
+
+                </div>
+
+                <div>
+
+                    <strong>Prescription</strong>
+
+                    <span>{{ prescription.created_at|date:"d M Y" }}</span>
+
+                </div>
+
+            </div>
+
+
+            {% if prescription.status == "pending" %}
+
+                <a href="{% url 'mark_medicine_given' prescription.id %}"
+                   class="give-btn">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Mark as Distributed
+
+                </a>
+
+            {% else %}
+
+                <div class="distributed-box">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Medicine Successfully Distributed
+
+                </div>
+
+            {% endif %}
+
         </div>
 
-        <div class="detail-item">
-            <span>Frequency</span>
-            <strong>{{ prescription.frequency }}</strong>
+        {% empty %}
+
+        <div class="empty-state">
+
+            <i class="fa-solid fa-file-circle-xmark"></i>
+
+            <h3>
+
+                No Prescriptions Found
+
+            </h3>
+
+            <p>
+
+                Prescriptions prescribed by doctors will appear here.
+
+            </p>
+
         </div>
 
-        <div class="detail-item">
-            <span>Duration</span>
-            <strong>{{ prescription.duration }}</strong>
-        </div>
+        {% endfor %}
 
     </div>
-
-    <!-- Instructions -->
-
-    <div class="instruction-box">
-
-        <strong>Instructions</strong>
-
-        <p>
-            {{ prescription.instructions }}
-        </p>
-
-    </div>
-
-    <!-- Dates -->
-
-    <div class="date-row">
-
-        <span>
-            Appointment:
-            {{ prescription.appointment.appointment_date }}
-        </span>
-
-        <span>
-            Prescription:
-            {{ prescription.created_at|date:"d M Y" }}
-        </span>
-
-    </div>
-
-    <!-- Action -->
-
-    {% if prescription.status == "pending" %}
-
-        <a
-            href="{% url 'mark_medicine_given' prescription.id %}"
-            class="give-btn">
-
-            ✓ Mark as Distributed
-
-        </a>
-
-    {% else %}
-
-        <div class="given-message">
-
-            ✓ Medicine Successfully Distributed
-
-        </div>
-
-    {% endif %}
 
 </div>
-
-{% empty %}
-
-<div class="empty-card">
-
-    <h3>No Prescriptions Found</h3>
-
-    <p>
-        No prescriptions available.
-    </p>
-
-</div>
-
-{% endfor %}
-
 {% endblock %}

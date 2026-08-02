@@ -9,102 +9,345 @@
 Dashboard
 {% endblock %}
 
+
+
 {% block content %}
+<div class="dashboard-wrapper">
+<!-- ================= HERO ================= -->
 
-<div class="stats-grid">
+<section class="dashboard-hero">
 
-    <div class="card">
-        <h4>Pending Requests</h4>
-        <h2>{{ pending_requests }}</h2>
+    <div class="hero-content">
+
+        <span class="hero-badge">
+
+            <i class="fa-solid fa-leaf"></i>
+
+            HomeoCare Reception
+
+        </span>
+
+        <h2>
+
+            Welcome Back 👋
+
+        </h2>
+
+        <p>
+
+            Manage appointments, monitor clinic activity, and keep patient
+            records organized from one simple dashboard.
+
+        </p>
+
     </div>
 
-    <div class="card">
-        <h4>Completed Appointments</h4>
-        <h2>{{ approved_appointments }}</h2>
+</section>
+
+
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats-section">
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>Pending Requests</span>
+
+                <h2>{{ pending_requests }}</h2>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>Completed Appointments</span>
+
+                <h2>{{ approved_appointments }}</h2>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-user-group"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>Total Patients</span>
+
+                <h2>{{ total_patients }}</h2>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>Today's Appointments</span>
+
+                <h2>{{ today_appointments }}</h2>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="card">
-        <h4>Total Patients</h4>
-        <h2>{{ total_patients }}</h2>
-    </div>
+</section>
+<!-- ================= RECENT APPOINTMENTS ================= -->
 
-    <div class="card">
-        <h4>Total Appointments</h4>
-        <h2>{{ today_appointments }}</h2>
-    </div>
+<section class="dashboard-section">
 
-</div>
+    <div class="section-header">
 
-<div class="table-card">
+        <div>
 
-    <div class="table-header">
+            <span class="section-badge">
 
-        <h2>Recent Appointment Requests</h2>
+                Recent Activity
 
-        <a href="{% url 'appointment_requests' %}">
+            </span>
+
+            <h3>
+
+                Recent Appointment Requests
+
+            </h3>
+
+            <p>
+
+                Review the latest appointment requests received by the clinic.
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'appointment_requests' %}" class="view-all-btn">
+
             View All
+
+            <i class="fa-solid fa-arrow-right"></i>
+
         </a>
 
     </div>
 
-    <table>
+    <div class="table-card">
 
-        <thead>
+        <table class="dashboard-table">
 
-        <tr>
+            <thead>
 
-            <th>Name</th>
+                <tr>
 
-            <th>Phone</th>
+                    <th>Patient</th>
 
-            <th>Date</th>
+                    <th>Phone</th>
 
-            <th>Status</th>
+                    <th>Preferred Date</th>
 
-        </tr>
+                    <th>Status</th>
 
-        </thead>
+                </tr>
 
-        <tbody>
+            </thead>
 
-        {% for request in recent_requests %}
+            <tbody>
 
-        <tr>
+                {% for request in recent_requests %}
 
-            <td>{{ request.full_name }}</td>
+                <tr>
 
-            <td>{{ request.phone }}</td>
+                    <td>
 
-            <td>{{ request.preferred_date }}</td>
+                        <div class="patient-info">
 
-            <td>{{ request.status }}</td>
+                            <div class="patient-avatar">
 
-        </tr>
+                                {{ request.full_name|first|upper }}
 
-        {% empty %}
+                            </div>
 
-        <tr>
+                            <div>
 
-            <td colspan="4">
-                No appointment requests available.
-            </td>
+                                <h4>
 
-        </tr>
+                                    {{ request.full_name }}
 
-        {% endfor %}
+                                </h4>
 
-        </tbody>
+                                <span>
 
-    </table>
+                                    Appointment Request
 
-</div>
+                                </span>
 
-<div class="quick-actions">
+                            </div>
 
-    <a href="{% url 'add_patient' %}" class="action-btn">
-        Add Patient
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        {{ request.phone }}
+
+                    </td>
+
+                    <td>
+
+                        {{ request.preferred_date }}
+
+                    </td>
+
+                    <td>
+
+                        <span class="status {{ request.status|lower }}">
+
+                            {{ request.status }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="4">
+
+                        <div class="empty-table">
+
+                            <i class="fa-regular fa-calendar-xmark"></i>
+
+                            <h4>
+
+                                No Appointment Requests
+
+                            </h4>
+
+                            <p>
+
+                                New appointment requests will appear here.
+
+                            </p>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- ================= QUICK ACTION ================= -->
+
+<section class="dashboard-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-badge">
+
+                Quick Action
+
+            </span>
+
+            <h3>
+
+                Add a New Patient
+
+            </h3>
+
+            <p>
+
+                Register a new patient and begin managing their appointments and medical records.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <a href="{% url 'add_patient' %}" class="quick-action-card">
+
+        <div class="quick-action-left">
+
+            <div class="quick-action-icon">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </div>
+
+            <div class="quick-action-content">
+
+                <h4>
+
+                    Register Patient
+
+                </h4>
+
+                <p>
+
+                    Create a new patient profile and store their details securely.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="quick-action-arrow">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </div>
+
     </a>
 
+</section>
 </div>
-
 {% endblock %}

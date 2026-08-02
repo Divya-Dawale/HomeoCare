@@ -1,31 +1,290 @@
+/*========================================
+        PATIENT PAGE SCROLL FIX
+========================================*/
 
-.page-header{
-    margin-bottom:30px;
+
+.main{
+
+    overflow-y:auto;
+
 }
 
-.page-header h2{
-    color:#1E293B;
+
+.content{
+
+    overflow-y:auto;
+
 }
+/*========================================
+            PATIENTS PAGE WRAPPER
+========================================*/
 
-.page-header p{
-    color:#64748B;
-}
 
-.table-card{
-
-    background:white;
+.patients-page{
 
     padding:25px;
 
-    border-radius:16px;
+}
 
-    box-shadow:0 8px 24px rgba(15,23,42,.08);
 
-    overflow-x:auto;
+
+/*========================================
+            PAGE HEADER
+========================================*/
+
+
+.patients-header{
+
+    margin-bottom:30px;
 
 }
 
-table{
+
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+
+
+.patients-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.patients-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+
+
+/*========================================
+            SEARCH CARD
+========================================*/
+
+
+.patient-search-card{
+
+    background:#ffffff;
+
+    border:1px solid #E6F0EB;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+
+
+/* FORM */
+
+
+.patient-search-form{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+
+
+/* INPUT BOX */
+
+
+.search-input{
+
+    flex:1;
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 18px;
+
+    background:#F8FCFA;
+
+    border:1px solid #E1ECE5;
+
+    border-radius:16px;
+
+    transition:.3s;
+
+}
+
+
+
+.search-input i{
+
+    color:#64748B;
+
+    font-size:16px;
+
+}
+
+
+
+.search-input input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+    font-family:'Manrope',sans-serif;
+
+    color:#1E293B;
+
+}
+
+
+
+.search-input:focus-within{
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.12);
+
+}
+
+
+
+/*========================================
+            SEARCH BUTTON
+========================================*/
+
+
+.patient-search-form button{
+
+    height:54px;
+
+    padding:0 32px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+    box-shadow:0 10px 25px rgba(46,139,87,.18);
+
+}
+
+
+
+.patient-search-form button i{
+
+    font-size:14px;
+
+}
+
+
+
+.patient-search-form button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(46,139,87,.30);
+
+}
+/*========================================
+            PATIENT TABLE CARD
+========================================*/
+
+
+.patients-table-card{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid #E6F0EB;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+
+
+
+
+/*========================================
+            TABLE
+========================================*/
+
+
+.patients-table{
 
     width:100%;
 
@@ -33,112 +292,379 @@ table{
 
 }
 
-th{
 
-    background:#F8FAFC;
 
-    color:#475569;
+.patients-table thead{
 
-    padding:16px;
+    background:#F7FBF9;
+
+}
+
+
+
+.patients-table th{
+
+    padding:20px 24px;
 
     text-align:left;
 
-}
+    color:#64748B;
 
-td{
+    font-size:13px;
 
-    padding:16px;
+    text-transform:uppercase;
 
-    border-top:1px solid #E2E8F0;
+    letter-spacing:.5px;
 
-}
-
-tbody tr{
-
-    transition:.25s;
+    font-weight:700;
 
 }
 
-tbody tr:hover{
 
-    background:#F8FAFC;
 
-}
+.patients-table td{
 
-.view-btn{
+    padding:20px 24px;
 
-    display:inline-block;
+    border-top:1px solid #EEF3F2;
 
-    background:#2563EB;
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:8px 18px;
-
-    border-radius:8px;
-
-    transition:.3s;
-
-}
-
-.view-btn:hover{
-
-    background:#1D4ED8;
-
-    transform:translateY(-2px);
-
-}
-.search-card{
-
-    margin-bottom:20px;
-
-}
-
-.search-card form{
-
-    display:flex;
-    gap:12px;
-
-}
-
-.search-card input{
-
-    flex:1;
-
-    padding:12px 16px;
-
-    border:1px solid #CBD5E1;
-
-    border-radius:10px;
+    color:#334155;
 
     font-size:14px;
 
 }
 
-.search-card button{
 
-    background:#2563EB;
 
-    color:white;
 
-    border:none;
 
-    padding:12px 20px;
+.patients-table tbody tr{
 
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-    transition:.3s;
+    transition:.25s ease;
 
 }
 
-.search-card button:hover{
 
-    background:#1D4ED8;
+
+.patients-table tbody tr:hover{
+
+    background:#F9FDFC;
+
+}
+
+
+
+
+
+
+/*========================================
+            PATIENT PROFILE CELL
+========================================*/
+
+
+.patient-cell{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+
+.patient-avatar{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    font-size:17px;
+
+    font-weight:800;
+
+}
+
+
+
+.patient-cell strong{
+
+    display:block;
+
+    font-size:15px;
+
+    color:#1E293B;
+
+    margin-bottom:3px;
+
+}
+
+
+
+.patient-cell small{
+
+    display:block;
+
+    color:#64748B;
+
+    font-size:12px;
+
+}
+
+
+
+
+
+/*========================================
+            PATIENT ID
+========================================*/
+
+
+.patients-table td:first-child{
+
+    color:#2E8B57;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/*========================================
+            GENDER BADGE
+========================================*/
+
+
+.gender-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    padding:7px 15px;
+
+    border-radius:50px;
+
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-transform:capitalize;
+
+}
+
+
+
+
+
+
+/*========================================
+            VIEW BUTTON
+========================================*/
+
+
+.view-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+
+    padding:9px 18px;
+
+    border-radius:14px;
+
+
+    background:#F0FAF5;
+
+    color:#2E8B57;
+
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:700;
+
+
+    transition:.3s ease;
+
+}
+
+
+
+.view-btn i{
+
+    font-size:12px;
+
+}
+
+
+
+.view-btn:hover{
+
+    background:#2E8B57;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+/*========================================
+            EMPTY STATE
+========================================*/
+
+
+.empty-state{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+
+
+.empty-state i{
+
+    font-size:45px;
+
+    color:#2E8B57;
+
+    margin-bottom:18px;
+
+}
+
+
+
+.empty-state h3{
+
+    font-size:20px;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.empty-state p{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+
+@media(max-width:900px){
+
+
+    .patient-search-form{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+
+
+    .patient-search-form button{
+
+        width:100%;
+
+    }
+
+
+
+    .patients-table-card{
+
+        overflow-x:auto;
+
+    }
+
+
+
+    .patients-table{
+
+        min-width:750px;
+
+    }
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+    .patients-page{
+
+        padding:18px;
+
+    }
+
+
+
+    .patients-header h2{
+
+        font-size:24px;
+
+    }
+
+
+
+    .patient-search-card{
+
+        padding:18px;
+
+        border-radius:18px;
+
+    }
+
 
 }

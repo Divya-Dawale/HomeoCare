@@ -12,61 +12,196 @@ Edit Patient
 
 {% block content %}
 
-<div class="form-card">
+<div class="edit-patient-page">
 
-<form method="POST">
+    <!-- ================= HEADER ================= -->
 
-    {% csrf_token %}
+    <div class="edit-header">
 
-    <div class="form-grid">
+        <div>
 
-        <div class="form-group">
-            <label>Full Name</label>
-            <input type="text"
-                   name="full_name"
-                   value="{{ patient.full_name }}">
-        </div>
+            <span class="section-badge">
 
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text"
-                   name="phone"
-                   value="{{ patient.phone }}">
-        </div>
+                Patient Records
 
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email"
-                   name="email"
-                   value="{{ patient.email }}">
-        </div>
+            </span>
 
-        <div class="form-group">
-            <label>Age</label>
-            <input type="number"
-                   name="age"
-                   value="{{ patient.age }}">
-        </div>
+            <h2>
 
-        <div class="form-group">
-            <label>Gender</label>
-            <input type="text"
-                   name="gender"
-                   value="{{ patient.gender }}">
-        </div>
+                Edit Patient Profile
 
-        <div class="form-group full-width">
-            <label>Address</label>
-            <textarea name="address">{{ patient.address }}</textarea>
+            </h2>
+
+            <p>
+
+                Update the patient's personal information. Keep records accurate for future appointments and prescriptions.
+
+            </p>
+
         </div>
 
     </div>
 
-    <button type="submit" class="save-btn">
-        Save Changes
-    </button>
 
-</form>
+    <!-- ================= FORM CARD ================= -->
+
+    <div class="form-card">
+
+        <div class="card-header">
+
+            <div class="patient-mini">
+
+                <div class="patient-avatar">
+
+                    {{ patient.full_name|first|upper }}
+
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        {{ patient.full_name }}
+
+                    </h3>
+
+                    <span>
+
+                        Patient ID • {{ patient.patient_id }}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Full Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="full_name"
+                        value="{{ patient.full_name }}">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Phone Number
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="phone"
+                        value="{{ patient.phone }}">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ patient.email }}">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Age
+
+                    </label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        value="{{ patient.age }}">
+                                        </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Gender
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="gender"
+                        value="{{ patient.gender }}">
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>
+
+                        Address
+
+                    </label>
+
+                    <textarea
+                        name="address"
+                        rows="5">{{ patient.address }}</textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ACTIONS ================= -->
+
+            <div class="form-actions">
+
+                <a href="{% url 'patient_detail' patient.id %}"
+                   class="cancel-btn">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back
+
+                </a>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Changes
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
 
 </div>
 

@@ -1,188 +1,372 @@
 {% extends 'receptionist/base_receptionist.html' %}
 {% load static %}
 
+{% block title %}
+Billing
+{% endblock %}
+
 {% block page_title %}
 Billing
 {% endblock %}
 
-{% block css %}
+{% block page_subtitle %}
+Generate invoices and manage patient payments.
+{% endblock %}
 
+{% block css %}
 <link rel="stylesheet"
 href="{% static 'billing/billing.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="page-header">
+<div class="billing-page">
 
-```
-<h2>💳 Billing Management</h2>
+    <!-- ================= HEADER ================= -->
 
-<p>
-    Generate bills for medicines already distributed to patients.
-</p>
-```
+    <div class="billing-header">
 
-</div>
+        <div>
 
-{% for prescription in prescriptions %}
+            <span class="section-badge">
 
-<form method="POST" class="billing-card">
+                Billing & Payments
 
-```
-{% csrf_token %}
+            </span>
 
-<input
-type="hidden"
-name="prescription_id"
-value="{{ prescription.id }}"
->
+            <h2>
 
-<div class="card-header">
+                Billing Management
 
-    <div>
+            </h2>
 
-        <h3>
-            {{ prescription.patient.full_name }}
-        </h3>
+            <p>
 
-        <span class="patient-id">
-            {{ prescription.patient.patient_id }}
-        </span>
+                Generate invoices for medicines distributed to patients and manage payment records efficiently.
+
+            </p>
+
+        </div>
 
     </div>
 
-    <span class="ready-badge">
-        Ready For Billing
-    </span>
 
-</div>
 
-<div class="medicine-box">
+    <!-- ================= STATISTICS ================= -->
 
-    <h4>
-        💊 {{ prescription.medicine_name }}
-    </h4>
+    <div class="billing-stats">
 
-    <p>
-        Duration:
-        <strong>
-            {{ prescription.duration }}
-        </strong>
-    </p>
+        <div class="stat-card">
 
-</div>
+            <div class="stat-icon pending-icon">
 
-<div class="amount-grid">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
 
-    <div class="amount-card">
+            </div>
 
-        <span>
-            Consultation Fee
-        </span>
+            <div class="stat-content">
 
-        <h3>
-           ₹{{ prescription.consultation_fee|floatformat:0 }}
-        </h3>
+                <span>Pending Bills</span>
+
+                <h2>{{ prescriptions|length }}</h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon success-icon">
+
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>Revenue Pending</span>
+
+                <h2>₹ --</h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon total-icon">
+
+                <i class="fa-solid fa-receipt"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>Invoices</span>
+
+                <h2>{{ prescriptions|length }}</h2>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="amount-card">
 
-        <span>
-            Medicine Fee
-        </span>
 
-        <h3>
-            ₹{{ prescription.medicine_fee|floatformat:0 }}
-        </h3>
+    <!-- ================= BILLING LIST ================= -->
+
+    <div class="billing-list">
+
+        {% for prescription in prescriptions %}
+
+        <form method="POST" class="billing-card">
+
+            {% csrf_token %}
+
+            <input
+                type="hidden"
+                name="prescription_id"
+                value="{{ prescription.id }}"
+            >
+
+            <!-- ================= CARD HEADER ================= -->
+
+            <div class="card-top">
+
+                <div class="patient-info">
+
+                    <div class="patient-avatar">
+
+                        {{ prescription.patient.full_name|first|upper }}
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+
+                            {{ prescription.patient.full_name }}
+
+                        </h3>
+
+                        <span>
+
+                            Patient ID :
+                            {{ prescription.patient.patient_id }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <span class="ready-badge">
+
+                    Ready For Billing
+
+                </span>
+
+            </div>
+
+
+
+            <!-- ================= MEDICINE ================= -->
+
+            <div class="medicine-card">
+
+                <div class="medicine-icon">
+
+                    <i class="fa-solid fa-capsules"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="medicine-label">
+
+                        Prescribed Medicine
+
+                    </span>
+
+                    <h3>
+
+                        {{ prescription.medicine_name }}
+
+                    </h3>
+
+                    <p>
+
+                        Duration :
+                        {{ prescription.duration }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= AMOUNT ================= -->
+
+            <div class="amount-grid">
+
+                <div class="amount-box">
+
+                    <small>
+
+                        Consultation Fee
+
+                    </small>
+
+                    <strong>
+
+                        ₹{{ prescription.consultation_fee|floatformat:0 }}
+
+                    </strong>
+
+                </div>
+
+                <div class="amount-box">
+
+                    <small>
+
+                        Medicine Fee
+
+                    </small>
+
+                    <strong>
+
+                        ₹{{ prescription.medicine_fee|floatformat:0 }}
+
+                    </strong>
+
+                </div>
+
+                <div class="amount-box total">
+
+                    <small>
+
+                        Total Amount
+
+                    </small>
+
+                    <strong>
+
+                        ₹{{ prescription.total_amount|floatformat:0 }}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= PAYMENT ================= -->
+
+            <div class="payment-card">
+
+                <h4>
+
+                    Payment Method
+
+                </h4>
+
+                <div class="payment-options">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="cash"
+                            required>
+
+                        Cash
+
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="online">
+
+                        Online
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= FINAL AMOUNT ================= -->
+
+            <div class="final-amount">
+
+                <label>
+
+                    Final Amount
+
+                </label>
+
+                <input
+                    type="number"
+                    name="final_amount"
+                    value="{{ prescription.total_amount|floatformat:0 }}"
+                    required>
+
+            </div>
+
+
+
+            <!-- ================= BUTTON ================= -->
+
+            <button
+                type="submit"
+                class="bill-btn">
+
+                <i class="fa-solid fa-file-invoice"></i>
+
+                Generate Invoice
+
+            </button>
+
+        </form>
+
+        {% empty %}
+
+        <div class="empty-state">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>
+
+                No Bills Pending
+
+            </h3>
+
+            <p>
+
+                All distributed medicines have already been billed.
+
+            </p>
+
+        </div>
+
+        {% endfor %}
 
     </div>
 
-    <div class="amount-card total-card">
-
-        <span>
-            Total Amount
-        </span>
-
-        <h2>
-        ₹{{ prescription.total_amount|floatformat:0 }}
-        </h2>
-
-    </div>
-
 </div>
-
-<div class="payment-section">
-
-    <label>
-
-        <input
-        type="radio"
-        name="payment_method"
-        value="cash"
-        required>
-
-        Cash
-
-    </label>
-
-    <label>
-
-        <input
-        type="radio"
-        name="payment_method"
-        value="online">
-
-        Online
-
-    </label>
-
-</div>
-
-<div class="override-section">
-
-    <label>
-
-        Final Amount
-
-    </label>
-
-    <input
-    type="number"
-    name="final_amount"
-    value="{{ prescription.total_amount|floatformat:0 }}"
-    required>
-
-</div>
-
-<button
-type="submit"
-class="bill-btn">
-
-    Generate Bill
-
-</button>
-```
-
-</form>
-
-{% empty %}
-
-<div class="empty-card">
-
-```
-<h3>
-    No Bills Pending
-</h3>
-
-<p>
-    All distributed medicines have already been billed.
-</p>
-```
-
-</div>
-
-{% endfor %}
 
 {% endblock %}

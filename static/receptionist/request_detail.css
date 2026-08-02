@@ -1,133 +1,623 @@
-.request-card{
+/*========================================
+            PAGE WRAPPER
+========================================*/
 
-    background:white;
+.request-detail-page{
 
-    padding:35px;
+    padding:25px;
 
-    border-radius:18px;
+    height:calc(100vh - 90px);
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    overflow-y:auto;
 
-}
-
-.request-card h2{
-
-    margin-bottom:15px;
+    overflow-x:hidden;
 
 }
 
-.status{
 
-    margin-bottom:20px;
 
-}
+/*========================================
+            PAGE HEADER
+========================================*/
 
-.pending{
+.patients-header{
 
-    color:#B45309;
-    font-weight:bold;
-}
-
-.approved{
-
-    color:#15803D;
-    font-weight:bold;
-}
-
-.rejected{
-
-    color:#B91C1C;
-    font-weight:bold;
-}
-
-.details-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:25px;
-
-    margin:25px 0;
+    margin-bottom:30px;
 
 }
 
-.details-grid strong{
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.patients-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+.patients-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+
+
+/*========================================
+        REQUEST SUMMARY CARD
+========================================*/
+
+.request-summary-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:28px 30px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+.summary-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.summary-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:22px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+
+    color:#FFFFFF;
+
+    font-size:28px;
+
+}
+
+.summary-left h3{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+.summary-left p{
 
     color:#64748B;
 
 }
 
-.details-grid p{
 
-    margin-top:5px;
+
+/*========================================
+            STATUS BADGES
+========================================*/
+
+.status-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-transform:capitalize;
 
 }
 
-hr{
+.status-badge.pending{
 
-    margin:30px 0;
+    background:#FFF8E5;
 
-    border:none;
-
-    height:1px;
-
-    background:#E2E8F0;
+    color:#D97706;
 
 }
 
-.actions{
+.status-badge.approved{
 
-    margin-top:35px;
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+}
+
+.status-badge.rejected{
+
+    background:#FDECEC;
+
+    color:#DC2626;
+
+}
+/*========================================
+            DETAIL CARDS
+========================================*/
+
+.detail-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+
+
+/*========================================
+            CARD TITLE
+========================================*/
+
+.card-title{
 
     display:flex;
 
-    gap:15px;
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:28px;
 
 }
 
-.approve-btn{
+.card-title i{
 
-    display:inline-block;
-    text-decoration:none;
-    text-align:center;
+    width:52px;
 
-    background:#22C55E;
-    color:white;
+    height:52px;
 
-    padding:12px 28px;
+    border-radius:16px;
 
-    border-radius:10px;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+
+    color:#FFFFFF;
+
+    font-size:20px;
+
+}
+
+.card-title h3{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+
+
+
+/*========================================
+            DETAILS GRID
+========================================*/
+
+.details-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
+
+}
+
+
+
+/*========================================
+            DETAIL ITEM
+========================================*/
+
+.detail-item{
+
+    background:#F8FBF9;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:18px;
+
+    padding:20px;
 
     transition:.3s;
+
+}
+
+.detail-item:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.05);
+
+}
+
+.detail-label{
+
+    display:block;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#64748B;
+
+    margin-bottom:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.detail-value{
+
+    display:block;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+    line-height:1.6;
+
+}
+
+
+
+/*========================================
+            FULL WIDTH
+========================================*/
+
+.detail-full{
+
+    grid-column:1/-1;
+
+}
+
+
+
+/*========================================
+            ADDRESS BOX
+========================================*/
+
+.full-width-detail{
+
+    background:#F8FBF9;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    color:#334155;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+/*========================================
+            ACTION BUTTONS
+========================================*/
+
+.action-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:18px;
+
+    margin-top:35px;
+
+    margin-bottom:10px;
+
+}
+
+.action-buttons a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    padding:15px 30px;
+
+    border-radius:16px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.3s ease;
+
+}
+
+
+
+/*========================================
+            REJECT BUTTON
+========================================*/
+
+.reject-btn{
+
+    background:#FEF2F2;
+
+    color:#DC2626;
+
+    border:1px solid #FECACA;
+
+}
+
+.reject-btn:hover{
+
+    background:#DC2626;
+
+    color:#FFFFFF;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(220,38,38,.18);
+
+}
+
+
+
+/*========================================
+            APPROVE BUTTON
+========================================*/
+
+.approve-btn{
+
+    background:linear-gradient(135deg,#2E8B57,#42A66F);
+
+    color:#FFFFFF;
+
+    border:1px solid transparent;
+
 }
 
 .approve-btn:hover{
 
     transform:translateY(-3px);
 
-}
-
-.reject-btn{
-
-    background:#EF4444;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 28px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    box-shadow:0 18px 35px rgba(46,139,87,.22);
 
 }
 
-.reject-btn:hover{
+/*========================================
+            SUMMARY CONTENT
+========================================*/
 
-    transform:translateY(-3px);
+.summary-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+}
+
+
+
+.patient-avatar-large{
+
+    width:82px;
+
+    height:82px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    flex-shrink:0;
+
+    box-shadow:0 15px 35px rgba(46,139,87,.18);
+
+}
+
+
+
+.summary-info h3{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+
+
+.summary-info p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+@media (max-width:992px){
+
+    .request-summary-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .summary-right{
+
+        width:100%;
+
+    }
+
+    .status-badge{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}
+
+
+
+@media (max-width:768px){
+
+    .request-detail-page{
+
+        padding:20px;
+
+    }
+
+    .details-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card-title{
+
+        margin-bottom:22px;
+
+    }
+
+    .summary-icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:24px;
+
+    }
+
+    .summary-left h3{
+
+        font-size:20px;
+
+    }
+
+    .action-buttons{
+
+        flex-direction:column-reverse;
+
+    }
+
+    .action-buttons a{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
 
 }

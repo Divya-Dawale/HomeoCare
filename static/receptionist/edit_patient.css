@@ -1,89 +1,563 @@
+/*========================================
+            EDIT PATIENT PAGE
+========================================*/
+
+.edit-patient-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
+}
+
+
+/*========================================
+            PAGE HEADER
+========================================*/
+
+.edit-header{
+
+    margin-bottom:4px;
+
+}
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.edit-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+.edit-header p{
+
+    max-width:650px;
+
+    color:#64748B;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+
+/*========================================
+            FORM CARD
+========================================*/
+
 .form-card{
 
-    background:#ffffff;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 8px 24px rgba(15,23,42,.08);
-    max-width:800px;
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:34px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
 }
+
+
+/*========================================
+            CARD HEADER
+========================================*/
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:34px;
+
+    padding-bottom:24px;
+
+    border-bottom:1px solid #EEF4F1;
+
+}
+
+.patient-mini{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.patient-avatar{
+
+    width:82px;
+
+    height:82px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    font-size:30px;
+
+    font-weight:800;
+
+    box-shadow:0 14px 30px rgba(46,139,87,.25);
+
+}
+
+.patient-mini h3{
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+.patient-mini span{
+
+    color:#64748B;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+/*========================================
+            FORM GRID
+========================================*/
 
 .form-grid{
 
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
 
-.form-group{
+    grid-template-columns:repeat(2,1fr);
 
-    display:flex;
-    flex-direction:column;
-}
+    gap:24px;
 
-.form-group label{
-
-    font-size:14px;
-    font-weight:600;
-    color:#475569;
-    margin-bottom:8px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-
-    padding:12px 14px;
-    border:1px solid #CBD5E1;
-    border-radius:10px;
-    font-size:15px;
-    transition:.3s;
-    outline:none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-
-    border-color:#2563EB;
-    box-shadow:0 0 0 4px rgba(37,99,235,.1);
-}
-
-.form-group textarea{
-
-    resize:vertical;
-    min-height:120px;
 }
 
 .full-width{
 
     grid-column:1 / -1;
+
+}
+/*========================================
+            FORM GROUP
+========================================*/
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:10px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#64748B;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    border:1px solid #DDECE5;
+
+    border-radius:16px;
+
+    background:#FAFCFB;
+
+    padding:16px 18px;
+
+    font-size:15px;
+
+    color:#1E293B;
+
+    transition:.35s;
+
+    outline:none;
+
+    font-family:inherit;
+
+}
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:140px;
+
+    line-height:1.7;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+    color:#A0AEC0;
+
+}
+
+.form-group input:hover,
+.form-group textarea:hover{
+
+    border-color:#BFDCCF;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    background:#FFFFFF;
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.10);
+
+}
+
+
+/*========================================
+            ACTIONS
+========================================*/
+
+.form-actions{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-top:36px;
+
+    padding-top:28px;
+
+    border-top:1px solid #EEF4F1;
+
+}
+
+
+/*========================================
+            BUTTONS
+========================================*/
+
+.save-btn,
+.cancel-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    height:56px;
+
+    padding:0 28px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    cursor:pointer;
+
 }
 
 .save-btn{
 
-    margin-top:25px;
-    background:#2563EB;
-    color:white;
     border:none;
-    padding:12px 24px;
-    border-radius:10px;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+
+    color:#FFFFFF;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    box-shadow:0 12px 28px rgba(46,139,87,.22);
+
 }
 
 .save-btn:hover{
 
-    background:#1D4ED8;
-    transform:translateY(-2px);
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 36px rgba(46,139,87,.30);
+
 }
 
-@media(max-width:768px){
+.cancel-btn{
 
-    .form-grid{
+    background:#FFFFFF;
 
-        grid-template-columns:1fr;
-    }
+    color:#2E8B57;
+
+    border:1px solid #DDECE5;
+
+}
+
+.cancel-btn:hover{
+
+    background:#F3FBF7;
+
+    transform:translateY(-3px);
+
+}
+/*========================================
+            FORM GROUP
+========================================*/
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:10px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#64748B;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    border:1px solid #DDECE5;
+
+    border-radius:16px;
+
+    background:#FAFCFB;
+
+    padding:16px 18px;
+
+    font-size:15px;
+
+    color:#1E293B;
+
+    transition:.35s;
+
+    outline:none;
+
+    font-family:inherit;
+
+}
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:140px;
+
+    line-height:1.7;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+    color:#A0AEC0;
+
+}
+
+.form-group input:hover,
+.form-group textarea:hover{
+
+    border-color:#BFDCCF;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    background:#FFFFFF;
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.10);
+
+}
+
+
+/*========================================
+            ACTIONS
+========================================*/
+
+.form-actions{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-top:36px;
+
+    padding-top:28px;
+
+    border-top:1px solid #EEF4F1;
+
+}
+
+
+/*========================================
+            BUTTONS
+========================================*/
+
+.save-btn,
+.cancel-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    height:56px;
+
+    padding:0 28px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+.save-btn{
+
+    border:none;
+
+    color:#FFFFFF;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    box-shadow:0 12px 28px rgba(46,139,87,.22);
+
+}
+
+.save-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 36px rgba(46,139,87,.30);
+
+}
+
+.cancel-btn{
+
+    background:#FFFFFF;
+
+    color:#2E8B57;
+
+    border:1px solid #DDECE5;
+
+}
+
+.cancel-btn:hover{
+
+    background:#F3FBF7;
+
+    transform:translateY(-3px);
 
 }

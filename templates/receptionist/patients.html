@@ -1,117 +1,282 @@
 {% extends 'receptionist/base_receptionist.html' %}
 {% load static %}
-    
+
 
 {% block title %}
 Patients
 {% endblock %}
 
+
 {% block page_title %}
 Patients
 {% endblock %}
+
+
+{% block page_subtitle %}
+Manage registered patient records.
+{% endblock %}
+
 
 {% block css %}
 <link rel="stylesheet"
 href="{% static 'receptionist/patients.css' %}">
 {% endblock %}
 
+
+
 {% block content %}
 
-<div class="page-header">
 
-    <h2>Registered Patients</h2>
+<div class="patients-page">
 
-    <p>
-        View all registered patients.
-    </p>
+
+    <!-- HEADER -->
+
+    <div class="patients-header">
+
+        <div>
+
+            <span class="section-badge">
+                Patient Records
+            </span>
+
+
+            <h2>
+                Registered Patients
+            </h2>
+
+
+            <p>
+                Search and manage all registered patients.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- SEARCH -->
+
+    <div class="patient-search-card">
+
+
+        <form method="GET" class="patient-search-form">
+
+
+            <div class="search-input">
+
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search by Name, Patient ID or Phone"
+                    value="{{ search|default:'' }}"
+                >
+
+
+            </div>
+
+
+
+            <button type="submit">
+               <i class="fa-solid fa-magnifying-glass"></i>
+                Search
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+
+    <!-- TABLE -->
+
+
+    <div class="patients-table-card">
+
+
+        <table class="patients-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>Patient ID</th>
+
+                    <th>Patient</th>
+
+                    <th>Phone</th>
+
+                    <th>Gender</th>
+
+                    <th>Action</th>
+
+
+                </tr>
+
+            </thead>
+
+
+
+
+            <tbody>
+
+
+            {% for patient in patients %}
+
+
+
+                <tr>
+
+
+                    <td>
+
+                        #{{ patient.patient_id }}
+
+                    </td>
+
+
+
+                    <td>
+
+
+                        <div class="patient-cell">
+
+
+                            <div class="patient-avatar">
+
+                                {{ patient.full_name|first|upper }}
+
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    {{ patient.full_name }}
+                                </strong>
+
+                                <small>
+                                    Registered Patient
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </td>
+
+
+
+
+                    <td>
+
+                        {{ patient.phone }}
+
+                    </td>
+
+
+
+
+                    <td>
+
+                        <span class="gender-badge">
+
+                            {{ patient.gender }}
+
+                        </span>
+
+                    </td>
+
+
+
+
+                    <td>
+
+
+                        <a href="{% url 'patient_detail' patient.id %}"
+                           class="view-btn">
+
+                            View
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                    </td>
+
+
+
+                </tr>
+
+
+
+            {% empty %}
+
+
+
+                <tr>
+
+                    <td colspan="5">
+
+
+                        <div class="empty-state">
+
+
+                            <i class="fa-solid fa-user-slash"></i>
+
+
+                            <h3>
+                                No Patients Found
+                            </h3>
+
+
+                            <p>
+                                Registered patients will appear here.
+                            </p>
+
+
+                        </div>
+
+
+                    </td>
+
+                </tr>
+
+
+
+            {% endfor %}
+
+
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
 
 </div>
-<div class="search-card">
 
-    <form method="GET">
-
-        <input
-            type="text"
-            name="search"
-            placeholder="Search by Name, Patient ID or Phone"
-            value="{{ search|default:'' }}"
-        >
-
-        <button type="submit">
-            Search
-        </button>
-
-    </form>
-
-</div>
-
-<div class="table-card">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Patient ID</th>
-
-<th>Name</th>
-
-<th>Phone</th>
-
-<th>Gender</th>
-
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-{% for patient in patients %}
-
-<tr>
-
-<td>{{ patient.patient_id }}</td>
-
-<td>{{ patient.full_name }}</td>
-
-<td>{{ patient.phone }}</td>
-
-<td>{{ patient.gender }}</td>
-
-<td>
-
-<a href="{% url 'patient_detail' patient.id %}"
-class="view-btn">
-
-View
-
-</a>
-
-</td>
-
-</tr>
-
-{% empty %}
-
-<tr>
-
-<td colspan="5">
-
-No patients registered.
-
-</td>
-
-</tr>
-
-{% endfor %}
-
-</tbody>
-
-</table>
-
-</div>
 
 {% endblock %}

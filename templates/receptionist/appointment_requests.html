@@ -1,124 +1,271 @@
 {% extends 'receptionist/base_receptionist.html' %}
 {% load static %}
 
-{% block title %}Appointment Requests{% endblock %}
+{% block title %}
+Appointment Requests
+{% endblock %}
+
 
 {% block page_title %}
 Appointment Requests
 {% endblock %}
 
+
+{% block page_subtitle %}
+Review and manage incoming patient appointments.
+{% endblock %}
+
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'receptionist/appointment_requests.css' %}">
 {% endblock %}
 
+
+
 {% block content %}
 
-<div class="page-header">
 
-    <h2>All Appointment Requests</h2>
+<div class="appointment-page">
 
-    <p>
-        View and manage patient appointment requests.
-    </p>
 
-</div>
+    <!-- HEADER -->
 
-<div class="table-card">
+    <div class="appointment-header">
 
-<table>
+        <div>
 
-<thead>
+            <span class="section-badge">
+                Patient Requests
+            </span>
 
-<tr>
+            <h2>
+                All Appointment Requests
+            </h2>
 
-<th>ID</th>
+            <p>
+                View, approve and manage patient appointment requests.
+            </p>
 
-<th>Name</th>
+        </div>
 
-<th>Type</th>
 
-<th>Phone</th>
+    </div>
 
-<th>Preferred Date</th>
 
-<th>Status</th>
 
-<th>Action</th>
 
-</tr>
+    <!-- TABLE -->
 
-</thead>
+    <div class="appointment-table-card">
 
-<tbody>
 
-{% for request in requests %}
+        <table class="appointment-table">
 
-<tr>
 
-<td>{{ request.id }}</td>
+            <thead>
 
-<td>{{ request.full_name|default:request.patient_id }}</td>
+                <tr>
 
-<td>{{ request.get_request_type_display }}</td>
+                    <th>ID</th>
 
-<td>{{ request.phone }}</td>
+                    <th>Patient</th>
 
-<td>{{ request.preferred_date }}</td>
+                    <th>Type</th>
 
-<td>
+                    <th>Phone</th>
 
-{% if request.status == "pending" %}
+                    <th>Date</th>
 
-<span class="badge pending">
-Pending
-</span>
+                    <th>Status</th>
 
-{% elif request.status == "approved" %}
+                    <th>Action</th>
 
-<span class="badge approved">
-Approved
-</span>
+                </tr>
 
-{% else %}
 
-<span class="badge rejected">
-Rejected
-</span>
+            </thead>
 
-{% endif %}
 
-</td>
 
-<td>
+            <tbody>
 
-<a href="{% url 'request_detail' request.id %}" class="view-btn">
 
-View
+            {% for request in requests %}
 
-</a>
 
-</td>
+                <tr>
 
-</tr>
 
-{% empty %}
+                    <td>
+                        #{{ request.id }}
+                    </td>
 
-<tr>
 
-<td colspan="7">
 
-No appointment requests available.
+                    <td>
 
-</td>
+                        <div class="patient-cell">
+
+
+                            <div class="patient-avatar">
+
+                                {{ request.full_name|first|upper }}
+
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    {{ request.full_name|default:request.patient_id }}
+                                </strong>
+
+                                <small>
+                                    Patient Request
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </td>
+
+
+
+
+                    <td>
+
+                        <span class="type-badge">
+
+                            {{ request.get_request_type_display }}
+
+                        </span>
+
+                    </td>
+
+
+
+
+                    <td>
+
+                        {{ request.phone }}
+
+                    </td>
+
+
+
+
+                    <td>
+
+                        {{ request.preferred_date }}
+
+                    </td>
+
+
+
+
+                    <td>
+
+
+                    {% if request.status == "pending" %}
+
+                        <span class="status pending">
+                            Pending
+                        </span>
+
+
+                    {% elif request.status == "approved" %}
+
+                        <span class="status approved">
+                            Approved
+                        </span>
+
+
+                    {% else %}
+
+                        <span class="status rejected">
+                            Rejected
+                        </span>
+
+
+                    {% endif %}
+
+
+
+                    </td>
+
+
+
+
+                    <td>
+
+
+                        <a href="{% url 'request_detail' request.id %}" 
+                           class="view-btn">
+
+                            View
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                    </td>
+
+
+                </tr>
+
+
+            {% empty %}
+
+<tr class="empty-row">
+
+    <td colspan="7">
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+
+                <i class="fa-regular fa-calendar-xmark"></i>
+
+            </div>
+
+            <h3>
+
+                No Appointment Requests
+
+            </h3>
+
+            <p>
+
+                There are currently no appointment requests.
+                New requests submitted by patients will automatically appear here.
+
+            </p>
+
+        </div>
+
+    </td>
 
 </tr>
 
 {% endfor %}
 
-</tbody>
 
-</table>
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
 
 </div>
+
 
 {% endblock %}

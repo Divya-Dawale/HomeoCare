@@ -1,90 +1,759 @@
-.page-header{
-    margin-bottom:25px;
-}
+/*========================================
+            HISTORY PAGE
+========================================*/
 
-.page-header h2{
-    margin-bottom:8px;
-}
+.history-page{
 
-.page-header p{
-    color:#666;
-}
-
-.history-card{
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-thead{
-    background:#2563eb;
-    color:white;
-}
-
-th{
-    padding:16px;
-    text-align:left;
-}
-
-td{
-    padding:16px;
-    border-bottom:1px solid #eee;
-}
-
-tbody tr:hover{
-    background:#f8fafc;
-}
-
-.completed-badge{
-    background:#dcfce7;
-    color:#166534;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:600;
-}
-
-.cancelled-badge{
-    background:#fee2e2;
-    color:#991b1b;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:600;
-}
-
-.pending-badge{
-    background:#fef3c7;
-    color:#92400e;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:600;
-}
-.search-form{
     display:flex;
-    gap:12px;
-    margin-bottom:20px;
+
+    flex-direction:column;
+
+    gap:32px;
+
 }
 
-.search-form input{
-    flex:1;
-    padding:12px;
-    border:1px solid #dcdcdc;
-    border-radius:10px;
+
+/*========================================
+            PAGE HEADER
+========================================*/
+
+.history-header{
+
+    margin-bottom:4px;
+
 }
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.history-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+.history-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    max-width:650px;
+
+}
+
+
+/*========================================
+            SEARCH CARD
+========================================*/
+
+.toolbar-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+}
+
+
+/* Search */
+
+.search-form{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+}
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    height:58px;
+
+    background:#F8FBF9;
+
+    border:1px solid #E6F0EB;
+
+    border-radius:18px;
+
+    padding:0 18px;
+
+}
+
+.search-box i{
+
+    color:#94A3B8;
+
+    font-size:16px;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+    color:#1E293B;
+
+    font-family:'Manrope',sans-serif;
+
+}
+
+.search-box input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+/* Search Button */
 
 .search-form button{
-    padding:12px 20px;
+
+    height:58px;
+
+    padding:0 28px;
+
     border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color:#FFFFFF;
+
+    font-size:15px;
+
+    font-weight:700;
+
     cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 12px 28px rgba(46,139,87,.22);
+
+}
+
+.search-form button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 40px rgba(46,139,87,.30);
+
+}
+
+
+/*========================================
+            TABLE CARD
+========================================*/
+
+.history-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+
+/* Card Header */
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:24px 28px;
+
+    border-bottom:1px solid #EEF4F1;
+
+}
+
+.table-header h3{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+
+.table-header span{
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+/*========================================
+            TABLE
+========================================*/
+
+.table-wrapper{
+
+    overflow-x:auto;
+
+}
+
+.table-wrapper table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:900px;
+
+}
+
+.table-wrapper thead{
+
+    background:#F8FBF9;
+
+}
+
+.table-wrapper th{
+
+    padding:18px 24px;
+
+    text-align:left;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+
+    color:#64748B;
+
+    border-bottom:1px solid #E8F1EC;
+
+    white-space:nowrap;
+
+}
+
+.table-wrapper td{
+
+    padding:20px 24px;
+
+    border-bottom:1px solid #F1F5F3;
+
+    vertical-align:middle;
+
+    transition:.3s;
+
+}
+
+.table-wrapper tbody tr{
+
+    transition:.35s;
+
+}
+
+.table-wrapper tbody tr:hover{
+
+    background:#FAFCFB;
+
+}
+
+.table-wrapper tbody tr:hover td{
+
+    transform:translateX(2px);
+
+}
+
+
+/*========================================
+            DATE
+========================================*/
+
+.date-cell{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:600;
+
+    color:#1E293B;
+
+}
+
+.date-cell i{
+
+    color:#2E8B57;
+
+    font-size:15px;
+
+}
+
+
+/*========================================
+            PATIENT
+========================================*/
+
+.patient-cell{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.patient-avatar{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    flex-shrink:0;
+
+    box-shadow:0 10px 22px rgba(46,139,87,.22);
+
+}
+
+.patient-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.patient-info strong{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+}
+
+
+/*========================================
+            PATIENT ID
+========================================*/
+
+.patient-id{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    background:#F3FBF7;
+
+    border:1px solid #DDECE5;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+
+/*========================================
+            REASON
+========================================*/
+
+.reason-text{
+
+    max-width:280px;
+
+    color:#475569;
+
+    line-height:1.6;
+
+    font-size:14px;
+
+}
+/*========================================
+            STATUS BADGES
+========================================*/
+
+.status-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+.status-badge i{
+
+    font-size:13px;
+
+}
+
+.completed{
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+}
+
+.pending{
+
+    background:#FFF7E8;
+
+    color:#B7791F;
+
+}
+
+.cancelled{
+
+    background:#FDECEC;
+
+    color:#DC2626;
+
+}
+
+
+/*========================================
+            EMPTY STATE
+========================================*/
+
+.empty-table{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+}
+
+.empty-table i{
+
+    font-size:54px;
+
+    color:#C7D8CF;
+
+    margin-bottom:20px;
+
+}
+
+.empty-table h3{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:10px;
+
+}
+
+.empty-table p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    max-width:380px;
+
+    line-height:1.7;
+
+}
+
+
+/*========================================
+            SCROLLBAR
+========================================*/
+
+.table-wrapper::-webkit-scrollbar{
+
+    height:8px;
+
+}
+
+.table-wrapper::-webkit-scrollbar-track{
+
+    background:#EEF5F1;
+
+    border-radius:20px;
+
+}
+
+.table-wrapper::-webkit-scrollbar-thumb{
+
+    background:#A8D5C0;
+
+    border-radius:20px;
+
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover{
+
+    background:#2E8B57;
+
+}
+
+
+/*========================================
+            ANIMATIONS
+========================================*/
+
+.history-card{
+
+    animation:fadeHistory .45s ease;
+
+}
+
+@keyframes fadeHistory{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.patient-avatar{
+
+    transition:.35s;
+
+}
+
+.table-wrapper tbody tr:hover .patient-avatar{
+
+    transform:scale(1.08);
+
+    box-shadow:0 14px 28px rgba(46,139,87,.28);
+
+}
+
+.status-badge{
+
+    transition:.3s;
+
+}
+
+.table-wrapper tbody tr:hover .status-badge{
+
+    transform:scale(1.04);
+
+}
+
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+@media(max-width:992px){
+
+    .search-form{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .search-form button{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .history-header h2{
+
+        font-size:26px;
+
+    }
+
+    .history-header p{
+
+        font-size:14px;
+
+    }
+
+    .toolbar-card{
+
+        padding:20px;
+
+    }
+
+    .table-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .table-wrapper table{
+
+        min-width:760px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .history-page{
+
+        gap:24px;
+
+    }
+
+    .history-card{
+
+        border-radius:20px;
+
+    }
+
+    .toolbar-card{
+
+        border-radius:20px;
+
+    }
+
+    .table-wrapper table{
+
+        min-width:700px;
+
+    }
+
 }

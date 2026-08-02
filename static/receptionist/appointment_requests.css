@@ -1,141 +1,458 @@
-.page-header{
+/*======================================================
+        APPOINTMENT REQUEST PAGE
+======================================================*/
 
-margin-bottom:30px;
 
-}
+.appointment-page{
 
-.page-header h2{
-
-color:#1E293B;
-
-margin-bottom:8px;
+    padding:20px 25px;
 
 }
 
-.page-header p{
 
-color:#64748B;
+/*======================================================
+        HEADER
+======================================================*/
 
-}
 
-.table-card{
+.appointment-header{
 
-background:#fff;
-
-padding:25px;
-
-border-radius:16px;
-
-box-shadow:0 8px 24px rgba(15,23,42,.08);
-
-overflow-x:auto;
+    margin-bottom:30px;
 
 }
 
-table{
 
-width:100%;
+.appointment-header h2{
 
-border-collapse:collapse;
+    font-size:28px;
 
-}
+    font-weight:800;
 
-thead{
+    color:#1E293B;
 
-background:#F8FAFC;
-
-}
-
-th{
-
-padding:16px;
-
-text-align:left;
-
-color:#475569;
-
-font-size:14px;
+    margin-top:10px;
 
 }
 
-td{
 
-padding:16px;
+.appointment-header p{
 
-border-top:1px solid #E2E8F0;
+    margin-top:8px;
 
-}
+    color:#64748B;
 
-tbody tr{
-
-transition:.25s;
+    font-size:15px;
 
 }
 
-tbody tr:hover{
 
-background:#F8FAFC;
+/* Section badge */
+
+.section-badge{
+
+    display:inline-flex;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+/*======================================================
+        TABLE CARD
+======================================================*/
+
+
+.appointment-table-card{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    border:1px solid #E6F0EB;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+    overflow:hidden;
 
 }
 
-.badge{
 
-padding:6px 14px;
 
-border-radius:20px;
+/*======================================================
+        TABLE
+======================================================*/
 
-font-size:13px;
 
-font-weight:600;
+.appointment-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+/*======================================================
+        PATIENT CELL
+======================================================*/
+
+
+.patient-cell{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
 
 }
 
-.pending{
 
-background:#FEF3C7;
 
-color:#92400E;
+.patient-avatar{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    flex-shrink:0;
 
 }
 
-.approved{
 
-background:#DCFCE7;
 
-color:#166534;
+.patient-cell strong{
+
+    display:block;
+
+    color:#1E293B;
+
+    font-size:14px;
+
+}
+
+
+
+.patient-cell small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#64748B;
+
+    font-size:12px;
 
 }
 
-.rejected{
 
-background:#FEE2E2;
 
-color:#991B1B;
+
+
+/*======================================================
+        TYPE BADGE
+======================================================*/
+
+
+.type-badge{
+
+    display:inline-flex;
+
+    padding:7px 14px;
+
+    border-radius:50px;
+
+    background:#ECFDF5;
+
+    color:#2E8B57;
+
+    font-size:12px;
+
+    font-weight:700;
 
 }
+
+
+
+
+
+/*======================================================
+        STATUS BADGES
+======================================================*/
+
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:7px 16px;
+
+    border-radius:50px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+
+
+.status.pending{
+
+    background:#FFF7E6;
+
+    color:#D97706;
+
+}
+
+
+
+.status.approved{
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+}
+
+
+
+.status.rejected{
+
+    background:#FDECEC;
+
+    color:#DC2626;
+
+}
+
+
+
+
+
+/*======================================================
+        VIEW BUTTON
+======================================================*/
+
 
 .view-btn{
 
-display:inline-block;
+    display:inline-flex;
 
-padding:8px 18px;
+    align-items:center;
 
-background:#2563EB;
+    gap:8px;
 
-color:white;
+    padding:9px 16px;
 
-text-decoration:none;
+    border-radius:14px;
 
-border-radius:8px;
+    background:#ECFFF5;
 
-transition:.3s;
+    color:#2E8B57;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:.3s ease;
 
 }
 
+
+
 .view-btn:hover{
 
-background:#1D4ED8;
+    background:#2E8B57;
 
-transform:translateY(-2px);
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+
+.appointment-table thead{
+
+    background:#F7FBF9;
+
+}
+
+
+
+.appointment-table th{
+
+    padding:18px 22px;
+
+    text-align:left;
+
+    font-size:13px;
+
+    color:#64748B;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+
+
+.appointment-table td{
+
+    padding:18px 22px;
+
+    border-top:1px solid #EEF3F2;
+
+    color:#334155;
+
+    font-size:14px;
+
+}
+
+
+
+.appointment-table tbody tr{
+
+    transition:.25s ease;
+
+}
+
+
+
+.appointment-table tbody tr:hover{
+
+    background:#F9FDFC;
+
+}
+/*======================================================
+                EMPTY STATE
+======================================================*/
+
+.empty-row td{
+
+    padding:70px 20px !important;
+
+    text-align:center;
+
+    background:#FFFFFF;
+
+}
+
+.empty-state{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 0;
+
+}
+
+.empty-icon{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#EAF8F1;
+
+    border:1px solid #CFE5D8;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:24px;
+
+    transition:.35s;
+
+}
+
+.empty-icon i{
+
+    font-size:38px;
+
+    color:#2E8B57;
+
+}
+.empty-state h3{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:10px;
+
+}
+
+.empty-state p{
+
+    max-width:420px;
+
+    color:#64748B;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+.empty-row:hover{
+
+    background:#FFFFFF !important;
+
+}
+
+.empty-row:hover .empty-icon{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 28px rgba(46,139,87,.08);
+
+    border-color:#D7E9DF;
 
 }

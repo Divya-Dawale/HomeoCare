@@ -1,65 +1,617 @@
-.edit-profile-container{
-    max-width:700px;
-    margin:30px auto;
+/*========================================
+            EDIT PROFILE PAGE
+========================================*/
+
+.edit-profile-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
 }
+
+
+/*========================================
+            PAGE HEADER
+========================================*/
+
+.edit-profile-header{
+
+    margin-bottom:4px;
+
+}
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.edit-profile-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+.edit-profile-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    max-width:650px;
+
+}
+
+
+/*========================================
+            CARD
+========================================*/
 
 .edit-profile-card{
-    background:#ffffff;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:36px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+    transition:.35s;
+
 }
 
-.edit-profile-card h2{
-    margin-bottom:25px;
-    color:#1e293b;
+.edit-profile-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
 }
 
-.edit-profile-card p{
-    margin-bottom:15px;
+
+/*========================================
+            CARD TOP
+========================================*/
+
+.card-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-bottom:34px;
+
+    padding-bottom:26px;
+
+    border-bottom:1px solid #EEF4F1;
+
 }
 
-.edit-profile-card label{
-    display:block;
-    margin-bottom:8px;
-    font-weight:600;
-    color:#334155;
-}
+.card-icon{
 
-.edit-profile-card input{
-    width:100%;
-    padding:12px 14px;
-    border:1px solid #dbe2ea;
-    border-radius:10px;
-    background:#f8fafc;
-    margin-top:6px;
-    margin-bottom:15px;
-    font-size:15px;
-}
+    width:72px;
 
-.edit-profile-card input:focus{
-    outline:none;
-    border-color:#22c55e;
-    box-shadow:0 0 0 3px rgba(34,197,94,0.15);
-}
+    height:72px;
 
-.save-btn{
-    display:inline-block;
+    border-radius:22px;
+
     background:linear-gradient(
         135deg,
-        #22c55e,
-        #16a34a
+        #2E8B57,
+        #5BC0BE
     );
-    color:white;
-    border:none;
-    padding:12px 24px;
-    border-radius:10px;
-    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    font-size:30px;
+
+    box-shadow:0 15px 30px rgba(46,139,87,.25);
+
+}
+
+.card-top h3{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+.card-top p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+/*========================================
+            DJANGO FORM
+========================================*/
+
+.profile-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+/* Every Django <p> */
+
+.profile-form p{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:22px;
+
+}
+
+
+/*========================================
+            LABELS
+========================================*/
+
+.profile-form label{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+
+    color:#64748B;
+
+}
+
+
+/*========================================
+            INPUTS
+========================================*/
+
+.profile-form input,
+.profile-form select,
+.profile-form textarea{
+
+    width:100%;
+
+    height:56px;
+
+    padding:0 18px;
+
+    border:1px solid #E6F0EB;
+
+    border-radius:16px;
+
+    background:#F8FBF9;
+
+    font-size:15px;
+
+    color:#1E293B;
+
+    outline:none;
+
+    transition:.35s;
+
+    font-family:'Manrope',sans-serif;
+
+}
+
+.profile-form textarea{
+
+    min-height:130px;
+
+    padding:16px 18px;
+
+    resize:vertical;
+
+}
+
+.profile-form input::placeholder,
+.profile-form textarea::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+/*========================================
+            INPUT STATES
+========================================*/
+
+.profile-form input:hover,
+.profile-form select:hover,
+.profile-form textarea:hover{
+
+    background:#FFFFFF;
+
+    border-color:#CFE5D8;
+
+}
+
+.profile-form input:focus,
+.profile-form select:focus,
+.profile-form textarea:focus{
+
+    background:#FFFFFF;
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 5px rgba(46,139,87,.08);
+
+}
+
+
+/*========================================
+            HELP TEXT
+========================================*/
+
+.helptext{
+
+    font-size:13px;
+
+    color:#64748B;
+
+    margin-top:4px;
+
+}
+
+
+/*========================================
+            ERRORS
+========================================*/
+
+.errorlist{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0 0 8px;
+
+}
+
+.errorlist li{
+
+    color:#EF4444;
+
+    font-size:13px;
+
     font-weight:600;
+
+}
+
+
+/*========================================
+            REQUIRED STAR
+========================================*/
+
+.profile-form label span{
+
+    color:#EF4444;
+
+}
+/*========================================
+            FORM ACTIONS
+========================================*/
+
+.form-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:18px;
+
+    margin-top:20px;
+
+    padding-top:26px;
+
+    border-top:1px solid #EEF4F1;
+
+}
+
+
+/*========================================
+            BUTTONS
+========================================*/
+
+.save-btn,
+.cancel-btn{
+
+    height:56px;
+
+    padding:0 28px;
+
+    border:none;
+
+    border-radius:16px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
     text-decoration:none;
-    transition:0.3s;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+
+/* Save Button */
+
+.save-btn{
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color:#FFFFFF;
+
+    box-shadow:0 12px 28px rgba(46,139,87,.22);
+
 }
 
 .save-btn:hover{
-    transform:translateY(-2px);
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 40px rgba(46,139,87,.30);
+
+}
+
+.save-btn i{
+
+    transition:.3s;
+
+}
+
+.save-btn:hover i{
+
+    transform:translateX(4px);
+
+}
+
+
+/* Cancel Button */
+
+.cancel-btn{
+
+    background:#FFFFFF;
+
+    color:#2E8B57;
+
+    border:1px solid #DCEFE4;
+
+}
+
+.cancel-btn:hover{
+
+    background:#F4FBF7;
+
+    transform:translateY(-4px);
+
+}
+
+
+/*========================================
+            CARD EFFECTS
+========================================*/
+
+.edit-profile-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.edit-profile-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-60%;
+
+    width:40%;
+
+    height:280%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.edit-profile-card:hover::after{
+
+    left:130%;
+
+}
+
+.card-icon{
+
+    transition:.35s;
+
+}
+
+.edit-profile-card:hover .card-icon{
+
+    transform:rotate(-8deg) scale(1.06);
+
+    box-shadow:0 20px 40px rgba(46,139,87,.28);
+
+}
+
+.card-top h3{
+
+    transition:.3s;
+
+}
+
+.edit-profile-card:hover .card-top h3{
+
+    color:#2E8B57;
+
+}
+
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+@media(max-width:768px){
+
+    .edit-profile-card{
+
+        padding:24px;
+
+    }
+
+    .card-top{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .card-icon{
+
+        width:64px;
+
+        height:64px;
+
+        font-size:26px;
+
+        border-radius:18px;
+
+    }
+
+    .card-top h3{
+
+        font-size:22px;
+
+    }
+
+    .form-actions{
+
+        flex-direction:column-reverse;
+
+    }
+
+    .save-btn,
+    .cancel-btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .edit-profile-header h2{
+
+        font-size:26px;
+
+    }
+
+    .edit-profile-header p{
+
+        font-size:14px;
+
+    }
+
+    .edit-profile-card{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+    .profile-form input,
+    .profile-form select,
+    .profile-form textarea{
+
+        height:52px;
+
+        font-size:14px;
+
+    }
+
+    .profile-form textarea{
+
+        min-height:110px;
+
+    }
+
 }

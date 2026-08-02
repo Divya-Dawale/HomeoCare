@@ -12,31 +12,100 @@ href="{% static 'receptionist/edit_profile.css' %}">
 
 {% block content %}
 
-<div class="edit-profile-container">
+<div class="edit-profile-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="edit-profile-header">
+
+        <div>
+
+            <span class="section-badge">
+
+                Account Settings
+
+            </span>
+
+            <h2>
+
+                Edit Profile
+
+            </h2>
+
+            <p>
+
+                Update your personal information and keep your receptionist account details up to date.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CARD ================= -->
 
     <div class="edit-profile-card">
 
-        <h2>Edit Profile</h2>
+        <div class="card-top">
 
-        <form method="POST">
+            <div class="card-icon">
+
+                <i class="fa-solid fa-user-pen"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+
+                    Personal Information
+
+                </h3>
+
+                <p>
+
+                    Modify your profile information below.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form method="POST" class="profile-form">
 
             {% csrf_token %}
 
             {{ form.as_p }}
+                        <div class="form-actions">
 
-            <button
-                type="submit"
-                class="save-btn">
+                <a href="{% url 'receptionist_profile' %}"
+                   class="cancel-btn">
 
-                Save Changes
+                    <i class="fa-solid fa-arrow-left"></i>
 
-            </button>
+                    Back to Profile
+
+                </a>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Changes
+
+                </button>
+
+            </div>
 
         </form>
 
     </div>
 
 </div>
-
 
 {% endblock %}

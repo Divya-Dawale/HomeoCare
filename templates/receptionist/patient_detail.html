@@ -10,87 +10,296 @@ Patient Details
 {% block content %}
 
 
-<div class="patient-card">
+<div class="patient-details-page">
 
-    <h2>Patient Profile</h2>
+    <!-- ================= HEADER ================= -->
 
-    <div class="patient-info">
+    <div class="patient-header">
 
-        <p><strong>Patient ID:</strong> {{ patient.patient_id }}</p>
+        <div>
 
-        <p><strong>Name:</strong> {{ patient.full_name }}</p>
+            <span class="section-badge">
 
-        <p><strong>Phone:</strong> {{ patient.phone }}</p>
+                Patient Records
 
-        <p><strong>Email:</strong> {{ patient.email }}</p>
+            </span>
 
-        <p><strong>Age:</strong> {{ patient.age }}</p>
+            <h2>
 
-        <p><strong>Gender:</strong> {{ patient.gender }}</p>
+                Patient Details
 
-        <p><strong>Address:</strong> {{ patient.address }}</p>
+            </h2>
+
+            <p>
+
+                View complete patient information and appointment history.
+
+            </p>
+
+        </div>
 
     </div>
 
-</div>
 
-<div class="appointments-card">
+    <!-- ================= PROFILE CARD ================= -->
 
-    <h2>Appointment History</h2>
+    <div class="patient-card">
 
-    <table>
+        <div class="patient-top">
 
-        <thead>
+            <div class="patient-avatar">
 
-            <tr>
+                {{ patient.full_name|first|upper }}
 
-                <th>Date</th>
+            </div>
 
-                <th>Status</th>
+            <div class="patient-heading">
 
-            </tr>
+                <h3>
 
-        </thead>
+                    {{ patient.full_name }}
 
-        <tbody>
+                </h3>
 
-            {% for appointment in appointments %}
+                <span>
 
-            <tr>
+                    Patient ID • {{ patient.patient_id }}
 
-                <td>{{ appointment.appointment_date }}</td>
+                </span>
 
-                <td>{{ appointment.status }}</td>
+            </div>
 
-            </tr>
+        </div>
 
-            {% empty %}
 
-            <tr>
+        <div class="patient-info-grid">
 
-                <td colspan="2">
+            <div class="info-box">
 
-                    No appointments found.
+                <label>Phone Number</label>
 
-                </td>
+                <strong>
 
-            </tr>
+                    {{ patient.phone }}
 
-            {% endfor %}
+                </strong>
 
-        </tbody>
+            </div>
 
-    </table>
+            <div class="info-box">
 
-</div>
-<div class="action-card">
+                <label>Email Address</label>
 
-    <a href="{% url 'edit_patient' patient.id %}"
-       class="edit-btn">
+                <strong>
 
-        Edit Patient
+                    {{ patient.email }}
 
-    </a>
+                </strong>
+
+            </div>
+
+            <div class="info-box">
+
+                <label>Age</label>
+
+                <strong>
+
+                    {{ patient.age }}
+
+                </strong>
+
+            </div>
+
+            <div class="info-box">
+
+                <label>Gender</label>
+
+                <strong>
+
+                    {{ patient.gender }}
+
+                </strong>
+
+            </div>
+
+            <div class="info-box full-width">
+
+                <label>Address</label>
+
+                <strong>
+
+                    {{ patient.address }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+        <!-- ================= APPOINTMENT HISTORY ================= -->
+
+    <div class="appointments-card">
+
+        <div class="card-title">
+
+            <h3>
+
+                Appointment History
+
+            </h3>
+
+            <span>
+
+                {{ appointments|length }} Appointment{{ appointments|length|pluralize }}
+
+            </span>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for appointment in appointments %}
+
+                    <tr>
+
+                        <td>
+
+                            <div class="date-cell">
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                {{ appointment.appointment_date }}
+
+                            </div>
+
+                        </td>
+
+                        <td>
+
+                            {% if appointment.status == "completed" %}
+
+                                <span class="status-badge completed">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Completed
+
+                                </span>
+
+                            {% elif appointment.status == "cancelled" %}
+
+                                <span class="status-badge cancelled">
+
+                                    <i class="fa-solid fa-circle-xmark"></i>
+
+                                    Cancelled
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge pending">
+
+                                    <i class="fa-solid fa-clock"></i>
+
+                                    {{ appointment.status|title }}
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="2">
+
+                            <div class="empty-table">
+
+                                <i class="fa-solid fa-calendar-xmark"></i>
+
+                                <h3>
+
+                                    No Appointment History
+
+                                </h3>
+
+                                <p>
+
+                                    This patient has no previous appointments.
+
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+        <!-- ================= ACTION SECTION ================= -->
+
+    <div class="action-card">
+
+        <div class="action-content">
+
+            <div>
+
+                <h3>
+
+                    Manage Patient
+
+                </h3>
+
+                <p>
+
+                    Update the patient's personal information whenever required.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'edit_patient' patient.id %}"
+               class="edit-btn">
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                Edit Patient
+
+            </a>
+
+        </div>
+
+    </div>
 
 </div>
 
