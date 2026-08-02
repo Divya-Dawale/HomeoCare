@@ -5,23 +5,17 @@
 }
 
 .navbar{
-
     position:fixed;
     top:0;
     left:0;
-
     width:100%;
-
     z-index:999;
 
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(0,0,0,.05);
     transition:.35s;
-
-    background:rgba(255,255,255,.75);
-
-    backdrop-filter:blur(16px);
-
-    border-bottom:1px solid rgba(255,255,255,.4);
-
 }
 
 .navbar.scrolled{
@@ -33,147 +27,135 @@
 }
 
 .nav-container{
-
-    max-width:1300px;
-
+    width:min(1200px,92%);
     margin:auto;
 
+    height:86px;
+
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
-    padding:16px 40px;
+    position:relative;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
 
+    text-decoration:none;
 }
 
-.logo{
+.logo-icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary));
 
     display:flex;
 
+    justify-content:center;
+
     align-items:center;
 
-    gap:12px;
+    color:white;
 
-    text-decoration:none;
+    font-size:26px;
 
-}
-
-.logo img{
-
-    width:52px;
-
-    height:52px;
-
-    border-radius:50%;
-
-    object-fit:cover;
+    box-shadow:0 15px 35px rgba(46,139,87,.25);
 
 }
 
 .logo-text h2{
-
-    color:#14532d;
-
-    font-size:25px;
-
+    font-size:28px;
     font-weight:800;
 
+    color:#23313A;
+
+    line-height:1;
 }
 
 .logo-text span{
+    font-size:13px;
 
-    font-size:12px;
+    color:#7B8698;
 
-    color:#6b7280;
-
+    letter-spacing:.5px;
 }
 
+
+
 .nav-links{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
 
     display:flex;
+    align-items:center;
+    gap:40px;
 
     list-style:none;
-
-    gap:35px;
-
 }
 
 .nav-links a{
-
     position:relative;
 
     text-decoration:none;
 
-    color:#1f2937;
+    color:#6D7484;
 
+    font-size:16px;
     font-weight:600;
 
     transition:.3s;
 
+    padding:8px 0;
 }
 
-.nav-links a::after{
+.nav-links a:hover{
+    color:#6B63FF;
+}
 
+.nav-links a.active{
+    color:#6B63FF;
+    font-weight:700;
+}
+
+.nav-links a.active::after{
     content:"";
 
     position:absolute;
 
     left:0;
-
     bottom:-8px;
 
-    width:0;
-
+    width:100%;
     height:3px;
 
-    background:#22c55e;
+    border-radius:20px;
 
-    border-radius:50px;
-
-    transition:.35s;
-
-}
-
-.nav-links a:hover{
-
-    color:#16a34a;
-
-}
-
-.nav-links a:hover::after{
-
-    width:100%;
-
+    background:#6B63FF;
 }
 
 .contact-btn{
-
-    text-decoration:none;
-
-    color:white;
-
-    padding:14px 28px;
-
+    padding:14px 30px;
     border-radius:50px;
-
+    background:linear-gradient(135deg, #24d9aa, #006657);
+    color:white;
+    text-decoration:none;
     font-weight:700;
-
-    background:linear-gradient(135deg,#22c55e,#0f766e);
-
-    transition:.35s;
-
-    box-shadow:0 12px 25px rgba(34,197,94,.3);
-
+    transition:.3s;
 }
 
 .contact-btn:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:0 20px 35px rgba(34,197,94,.35);
-
+    transform:translateY(-3px);
 }
 
 .menu-btn{
@@ -202,56 +184,40 @@
 
 @media(max-width:980px){
 
-    .menu-btn{
+.menu-btn{
+    display:flex;
+}
 
-        display:flex;
+.contact-btn{
+    display:none;
+}
 
-    }
+.nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
 
-    .contact-btn{
+    transform:none;
 
-        display:none;
+    background:#fff;
 
-    }
+    flex-direction:column;
 
-    .nav-links{
+    gap:25px;
 
-        position:absolute;
+    max-height:0;
 
-        top:100%;
+    overflow:hidden;
 
-        left:0;
+    transition:.4s;
 
-        width:100%;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+}
 
-        background:white;
-
-        flex-direction:column;
-
-        text-align:center;
-
-        overflow:hidden;
-
-        max-height:0;
-
-        transition:.4s;
-
-        box-shadow:0 15px 30px rgba(0,0,0,.08);
-
-    }
-
-    .nav-links.active{
-
-        max-height:500px;
-
-        padding:25px 0;
-
-    }
-
-    .nav-links li{
-
-        margin:18px 0;
-
-    }
+.nav-links.active{
+    max-height:500px;
+    padding:30px 0;
+}
 
 }

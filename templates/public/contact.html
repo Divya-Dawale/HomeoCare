@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block page_title %}
-Contact
+{% block extra_js %}
+<script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}
 
-{% block css %}
+{% block extra_css %}
 <link rel="stylesheet"
 href="{% static 'css/contact.css' %}">
 {% endblock %}
@@ -14,54 +14,76 @@ href="{% static 'css/contact.css' %}">
 
 <section class="contact-hero">
 
-    <h1>Contact HomeoCare</h1>
+    <div class="hero-bg-circle circle-1"></div>
+    <div class="hero-bg-circle circle-2"></div>
 
-    <p>
-        Have questions or need an appointment?
-        We're here to help.
-    </p>
+    <div class="container">
+
+        <span class="hero-tag">
+            Contact HomeoCare
+        </span>
+
+        <h1>
+            We're Here To
+            <span>Help You</span>
+        </h1>
+
+        <p>
+            Have questions about appointments, treatments or patient services?
+            Our team is always ready to assist you.
+        </p>
+
+    </div>
 
 </section>
 
 <section class="contact-section">
-
+<div class="container">
 <div class="contact-info">
 
 <div class="info-card">
 
-<i class="fa-solid fa-phone"></i>
+<div class="icon-box">
+    <i class="fa-solid fa-phone"></i>
+</div>
 
-<h3>Phone</h3>
+<h3>Call Us</h3>
 
 <p>{{ settings.phone }}</p>
 
 </div>
 
 <div class="info-card">
+<div class="icon-box">
+    <i class="fa-solid fa-envelope"></i>
+</div>
 
-<i class="fa-solid fa-envelope"></i>
 
-<h3>Email</h3>
+<h3>Email Address</h3>
 
 <p>{{ settings.email }}</p>
 
 </div>
 
 <div class="info-card">
+<div class="icon-box">
+    <i class="fa-solid fa-location-dot"></i>
+</div>
 
-<i class="fa-solid fa-location-dot"></i>
 
-<h3>Address</h3>
+<h3>Visit Clinic</h3>
 
 <p>{{ settings.address }}</p>
 
 </div>
 
 <div class="info-card">
+<div class="icon-box">
+    <i class="fa-solid fa-clock"></i>
+</div>
 
-<i class="fa-solid fa-clock"></i>
 
-<h3>Working Hours</h3>
+<h3>Clinic Hours</h3>
 
 <p>
 
@@ -85,7 +107,7 @@ loading="lazy">
 </iframe>
 
 </div>
-
+</div>
 </section>
 
 

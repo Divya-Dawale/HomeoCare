@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css %}
 
+{% block extra_css %}
 <link rel="stylesheet"
-href="{% static 'receptionist/appointments.css' %}">
+href="{% static 'css/appointment.css' %}">
 {% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/appointment.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 {% if booking_closed %}
 
@@ -39,17 +44,30 @@ href="{% static 'receptionist/appointments.css' %}">
 
 <section class="appointment-section">
 
-    <div class="appointment-container">
-        <div class="info-box">
-            <h3>Need An Appointment?</h3>
-            <p>
-                First-time visitors should choose <strong>New Patient</strong>.
-                Returning patients can choose <strong>Existing Patient</strong>
-                and use their Patient ID.
-            </p>
-        </div>
+    <div class="container">
 
-        <div class="tabs">
+        <div class="appointment-layout">
+
+            <!-- LEFT SIDE -->
+            <div class="info-box">
+
+                <h3>Need An Appointment?</h3>
+
+                <p>
+                    First-time visitors should choose
+                    <strong>New Patient</strong>.
+
+                    Returning patients can choose
+                    <strong>Existing Patient</strong>
+                    and use their Patient ID.
+                </p>
+
+            </div>
+
+
+        <div class="appointment-container">
+
+                <div class="tabs">
 
             <button class="tab-btn active" onclick="showForm('new')">
                 New Patient
@@ -58,7 +76,6 @@ href="{% static 'receptionist/appointments.css' %}">
             <button class="tab-btn" onclick="showForm('existing')">
                 Existing Patient
             </button>
-
         </div>
 
         <!-- NEW PATIENT FORM -->
@@ -266,9 +283,9 @@ href="{% static 'receptionist/appointments.css' %}">
 </button>
 
             </form>
-
         </div>
-
+        </div>
+    </div>
     </div>
 
 </section>

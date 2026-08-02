@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/patient_status.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/patient_status.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 
 <section class="status-hero">
 
-    <h1>Patient Status</h1>
+    <div class="hero-bg-circle circle-1"></div>
+    <div class="hero-bg-circle circle-2"></div>
 
-    <p>
-        Check your appointment status and treatment updates.
-    </p>
+    <div class="container">
+
+        <span class="hero-tag">
+            Patient Portal
+        </span>
+
+        <h1>
+            Track Your
+            <span>Appointment Status</span>
+        </h1>
+
+        <p>
+            Enter your Patient ID and registered phone number to view your
+            appointment status and latest treatment updates.
+        </p>
+
+    </div>
 
 </section>
 
@@ -47,12 +69,14 @@
         </div>
 
         <!-- Sample Status Card -->
-     {% if appointment %}
 {% if error %}
 <div class="error-message">
     {{ error }}
 </div>
 {% endif %}
+
+{% if appointment %}
+
 <div class="status-result-card">
 
     <h2>Appointment Information</h2>
@@ -66,8 +90,8 @@
 
         <div class="status-item">
             <span>Status</span>
-            <strong class="{{ appointment.status }}">
-                {{ appointment.status|title }}
+            <strong class="{{ appointment.status|lower }}">
+                {{ appointment.status }}
             </strong>
         </div>
 
@@ -81,12 +105,11 @@
             <strong>{{ appointment.reason_for_visit }}</strong>
         </div>
 
-        </div>
+    </div>
 
-     </div>
+</div>
 
-       {% endif %}
-        
+{% endif %}
 
     
 

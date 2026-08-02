@@ -1,33 +1,55 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
-<head>
-    <title>HomeoCare</title>
+<html lang="en">
 
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
-    <link rel="stylesheet" href="{% static 'css/patient_status.css' %}">
-    <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    <link rel="stylesheet" href="{% static 'css/services.css' %}">
-    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}HomeoCare{% endblock %}</title>
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    
+    <!-- Page Specific CSS -->
+    {% block extra_css %}{% endblock %}
+
 </head>
+
 <body>
 
     {% include 'components/navbar.html' %}
-<script src="{% static 'js/home.js' %}"></script>
-    {% block content %}
-    {% endblock %}
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
 
     {% include 'components/footer.html' %}
+
+    <!-- Common JS -->
+
+<script src="{% static 'js/navbar.js' %}"></script>
+
+<!-- Page Specific JS -->
+
+{% block extra_js %}
+{% endblock %}
 
 </body>
 </html>

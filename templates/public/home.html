@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 
 {% block content %}
-
 <!-- ================= HERO ================= -->
 
 <section class="hero">
@@ -115,7 +118,7 @@
 
             <div class="doctor-card">
 
-                <img src="{% static 'images/doctor-hero.jpe' %}" alt="Doctor">
+                <img src="{% static 'images/doctor-image1.png' %}" alt="Doctor">
 
             </div>
 
@@ -430,7 +433,7 @@
 
         <div class="doctor-image">
 
-            <img src="{% static 'images/doctor.png' %}" alt="Doctor">
+            <img src="{% static 'images/medicien.png' %}" alt="Doctor">
 
         </div>
 
@@ -904,5 +907,7 @@
     </div>
 
 </section>
-
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
 {% endblock %}

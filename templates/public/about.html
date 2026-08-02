@@ -1,88 +1,374 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}
 {% block content %}
 
+<!-- =====================================
+            ABOUT HERO
+===================================== -->
+
 <section class="about-hero">
-    <h1>About HomeoCare</h1>
-    <p>
-        Compassionate homeopathic care focused on your health,
-        well-being, and long-term wellness.
-    </p>
-</section>
 
-<section class="about-story">
+    <div class="hero-bg-circle circle-1"></div>
+    <div class="hero-bg-circle circle-2"></div>
 
     <div class="container">
 
-        <div class="section-title">
-            <h2>Our Story</h2>
+    
+
+        <div class="hero-content">
+
+    <span class="hero-tag">
+        About HomeoCare
+    </span>
+
+    <h1>
+    Modern Homeopathic Care
+    <span>Focused On Your Well-Being</span>
+</h1>
+
+<p>
+    Combining personalized homeopathic treatment with modern clinic
+    management, HomeoCare offers secure patient records, convenient
+    appointments, and continuous follow-up care—all designed to provide
+    a comfortable healthcare experience.
+</p>
+
+    <div class="hero-highlights">
+
+        <div>
+            <h3>15+</h3>
+            <span>Years Experience</span>
         </div>
 
-        <p>
-            At HomeoCare, we believe healthcare should be personal,
-            compassionate, and focused on the individual. Our clinic
-            provides homeopathic treatment tailored to each patient's
-            unique needs while maintaining continuity of care through
-            organized medical records and follow-up consultations.
-        </p>
+        <div>
+            <h3>2500+</h3>
+            <span>Patients Treated</span>
+        </div>
+
+        <div>
+            <h3>98%</h3>
+            <span>Patient Satisfaction</span>
+        </div>
+
+    </div>
+
+</div>
 
     </div>
 
 </section>
 
-<section class="mission-vision">
 
-    <div class="container cards">
 
-        <div class="card">
-            <h3>Our Mission</h3>
+<!-- =====================================
+            OUR STORY
+===================================== -->
+
+<section class="story-section">
+
+    <div class="container story-grid">
+
+        <div class="story-left">
+
+            <span class="section-tag">
+                Our Story
+            </span>
+
+            <h2>
+
+                Built on Care,
+                Trust and Compassion
+
+            </h2>
+
             <p>
-                To provide accessible, personalized, and compassionate
-                homeopathic care that improves quality of life.
+
+                HomeoCare was founded with one simple belief:
+                every patient deserves healthcare that is
+                personal, compassionate and focused on
+                long-term wellness.
+
             </p>
+
+            <p>
+
+                We combine traditional homeopathic treatment
+                with modern digital healthcare management,
+                making appointments, follow-ups and patient
+                records easy and organized.
+
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>Our Vision</h3>
-            <p>
-                To become a trusted healthcare partner for families
-                seeking holistic and long-term wellness.
-            </p>
+        <div class="story-right">
+
+            <div class="story-card">
+
+                <div class="story-number">
+                    01
+                </div>
+
+                <h3>
+                    Personalized Treatment
+                </h3>
+
+                <p>
+                    Every patient receives a treatment plan
+                    tailored specifically to their needs.
+                </p>
+
+            </div>
+
+            <div class="story-card">
+
+                <div class="story-number">
+                    02
+                </div>
+
+                <h3>
+                    Digital Healthcare
+                </h3>
+
+                <p>
+                    Secure medical records, easy appointment
+                    booking and efficient clinic management.
+                </p>
+
+            </div>
+
+            <div class="story-card">
+
+                <div class="story-number">
+                    03
+                </div>
+
+                <h3>
+                    Long-Term Wellness
+                </h3>
+
+                <p>
+                    Supporting healthier families through
+                    continuous care and regular follow-ups.
+                </p>
+
+            </div>
+
         </div>
 
     </div>
 
 </section>
 
-<section class="why-us">
+
+
+<!-- =====================================
+        JOURNEY TIMELINE
+===================================== -->
+
+<section class="timeline-section">
 
     <div class="container">
 
-        <div class="section-title">
-            <h2>Why Choose HomeoCare?</h2>
+        <div class="section-header">
+
+            <span>
+                Our Journey
+            </span>
+
+            <h2>
+
+                Growing One Step
+                At A Time
+
+            </h2>
+
         </div>
 
-        <div class="grid">
+        <div class="timeline">
 
-            <div class="card">
-                <h3>Personalized Care</h3>
-                <p>Every treatment plan is tailored to the patient.</p>
+            <div class="timeline-item left reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span>2018</span>
+
+                    <h3>
+                        HomeoCare Started
+                    </h3>
+
+                    <p>
+
+                        Began with a vision of providing
+                        compassionate homeopathic care.
+
+                    </p>
+
+                </div>
+
             </div>
 
-            <div class="card">
-                <h3>Patient First</h3>
-                <p>Your comfort and well-being remain our priority.</p>
+            <div class="timeline-item right reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span>2020</span>
+
+                    <h3>
+
+                        Trusted By Families
+
+                    </h3>
+
+                    <p>
+
+                        Expanded patient care with
+                        personalized treatment.
+
+                    </p>
+
+                </div>
+
             </div>
 
-            <div class="card">
-                <h3>Continuous Follow-Up</h3>
-                <p>Regular monitoring ensures effective treatment.</p>
+            <div class="timeline-item left reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span>2023</span>
+
+                    <h3>
+
+                        Digital Transformation
+
+                    </h3>
+
+                    <p>
+
+                        Added online appointments and
+                        digital patient management.
+
+                    </p>
+
+                </div>
+
             </div>
 
-            <div class="card">
-                <h3>Trusted Care</h3>
-                <p>Building long-term relationships with patients.</p>
+            <div class="timeline-item right reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span>Today</span>
+
+                    <h3>
+
+                        Looking Ahead
+
+                    </h3>
+
+                    <p>
+
+                        Continuing to innovate while
+                        keeping patient care at the center.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+            CORE VALUES
+===================================== -->
+
+<section class="values-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Our Values</span>
+
+            <h2>What Defines HomeoCare</h2>
+
+            <p>
+                Every decision we make is guided by our commitment to
+                compassionate, ethical and patient-first healthcare.
+            </p>
+
+        </div>
+
+        <div class="values-grid">
+
+            <div class="value-card reveal">
+
+                <div class="value-icon">❤️</div>
+
+                <h3>Compassion</h3>
+
+                <p>
+                    We treat every patient with empathy, kindness
+                    and genuine care.
+                </p>
+
+            </div>
+
+            <div class="value-card reveal">
+
+                <div class="value-icon">🌿</div>
+
+                <h3>Holistic Care</h3>
+
+                <p>
+                    We focus on improving overall well-being,
+                    not just relieving symptoms.
+                </p>
+
+            </div>
+
+            <div class="value-card reveal">
+
+                <div class="value-icon">🤝</div>
+
+                <h3>Trust</h3>
+
+                <p>
+                    Building long-term relationships through
+                    honesty, privacy and transparency.
+                </p>
+
+            </div>
+
+            <div class="value-card reveal">
+
+                <div class="value-icon">⭐</div>
+
+                <h3>Excellence</h3>
+
+                <p>
+                    Continuously improving our healthcare
+                    services and patient experience.
+                </p>
+
             </div>
 
         </div>
@@ -91,27 +377,198 @@
 
 </section>
 
-<section class="stats">
 
-    <div class="container stat-grid">
 
-        <div class="stat-card">
-            <h2>500+</h2>
-            <p>Patients Served</p>
-        </div>
+<!-- =====================================
+        MISSION & VISION
+===================================== -->
 
-        <div class="stat-card">
-            <h2>1000+</h2>
-            <p>Consultations</p>
-        </div>
+<section class="mission-section">
 
-        <div class="stat-card">
-            <h2>95%</h2>
-            <p>Patient Satisfaction</p>
+    <div class="container">
+
+        <div class="mission-grid">
+
+            <div class="mission-card reveal">
+
+                <span class="card-tag">
+                    Our Mission
+                </span>
+
+                <h2>
+                    Personalized Healthcare For Everyone
+                </h2>
+
+                <p>
+
+                    To provide compassionate, affordable and
+                    personalized homeopathic treatment that helps
+                    every patient achieve long-term wellness.
+
+                </p>
+
+            </div>
+
+            <div class="mission-card reveal">
+
+                <span class="card-tag">
+                    Our Vision
+                </span>
+
+                <h2>
+
+                    A Trusted Healthcare Partner
+
+                </h2>
+
+                <p>
+
+                    To combine compassionate homeopathy with
+                    modern healthcare technology for a healthier
+                    future.
+
+                </p>
+
+            </div>
+
         </div>
 
     </div>
 
 </section>
+
+
+
+<!-- =====================================
+            IMPACT
+===================================== -->
+
+<section class="impact-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Our Impact</span>
+
+            <h2>Numbers That Inspire Confidence</h2>
+
+        </div>
+
+        <div class="impact-grid">
+
+            <div class="impact-card reveal">
+
+                <h2>2500+</h2>
+
+                <p>Happy Patients</p>
+
+            </div>
+
+            <div class="impact-card reveal">
+
+                <h2>15+</h2>
+
+                <p>Years of Experience</p>
+
+            </div>
+
+            <div class="impact-card reveal">
+
+                <h2>98%</h2>
+
+                <p>Patient Satisfaction</p>
+
+            </div>
+
+            <div class="impact-card reveal">
+
+                <h2>24/7</h2>
+
+                <p>Support</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+            QUOTE
+===================================== -->
+
+<section class="quote-section">
+
+    <div class="container">
+
+        <blockquote>
+
+            “Every patient deserves care that heals with
+            compassion, earns trust and inspires hope.”
+
+        </blockquote>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+            CTA
+===================================== -->
+
+<section class="about-cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="section-tag">
+
+                Start Your Journey
+
+            </span>
+
+            <h2>
+
+                Better Health Begins Today
+
+            </h2>
+
+            <p>
+
+                Experience compassionate homeopathic care with
+                personalized treatment and modern healthcare
+                management.
+
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{% url 'book_appointment' %}" class="btn-primary">
+
+                    Book Appointment
+
+                </a>
+
+                <a href="{% url 'services' %}" class="btn-secondary">
+
+                    Explore Services
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 {% endblock %}

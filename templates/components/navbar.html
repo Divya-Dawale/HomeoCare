@@ -1,51 +1,71 @@
 {% load static %}
 
+
 <nav class="navbar">
 
-    <div class="nav-container">
+    <div class="nav-container"><link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap">
+
 
         <a href="{% url 'home' %}" class="logo">
 
-            <!-- Replace with your logo -->
-            <img src="{% static 'images/logo.png' %}" alt="HomeoCare">
+    <div class="logo-icon">
+        <i class="fa-solid fa-leaf"></i>
+    </div>
 
-            <div class="logo-text">
-                <h2>HomeoCare</h2>
-                <span>Homeopathy Clinic</span>
-            </div>
+    <div class="logo-text">
+        <h2>HomeoCare</h2>
+        <span>Homeopathy Clinic</span>
+    </div>
 
-        </a>
+</a>
+
+        
 
         <ul class="nav-links" id="navLinks">
 
-            <li>
-                <a href="{% url 'home' %}">Home</a>
-            </li>
+    <li>
+        <a href="{% url 'home' %}"
+           class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+            Home
+        </a>
+    </li>
 
-            <li>
-                <a href="{% url 'about' %}">About</a>
-            </li>
+    <li>
+        <a href="{% url 'about' %}"
+           class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+            About
+        </a>
+    </li>
 
-            <li>
-                <a href="{% url 'services' %}">Services</a>
-            </li>
+    <li>
+        <a href="{% url 'services' %}"
+           class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+            Services
+        </a>
+    </li>
 
-            <li>
-                <a href="{% url 'book_appointment' %}">
-                    Book Appointment
-                </a>
-            </li>
+    <li>
+        <a href="{% url 'book_appointment' %}"
+           class="{% if request.resolver_match.url_name == 'book_appointment' %}active{% endif %}">
+            Book Appointment
+        </a>
+    </li>
 
-            <li>
-                <a href="{% url 'patient_status' %}">
-                    Patient Status
-                </a>
-            </li>
+    <li>
+        <a href="{% url 'patient_status' %}"
+           class="{% if request.resolver_match.url_name == 'patient_status' %}active{% endif %}">
+            Patient Status
+        </a>
+    </li>
 
-        </ul>
-
-        <a href="{% url 'contact' %}" class="contact-btn">
-            Contact
+</ul>
+        <a href="{% url 'contact' %}"
+           class="contact-btn {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+              Contact
         </a>
 
         <div class="menu-btn" id="menuBtn">
@@ -59,5 +79,3 @@
     </div>
 
 </nav>
-
-<script src="{% static 'js/navbar.js' %}"></script>

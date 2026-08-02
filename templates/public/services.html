@@ -1,54 +1,42 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/services.js' %}"></script>
+{% endblock %}
 {% block content %}
 
+<!-- =====================================
+            SERVICES HERO
+===================================== -->
 <section class="services-hero">
 
-    <h1>Our Services</h1>
-
-    <p>
-        Comprehensive homeopathic care designed to support
-        your health and wellness journey.
-    </p>
-
-</section>
-
-<section class="services-grid-section">
+    <div class="hero-bg-circle circle-1"></div>
+    <div class="hero-bg-circle circle-2"></div>
 
     <div class="container">
 
-        <div class="service-grid">
 
-            <div class="service-card">
-                <h3>General Consultation</h3>
-                <p>Initial assessment and treatment planning.</p>
-            </div>
+        <div class="services-hero-content">
 
-            <div class="service-card">
-                <h3>Follow-Up Consultation</h3>
-                <p>Monitor progress and adjust treatment plans.</p>
-            </div>
+            <span class="hero-tag">
+                Our Healthcare Services
+            </span>
 
-            <div class="service-card">
-                <h3>Chronic Disease Care</h3>
-                <p>Long-term support for ongoing health conditions.</p>
-            </div>
+            <h1>
+                Personalized Care For
+                <span>Every Patient</span>
+            </h1>
 
-            <div class="service-card">
-                <h3>Child Healthcare</h3>
-                <p>Gentle and personalized care for children.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>Women's Health</h3>
-                <p>Support for a variety of women's health concerns.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>Preventive Healthcare</h3>
-                <p>Promoting overall wellness and healthy living.</p>
-            </div>
+            <p>
+                From consultation to follow-up care, HomeoCare provides
+                personalized homeopathic treatment, digital patient management,
+                and compassionate healthcare designed for long-term wellness.
+            </p>
 
         </div>
 
@@ -56,32 +44,240 @@
 
 </section>
 
-<section class="process">
+  
+
+<!-- =====================================
+        OUR SERVICES
+===================================== -->
+
+<section class="services-section">
 
     <div class="container">
 
-        <h2>Treatment Process</h2>
+        <div class="section-header">
 
-        <div class="steps">
+            <span>Our Services</span>
 
-            <div class="step">
-                <span>1</span>
+            <h2>
+
+                Healthcare Designed Around You
+
+            </h2>
+
+            <p>
+
+                Every treatment is personalized to meet your unique
+                health needs with compassionate homeopathic care.
+
+            </p>
+
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🌿
+                </div>
+
+                <h3>
+                    General Consultation
+                </h3>
+
+                <p>
+
+                    Comprehensive health assessment with
+                    personalized treatment recommendations.
+
+                </p>
+
+            </div>
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🔄
+                </div>
+
+                <h3>
+
+                    Follow-Up Care
+
+                </h3>
+
+                <p>
+
+                    Continuous monitoring and adjustments
+                    for better recovery.
+
+                </p>
+
+            </div>
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    ❤️
+                </div>
+
+                <h3>
+
+                    Chronic Disease Care
+
+                </h3>
+
+                <p>
+
+                    Long-term management for chronic
+                    health conditions.
+
+                </p>
+
+            </div>
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    👶
+                </div>
+
+                <h3>
+
+                    Child Healthcare
+
+                </h3>
+
+                <p>
+
+                    Gentle and safe homeopathic care
+                    specially designed for children.
+
+                </p>
+
+            </div>
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🌸
+                </div>
+
+                <h3>
+
+                    Women's Health
+
+                </h3>
+
+                <p>
+
+                    Personalized care supporting women's
+                    health through every stage of life.
+
+                </p>
+
+            </div>
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    🛡️
+                </div>
+
+                <h3>
+
+                    Preventive Care
+
+                </h3>
+
+                <p>
+
+                    Strengthening overall wellness through
+                    preventive healthcare and lifestyle guidance.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+        TREATMENT PROCESS
+===================================== -->
+
+<section class="process-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Our Process</span>
+
+            <h2>
+                Your Healing Journey
+            </h2>
+
+            <p>
+                We follow a simple and personalized process to ensure
+                every patient receives the best possible care.
+            </p>
+
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card reveal">
+
+                <div class="step-number">01</div>
+
                 <h3>Book Appointment</h3>
+
+                <p>
+                    Schedule your visit online quickly and conveniently.
+                </p>
+
             </div>
 
-            <div class="step">
-                <span>2</span>
-                <h3>Consultation</h3>
+            <div class="process-card reveal">
+
+                <div class="step-number">02</div>
+
+                <h3>Doctor Consultation</h3>
+
+                <p>
+                    Discuss your symptoms and medical history with our
+                    experienced homeopathic doctor.
+                </p>
+
             </div>
 
-            <div class="step">
-                <span>3</span>
-                <h3>Treatment Plan</h3>
+            <div class="process-card reveal">
+
+                <div class="step-number">03</div>
+
+                <h3>Personalized Treatment</h3>
+
+                <p>
+                    Receive a treatment plan specially designed for your
+                    health condition and lifestyle.
+                </p>
+
             </div>
 
-            <div class="step">
-                <span>4</span>
+            <div class="process-card reveal">
+
+                <div class="step-number">04</div>
+
                 <h3>Follow-Up Care</h3>
+
+                <p>
+                    Regular follow-up consultations help monitor your
+                    progress and improve recovery.
+                </p>
+
             </div>
 
         </div>
@@ -90,13 +286,278 @@
 
 </section>
 
-<section class="service-cta">
 
-    <h2>Ready To Begin Your Health Journey?</h2>
 
-    <a href="{% url 'book_appointment' %}" class="cta-btn">
-        Book Appointment
-    </a>
+<!-- =====================================
+        WHY CHOOSE US
+===================================== -->
+
+<section class="why-services">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Why HomeoCare</span>
+
+            <h2>
+                More Than Just Treatment
+            </h2>
+
+        </div>
+
+        <div class="why-grid">
+
+            <div class="why-card reveal">
+
+                <div class="why-icon">💚</div>
+
+                <h3>Patient-Centered Care</h3>
+
+                <p>
+                    Every treatment is customized according to each
+                    patient's unique health needs.
+                </p>
+
+            </div>
+
+            <div class="why-card reveal">
+
+                <div class="why-icon">📋</div>
+
+                <h3>Digital Records</h3>
+
+                <p>
+                    Organized patient history for efficient treatment
+                    and better follow-up care.
+                </p>
+
+            </div>
+
+            <div class="why-card reveal">
+
+                <div class="why-icon">🌱</div>
+
+                <h3>Natural Healing</h3>
+
+                <p>
+                    Gentle homeopathic treatment focused on long-term
+                    wellness and prevention.
+                </p>
+
+            </div>
+
+            <div class="why-card reveal">
+
+                <div class="why-icon">🤝</div>
+
+                <h3>Trusted Healthcare</h3>
+
+                <p>
+                    Building lasting relationships through compassion,
+                    transparency and quality care.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+            SERVICE HIGHLIGHT
+===================================== -->
+
+<section class="highlight-banner">
+
+    <div class="container">
+
+        <div class="highlight-content">
+
+            <span>
+                Personalized Healthcare
+            </span>
+
+            <h2>
+
+                Every Patient Receives
+                Individual Attention
+
+            </h2>
+
+            <p>
+
+                From consultation to recovery, we ensure every patient
+                receives compassionate care, detailed follow-ups and
+                personalized treatment plans.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+                FAQ
+===================================== -->
+
+<section class="services-faq">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>Frequently Asked Questions</span>
+
+            <h2>
+                Have Questions?
+            </h2>
+
+            <p>
+                Find answers to some of the most common questions
+                about our homeopathic services.
+            </p>
+
+        </div>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Is homeopathic treatment safe?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. Homeopathic medicines are gentle,
+                        non-invasive and prescribed according to
+                        each patient's individual condition.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    How do I book an appointment?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Simply visit our Book Appointment page,
+                        choose a suitable date and submit your
+                        appointment request online.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Do you maintain digital patient records?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. Every patient's consultation history,
+                        prescriptions and follow-up details are
+                        securely stored within our system.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+            CTA
+===================================== -->
+
+<section class="services-cta">
+
+    <div class="container">
+
+        <div class="cta-card">
+
+            <span>
+
+                Start Your Wellness Journey
+
+            </span>
+
+            <h2>
+
+                Experience Personalized
+                Homeopathic Care
+
+            </h2>
+
+            <p>
+
+                Whether you're visiting for the first time or
+                continuing your treatment, we're committed to
+                providing compassionate healthcare every step
+                of the way.
+
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{% url 'book_appointment' %}" class="btn-primary">
+
+                    Book Appointment
+
+                </a>
+
+                <a href="{% url 'contact' %}" class="btn-secondary">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 

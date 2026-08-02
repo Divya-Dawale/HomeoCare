@@ -1,36 +1,38 @@
+console.log("HOME JS IS WORKING");
 // ===============================
 // FAQ ACCORDION
 // ===============================
 
-const faqItems = document.querySelectorAll(".faq-item");
+document.addEventListener("DOMContentLoaded", function () {
 
-faqItems.forEach(item => {
+    const questions = document.querySelectorAll(".faq-question");
 
-    const question = item.querySelector(".faq-question");
+    questions.forEach(question => {
 
-    question.addEventListener("click", () => {
+        question.addEventListener("click", function () {
 
-        faqItems.forEach(other => {
+            const item = this.parentElement;
 
-            if(other !== item){
+            document.querySelectorAll(".faq-item").forEach(faq => {
 
-                other.classList.remove("active");
+                if (faq !== item) {
+                    faq.classList.remove("active");
+                    faq.querySelector("span").textContent = "+";
+                }
 
-                other.querySelector("span").textContent = "+";
+            });
 
-            }
+            item.classList.toggle("active");
+
+            this.querySelector("span").textContent =
+                item.classList.contains("active") ? "−" : "+";
 
         });
-
-        item.classList.toggle("active");
-
-        const icon = question.querySelector("span");
-
-        icon.textContent = item.classList.contains("active") ? "−" : "+";
 
     });
 
 });
+   
 
 
 // ===============================
@@ -205,23 +207,21 @@ ripple.remove();
 // NAVBAR SHADOW
 // ===============================
 
-const navbar=document.querySelector(".navbar");
+const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll",()=>{
+if (navbar) {
 
-if(window.scrollY>40){
+    window.addEventListener("scroll", () => {
 
-navbar.classList.add("nav-scrolled");
+        if (window.scrollY > 40) {
+            navbar.classList.add("nav-scrolled");
+        } else {
+            navbar.classList.remove("nav-scrolled");
+        }
+
+    });
 
 }
-
-else{
-
-navbar.classList.remove("nav-scrolled");
-
-}
-
-});
 
 
 // ===============================
@@ -313,28 +313,29 @@ document.body.classList.add("loaded");
 });
 const backToTop = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
+if (backToTop) {
 
-    if (window.scrollY > 300) {
+    window.addEventListener("scroll", () => {
 
-        backToTop.classList.add("show");
+        if (window.scrollY > 300) {
 
-    } else {
+            backToTop.classList.add("show");
 
-        backToTop.classList.remove("show");
+        } else {
 
-    }
+            backToTop.classList.remove("show");
 
-});
-
-backToTop.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
+        }
 
     });
 
-});
+    backToTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
