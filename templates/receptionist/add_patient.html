@@ -8,85 +8,231 @@ Patient Registration & Appointment
 {% endblock %}
 {% block content %}
 
-<div class="patient-card">
+<div class="register-page">
 
-    <h2>Register New Patient</h2>
+    <!-- ================= HEADER ================= -->
 
-    {% if success %}
+    <div class="register-header">
 
-    <div class="success-box">
+        <div>
 
-        Patient Registered Successfully
+            <span class="section-badge">
 
-        <br>
+                Patient Registration
 
-        Patient ID:
-        <strong>{{ success }}</strong>
+            </span>
+
+            <h2>
+
+                Register New Patient
+
+            </h2>
+
+            <p>
+
+                Create a new patient profile and schedule their first appointment in one simple process.
+
+            </p>
+
+        </div>
 
     </div>
 
-    {% endif %}
 
-    <form method="POST">
+    <!-- ================= FORM CARD ================= -->
 
-        {% csrf_token %}
+    <div class="patient-card">
 
-        <p>
-    <label>Full Name</label>
-    {{ form.full_name }}
-</p>
+        <div class="card-header">
 
-<p>
-    <label>Phone Number</label>
+            <div class="patient-icon">
 
-    <div class="phone-input-wrapper">
-        <span>+91</span>
-        {{ form.phone }}
-    </div>
-</p>
+                <i class="fa-solid fa-user-plus"></i>
 
-<p>
-    <label>Email</label>
-    {{ form.email }}
-</p>
+            </div>
 
-<p>
-    <label>Age</label>
-    {{ form.age }}
-</p>
+            <div>
 
-<p>
-    <label>Gender</label>
-    {{ form.gender }}
-</p>
+                <h3>
 
-<p>
-    <label>Address</label>
-    {{ form.address }}
-</p>
+                    Patient Information
 
-<p>
-    <label>Appointment Date</label>
+                </h3>
+
+                <span>
+
+                    Complete all required patient details.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        {% if success %}
+
+        <div class="success-box">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <div>
+
+                <strong>
+
+                    Patient Registered Successfully
+
+                </strong>
+
+                <p>
+
+                    Patient ID :
+                    <strong>{{ success }}</strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Full Name
+
+                    </label>
+
+                    {{ form.full_name }}
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Phone Number
+
+                    </label>
+
+                    <div class="phone-input-wrapper">
+
+                        <span>
+
+                            +91
+
+                        </span>
+
+                        {{ form.phone }}
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    {{ form.email }}
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Age
+
+                    </label>
+
+                    {{ form.age }}
+
+                </div>
+                                <div class="form-group">
+
+                    <label>
+
+                        Gender
+
+                    </label>
+
+                    {{ form.gender }}
+
+                </div>
+
+
+<div class="form-group">
+
+    <label>
+
+        Appointment Date
+
+    </label>
+
     {{ form.appointment_date }}
-</p>
 
-<p>
-    <label>Reason For Visit</label>
+</div>
+
+<div class="form-group full-width">
+
+    <label>
+
+        Address
+
+    </label>
+
+    {{ form.address }}
+
+</div>
+
+<div class="form-group full-width">
+
+    <label>
+
+        Reason For Visit
+
+    </label>
+
     {{ form.reason_for_visit }}
-</p>
 
-        <button
-    type="submit"
-    name="register_patient"
-    class="submit-btn">
+</div>
 
-    <i class="fa-solid fa-user-plus"></i>
+            </div>
 
-    Register & Book Appointment
 
-</button>
+            <!-- ================= ACTIONS ================= -->
 
-    </form>
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    name="register_patient"
+                    class="submit-btn">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Register & Book Appointment
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
 
 </div>
 

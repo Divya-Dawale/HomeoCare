@@ -1,174 +1,623 @@
-.patient-card{
+/*========================================
+        REGISTER PATIENT PAGE
+========================================*/
 
-    max-width:700px;
+.register-page{
 
-    margin:auto;
+    display:flex;
 
-    background:#fff;
+    flex-direction:column;
 
-    padding:30px;
+    gap:32px;
 
-    border-radius:20px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-.patient-card h2{
 
-    margin-bottom:20px;
+/*========================================
+        PAGE HEADER
+========================================*/
+
+.register-header{
+
+    margin-bottom:4px;
+
 }
 
-.patient-card form p{
+.section-badge{
 
-    margin-bottom:18px;
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
 }
 
-.patient-card label{
+.register-header h2{
 
-    display:block;
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
 
     margin-bottom:8px;
 
-    font-weight:600;
 }
 
-.patient-card input,
-.patient-card textarea,
-.patient-card select{
+.register-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    max-width:650px;
+
+    line-height:1.7;
+
+}
+
+
+/*========================================
+        FORM CARD
+========================================*/
+
+.patient-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:34px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+}
+
+
+/*========================================
+        CARD HEADER
+========================================*/
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding-bottom:24px;
+
+    margin-bottom:30px;
+
+    border-bottom:1px solid #EEF4F1;
+
+}
+
+.patient-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    font-size:28px;
+
+    box-shadow:0 12px 28px rgba(46,139,87,.25);
+
+}
+
+.card-header h3{
+
+    font-size:25px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:5px;
+
+}
+
+.card-header span{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+/*========================================
+        SUCCESS MESSAGE
+========================================*/
+
+.success-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:30px;
+
+    padding:18px 22px;
+
+    background:#EAF8F1;
+
+    border:1px solid #CFE5D8;
+
+    border-left:5px solid #2E8B57;
+
+    border-radius:18px;
+
+}
+
+.success-box i{
+
+    font-size:28px;
+
+    color:#2E8B57;
+
+}
+
+.success-box strong{
+
+    color:#1E293B;
+
+    font-size:16px;
+
+    font-weight:800;
+
+}
+
+.success-box p{
+
+    margin-top:4px;
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+/*========================================
+        FORM GRID
+========================================*/
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.full-width{
+
+    grid-column:1 / -1;
+
+}
+
+
+/*========================================
+        FORM GROUP
+========================================*/
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:10px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#64748B;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+}
+
+
+/*========================================
+        INPUTS
+========================================*/
+
+.form-group input,
+.form-group select,
+.form-group textarea{
 
     width:100%;
 
-    padding:12px;
+    padding:16px 18px;
 
-    border:1px solid #cbd5e1;
+    border:1px solid #DDECE5;
 
-    border-radius:12px;
+    border-radius:16px;
+
+    background:#FAFCFB;
+
+    color:#1E293B;
+
+    font-size:15px;
+
+    transition:.35s;
+
+    outline:none;
+
+    font-family:inherit;
+
 }
+
+.form-group textarea{
+
+    min-height:90px;
+
+    resize:vertical;
+
+    line-height:1.7;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:#2E8B57;
+
+    background:#FFFFFF;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.10);
+
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover{
+
+    border-color:#BFDCCF;
+
+}
+
+
+/*========================================
+        PHONE INPUT
+========================================*/
+
+.phone-input-wrapper{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid #DDECE5;
+
+    border-radius:16px;
+
+    background:#FAFCFB;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+.phone-input-wrapper:focus-within{
+
+    border-color:#2E8B57;
+
+    background:#FFFFFF;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.10);
+
+}
+
+.phone-input-wrapper span{
+
+    padding:0 18px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#2E8B57;
+
+    background:#F3FBF7;
+
+    border-right:1px solid #DDECE5;
+
+}
+
+.phone-input-wrapper input{
+
+    border:none !important;
+
+    box-shadow:none !important;
+
+    background:transparent !important;
+
+    flex:1;
+
+}
+/*========================================
+        FORM ACTIONS
+========================================*/
+
+.form-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:36px;
+
+    padding-top:28px;
+
+    border-top:1px solid #EEF4F1;
+
+}
+
+
+/*========================================
+        SUBMIT BUTTON
+========================================*/
 
 .submit-btn{
 
-    background: linear-gradient(
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    height:58px;
+
+    padding:0 34px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(
         135deg,
-        #22c55e,
-        #16a34a
+        #2E8B57,
+        #5BC0BE
     );
 
-    color: white;
+    color:#FFFFFF;
 
-    border: none;
+    font-size:15px;
 
-    padding: 14px 24px;
+    font-weight:700;
 
-    border-radius: 12px;
+    cursor:pointer;
 
-    font-size: 15px;
+    transition:.35s;
 
-    font-weight: 600;
+    box-shadow:0 12px 30px rgba(46,139,87,.22);
 
-    cursor: pointer;
-
-    transition: all 0.3s ease;
-
-    box-shadow: 0 6px 15px rgba(
-        34,
-        197,
-        94,
-        0.25
-    );
 }
 
 .submit-btn:hover{
 
-    transform: translateY(-2px);
+    transform:translateY(-4px);
 
-    box-shadow: 0 12px 25px rgba(
-        34,
-        197,
-        94,
-        0.35
-    );
+    box-shadow:0 18px 38px rgba(46,139,87,.30);
+
 }
 
 .submit-btn:active{
 
-    transform: translateY(0);
+    transform:scale(.98);
+
 }
 
-.submit-btn i{
 
-    margin-right: 8px;
+/*========================================
+        ANIMATIONS
+========================================*/
+
+.patient-card{
+
+    animation:fadeUp .45s ease;
+
 }
 
-.success-box{
+@keyframes fadeUp{
 
-    background:#dcfce7;
+    from{
 
-    color:#166534;
+        opacity:0;
 
-    padding:15px;
+        transform:translateY(12px);
 
-    border-radius:12px;
+    }
 
-    margin-bottom:20px;
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
-.error-box{
+.patient-icon{
 
-    background:#fee2e2;
+    transition:.35s;
 
-    color:#b91c1c;
-
-    padding:15px;
-
-    border-radius:12px;
-
-    margin-bottom:20px;
-}
-.search-btn{
-
-    background: linear-gradient(
-        135deg,
-        #3b82f6,
-        #2563eb
-    );
-
-    color: white;
-
-    border: none;
-
-    padding: 14px 24px;
-
-    border-radius: 12px;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s;
 }
 
-.search-btn:hover{
+.patient-card:hover .patient-icon{
 
-    transform: translateY(-2px);
-}
-.phone-input-wrapper{
-    position:relative;
-    width:100%;
-}
+    transform:scale(1.06);
 
-.phone-input-wrapper span{
-    position:absolute;
-    left:12px;
-    top:50%;
-    transform:translateY(-50%);
-    font-weight:600;
-    color:#555;
-    z-index:1;
+    box-shadow:0 18px 36px rgba(46,139,87,.30);
+
 }
 
-.phone-input-wrapper input{
-    width:100%;
-    padding-left:50px;
+.form-group:hover label{
+
+    color:#2E8B57;
+
+}
+
+
+/*========================================
+        RESPONSIVE
+========================================*/
+
+@media(max-width:992px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .full-width{
+
+        grid-column:auto;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .patient-card{
+
+        padding:24px;
+
+    }
+
+    .card-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:16px;
+
+    }
+
+    .patient-icon{
+
+        width:68px;
+
+        height:68px;
+
+        font-size:26px;
+
+    }
+
+    .card-header h3{
+
+        font-size:22px;
+
+    }
+
+    .form-actions{
+
+        justify-content:stretch;
+
+    }
+
+    .submit-btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .register-page{
+
+        gap:24px;
+
+    }
+
+    .patient-card{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+    .register-header h2{
+
+        font-size:26px;
+
+    }
+
+    .register-header p{
+
+        font-size:14px;
+
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+
+        padding:15px 16px;
+
+    }
+
+    .submit-btn{
+
+        height:54px;
+
+        font-size:14px;
+
+    }
+
 }
