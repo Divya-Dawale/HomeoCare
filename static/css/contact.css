@@ -4,73 +4,88 @@
 
 .contact-hero{
     position:relative;
+    padding:140px 0 110px;
     overflow:hidden;
-    padding:170px 20px 120px;
-    text-align:center;
-    background:linear-gradient(135deg,#F6FFFC 0%,#ECFBF7 55%,#E3F7F4 100%);
+    background:linear-gradient(135deg,#F8FFFC,#EEFDF8);
 }
 
 .contact-hero .container{
     position:relative;
     z-index:2;
-    max-width:850px;
-    margin:auto;
-}
-
-.hero-tag{
-    display:inline-block;
-    padding:10px 22px;
-    border-radius:50px;
-    background:rgba(54,95,87,.12);
-    color:#365F57;
-    font-weight:700;
-    margin-bottom:25px;
-}
-
-.contact-hero h1{
-    font-size:58px;
-    font-weight:800;
-    color:#234B45;
-    margin-bottom:20px;
-    line-height:1.15;
-}
-
-.contact-hero h1 span{
-    color:#365F57;
-}
-
-.contact-hero p{
-    max-width:700px;
-    margin:auto;
-    font-size:18px;
-    line-height:1.9;
-    color:#617C77;
+    max-width:950px;
+    margin:0 auto;
+    text-align:center;
 }
 
 .hero-bg-circle{
     position:absolute;
     border-radius:50%;
-    filter:blur(5px);
+    filter:blur(90px);
+    opacity:.45;
 }
 
 .circle-1{
-    width:320px;
-    height:320px;
-    background:#CDEFE6;
-    top:-120px;
-    left:-80px;
-    opacity:.8;
+    width:280px;
+    height:280px;
+    background:#5BC0BE;
+    top:-90px;
+    left:-90px;
 }
 
 .circle-2{
-    width:280px;
-    height:280px;
-    background:#BFE7DF;
-    right:-70px;
-    bottom:-100px;
-    opacity:.8;
+    width:320px;
+    height:320px;
+    background:#2E8B57;
+    right:-120px;
+    bottom:-120px;
 }
 
+.hero-tag{
+    display:inline-block;
+    background:#E8FFF5;
+    color:#2E8B57;
+    padding:12px 24px;
+    border-radius:40px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.contact-hero h1{
+    font-size:62px;
+    line-height:1.12;
+    font-weight:800;
+    margin:25px 0;
+    color:#234B45;
+}
+
+.contact-hero h1 span{
+    display:block;
+    color:#2D6A6A;
+}
+
+.contact-hero p{
+    max-width:760px;
+    margin:0 auto;
+    font-size:20px;
+    line-height:1.9;
+    color:#6B7280;
+}
+
+@media(max-width:768px){
+
+    .contact-hero{
+        padding:120px 20px 80px;
+    }
+
+    .contact-hero h1{
+        font-size:42px;
+    }
+
+    .contact-hero p{
+        font-size:17px;
+    }
+
+}
 
 /*=========================================
             CONTACT SECTION
@@ -79,6 +94,10 @@
 .contact-section{
     padding:90px 20px;
     background:#F8FCFB;
+}
+.contact-section .container{
+    max-width:1200px;
+    margin:0 auto;
 }
 
 .contact-info{

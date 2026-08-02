@@ -2,29 +2,26 @@
             SERVICES HERO
 =========================================*/
 .hero-bg-circle{
-
-position:absolute;
-
-border-radius:50%;
-
-filter:blur(5px);
-
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.45;
 }
 
 .circle-1{
-    width:340px;
-    height:340px;
-    background:#CDEFE6;
-    top:-120px;
-    left:-80px;
+    width:280px;
+    height:280px;
+    background:#5BC0BE;
+    top:-90px;
+    left:-90px;
 }
 
 .circle-2{
-    width:280px;
-    height:280px;
-    background:#BFE7DF;
-    bottom:-100px;
-    right:-60px;
+    width:320px;
+    height:320px;
+    background:#2E8B57;
+    right:-120px;
+    bottom:-120px;
 }
 
 /*==============================
@@ -33,9 +30,9 @@ filter:blur(5px);
 
 .services-hero{
     position:relative;
+    padding:140px 0 110px;
     overflow:hidden;
-    padding:170px 0 120px;
-    background:linear-gradient(135deg,#F6FFFC 0%,#ECFBF7 55%,#E3F7F4 100%);
+    background:linear-gradient(135deg,#F8FFFC,#EEFDF8);
 }
 
 
@@ -67,40 +64,40 @@ opacity:.45;
 
 
 .services-hero-content{
-    max-width:850px;
-    margin:auto;
+    max-width:950px;
+    margin:0 auto;
     text-align:center;
 }
 
 .services-hero .hero-tag{
     display:inline-block;
-    padding:10px 24px;
+    background:#E8FFF5;
+    color:#2E8B57;
+    padding:12px 24px;
     border-radius:40px;
-    background:rgba(23, 29, 28, 0.08);
-    color:#365F57;
-    font-weight:700;
-    margin-bottom:22px;
+    font-weight:500;
+    margin-bottom:25px;
 }
 
 .services-hero h1{
     font-size:62px;
-    line-height:1.15;
+    line-height:1.12;
     font-weight:800;
+    margin:25px 0;
     color:#234B45;
-    margin-bottom:24px;
 }
 
 .services-hero h1 span{
     display:block;
-    color:#365F57;
+    color:#2D6A6A;
 }
 
 .services-hero p{
-    max-width:700px;
-    margin:auto;
-    font-size:18px;
+    max-width:760px;
+    margin:0 auto;
+    font-size:20px;
     line-height:1.9;
-    color:#5F7B76;
+    color:#6B7280;
 }
 /*=========================================
             SERVICES

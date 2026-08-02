@@ -1,68 +1,90 @@
-/* ==========================
-   HERO
-========================== */
+/*=========================================
+        STATUS HERO
+=========================================*/
 
 .status-hero{
     position:relative;
+    padding:140px 0 110px;
     overflow:hidden;
-    padding:170px 20px 120px;
-    text-align:center;
-    background:linear-gradient(135deg,#F6FFFC 0%,#ECFBF7 55%,#E3F7F4 100%);
+    background:linear-gradient(135deg,#F8FFFC,#EEFDF8);
+}
+
+.hero-bg-circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.45;
+}
+
+.circle-1{
+    width:280px;
+    height:280px;
+    background:#5BC0BE;
+    top:-90px;
+    left:-90px;
+}
+
+.circle-2{
+    width:320px;
+    height:320px;
+    background:#2E8B57;
+    right:-120px;
+    bottom:-120px;
 }
 
 .status-hero .container{
     position:relative;
     z-index:2;
-}
-
-.status-hero h1{
-    font-size:58px;
-    font-weight:800;
-    color:#234B45;
-    margin:18px 0;
-}
-
-.status-hero h1 span{
-    color:#3B6E66;
-}
-
-.status-hero p{
-    max-width:700px;
-    margin:auto;
-    font-size:18px;
-    line-height:1.8;
-    color:#607D78;
+    max-width:950px;
+    margin:0 auto;
+    text-align:center;
 }
 
 .hero-tag{
     display:inline-block;
-    padding:10px 24px;
-    border-radius:50px;
-    background:rgba(255,255,255,.7);
-    color:#365F57;
-    font-weight:700;
-    backdrop-filter:blur(15px);
+    background:#E8FFF5;
+    color:#2E8B57;
+    padding:12px 24px;
+    border-radius:40px;
+    font-weight:600;
+    margin-bottom:25px;
 }
 
-.circle-1,
-.circle-2{
-    position:absolute;
-    border-radius:50%;
-    background:#CDEFE6;
+.status-hero h1{
+    font-size:62px;
+    line-height:1.12;
+    font-weight:800;
+    margin:25px 0;
+    color:#234B45;
 }
 
-.circle-1{
-    width:330px;
-    height:330px;
-    top:-120px;
-    left:-90px;
+.status-hero h1 span{
+    display:block;
+    color:#2D6A6A;
 }
 
-.circle-2{
-    width:270px;
-    height:270px;
-    right:-70px;
-    bottom:-110px;
+.status-hero p{
+    max-width:760px;
+    margin:0 auto;
+    font-size:20px;
+    line-height:1.9;
+    color:#6B7280;
+}
+
+@media(max-width:768px){
+
+    .status-hero{
+        padding:120px 20px 80px;
+    }
+
+    .status-hero h1{
+        font-size:42px;
+    }
+
+    .status-hero p{
+        font-size:17px;
+    }
+
 }
 
 /* ==========================
