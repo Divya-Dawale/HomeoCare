@@ -300,6 +300,7 @@ body.dark-theme .patient-id{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:18px;
+    margin-top:0;
 }
 
 .info-card{
@@ -841,7 +842,11 @@ body.dark-theme .patient-id{
     color:#1F2937;
     line-height:1.7;
 }
-    
+    .history-dropdown[open] .info-grid,
+.history-dropdown[open] .details-grid,
+.history-dropdown[open] .history-content{
+    margin-top:0;
+}
 /*========================================
         COMPLETE CONSULTATION CARD
 ========================================*/
@@ -1134,4 +1139,36 @@ body.dark-theme .patient-id{
     font-weight:700;
     color:#1E293B;
     line-height:1.6;
+}
+/*========================================
+    FIX HISTORY DROPDOWN SPACING
+========================================*/
+
+.history-dropdown{
+    margin-bottom:20px;
+}
+
+/* Space inside dropdown content */
+.history-dropdown .info-grid,
+.history-dropdown .details-grid,
+.history-dropdown .history-content{
+    padding:20px;
+}
+
+/* Additional Notes spacing fix */
+.history-dropdown > .detail-card{
+    margin:20px;
+}
+
+/* Keep dropdown cards separated */
+.history-dropdown:last-child{
+    margin-bottom:0;
+}
+/*========================================
+    GAP BETWEEN MEDICAL HISTORY
+    AND TODAY'S CONSULTATION
+========================================*/
+
+.history-dropdown:last-child{
+    margin-bottom:35px;
 }
