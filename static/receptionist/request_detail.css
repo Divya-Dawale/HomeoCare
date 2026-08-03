@@ -621,3 +621,126 @@
     }
 
 }
+/*========================================
+            REQUEST DETAILS DARK MODE
+========================================*/
+
+body.dark-theme .patients-header h2{
+    color:#F8FAFC;
+}
+
+body.dark-theme .patients-header p{
+    color:#94A3B8;
+}
+
+body.dark-theme .section-badge{
+    background:#173126;
+    color:#7EE0A5;
+}
+
+/* Summary Card */
+
+body.dark-theme .request-summary-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .summary-left h3,
+body.dark-theme .summary-info h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .summary-left p,
+body.dark-theme .summary-info p{
+    color:#94A3B8;
+}
+
+body.dark-theme .summary-icon,
+body.dark-theme .patient-avatar-large{
+    box-shadow:none;
+}
+
+/* Status */
+
+body.dark-theme .status-badge.pending{
+    background:#3F3315;
+    color:#F6C453;
+}
+
+body.dark-theme .status-badge.approved{
+    background:#173126;
+    color:#6EE7A3;
+}
+
+body.dark-theme .status-badge.rejected{
+    background:#3D1E24;
+    color:#F87171;
+}
+
+/* Cards */
+
+body.dark-theme .detail-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .card-title h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .detail-item{
+    background:#0F172A;
+    border-color:#334155;
+}
+
+body.dark-theme .detail-item:hover{
+    background:#162032;
+    box-shadow:none;
+}
+
+body.dark-theme .detail-label{
+    color:#94A3B8;
+}
+
+body.dark-theme .detail-value{
+    color:#F8FAFC;
+}
+
+/* Address */
+
+body.dark-theme .full-width-detail{
+    background:#0F172A;
+    border-color:#334155;
+    color:#CBD5E1;
+}
+
+/* Buttons */
+
+body.dark-theme .reject-btn{
+    background:#2B1B20;
+    color:#F87171;
+    border-color:#5A2A32;
+}
+
+body.dark-theme .reject-btn:hover{
+    background:#DC2626;
+    color:#FFFFFF;
+}
+
+body.dark-theme .approve-btn{
+    box-shadow:none;
+}
+
+body.dark-theme .approve-btn:hover{
+    box-shadow:none;
+}
+
+/* Hover cleanup */
+
+body.dark-theme .detail-item:hover,
+body.dark-theme .approve-btn:hover,
+body.dark-theme .reject-btn:hover{
+    transform:translateY(-3px);
+}

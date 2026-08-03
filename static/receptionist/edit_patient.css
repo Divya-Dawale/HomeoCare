@@ -561,3 +561,108 @@
     transform:translateY(-3px);
 
 }
+/*========================================
+        EDIT PATIENT DARK MODE
+========================================*/
+
+body.dark-theme .edit-header h2{
+    color:#F8FAFC;
+}
+
+body.dark-theme .edit-header p{
+    color:#94A3B8;
+}
+
+body.dark-theme .section-badge{
+    background:#173126;
+    color:#7EE0A5;
+}
+
+/* Form Card */
+
+body.dark-theme .form-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+/* Header */
+
+body.dark-theme .card-header{
+    border-bottom-color:#334155;
+}
+
+body.dark-theme .patient-mini h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .patient-mini span{
+    color:#94A3B8;
+}
+
+body.dark-theme .patient-avatar{
+    box-shadow:none;
+}
+
+/* Labels */
+
+body.dark-theme .form-group label{
+    color:#94A3B8;
+}
+
+/* Inputs */
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea{
+    background:#0F172A;
+    border-color:#334155;
+    color:#F8FAFC;
+}
+
+body.dark-theme .form-group input::placeholder,
+body.dark-theme .form-group textarea::placeholder{
+    color:#64748B;
+}
+
+body.dark-theme .form-group input:hover,
+body.dark-theme .form-group textarea:hover{
+    background:#162032;
+    border-color:#475569;
+}
+
+body.dark-theme .form-group input:focus,
+body.dark-theme .form-group textarea:focus{
+    background:#162032;
+    border-color:#2E8B57;
+    box-shadow:0 0 0 3px rgba(46,139,87,.18);
+}
+
+/* Actions */
+
+body.dark-theme .form-actions{
+    border-top-color:#334155;
+}
+
+/* Save */
+
+body.dark-theme .save-btn{
+    box-shadow:none;
+}
+
+body.dark-theme .save-btn:hover{
+    box-shadow:none;
+}
+
+/* Cancel */
+
+body.dark-theme .cancel-btn{
+    background:#0F172A;
+    color:#CBD5E1;
+    border-color:#334155;
+}
+
+body.dark-theme .cancel-btn:hover{
+    background:#162032;
+    color:#F8FAFC;
+    border-color:#475569;
+}

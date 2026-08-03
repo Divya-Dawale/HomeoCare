@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initializeProfile();
 
+    initializeDarkMode();
+
 });
 
 
@@ -116,36 +118,59 @@ function initializeProfile() {
     });
 
 }
+
 /*=========================================
-        PAGE TRANSITION
+            DARK MODE
 =========================================*/
 
-document.querySelectorAll("a").forEach(link => {
+function initializeDarkMode(){
 
-    if (
+    const toggle =
+    document.getElementById("themeToggle");
 
-        link.hostname === window.location.hostname &&
+    /* Restore saved theme */
 
-        !link.hasAttribute("target") &&
+    const savedTheme =
+    localStorage.getItem("theme");
 
-        !link.href.includes("#")
+    if(savedTheme === "dark"){
 
-    ){
+        document.body.classList.add("dark-theme");
 
-        link.addEventListener("click", function(e){
+        if(toggle){
 
-            e.preventDefault();
+            toggle.checked = true;
 
-            document.body.classList.add("fade-out");
-
-            setTimeout(()=>{
-
-                window.location=this.href;
-
-            },250);
-
-        });
+        }
 
     }
 
-});
+    if(!toggle) return;
+
+    toggle.addEventListener("change",function(){
+
+        if(this.checked){
+
+            document.body.classList.add("dark-theme");
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+        }
+
+        else{
+
+            document.body.classList.remove("dark-theme");
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+        }
+
+    });
+
+}

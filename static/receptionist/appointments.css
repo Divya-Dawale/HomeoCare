@@ -640,3 +640,210 @@
     }
 
 }
+/*======================================================
+                    DARK MODE
+======================================================*/
+
+body.dark-theme .patients-header h2{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .patients-header p{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .section-badge{
+
+    background:#1E3A2D;
+
+    color:#7EE2A8;
+
+}
+
+/*======================================
+            Search Card
+======================================*/
+
+body.dark-theme .search-card{
+
+    background:var(--surface);
+
+    border-color:var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+body.dark-theme .search-card input{
+
+    background:#243446;
+
+    border-color:var(--border);
+
+    color:var(--text);
+
+}
+
+body.dark-theme .search-card input::placeholder{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .search-card input:focus{
+
+    background:#2A3B4E;
+
+    border-color:var(--primary);
+
+}
+
+/*======================================
+            Filter Buttons
+======================================*/
+
+body.dark-theme .filter-bar a{
+
+    background:var(--surface);
+
+    color:var(--text-light);
+
+    border-color:var(--border);
+
+}
+
+body.dark-theme .filter-bar a:hover{
+
+    background:#273549;
+
+    color:#7EE2A8;
+
+}
+
+body.dark-theme .filter-bar .active-filter{
+
+    background:linear-gradient(135deg,#2E8B57,#42A66F);
+
+    color:#fff;
+
+}
+
+/*======================================
+            Table
+======================================*/
+
+body.dark-theme .table-card{
+
+    background:var(--surface);
+
+    border-color:var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+body.dark-theme .table-card thead{
+
+    background:#233244;
+
+}
+
+body.dark-theme .table-card th{
+
+    color:var(--text-light);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+body.dark-theme .table-card td{
+
+    color:var(--text);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+body.dark-theme .table-card tbody tr:hover{
+
+    background:#273549;
+
+}
+
+/*======================================
+            Empty State
+======================================*/
+
+body.dark-theme .empty-row td{
+
+    color:var(--text-light);
+
+}
+
+/*======================================
+            Status Badges
+======================================*/
+
+body.dark-theme .waiting-badge{
+
+    background:#2A2416;
+
+    color:#D6A94C;
+
+    border:1px solid #3B3220;
+
+}
+
+body.dark-theme .completed-badge{
+
+    background:#16291F;
+
+    color:#63C786;
+
+    border:1px solid #234332;
+
+}
+
+body.dark-theme .cancelled-badge{
+
+    background:#2A1C1C;
+
+    color:#D97A7A;
+
+    border:1px solid #442929;
+
+}
+
+body.dark-theme .status-badge{
+
+    background:#243446;
+
+    color:#CBD5E1;
+
+    border:1px solid #334155;
+
+}
+
+/*======================================
+            Cancel Button
+======================================*/
+
+body.dark-theme .cancel-btn{
+
+    background:#3A2020;
+
+    color:#F87171;
+
+}
+
+body.dark-theme .cancel-btn:hover{
+
+    background:#DC2626;
+
+    color:#fff;
+
+}

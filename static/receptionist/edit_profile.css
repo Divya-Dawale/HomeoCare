@@ -615,3 +615,139 @@
     }
 
 }
+/*========================================
+        EDIT PROFILE DARK MODE
+========================================*/
+
+body.dark-theme .edit-profile-header h2{
+    color:#F8FAFC;
+}
+
+body.dark-theme .edit-profile-header p{
+    color:#94A3B8;
+}
+
+body.dark-theme .section-badge{
+    background:#173126;
+    color:#7EE0A5;
+}
+
+/* Card */
+
+body.dark-theme .edit-profile-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .edit-profile-card:hover{
+    box-shadow:none;
+}
+
+body.dark-theme .edit-profile-card::after{
+    display:none;
+}
+
+/* Header */
+
+body.dark-theme .card-top{
+    border-bottom-color:#334155;
+}
+
+body.dark-theme .card-top h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .card-top p{
+    color:#94A3B8;
+}
+
+body.dark-theme .edit-profile-card:hover .card-top h3{
+    color:#7EE0A5;
+}
+
+body.dark-theme .card-icon{
+    box-shadow:none;
+}
+
+body.dark-theme .edit-profile-card:hover .card-icon{
+    box-shadow:none;
+}
+
+/* Labels */
+
+body.dark-theme .profile-form label{
+    color:#94A3B8;
+}
+
+/* Inputs */
+
+body.dark-theme .profile-form input,
+body.dark-theme .profile-form select,
+body.dark-theme .profile-form textarea{
+    background:#0F172A;
+    border-color:#334155;
+    color:#F8FAFC;
+}
+
+body.dark-theme .profile-form input::placeholder,
+body.dark-theme .profile-form textarea::placeholder{
+    color:#64748B;
+}
+
+body.dark-theme .profile-form input:hover,
+body.dark-theme .profile-form select:hover,
+body.dark-theme .profile-form textarea:hover{
+    background:#162032;
+    border-color:#475569;
+}
+
+body.dark-theme .profile-form input:focus,
+body.dark-theme .profile-form select:focus,
+body.dark-theme .profile-form textarea:focus{
+    background:#162032;
+    border-color:#2E8B57;
+    box-shadow:0 0 0 3px rgba(46,139,87,.18);
+}
+
+/* Help */
+
+body.dark-theme .helptext{
+    color:#94A3B8;
+}
+
+/* Errors */
+
+body.dark-theme .errorlist li{
+    color:#F87171;
+}
+
+/* Actions */
+
+body.dark-theme .form-actions{
+    border-top-color:#334155;
+}
+
+/* Save */
+
+body.dark-theme .save-btn{
+    box-shadow:none;
+}
+
+body.dark-theme .save-btn:hover{
+    box-shadow:none;
+}
+
+/* Cancel */
+
+body.dark-theme .cancel-btn{
+    background:#0F172A;
+    border:1px solid #334155;
+    color:#CBD5E1;
+}
+
+body.dark-theme .cancel-btn:hover{
+    background:#162032;
+    border-color:#475569;
+    color:#F8FAFC;
+}

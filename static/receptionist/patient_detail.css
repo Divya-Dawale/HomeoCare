@@ -758,3 +758,177 @@
     }
 
 }
+/*========================================
+        PATIENT DETAILS DARK MODE
+========================================*/
+
+body.dark-theme .patient-header h2{
+    color:#F8FAFC;
+}
+
+body.dark-theme .patient-header p{
+    color:#94A3B8;
+}
+
+body.dark-theme .section-badge{
+    background:#173126;
+    color:#7EE0A5;
+}
+
+/*========================================
+            PATIENT CARD
+========================================*/
+
+body.dark-theme .patient-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .patient-top{
+    border-bottom-color:#334155;
+}
+
+body.dark-theme .patient-heading h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .patient-heading span{
+    color:#94A3B8;
+}
+
+body.dark-theme .patient-avatar{
+    box-shadow:none;
+}
+
+/*========================================
+            INFO BOXES
+========================================*/
+
+body.dark-theme .info-box{
+    background:#0F172A;
+    border-color:#334155;
+}
+
+body.dark-theme .info-box:hover{
+    background:#162032;
+    box-shadow:none;
+}
+
+body.dark-theme .info-box label{
+    color:#94A3B8;
+}
+
+body.dark-theme .info-box strong{
+    color:#F8FAFC;
+}
+
+/*========================================
+        APPOINTMENT CARD
+========================================*/
+
+body.dark-theme .appointments-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .card-title{
+    border-bottom-color:#334155;
+}
+
+body.dark-theme .card-title h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .card-title span{
+    background:#173126;
+    color:#7EE0A5;
+}
+
+/*========================================
+            TABLE
+========================================*/
+
+body.dark-theme .table-wrapper thead{
+    background:#162032;
+}
+
+body.dark-theme .table-wrapper th{
+    color:#94A3B8;
+    border-bottom-color:#334155;
+}
+
+body.dark-theme .table-wrapper td{
+    color:#E2E8F0;
+    border-bottom-color:#334155;
+}
+
+body.dark-theme .table-wrapper tbody tr:hover{
+    background:#243447;
+}
+
+body.dark-theme .date-cell{
+    color:#F8FAFC;
+}
+
+/*========================================
+            STATUS
+========================================*/
+
+body.dark-theme .completed{
+    background:#173126;
+    color:#7EE0A5;
+}
+
+body.dark-theme .pending{
+    background:#3B2F14;
+    color:#FBBF24;
+}
+
+body.dark-theme .cancelled{
+    background:#3A1F1F;
+    color:#F87171;
+}
+
+/*========================================
+            EMPTY STATE
+========================================*/
+
+body.dark-theme .empty-table i{
+    color:#475569;
+}
+
+body.dark-theme .empty-table h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .empty-table p{
+    color:#94A3B8;
+}
+
+/*========================================
+            ACTION CARD
+========================================*/
+
+body.dark-theme .action-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .action-content h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .action-content p{
+    color:#94A3B8;
+}
+
+body.dark-theme .edit-btn{
+    box-shadow:none;
+}
+
+body.dark-theme .edit-btn:hover{
+    box-shadow:none;
+}

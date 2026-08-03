@@ -456,3 +456,194 @@
     border-color:#D7E9DF;
 
 }
+/*======================================================
+                DARK MODE
+======================================================*/
+
+body.dark-theme .appointment-header h2{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .appointment-header p{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .section-badge{
+
+    background:#1E3A2D;
+
+    color:#7EE2A8;
+
+}
+
+body.dark-theme .appointment-table-card{
+
+    background:var(--surface);
+
+    border-color:var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+body.dark-theme .appointment-table thead{
+
+    background:#233244;
+
+}
+
+body.dark-theme .appointment-table th{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .appointment-table td{
+
+    color:var(--text);
+
+    border-top:1px solid var(--border);
+
+}
+
+body.dark-theme .appointment-table tbody tr:hover{
+
+    background:#273549;
+
+}
+
+/*======================================
+            Patient
+======================================*/
+
+body.dark-theme .patient-cell strong{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .patient-cell small{
+
+    color:var(--text-light);
+
+}
+
+/*======================================
+            Type Badge
+======================================*/
+
+body.dark-theme .type-badge{
+
+    background:#183326;
+
+    color:#7EE2A8;
+
+}
+
+/*======================================
+            Status
+======================================*/
+
+body.dark-theme .status{
+
+    border:1px solid transparent;
+
+    font-weight:600;
+
+}
+
+body.dark-theme .status.pending{
+
+    background:#2A2416;
+
+    color:#D6A94C;
+
+    border-color:#3B3220;
+
+}
+
+body.dark-theme .status.approved{
+
+    background:#16291F;
+
+    color:#63C786;
+
+    border-color:#234332;
+
+}
+
+body.dark-theme .status.rejected{
+
+    background:#2A1C1C;
+
+    color:#D97A7A;
+
+    border-color:#442929;
+
+}
+
+/*======================================
+            Button
+======================================*/
+
+body.dark-theme .view-btn{
+
+    background:#223A2E;
+
+    color:#7EE2A8;
+
+}
+
+body.dark-theme .view-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*======================================
+            Empty State
+======================================*/
+
+body.dark-theme .empty-row td{
+
+    background:var(--surface);
+
+}
+
+body.dark-theme .empty-state h3{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .empty-state p{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .empty-icon{
+
+    background:#203428;
+
+    border-color:#355545;
+
+}
+
+body.dark-theme .empty-icon i{
+
+    color:#7EE2A8;
+
+}
+
+body.dark-theme .empty-row:hover{
+
+    background:var(--surface) !important;
+
+}

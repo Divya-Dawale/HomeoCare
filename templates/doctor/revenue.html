@@ -1,158 +1,484 @@
 {% extends 'doctor/base_doctor.html' %}
+
 {% load static %}
 
 {% block css %}
+
 <link rel="stylesheet"
       href="{% static 'doctor/revenue.css' %}">
+
 {% endblock %}
 
 {% block page_title %}
+
 Revenue Dashboard
+
 {% endblock %}
 
 {% block content %}
 
-<div class="filter-bar">
+<div class="revenue-page">
 
-    <a href="?filter=today">Today</a>
+    <!-- ==========================================
+                    PAGE HEADER
+    =========================================== -->
 
-    <a href="?filter=7days">Last 7 Days</a>
+    <div class="page-header">
 
-    <a href="?filter=15days">Last 15 Days</a>
+        <div>
 
-    <a href="?filter=month">This Month</a>
+            <span class="section-badge">
 
-    <a href="?filter=year">This Year</a>
+                Revenue Analytics
 
-    <a href="?filter=all">All Time</a>
+            </span>
+
+            <h2>
+
+                Revenue Dashboard
+
+            </h2>
+
+            <p>
+
+                Track clinic earnings, consultation income, medicine sales and billing performance.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+                    FILTERS
+    =========================================== -->
+
+    <div class="filter-card">
+
+        <div class="filter-title">
+
+            <i class="fa-solid fa-filter"></i>
+
+            <h3>
+
+                Quick Filters
+
+            </h3>
+
+        </div>
+
+        <div class="filter-bar">
+
+    <a href="?filter=today"
+       class="{% if request.GET.filter == 'today' %}active{% endif %}">
+        Today
+    </a>
+
+    <a href="?filter=7days"
+       class="{% if request.GET.filter == '7days' %}active{% endif %}">
+        Last 7 Days
+    </a>
+
+    <a href="?filter=15days"
+       class="{% if request.GET.filter == '15days' %}active{% endif %}">
+        Last 15 Days
+    </a>
+
+    <a href="?filter=month"
+       class="{% if request.GET.filter == 'month' %}active{% endif %}">
+        This Month
+    </a>
+
+    <a href="?filter=year"
+       class="{% if request.GET.filter == 'year' %}active{% endif %}">
+        This Year
+    </a>
+
+    <a href="?filter=all"
+       class="{% if request.GET.filter == 'all' %}active{% endif %}">
+        All Time
+    </a>
 
 </div>
 
-<div class="custom-filter">
+    </div>
 
-    <form method="GET">
 
-        <input
-            type="date"
-            name="start_date"
-        >
 
-        <input
-            type="date"
-            name="end_date"
-        >
+    <!-- ==========================================
+                CUSTOM DATE FILTER
+    =========================================== -->
 
-        <button type="submit">
-            Apply
-        </button>
+    <div class="custom-filter-card">
 
-    </form>
+        <div class="filter-title">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <h3>
+
+                Custom Date Range
+
+            </h3>
+
+        </div>
+
+        <form
+            method="GET"
+            class="custom-filter">
+
+            <input
+                type="date"
+                name="start_date">
+
+            <input
+                type="date"
+                name="end_date">
+
+            <button type="submit">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Apply Filter
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- ==========================================
+                SUMMARY CARDS
+    =========================================== -->
+
+    <div class="stats-grid">
+                <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-sack-dollar"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>
+
+                    Total Revenue
+
+                </span>
+
+                <h2>
+
+                    ₹{{ revenue }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>
+
+                    Consultation Revenue
+
+                </span>
+
+                <h2>
+
+                    ₹{{ consultation_revenue }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-pills"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>
+
+                    Medicine Revenue
+
+                </span>
+
+                <h2>
+
+                    ₹{{ medicine_revenue|floatformat:2 }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+                STATISTICS PANEL
+    =========================================== -->
+
+    <div class="stats-panel">
+
+        <div class="card-heading">
+
+            <span class="section-badge">
+
+                Statistics
+
+            </span>
+
+            <h3>
+
+                Revenue Statistics
+
+            </h3>
+
+        </div>
+
+        <div class="stats-list">
+
+            <div class="stats-row">
+
+                <span>
+
+                    Total Bills
+
+                </span>
+
+                <strong>
+
+                    {{ total_bills }}
+
+                </strong>
+
+            </div>
+
+            <div class="stats-row">
+
+                <span>
+
+                    Average Bill
+
+                </span>
+
+                <strong>
+
+                    ₹{{ average_bill|floatformat:2 }}
+
+                </strong>
+
+            </div>
+
+            <div class="stats-row">
+
+                <span>
+
+                    Highest Bill
+
+                </span>
+
+                <strong>
+
+                    ₹{{ highest_bill }}
+
+                </strong>
+
+            </div>
+
+            <div class="stats-row">
+
+                <span>
+
+                    Lowest Bill
+
+                </span>
+
+                <strong>
+
+                    ₹{{ lowest_bill }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+                REVENUE CHART
+    =========================================== -->
+
+    <div class="chart-card">
+
+        <div class="card-heading">
+
+            <span class="section-badge">
+
+                Analytics
+
+            </span>
+
+            <h3>
+
+                Revenue Trend
+
+            </h3>
+
+        </div>
+
+        <div class="chart-wrapper">
+
+            <canvas id="revenueChart"></canvas>
+
+        </div>
+
+    </div>
+        <!-- ==========================================
+                REVENUE RECORDS
+    =========================================== -->
+
+    <div class="table-card">
+
+        <div class="card-heading">
+
+            <span class="section-badge">
+
+                Records
+
+            </span>
+
+            <h3>
+
+                Revenue Records
+
+            </h3>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="revenue-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patient</th>
+
+                        <th>Consultation</th>
+
+                        <th>Medicine</th>
+
+                        <th>Total</th>
+
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for bill in bills %}
+
+                    <tr>
+
+                        
+
+                            <td class="patient-name">
+
+                                {{ bill.patient.full_name }}
+
+                            </td>
+
+                        
+
+                        <td>
+
+                            ₹{{ bill.consultation_fee }}
+
+                        </td>
+
+                        <td>
+
+                            ₹{{ bill.medicine_fee }}
+
+                        </td>
+
+                        <td>
+
+                            <strong class="amount">
+
+                                ₹{{ bill.total_amount }}
+
+                            </strong>
+
+                        </td>
+
+                        <td>
+
+                            {{ bill.created_at|date:"d M Y" }}
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="5" class="empty-table">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            No revenue records available.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div class="stats-grid">
-
-    <div class="stat-card">
-        <h3>Total Revenue</h3>
-        <h2>₹{{ revenue }}</h2>
-    </div>
-
-    <div class="stat-card">
-        <h3>Consultation Revenue</h3>
-        <h2>₹{{ consultation_revenue }}</h2>
-    </div>
-
-    <div class="stat-card">
-        <h3>Medicine Revenue</h3>
-        <h2>₹{{ medicine_revenue|floatformat:2 }}</h2>
-    </div>
-
-</div>
-
-<div class="stats-panel">
-
-    <h3>Revenue Statistics</h3>
-
-    <div class="stats-row">
-        <span>Total Bills</span>
-        <strong>{{ total_bills }}</strong>
-    </div>
-
-    <div class="stats-row">
-        <span>Average Bill</span>
-        <strong>₹{{ average_bill|floatformat:2 }}</strong>
-    </div>
-
-    <div class="stats-row">
-        <span>Highest Bill</span>
-        <strong>₹{{ highest_bill }}</strong>
-    </div>
-
-    <div class="stats-row">
-        <span>Lowest Bill</span>
-        <strong>₹{{ lowest_bill }}</strong>
-    </div>
-
-</div>
-
-<div class="chart-card">
-
-    <h3>Revenue Trend</h3>
-
-    <canvas id="revenueChart"></canvas>
-
-</div>
-<div class="table-card">
-
-    <h3>Revenue Records</h3>
-
-    <table>
-
-        <thead>
-
-            <tr>
-                <th>Patient</th>
-                <th>Consultation</th>
-                <th>Medicine</th>
-                <th>Total</th>
-                <th>Date</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            {% for bill in bills %}
-
-            <tr>
-
-                <td>
-                    {{ bill.patient.full_name }}
-                </td>
-
-                <td>
-                    ₹{{ bill.consultation_fee }}
-                </td>
-
-                <td>
-                    ₹{{ bill.medicine_fee }}
-                </td>
-
-                <td>
-                    ₹{{ bill.total_amount }}
-                </td>
-
-                <td>
-                    {{ bill.created_at|date:"d M Y" }}
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-
-    </table>
-
-</div>
 {% endblock %}

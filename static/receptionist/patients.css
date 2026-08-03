@@ -668,3 +668,190 @@
 
 
 }
+/*======================================================
+                    DARK MODE
+======================================================*/
+
+body.dark-theme .patients-header h2{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .patients-header p{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .section-badge{
+
+    background:#1E3A2D;
+
+    color:#7EE2A8;
+
+}
+
+/*======================================
+            Search Card
+======================================*/
+
+body.dark-theme .patient-search-card{
+
+    background:var(--surface);
+
+    border-color:var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+body.dark-theme .search-input{
+
+    background:#243446;
+
+    border-color:var(--border);
+
+}
+
+body.dark-theme .search-input input{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .search-input input::placeholder{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .search-input i{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .search-input:focus-within{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.18);
+
+}
+
+/*======================================
+            Table Card
+======================================*/
+
+body.dark-theme .patients-table-card{
+
+    background:var(--surface);
+
+    border-color:var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+body.dark-theme .patients-table thead{
+
+    background:#233244;
+
+}
+
+body.dark-theme .patients-table th{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .patients-table td{
+
+    color:var(--text);
+
+    border-top:1px solid var(--border);
+
+}
+
+body.dark-theme .patients-table tbody tr:hover{
+
+    background:#273549;
+
+}
+
+/*======================================
+            Patient Info
+======================================*/
+
+body.dark-theme .patient-cell strong{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .patient-cell small{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .patients-table td:first-child{
+
+    color:#7EE2A8;
+
+}
+
+/*======================================
+            Gender Badge
+======================================*/
+
+body.dark-theme .gender-badge{
+
+    background:#183326;
+
+    color:#7EE2A8;
+
+}
+
+/*======================================
+            View Button
+======================================*/
+
+body.dark-theme .view-btn{
+
+    background:#223A2E;
+
+    color:#7EE2A8;
+
+}
+
+body.dark-theme .view-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*======================================
+            Empty State
+======================================*/
+
+body.dark-theme .empty-state h3{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .empty-state p{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .empty-state i{
+
+    color:#7EE2A8;
+
+}
