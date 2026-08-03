@@ -46,3 +46,6 @@ def logout_user(request):
     logout(request)
 
     return redirect("staff_login")
+
+def register(request):
+    return render(request, "accounts/register.html")

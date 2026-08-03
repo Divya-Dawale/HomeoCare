@@ -1,0 +1,333 @@
+{% extends 'doctor/base_doctor.html' %}
+{% load static %}
+
+
+{% block page_title %}
+Clinic Settings
+{% endblock %}
+
+
+
+{% block css %}
+
+<link rel="stylesheet"
+href="{% static 'doctor/clinic_management.css' %}">
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+
+<div class="clinic-page">
+
+
+
+    <!-- ================= HEADER ================= -->
+
+
+    <div class="clinic-header">
+
+
+        <div>
+
+
+            <span class="section-badge">
+
+                Clinic Settings
+
+            </span>
+
+
+
+            <h2>
+
+                Clinic Management
+
+            </h2>
+
+
+
+            <p>
+
+                Manage your clinic information, consultation charges and working hours.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ================= CLINIC CARD ================= -->
+
+
+    <div class="clinic-card">
+
+
+
+        <div class="card-top">
+
+
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-hospital"></i>
+
+            </div>
+
+
+
+            <div>
+
+
+                <h3>
+
+                    Clinic Information
+
+                </h3>
+
+
+
+                <p>
+
+                    Update your clinic details and availability settings.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        <form method="POST" class="clinic-form">
+
+
+            {% csrf_token %}
+
+
+
+
+            <div class="form-grid">
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Consultation Fee
+                    </label>
+
+                    {{ form.consultation_fee }}
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Medicine Fee (7 Days)
+                    </label>
+
+                    {{ form.medicine_fee_7_days }}
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Maximum Patients Per Day
+                    </label>
+
+                    {{ form.max_patients_per_day }}
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Clinic Phone
+                    </label>
+
+                    {{ form.phone }}
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Clinic Email
+                    </label>
+
+                    {{ form.email }}
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Google Map Link
+                    </label>
+
+                    <input type="text" name="google_map_link" value="{{ form.google_map_link.value|default:'' }}">
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+            <div class="form-group full-width">
+
+
+                <label>
+
+                    Clinic Address
+
+                </label>
+
+
+                {{ form.address }}
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="time-section">
+
+
+                <h4>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    Clinic Timing
+
+                </h4>
+
+
+
+
+                <div class="form-grid">
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Opening Time
+                        </label>
+
+                        {{ form.opening_time }}
+
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Closing Time
+                        </label>
+
+                        {{ form.closing_time }}
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="form-actions">
+
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+
+                    Save Changes
+
+
+                </button>
+
+
+            </div>
+
+
+
+
+
+        </form>
+
+
+
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}
