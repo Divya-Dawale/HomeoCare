@@ -1,95 +1,308 @@
 {% extends 'doctor/base_doctor.html' %}
-
 {% load static %}
 
 {% block css %}
 <link rel="stylesheet"
-href="{% static 'doctor/dashboard.css' %}">
+      href="{% static 'doctor/dashboard.css' %}">
 {% endblock %}
 
 {% block page_title %}
 Doctor Dashboard
 {% endblock %}
 
+{% block page_subtitle %}
+Welcome back, Dr. {{ request.user.username }}.
+Manage today's consultations and patient records.
+{% endblock %}
+
 {% block content %}
 
+<div class="dashboard-wrapper">
 
-<div class="stats-grid">
+    <!--======================================================
+                        GREETING
+    ======================================================-->
 
-    <div class="stat-card">
+    <div class="dashboard-greeting">
 
-        <i class="fa-solid fa-user-clock"></i>
+        <div class="greeting-content">
 
-        <h3>Waiting Patients</h3>
+            <span class="section-badge">
 
-        <h1>{{ waiting_patients }}</h1>
+                Doctor Dashboard
 
-    </div>
+            </span>
 
-    <div class="stat-card">
+            <h2>
 
-        <i class="fa-solid fa-stethoscope"></i>
+                Welcome back,
+                Dr. {{ request.user.username }}
 
-        <h3>Consulting</h3>
+            </h2>
 
-        <h1>{{ consulting_patients }}</h1>
+            <p>
 
-    </div>
+                Here's a quick overview of today's clinic activities.
+                Stay focused and provide the best care for your patients.
 
-    <div class="stat-card">
+            </p>
 
-        <i class="fa-solid fa-circle-check"></i>
+        </div>
 
-        <h3>Completed Today</h3>
+        <div class="greeting-icon">
 
-        <h1>{{ completed_today }}</h1>
+            <i class="fa-solid fa-user-doctor"></i>
 
-    </div>
-
-    <div class="stat-card">
-
-        <i class="fa-solid fa-file-medical"></i>
-
-        <h3>Total Records</h3>
-
-        <h1>{{ total_records }}</h1>
+        </div>
 
     </div>
 
-</div>
-<div class="overview-section">
 
-    <div class="overview-card">
 
-        <h2>📊 Clinic Health Overview</h2>
+    <!--======================================================
+                        STATISTICS
+    ======================================================-->
 
-        <div class="overview-grid">
+    <div class="stats-grid">
 
-            <div class="overview-box">
+        <div class="stat-card">
 
-                <h3>Most Common Symptoms Today</h3>
+            <div class="stat-icon">
 
-                <ul>
-                    {% for symptom in common_symptoms %}
-                        <li>{{ symptom }}</li>
-                    {% empty %}
-                        <li>No data available</li>
-                    {% endfor %}
-                </ul>
+                <i class="fa-solid fa-user-clock"></i>
 
             </div>
 
-            <div class="overview-box">
+            <div class="stat-content">
 
-                <h3>Most Prescribed Medicines</h3>
+                <span>
 
-                <ul>
-                    {% for medicine in common_medicines %}
-                        <li>{{ medicine }}</li>
-                    {% empty %}
-                        <li>No data available</li>
-                    {% endfor %}
-                </ul>
+                    Waiting Patients
+
+                </span>
+
+                <h2>
+
+                    {{ waiting_patients }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-stethoscope"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>
+
+                    Consulting
+
+                </span>
+
+                <h2>
+
+                    {{ consulting_patients }}
+
+                </h2>
+
+            </div>
+
+        </div>
+                <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>
+
+                    Completed Today
+
+                </span>
+
+                <h2>
+
+                    {{ completed_today }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-file-medical"></i>
+
+            </div>
+
+            <div class="stat-content">
+
+                <span>
+
+                    Total Records
+
+                </span>
+
+                <h2>
+
+                    {{ total_records }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!--======================================================
+                    CLINIC OVERVIEW
+    ======================================================-->
+
+    <div class="overview-section">
+
+        <div class="overview-card">
+
+            <div class="overview-header">
+
+                <div>
+
+                    <span class="section-badge">
+
+                        Clinic Overview
+
+                    </span>
+
+                    <h2>
+
+                        Today's Medical Summary
+
+                    </h2>
+
+                    <p>
+
+                        A quick overview of the most common cases
+                        and medicines prescribed today.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="overview-grid">
+
+                <!-- Symptoms -->
+
+                <div class="overview-box">
+
+                    <div class="overview-title">
+
+                        <i class="fa-solid fa-notes-medical"></i>
+
+                        <h3>
+
+                            Most Common Symptoms
+
+                        </h3>
+
+                    </div>
+
+                    <ul class="overview-list">
+
+                        {% for symptom in common_symptoms %}
+
+                            <li>
+
+                                <i class="fa-solid fa-circle"></i>
+
+                                {{ symptom }}
+
+                            </li>
+
+                        {% empty %}
+
+                            <li class="empty-item">
+
+                                <i class="fa-regular fa-face-smile"></i>
+
+                                No symptom data available.
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- Medicines -->
+
+                <div class="overview-box">
+
+                    <div class="overview-title">
+
+                        <i class="fa-solid fa-pills"></i>
+
+                        <h3>
+
+                            Most Prescribed Medicines
+
+                        </h3>
+
+                    </div>
+
+                    <ul class="overview-list">
+                                                {% for medicine in common_medicines %}
+
+                            <li>
+
+                                <i class="fa-solid fa-circle"></i>
+
+                                {{ medicine }}
+
+                            </li>
+
+                        {% empty %}
+
+                            <li class="empty-item">
+
+                                <i class="fa-regular fa-face-smile"></i>
+
+                                No medicine data available.
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
 
             </div>
 
@@ -98,4 +311,5 @@ Doctor Dashboard
     </div>
 
 </div>
+
 {% endblock %}

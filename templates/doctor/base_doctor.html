@@ -6,16 +6,23 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>HomeoCare Doctor Panel</title>
+    <title>
 
-    <link rel="stylesheet"
-          href="{% static 'doctor/base_doctor.css' %}">
+        HomeoCare Doctor Panel
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'doctor/base_doctor.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     {% block css %}
     {% endblock %}
@@ -26,60 +33,122 @@
 
 <div class="layout">
 
+    <!-- ==========================================
+                    SIDEBAR
+    =========================================== -->
+
     <aside class="sidebar">
 
-        <div>
+        <div class="sidebar-top">
 
             <div class="logo">
 
                 <div class="logo-icon">
 
-                    <i class="fa-solid fa-user-doctor"></i>
+                    <i class="fa-solid fa-leaf"></i>
 
                 </div>
 
-                <h2>HomeoCare</h2>
+                <div>
 
-                <p>Doctor Panel</p>
-    
+                    <h2>
+
+                        HomeoCare
+
+                    </h2>
+
+                    <p>
+
+                        Doctor Panel
+
+                    </p>
+
+                </div>
+
             </div>
-            
+
             <div class="divider"></div>
 
-            <nav>
+            <nav class="sidebar-menu">
 
-                <a href="{% url 'doctor_dashboard' %}">
+                <a
+                    href="{% url 'doctor_dashboard' %}"
+                    class="menu-item {% if request.resolver_match.url_name == 'doctor_dashboard' %}active{% endif %}">
+
                     <i class="fa-solid fa-house"></i>
-                    Dashboard
+
+                    <span>
+
+                        Dashboard
+
+                    </span>
+
                 </a>
 
-                <a href="{% url 'patient_queue' %}">
+                <a
+                    href="{% url 'patient_queue' %}"
+                    class="menu-item {% if request.resolver_match.url_name == 'patient_queue' %}active{% endif %}">
+
                     <i class="fa-solid fa-users"></i>
-                    Patient Queue
+
+                    <span>
+
+                        Patient Queue
+
+                    </span>
+
                 </a>
 
+                <a
+                    href="{% url 'doctor_revenue' %}"
+                    class="menu-item {% if request.resolver_match.url_name == 'doctor_revenue' %}active{% endif %}">
 
-                <a href="{% url 'doctor_revenue' %}">
-                     <i class="fa-solid fa-chart-line"></i>
-                     Revenue
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>
+
+                        Revenue
+
+                    </span>
+
                 </a>
 
             </nav>
 
         </div>
 
-        <div>
+        <div class="sidebar-bottom">
 
             <div class="divider"></div>
 
-            <nav>
-                <a href="{% url 'doctor_settings' %}">
-                     <i class="fa-solid fa-gear"></i>
-                      Settings
+            <nav class="sidebar-menu">
+
+                <a
+                    href="{% url 'doctor_settings' %}"
+                    class="menu-item {% if request.resolver_match.url_name == 'doctor_settings' %}active{% endif %}">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span>
+
+                        Settings
+
+                    </span>
+
                 </a>
-                <a href="{% url 'logout' %}">
+
+                <a
+                    href="{% url 'logout' %}"
+                    class="menu-item">
+
                     <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
+
+                    <span>
+
+                        Logout
+
+                    </span>
+
                 </a>
 
             </nav>
@@ -88,58 +157,106 @@
 
     </aside>
 
+    <!-- ==========================================
+                    MAIN
+    =========================================== -->
+
     <main class="main">
+                <!-- ==========================================
+                        TOPBAR
+        =========================================== -->
 
         <header class="topbar">
 
-            <div>
+            <div class="topbar-left">
 
-                <h1>
+                <button class="menu-toggle">
 
-                    {% block page_title %}
-                    Doctor Dashboard
-                    {% endblock %}
+                    <i class="fa-solid fa-bars"></i>
 
-                </h1>
+                </button>
 
-                <span>
-                    Welcome back Doctor
-                </span>
+                <div class="page-heading">
+
+                    <h1>
+
+                        {% block page_title %}
+
+                        Doctor Dashboard
+
+                        {% endblock %}
+
+                    </h1>
+
+                    <p>
+
+                        {% block page_subtitle %}
+
+                        Welcome back, Doctor.
+
+                        {% endblock %}
+
+                    </p>
+
+                </div>
 
             </div>
+
+
             <div class="topbar-right">
+<button class="notification">
 
-    <button class="notification">
+    <i class="fa-regular fa-bell"></i>
 
-        <i class="fa-regular fa-bell"></i>
+    <span class="notification-count">
 
-    </button>
+        {{ notification_count|default:"0" }}
 
-           <a href="{% url 'doctor_settings' %}"
-       class="profile-link">
+    </span>
 
-        <div class="profile">
+</button>
 
-            <div class="avatar">
 
-                D
+                <a
+                    href="{% url 'doctor_settings' %}"
+                    class="profile-link">
+
+                    <div class="profile">
+
+                        <div class="avatar">
+
+                            {{ request.user.username|first|upper }}
+
+                        </div>
+
+                        <div class="profile-details">
+
+                            <div class="profile-name">
+
+                                {{ request.user.username }}
+
+                            </div>
+
+                            <div class="profile-role">
+
+                                Doctor
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
 
             </div>
 
-            <div>
-
-                <strong>{{ request.user.username }}</strong>
-
-                <p>Doctor</p>
-
-            </div>
-
-        </div>
-
-    </a>
-
-</div>
         </header>
+
+
+        <!-- ==========================================
+                        PAGE CONTENT
+        =========================================== -->
 
         <div class="content">
 
@@ -151,6 +268,8 @@
     </main>
 
 </div>
+
+
 {% block js %}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -160,68 +279,68 @@
 
 <script>
 
-const labels =
-JSON.parse(
-document.getElementById(
-"labels-data"
-).textContent
-);
+const labelsElement =
+document.getElementById("labels-data");
 
-const values =
-JSON.parse(
-document.getElementById(
-"values-data"
-).textContent
-);
+const valuesElement =
+document.getElementById("values-data");
 
-new Chart(
-document.getElementById(
-"revenueChart"
-),
-{
-    type: "line",
+const chartCanvas =
+document.getElementById("revenueChart");
 
-    data: {
+if(labelsElement && valuesElement && chartCanvas){
 
-        labels: labels,
+    const labels =
+    JSON.parse(labelsElement.textContent);
 
-        datasets: [{
-            label: "Revenue",
+    const values =
+    JSON.parse(valuesElement.textContent);
 
-            data: values,
+    new Chart(chartCanvas,{
 
-            borderColor: "#22c55e",
+        type:"line",
 
-            backgroundColor:
-            "rgba(34,197,94,0.15)",
+        data:{
 
-            fill: true,
+            labels:labels,
 
-            tension: 0.4
-        }]
-    }
+            datasets:[{
+
+                label:"Revenue",
+
+                data:values,
+
+                borderColor:"#2E8B57",
+
+                backgroundColor:"rgba(46,139,87,.15)",
+
+                fill:true,
+
+                tension:.4
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:false
+
+        }
+
+    });
+
 }
-);
 
 </script>
+
+<!-- Doctor Panel JS -->
+<script src="{% static 'js/doctors.js' %}"></script>
 
 {% endblock %}
-<script>
-const toggle =
-document.getElementById("themeToggle");
 
-if(toggle){
-
-    toggle.addEventListener(
-        "change",
-        function(){
-
-            document.body.classList.toggle(
-                "dark-theme"
-            );
-        }
-    );
-}
-</script>
 </body>
+
 </html>

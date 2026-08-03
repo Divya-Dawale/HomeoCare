@@ -1,222 +1,538 @@
+/*======================================================
+                    DASHBOARD WRAPPER
+======================================================*/
+
+.dashboard-wrapper{
+
+    padding:25px;
+
+}
+
+
+
+/*======================================================
+                    GREETING CARD
+======================================================*/
+
+.dashboard-greeting{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    padding:40px;
+
+    margin-bottom:35px;
+
+    border-radius:28px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color:#ffffff;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 45px rgba(46,139,87,.18);
+
+}
+
+
+
+.dashboard-greeting::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    top:-120px;
+
+    right:-80px;
+
+}
+
+
+
+.dashboard-greeting::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.05);
+
+    bottom:-70px;
+
+    right:90px;
+
+}
+
+
+
+.greeting-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.16);
+
+    backdrop-filter:blur(10px);
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.greeting-content h2{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.greeting-content p{
+
+    max-width:620px;
+
+    color:rgba(255,255,255,.92);
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+
+
+.greeting-icon{
+
+    position:relative;
+
+    z-index:2;
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.15);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    backdrop-filter:blur(12px);
+
+    font-size:40px;
+
+}
+
+
+
+/*======================================================
+                    STATISTICS
+======================================================*/
+
 .stats-grid{
 
     display:grid;
 
-    grid-template-columns:
-    repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 
-    gap:25px;
+    gap:22px;
+
+    margin-bottom:35px;
+
 }
+
+
 
 .stat-card{
 
-    background:white;
+    background:#ffffff;
 
-    border-radius:18px;
+    border:1px solid #E6F0EB;
 
-    padding:30px;
+    border-radius:24px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    padding:25px;
 
-    transition:.3s;
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+    transition:.3s ease;
+
 }
+
+
 
 .stat-card:hover{
 
     transform:translateY(-6px);
+
+    box-shadow:0 20px 40px rgba(46,139,87,.12);
+
 }
 
-.stat-card i{
 
-    font-size:34px;
 
-    color:#10B981;
+.stat-icon{
 
-    margin-bottom:18px;
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#ffffff;
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
 }
 
-.stat-card h3{
+
+
+.stat-content span{
+
+    display:block;
 
     color:#64748B;
 
-    margin-bottom:12px;
+    font-size:14px;
 
-    font-weight:500;
-}
-
-.stat-card h1{
-
-    font-size:40px;
-
-    color:#0F172A;
-}
-/* Previous Prescription Section */
-
-.prescription-card {
-
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 16px;
-
-    padding: 20px;
-
-    margin-top: 20px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom:8px;
 
 }
 
-.prescription-header {
 
-    display: flex;
 
-    justify-content: space-between;
+.stat-content h2{
 
-    align-items: center;
+    font-size:34px;
 
-    margin-bottom: 20px;
+    color:#1E293B;
 
-}
-
-.prescription-header h4 {
-
-    margin: 0;
-
-    color: #1f2937;
-
-    font-size: 20px;
+    font-weight:800;
 
 }
+/*======================================================
+                    OVERVIEW SECTION
+======================================================*/
 
-.prescription-date {
-
-    background: #e0f2fe;
-
-    color: #0369a1;
-
-    padding: 6px 12px;
-
-    border-radius: 20px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-}
-
-.prescription-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-
-    gap: 15px;
-
-    margin-bottom: 20px;
-
-}
-
-.prescription-grid label {
-
-    display: block;
-
-    color: #6b7280;
-
-    font-size: 13px;
-
-    margin-bottom: 5px;
-
-}
-
-.prescription-grid p {
-
-    margin: 0;
-
-    font-weight: 600;
-
-    color: #111827;
-
-}
-
-.instructions-box {
-
-    background: #f9fafb;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-}
-
-.instructions-box label {
-
-    display: block;
-
-    font-size: 13px;
-
-    color: #6b7280;
-
-    margin-bottom: 8px;
-
-}
-
-.instructions-box p {
-
-    margin: 0;
-
-    color: #374151;
-
-    line-height: 1.6;
-
-}
 .overview-section{
-    margin-top:30px;
+
+    margin-top:10px;
+
 }
+
+
 
 .overview-card{
-    background:white;
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+    background:#ffffff;
+
+    border:1px solid #E6F0EB;
+
+    border-radius:26px;
+
+    padding:32px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
 }
 
-.overview-card h2{
-    margin-bottom:20px;
-    color:#1f2937;
+
+
+.overview-header{
+
+    margin-bottom:30px;
+
 }
+
+
+
+.overview-header h2{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-top:10px;
+
+}
+
+
+
+.overview-header p{
+
+    margin-top:8px;
+
+    color:#64748B;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+
+
+/*======================================================
+                    OVERVIEW GRID
+======================================================*/
 
 .overview-grid{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:24px;
+
 }
+
+
+
+/*======================================================
+                    OVERVIEW BOX
+======================================================*/
 
 .overview-box{
-    background:#f8fafc;
-    padding:20px;
-    border-radius:14px;
-    border-left:5px solid #10b981;
+
+    background:#F9FCFA;
+
+    border:1px solid #EAF2ED;
+
+    border-radius:22px;
+
+    padding:24px;
+
+    transition:.3s ease;
+
 }
 
-.overview-box h3{
-    margin-bottom:15px;
-    color:#374151;
+
+
+.overview-box:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 28px rgba(46,139,87,.08);
+
 }
 
-.overview-box ul{
+
+
+.overview-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.overview-title i{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#ffffff;
+
+    font-size:18px;
+
+}
+
+
+
+.overview-title h3{
+
+    font-size:19px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+}
+
+
+
+/*======================================================
+                    LIST
+======================================================*/
+
+.overview-list{
+
     list-style:none;
-    padding:0;
-    margin:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
 }
 
-.overview-box li{
-    padding:10px 0;
-    border-bottom:1px solid #e5e7eb;
-    color:#4b5563;
+
+
+.overview-list li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 16px;
+
+    background:#ffffff;
+
+    border:1px solid #EEF4F0;
+
+    border-radius:16px;
+
+    color:#334155;
+
+    font-size:14px;
+
+    transition:.25s ease;
+
 }
 
-.overview-box li:last-child{
-    border-bottom:none;
+
+
+.overview-list li:hover{
+
+    transform:translateX(4px);
+
+    border-color:#CFE7D7;
+
+}
+
+
+
+.overview-list li i{
+
+    color:#2E8B57;
+
+    font-size:8px;
+
+}
+
+
+
+/*======================================================
+                    EMPTY STATE
+======================================================*/
+
+.empty-item{
+
+    justify-content:center;
+
+    color:#94A3B8 !important;
+
+    background:#F8FAFC !important;
+
+    border:2px dashed #D7E5DD !important;
+
+    font-style:italic;
+
+}
+
+
+
+.empty-item i{
+
+    font-size:18px !important;
+
+    color:#2E8B57 !important;
+
 }

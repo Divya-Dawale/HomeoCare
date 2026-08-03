@@ -1,32 +1,127 @@
+/*======================================================
+                    GOOGLE FONT
+======================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+
+/*======================================================
+                    ROOT VARIABLES
+======================================================*/
+
+:root{
+
+    --primary:#2E8B57;
+    --primary-light:#42A66F;
+    --secondary:#5BC0BE;
+
+    --background:#F6FBF8;
+    --surface:#FFFFFF;
+
+    --text:#1E293B;
+    --text-light:#64748B;
+
+    --border:#E6F0EB;
+
+    --danger:#EF4444;
+    --warning:#F59E0B;
+    --success:#22C55E;
+
+    --radius:22px;
+
+    --shadow-sm:0 6px 20px rgba(0,0,0,.05);
+    --shadow-md:0 15px 40px rgba(0,0,0,.08);
+    --shadow-lg:0 25px 60px rgba(0,0,0,.10);
+
+    --transition:.35s ease;
+
+}
+
+
+/*======================================================
+                    RESET
+======================================================*/
+
 *{
+
     margin:0;
     padding:0;
+
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
 }
 
 body{
 
-    background:#F8FAFC;
+    font-family:'Manrope',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    overflow:hidden;
+
 }
 
-/* Layout */
+
+/*======================================================
+                    LAYOUT
+======================================================*/
 
 .layout{
 
     display:flex;
-    min-height:100vh;
+
+    height:100vh;
+
+    overflow:hidden;
+
 }
 
-/* Sidebar */
+.main{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    background:var(--background);
+
+}
+
+.content{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:28px;
+
+}
+
+
+/*======================================================
+                    SIDEBAR
+======================================================*/
 
 .sidebar{
 
-    width:280px;
+    width:290px;
 
-    background:#0F172A;
+    background:var(--surface);
 
-    color:white;
+    border-right:1px solid var(--border);
 
     display:flex;
 
@@ -34,35 +129,70 @@ body{
 
     justify-content:space-between;
 
-    padding:25px 18px;
+    padding:24px;
 
-    position:fixed;
+    box-shadow:var(--shadow-md);
 
-    left:0;
-    top:0;
+    transition:var(--transition);
 
-    height:100vh;
+    z-index:100;
+
 }
 
-/* Logo */
+.sidebar-top{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.sidebar-bottom{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.divider{
+
+    height:1px;
+
+    background:var(--border);
+
+    margin:22px 0;
+
+}
+
+
+/*======================================================
+                    LOGO
+======================================================*/
 
 .logo{
 
-    text-align:center;
+    display:flex;
 
-    margin-bottom:25px;
+    align-items:center;
+
+    gap:16px;
+
 }
 
 .logo-icon{
 
-    width:70px;
-    height:70px;
+    width:64px;
 
-    margin:auto;
+    height:64px;
 
-    border-radius:18px;
+    border-radius:20px;
 
-    background:#10B981;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
 
     display:flex;
 
@@ -70,50 +200,405 @@ body{
 
     align-items:center;
 
+    color:#FFFFFF;
+
     font-size:28px;
 
-    margin-bottom:15px;
+    box-shadow:0 15px 35px rgba(46,139,87,.25);
+
 }
 
 .logo h2{
 
-    font-size:28px;
+    font-size:24px;
+
+    font-weight:800;
+
+    color:var(--text);
+
 }
 
 .logo p{
 
-    color:#94A3B8;
+    margin-top:4px;
 
-    margin-top:5px;
+    font-size:13px;
 
-    font-size:14px;
+    color:var(--text-light);
+
 }
+/*======================================================
+                    SIDEBAR MENU
+======================================================*/
 
-.divider{
-
-    height:1px;
-
-    background:#334155;
-
-    margin:20px 0;
-}
-
-/* Navigation */
-
-.sidebar nav{
+.sidebar-menu{
 
     display:flex;
 
     flex-direction:column;
 
     gap:10px;
+
 }
 
-.sidebar nav a{
+.menu-item{
 
-    color:white;
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
 
     text-decoration:none;
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.menu-item i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    transition:var(--transition);
+
+}
+
+.menu-item span{
+
+    flex:1;
+
+}
+
+
+/*======================================================
+                    MENU HOVER
+======================================================*/
+
+.menu-item:hover{
+
+    background:#ECFFF5;
+
+    color:var(--primary);
+
+    transform:translateX(6px);
+
+    box-shadow:0 10px 24px rgba(46,139,87,.08);
+
+}
+
+.menu-item:hover i{
+
+    transform:scale(1.15);
+
+}
+
+
+/*======================================================
+                    ACTIVE MENU
+======================================================*/
+
+.menu-item.active{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:#FFFFFF;
+
+    box-shadow:0 15px 30px rgba(46,139,87,.22);
+
+    transform:none;
+
+}
+
+.menu-item.active i{
+
+    color:#FFFFFF;
+
+    transform:none;
+
+}
+
+.menu-item.active i{
+
+    color:#FFFFFF;
+
+}
+
+.menu-item.active::before{
+
+    display:none;
+
+}
+
+
+/*======================================================
+                    ACTIVE ANIMATION
+======================================================*/
+
+.menu-item.active{
+
+    animation:activeMenu .35s ease;
+
+}
+
+@keyframes activeMenu{
+
+    from{
+
+        opacity:.6;
+
+        transform:scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*======================================================
+                    TOPBAR
+======================================================*/
+
+.topbar{
+
+    height:90px;
+
+    background:rgba(255,255,255,.78);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 36px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:20;
+
+}
+
+.topbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+
+/*======================================================
+                    PAGE HEADING
+======================================================*/
+
+.page-heading h1{
+
+    font-size:31px;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    line-height:1.2;
+
+}
+
+.page-heading p{
+
+    margin-top:6px;
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
+/*======================================================
+                    MENU TOGGLE
+======================================================*/
+
+.menu-toggle{
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.menu-toggle:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.menu-toggle i{
+
+    font-size:20px;
+
+}
+
+
+/*======================================================
+                    NOTIFICATION
+======================================================*/
+
+.notification{
+
+    position:relative;
+
+    width:54px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#FFFFFF;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.notification:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.notification i{
+
+    font-size:20px;
+
+    color:var(--text);
+
+}
+.notification-count{
+
+    position:absolute;
+
+    top:-6px;
+
+    right:-4px;
+
+    min-width:22px;
+
+    height:22px;
+
+    padding:0 6px;
+
+    border-radius:50px;
+
+    background:#EF4444;
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    border:3px solid #FFFFFF;
+
+}
+
+
+/*======================================================
+                    PROFILE
+======================================================*/
+
+.profile-link{
+
+    text-decoration:none;
+
+}
+
+.profile{
 
     display:flex;
 
@@ -121,120 +606,28 @@ body{
 
     gap:14px;
 
-    padding:14px 18px;
+    background:#FFFFFF;
 
-    border-radius:12px;
+    border:1px solid var(--border);
 
-    transition:.3s ease;
+    border-radius:18px;
+
+    padding:10px 16px;
+
+    min-width:220px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
 }
 
-.sidebar nav a:hover{
+.profile:hover{
 
-    background:#2563EB;
+    transform:translateY(-3px);
 
-    transform:translateX(6px);
-}
+    box-shadow:var(--shadow-md);
 
-.sidebar nav a i{
-
-    width:22px;
-
-    text-align:center;
-}
-
-/* Main */
-
-.main{
-
-    margin-left:280px;
-
-    width:calc(100% - 280px);
-}
-
-/* Topbar */
-
-.topbar{
-
-    background:white;
-
-    padding:20px 35px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    box-shadow:0 2px 10px rgba(0,0,0,.05);
-
-    position:sticky;
-
-    top:0;
-
-    z-index:10;
-}
-
-.topbar h1{
-
-    color:#1E293B;
-}
-
-.topbar span{
-
-    color:#64748B;
-
-    font-size:14px;
-}
-
-.topbar-right{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:25px;
-}
-
-/* Notification */
-
-.notification{
-
-    width:48px;
-
-    height:48px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#EFF6FF;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.notification i{
-
-    font-size:18px;
-}
-
-.notification:hover{
-
-    background:#DBEAFE;
-
-    transform:rotate(15deg);
-}
-
-/* Profile */
-
-.profile{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
 }
 
 .avatar{
@@ -245,116 +638,280 @@ body{
 
     border-radius:50%;
 
-    background:#2563EB;
-
-    color:white;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
 
-    font-weight:bold;
+    justify-content:center;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    flex-shrink:0;
+
 }
 
-.profile p{
+.profile-details{
 
-    color:#64748B;
+    display:flex;
 
-    font-size:13px;
+    flex-direction:column;
+
+    gap:2px;
+
 }
 
-/* Content */
+.profile-name{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.profile-role{
+
+    font-size:12px;
+
+    color:var(--text-light);
+
+}
+
+
+/*======================================================
+                    SCROLLBAR
+======================================================*/
+
+.content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.content::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.content::-webkit-scrollbar-thumb{
+
+    background:#CFE5D8;
+
+    border-radius:50px;
+
+}
+
+.content::-webkit-scrollbar-thumb:hover{
+
+    background:#A8D5BC;
+
+}
+
+
+/*======================================================
+                    FADE ANIMATION
+======================================================*/
 
 .content{
 
-    padding:35px;
-}
-
-/* Responsive */
-
-@media(max-width:900px){
-
-.sidebar{
-
-    width:90px;
-}
-
-.sidebar h2,
-.sidebar p{
-
-    display:none;
-}
-
-.sidebar a{
-
-    justify-content:center;
-}
-
-.sidebar a i{
-
-    margin:0;
-}
-
-.sidebar a{
-
-    font-size:0;
-}
-
-.sidebar a i{
-
-    font-size:18px;
-}
-
-.main{
-
-    margin-left:90px;
-
-    width:calc(100% - 90px);
-}
+    animation:pageFade .35s ease;
 
 }
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
-.topbar-right{
-    display:flex;
-    align-items:center;
-    gap:20px;
+/*======================================================
+                    RESPONSIVE
+======================================================*/
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        position:fixed;
+
+        top:0;
+
+        left:-320px;
+
+        width:290px;
+
+        height:100vh;
+
+        z-index:999;
+
+    }
+
+    .show-sidebar{
+
+        left:0;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+    }
+
+    .topbar{
+
+        padding:0 20px;
+
+    }
+
+    .profile{
+
+        min-width:auto;
+
+        padding:10px;
+
+    }
+
+    .profile-details{
+
+        display:none;
+
+    }
+
 }
 
-.notification{
-    border:none;
-    background:white;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:18px;
+@media(max-width:768px){
+
+    .content{
+
+        padding:20px;
+
+    }
+
+    .page-heading h1{
+
+        font-size:26px;
+
+    }
+
+    .page-heading p{
+
+        font-size:14px;
+
+    }
+
+    .notification{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+    .avatar{
+
+        width:44px;
+
+        height:44px;
+
+    }
+
 }
 
-.profile-link{
-    text-decoration:none;
-    color:inherit;
+@media(max-width:576px){
+
+    .topbar{
+
+        padding:0 16px;
+
+    }
+
+    .topbar-right{
+
+        gap:12px;
+
+    }
+
+    .content{
+
+        padding:16px;
+
+    }
+
+    .page-heading h1{
+
+        font-size:22px;
+
+    }
+
+}
+.ring{
+
+    animation:ring .6s ease;
+
 }
 
-.profile{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+@keyframes ring{
 
-.avatar{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#22c55e;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:600;
+    0%{
+
+        transform:rotate(0deg);
+
+    }
+
+    20%{
+
+        transform:rotate(-15deg);
+
+    }
+
+    40%{
+
+        transform:rotate(15deg);
+
+    }
+
+    60%{
+
+        transform:rotate(-10deg);
+
+    }
+
+    80%{
+
+        transform:rotate(10deg);
+
+    }
+
+    100%{
+
+        transform:rotate(0deg);
+
+    }
+
 }
