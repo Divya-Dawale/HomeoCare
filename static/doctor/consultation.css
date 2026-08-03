@@ -136,8 +136,22 @@
     font-size:17px;
     font-weight:700;
 }
+body.dark-theme .summary-item strong{
+    color:#F8FAFC;
+}
 
+body.dark-theme .summary-item span{
+    color:#CBD5E1;
+}
+/*========================================
+        PATIENT ID BADGE (DARK MODE)
+========================================*/
 
+body.dark-theme .patient-id{
+    background:#204030 !important;
+    color:#86EFAC !important;
+    border:1px solid #2E8B57;
+}
 /*========================================
         STATUS BADGES
 ========================================*/

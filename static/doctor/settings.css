@@ -145,6 +145,16 @@
 
 }
 
+body.dark-mode .settings-btn{
+    color:#FFFFFF !important;
+    opacity:1 !important;
+    filter:none !important;
+}
+
+body.dark-mode .settings-btn i{
+    color:#FFFFFF !important;
+    opacity:1 !important;
+}
 
 /*========================================
             ICON

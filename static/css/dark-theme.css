@@ -1,3 +1,4 @@
+
 /*========================================
             GLOBAL DARK THEME
 ========================================*/
@@ -146,7 +147,9 @@ body.dark-theme tbody tr:hover{
     background:#2B3B4E;
 
 }
-
+body.dark-theme .summary-item strong{
+    color: #f8fafc;
+}
 
 /*========================================
             INPUTS
@@ -427,9 +430,608 @@ body.dark-theme .page-heading p{
     transform:translateX(6px);
 
 }
+/*========================================
+        DOCTOR DASHBOARD DARK MODE
+========================================*/
 
-.menu-item i{
+body.dark-theme .stat-card,
+body.dark-theme .overview-card{
+    background: var(--card);
+    border-color: var(--border);
+}
 
-    transition:.35s ease;
+body.dark-theme .overview-box{
+    background: var(--card-light);
+    border-color: var(--border);
+}
+
+body.dark-theme .stat-content h2,
+body.dark-theme .overview-header h2,
+body.dark-theme .overview-title h3{
+    color: var(--text);
+}
+
+body.dark-theme .stat-content span,
+body.dark-theme .overview-header p{
+    color: var(--text-light);
+}
+
+body.dark-theme .overview-list li{
+    background: #273548;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.dark-theme .overview-list li:hover{
+    background: #334155;
+    border-color: #5BC0BE;
+}
+
+body.dark-theme .empty-item{
+    background: #273548 !important;
+    border-color: var(--border) !important;
+    color: var(--text-light) !important;
+}
+/*========================================
+        REVENUE PAGE DARK MODE
+========================================*/
+
+body.dark-theme .filter-card,
+body.dark-theme .custom-filter-card,
+body.dark-theme .stat-card,
+body.dark-theme .stats-panel,
+body.dark-theme .chart-card,
+body.dark-theme .table-card{
+
+    background:var(--card);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .filter-title h3,
+body.dark-theme .card-heading h3,
+body.dark-theme .stat-content h2{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .stat-content span,
+body.dark-theme .page-header p{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .filter-bar a{
+
+    background:#273548;
+    border-color:var(--border);
+    color:var(--text-light);
+
+}
+
+body.dark-theme .filter-bar a:hover,
+body.dark-theme .filter-bar a.active{
+
+    color:#FFFFFF;
+
+}
+
+body.dark-theme .custom-filter input{
+
+    background:#273548;
+    border-color:var(--border);
+    color:var(--text);
+
+}
+
+body.dark-theme .custom-filter input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+body.dark-theme .stats-row{
+
+    background:#273548;
+
+}
+
+body.dark-theme .stats-row:hover{
+
+    background:#334155;
+
+}
+
+body.dark-theme .stats-row span{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme .stats-row strong{
+
+    color:var(--text);
+
+}
+
+/* Revenue Table */
+
+body.dark-theme .revenue-table thead{
+
+    background:#273548;
+
+}
+
+body.dark-theme .revenue-table th{
+
+    color:var(--text-light);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .revenue-table td{
+
+    color:var(--text);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .revenue-table tbody tr:hover{
+
+    background:#273548;
+
+}
+
+body.dark-theme .patient-name{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .amount,
+body.dark-theme .revenue-table td strong{
+
+    color:#34D399;
+
+}
+
+/* Scrollbar */
+
+body.dark-theme .table-responsive::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+}
+
+body.dark-theme .table-responsive::-webkit-scrollbar-thumb:hover{
+
+    background:#64748B;
+
+}
+/*========================================
+        CLINIC MANAGEMENT DARK MODE
+========================================*/
+
+body.dark-theme .clinic-card{
+    background:var(--card);
+    border-color:var(--border);
+}
+
+body.dark-theme .clinic-header h2,
+body.dark-theme .card-top h3{
+    color:var(--text);
+}
+
+body.dark-theme .clinic-header p,
+body.dark-theme .card-top p,
+body.dark-theme .form-group label{
+    color:var(--text-light);
+}
+
+body.dark-theme .card-top{
+    border-bottom-color:var(--border);
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea,
+body.dark-theme .form-group select{
+    background:#273548;
+    color:var(--text);
+    border-color:var(--border);
+}
+
+body.dark-theme .form-group input::placeholder,
+body.dark-theme .form-group textarea::placeholder{
+    color:#94A3B8;
+}
+
+body.dark-theme .form-group input:hover,
+body.dark-theme .form-group textarea:hover,
+body.dark-theme .form-group select:hover{
+    background:#334155;
+    border-color:#5BC0BE;
+}
+
+body.dark-theme .form-group input:focus,
+body.dark-theme .form-group textarea:focus,
+body.dark-theme .form-group select:focus{
+    background:#334155;
+    border-color:#5BC0BE;
+    color:#FFFFFF;
+    box-shadow:0 0 0 5px rgba(91,192,190,.18);
+}
+
+body.dark-theme .time-section{
+    background:#273548;
+    border-color:var(--border);
+}
+
+body.dark-theme .time-section h4{
+    color:#34D399;
+}
+
+body.dark-theme .form-actions{
+    border-top-color:var(--border);
+}
+/*========================================
+        PATIENT QUEUE DARK MODE
+========================================*/
+
+body.dark-theme .stat-card,
+body.dark-theme .table-card{
+    background:var(--card);
+    border-color:var(--border);
+}
+
+body.dark-theme .queue-header h2,
+body.dark-theme .stat-card h3,
+body.dark-theme .patient-cell strong{
+    color:var(--text);
+}
+
+body.dark-theme .queue-header p,
+body.dark-theme .stat-card span,
+body.dark-theme .patient-cell small{
+    color:var(--text-light);
+}
+
+/* Filters */
+
+body.dark-theme .filter-bar a{
+    background:#273548;
+    border-color:var(--border);
+    color:var(--text-light);
+}
+
+body.dark-theme .filter-bar a:hover{
+    background:#334155;
+    color:#34D399;
+}
+
+body.dark-theme .active-filter{
+    background:linear-gradient(
+        135deg,
+        #10B981,
+        #06B6D4
+    ) !important;
+
+    color:#FFFFFF !important;
+}
+
+/* Table */
+
+body.dark-theme .table-card thead{
+    background:#273548;
+}
+
+body.dark-theme .table-card th{
+    color:var(--text-light);
+}
+
+body.dark-theme .table-card td{
+    color:var(--text);
+    border-top-color:var(--border);
+}
+
+body.dark-theme .table-card tbody tr:hover{
+    background:#273548;
+}
+
+/* Queue Number */
+
+body.dark-theme .queue-number{
+    color:#34D399;
+}
+
+/* Status */
+
+body.dark-theme .waiting-badge{
+    background:#5A4714;
+    color:#FACC15;
+}
+
+body.dark-theme .completed-badge{
+    background:#1D4D37;
+    color:#86EFAC;
+}
+
+/* Empty */
+
+body.dark-theme .empty-row td{
+    color:#94A3B8;
+}
+/*========================================
+        CONSULTATION PAGE
+========================================*/
+
+body.dark-theme .section-card,
+body.dark-theme .patient-summary-card,
+body.dark-theme .history-dropdown,
+body.dark-theme .timeline-card,
+body.dark-theme .medicine-card,
+body.dark-theme .visit-card,
+body.dark-theme .prescription-card,
+body.dark-theme .complete-card{
+
+    background:var(--card);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .summary-item,
+body.dark-theme .info-card,
+body.dark-theme .timeline-item,
+body.dark-theme .medicine-item,
+body.dark-theme .instruction-card,
+body.dark-theme .visit-item,
+body.dark-theme .prescription-info,
+body.dark-theme .history-content,
+body.dark-theme .history-row,
+body.dark-theme .details-grid,
+body.dark-theme .detail-card{
+
+    background:var(--card-light);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .history-dropdown summary{
+
+    background:var(--card-light);
+
+}
+
+body.dark-theme .history-dropdown summary:hover{
+
+    background:#334155;
+
+}
+
+body.dark-theme .dropdown-content{
+
+    background:var(--card);
+
+}
+
+/* Text */
+
+body.dark-theme .consultation-header h2,
+body.dark-theme .patient-profile h3,
+body.dark-theme .section-header h3,
+body.dark-theme .timeline-top h4,
+body.dark-theme .medicine-name h4,
+body.dark-theme .visit-card-header h4,
+body.dark-theme .complete-content h3,
+body.dark-theme .dropdown-title h4,
+body.dark-theme .detail-card p,
+body.dark-theme .history-row strong,
+body.dark-theme .info-card strong,
+body.dark-theme .info-card p,
+body.dark-theme .prescription-info strong{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .consultation-header p,
+body.dark-theme .section-header p,
+body.dark-theme .summary-item span,
+body.dark-theme .timeline-item label,
+body.dark-theme .medicine-item span,
+body.dark-theme .instruction-card label,
+body.dark-theme .visit-item label,
+body.dark-theme .visit-card-header span,
+body.dark-theme .medicine-name span,
+body.dark-theme .history-row span,
+body.dark-theme .detail-card label{
+
+    color:var(--text-light);
+
+}
+
+/* Inputs */
+
+body.dark-theme .section-card input,
+body.dark-theme .section-card textarea,
+body.dark-theme .section-card select{
+
+    background:#273548;
+    color:var(--text);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .section-card input:focus,
+body.dark-theme .section-card textarea:focus,
+body.dark-theme .section-card select:focus{
+
+    background:#334155;
+
+}
+
+/* Empty state */
+
+body.dark-theme .empty-state h4{
+
+    color:var(--text);
+
+}
+
+body.dark-theme .empty-state p{
+
+    color:var(--text-light);
+
+}
+/*========================================
+        HISTORY PAGE (DARK MODE)
+========================================*/
+
+body.dark-theme .section-card,
+body.dark-theme .submit-card{
+
+    background:var(--card);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .checkbox-card{
+
+    background:var(--card-light);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group select,
+body.dark-theme .form-group textarea{
+
+    background:#273548;
+    color:var(--text);
+    border-color:var(--border);
+
+}
+
+body.dark-theme .form-group input:focus,
+body.dark-theme .form-group select:focus,
+body.dark-theme .form-group textarea:focus{
+
+    background:#334155;
+    border-color:var(--secondary);
+
+}
+
+/* Titles */
+
+body.dark-theme .history-header h2,
+body.dark-theme .card-title h3,
+body.dark-theme .submit-info h3{
+
+    color:var(--text);
+
+}
+
+/* Secondary text */
+
+body.dark-theme .history-header p,
+body.dark-theme .card-title p,
+body.dark-theme .form-group label,
+body.dark-theme .checkbox-card label{
+
+    color:var(--text-light);
+
+}
+
+/* Checkbox card */
+
+body.dark-theme .checkbox-card input[type="checkbox"]{
+
+    accent-color:var(--primary);
+
+}
+
+/* Badge */
+
+body.dark-theme .submit-badge{
+
+    background:#204030;
+    color:#86EFAC;
+
+}
+/*========================================
+        ALL BUTTONS DARK MODE
+========================================*/
+
+body.dark-theme .save-btn,
+body.dark-theme .complete-btn,
+body.dark-theme .settings-btn,
+body.dark-theme .action-btn,
+body.dark-theme .profile-btn{
+
+    color:#fff;
+    background:linear-gradient(135deg,#10B981,#06B6D4);
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark-theme .save-btn span,
+body.dark-theme .complete-btn span,
+body.dark-theme .settings-btn span,
+body.dark-theme .action-btn span,
+body.dark-theme .profile-btn span,
+
+body.dark-theme .save-btn i,
+body.dark-theme .complete-btn i,
+body.dark-theme .settings-btn i,
+body.dark-theme .action-btn i,
+body.dark-theme .profile-btn i{
+
+    color:#fff;
+
+}
+/*========================================
+        BUTTONS - DARK MODE
+========================================*/
+
+body.dark-theme .open-btn,
+body.dark-theme .save-btn,
+body.dark-theme .settings-btn,
+body.dark-theme .action-btn,
+body.dark-theme .complete-btn{
+
+    background:linear-gradient(
+        135deg,
+        #10B981,
+        #06B6D4
+    );
+
+    color:#FFFFFF !important;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 18px rgba(16,185,129,.30),
+        0 12px 28px rgba(0,0,0,.35);
+
+}
+
+body.dark-theme .open-btn:hover,
+body.dark-theme .save-btn:hover,
+body.dark-theme .settings-btn:hover,
+body.dark-theme .action-btn:hover,
+body.dark-theme .complete-btn:hover{
+
+    background:linear-gradient(
+        135deg,
+        #34D399,
+        #22D3EE
+    );
+
+    color:#FFFFFF !important;
+
+    box-shadow:
+        0 0 24px rgba(16,185,129,.45),
+        0 18px 40px rgba(0,0,0,.45);
 
 }

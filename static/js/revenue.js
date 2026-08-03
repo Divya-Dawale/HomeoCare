@@ -11,6 +11,7 @@ const canvas = document.getElementById("revenueChart");
 if (canvas) {
 
     const ctx = canvas.getContext("2d");
+    const isDark = document.body.classList.contains("dark-theme");
 
     new Chart(ctx, {
 
@@ -50,43 +51,65 @@ if (canvas) {
 
         },
 
-        options: {
+        const isDark = document.body.classList.contains("dark-theme");
 
-            responsive: true,
+options: {
 
-            maintainAspectRatio: false,
+    responsive: true,
 
-            plugins: {
+    maintainAspectRatio: false,
 
-                legend: {
+    plugins: {
 
-                    display: false
+        legend: {
+            display: false
+        },
 
+        tooltip: {
+            titleColor: isDark ? "#F8FAFC" : "#1E293B",
+            bodyColor: isDark ? "#F8FAFC" : "#1E293B",
+            backgroundColor: isDark ? "#1E293B" : "#FFFFFF"
+        }
+
+    },
+
+    scales: {
+
+        x: {
+
+            ticks: {
+                color: isDark ? "#F8FAFC" : "#64748B"
+            },
+
+            grid: {
+                color: isDark ? "#334155" : "#EEF3F2"
+            }
+
+        },
+
+        y: {
+
+            beginAtZero: true,
+
+            ticks: {
+
+                color: isDark ? "#F8FAFC" : "#64748B",
+
+                callback: function(value) {
+                    return "₹" + value;
                 }
 
             },
 
-            scales: {
-
-                y: {
-
-                    beginAtZero: true,
-
-                    ticks: {
-
-                        callback: function(value) {
-
-                            return "₹" + value;
-
-                        }
-
-                    }
-
-                }
-
+            grid: {
+                color: isDark ? "#334155" : "#EEF3F2"
             }
 
         }
+
+    }
+
+}
 
     });
 

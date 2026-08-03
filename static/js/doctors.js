@@ -191,3 +191,40 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeDarkMode();
 
 });
+const isDark = document.body.classList.contains("dark-theme");
+
+const textColor = isDark ? "#F8FAFC" : "#64748B";
+const gridColor = isDark ? "#334155" : "#E5E7EB";
+
+new Chart(ctx, {
+    type: "line",
+    data: data,
+    options: {
+        responsive: true,
+        scales: {
+            x: {
+                ticks: {
+                    color: textColor
+                },
+                grid: {
+                    color: gridColor
+                }
+            },
+            y: {
+                ticks: {
+                    color: textColor
+                },
+                grid: {
+                    color: gridColor
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: textColor
+                }
+            }
+        }
+    }
+});
