@@ -294,21 +294,15 @@ body{
 
 .menu-item:hover{
 
-    background:#ECFFF5;
+    background:color-mix(in srgb, var(--primary) 12%, var(--surface));
 
     color:var(--primary);
 
     transform:translateX(6px);
 
-    box-shadow:0 10px 24px rgba(46,139,87,.08);
-
 }
 
-.menu-item:hover i{
 
-    transform:scale(1.15);
-
-}
 
 
 /*======================================================
@@ -391,7 +385,7 @@ body{
 
     height:90px;
 
-    background:rgba(255,255,255,.78);
+    background:var(--surface);
 
     backdrop-filter:blur(18px);
 
@@ -473,7 +467,7 @@ body{
 
     border-radius:16px;
 
-    background:#FFFFFF;
+    background:var(--surface);
 
     color:var(--text);
 
@@ -522,7 +516,7 @@ body{
 
     border-radius:18px;
 
-    background:#FFFFFF;
+    background:var(--surface);
 
     cursor:pointer;
 
@@ -583,7 +577,7 @@ body{
 
     font-weight:700;
 
-    border:3px solid #FFFFFF;
+    border:3px solid var(--surface);
 
 }
 
@@ -707,7 +701,7 @@ body{
 
 .content::-webkit-scrollbar-thumb{
 
-    background:#CFE5D8;
+    background:var(--border);
 
     border-radius:50px;
 

@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeProfile();
 
     initializeActiveMenu();
+    initializeDarkMode();
 
 });
 /*=========================================
@@ -147,3 +148,46 @@ function initializeProfile(){
     });
 
 }
+function initializeDarkMode() {
+
+    const toggle = document.getElementById("themeToggle");
+
+    // Restore saved theme
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark-theme");
+
+        if (toggle) {
+            toggle.checked = true;
+        }
+
+    }
+
+    if (!toggle) return;
+
+    toggle.addEventListener("change", function () {
+
+        if (this.checked) {
+
+            document.body.classList.add("dark-theme");
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            document.body.classList.remove("dark-theme");
+            localStorage.setItem("theme", "light");
+
+        }
+
+    });
+
+}
+
+// Run after page loads
+document.addEventListener("DOMContentLoaded", function () {
+
+    initializeDarkMode();
+
+});

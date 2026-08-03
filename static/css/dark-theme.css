@@ -1,0 +1,435 @@
+/*========================================
+            GLOBAL DARK THEME
+========================================*/
+
+body.dark-theme{
+
+    background:#0F172A;
+    color:#F8FAFC;
+
+    --card:#1E293B;
+    --card-light:#243447;
+    --surface:#334155;
+
+    --text:#F8FAFC;
+    --text-light:#CBD5E1;
+
+    --border:#475569;
+
+    --primary:#2E8B57;
+    --secondary:#5BC0BE;
+
+}
+
+
+/*========================================
+            PAGE BACKGROUND
+========================================*/
+
+body.dark-theme,
+body.dark-theme .content,
+body.dark-theme main,
+body.dark-theme .main-content{
+
+    background:#0F172A;
+
+}
+
+
+/*========================================
+            HEADINGS
+========================================*/
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6{
+
+    color:var(--text);
+
+}
+
+
+/*========================================
+            PARAGRAPHS
+========================================*/
+
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme small,
+body.dark-theme label{
+
+    color:var(--text-light);
+
+}
+body.dark-theme .menu-item:hover span{
+
+    color: var(--primary);
+
+}
+
+/*========================================
+            ALL CARDS
+========================================*/
+
+body.dark-theme .card,
+body.dark-theme .patient-card,
+body.dark-theme .profile-card,
+body.dark-theme .edit-profile-card,
+body.dark-theme .password-card,
+body.dark-theme .detail-card,
+body.dark-theme .appointments-card,
+body.dark-theme .action-card,
+body.dark-theme .request-summary-card,
+body.dark-theme .settings-card,
+body.dark-theme .form-card{
+
+    background:var(--card);
+    border-color:var(--border);
+    color:var(--text);
+
+}
+
+
+/*========================================
+            LIGHT BOXES
+========================================*/
+
+body.dark-theme .info-box,
+body.dark-theme .detail-item,
+body.dark-theme .profile-item,
+body.dark-theme .password-rules,
+body.dark-theme .success-box,
+body.dark-theme .success-message,
+body.dark-theme .full-width-detail{
+
+    background:var(--card-light);
+    border-color:var(--border);
+
+}
+
+
+/*========================================
+            TABLE
+========================================*/
+
+body.dark-theme table{
+
+    background:var(--card);
+
+}
+
+body.dark-theme thead{
+
+    background:var(--card-light);
+
+}
+
+body.dark-theme th{
+
+    color:var(--text-light);
+
+}
+
+body.dark-theme td{
+
+    color:var(--text);
+
+    border-color:var(--border);
+
+}
+
+body.dark-theme tbody tr:hover{
+
+    background:#2B3B4E;
+
+}
+
+
+/*========================================
+            INPUTS
+========================================*/
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select{
+
+    background:#273548;
+    color:var(--text);
+    border-color:var(--border);
+
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder{
+
+    color:#94A3B8;
+
+}
+
+body.dark-theme input:focus,
+body.dark-theme textarea:focus,
+body.dark-theme select:focus{
+
+    background:#334155;
+    border-color:#5BC0BE;
+    color:#FFFFFF;
+
+}
+
+
+/*========================================
+            PHONE INPUT
+========================================*/
+
+body.dark-theme .phone-input-wrapper{
+
+    background:#273548;
+    border-color:var(--border);
+
+}
+
+body.dark-theme .phone-input-wrapper span{
+
+    background:#334155;
+    color:#5BC0BE;
+    border-color:var(--border);
+
+}
+
+
+/*========================================
+            BUTTONS
+========================================*/
+
+body.dark-theme .cancel-btn{
+
+    background:#273548;
+    color:#F8FAFC;
+    border-color:var(--border);
+
+}
+
+body.dark-theme .cancel-btn:hover{
+
+    background:#334155;
+
+}
+
+
+/*========================================
+            HEADER BADGES
+========================================*/
+
+body.dark-theme .section-badge,
+body.dark-theme .role-badge{
+
+    background:#204030;
+    color:#7BE6B0;
+
+}
+
+
+/*========================================
+            STATUS
+========================================*/
+
+body.dark-theme .completed,
+body.dark-theme .approved{
+
+    background:#1D4D37;
+    color:#86EFAC;
+
+}
+
+body.dark-theme .pending{
+
+    background:#5A4714;
+    color:#FACC15;
+
+}
+
+body.dark-theme .cancelled,
+body.dark-theme .rejected{
+
+    background:#5A1F1F;
+    color:#FCA5A5;
+
+}
+
+
+/*========================================
+            LINKS
+========================================*/
+
+body.dark-theme a{
+
+    color:#7DD3FC;
+
+}
+
+
+/*========================================
+            ICON GRADIENTS
+========================================*/
+
+body.dark-theme .patient-avatar,
+body.dark-theme .profile-avatar,
+body.dark-theme .card-icon,
+body.dark-theme .patient-icon,
+body.dark-theme .summary-icon{
+
+    box-shadow:0 15px 35px rgba(91,192,190,.25);
+
+}
+/*========================================
+        PROFILE BUTTON (DARK MODE)
+========================================*/
+
+body.dark-theme .profile-btn{
+
+    background:linear-gradient(
+        135deg,
+        #10B981,
+        #06B6D4
+    );
+
+    color:#FFFFFF;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 18px rgba(16,185,129,.30),
+        0 12px 28px rgba(0,0,0,.35);
+
+}
+
+body.dark-theme .profile-btn:hover{
+
+    background:linear-gradient(
+        135deg,
+        #34D399,
+        #22D3EE
+    );
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 0 24px rgba(16,185,129,.45),
+        0 18px 40px rgba(0,0,0,.45);
+
+}
+body.dark-theme .topbar{
+
+    background:rgba(30,41,59,.92);
+
+    border-bottom:1px solid #334155;
+
+    backdrop-filter:blur(18px);
+
+}
+body.dark-theme .sidebar{
+
+    background:#1E293B;
+
+    border-right:1px solid #334155;
+
+}
+body.dark-theme .logo h2{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .logo p{
+
+    color:#CBD5E1;
+
+}
+body.dark-theme .menu-item{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-theme .menu-item:hover{
+
+    background:color-mix(in srgb, var(--primary) 12%, var(--surface));
+
+    color:var(--primary);
+
+    transform:translateX(6px);
+
+}
+
+body.dark-theme .menu-item.active{
+
+    background:linear-gradient(
+        135deg,
+        #10B981,
+        #06B6D4
+    );
+
+}
+body.dark-theme .profile{
+
+    background:#273548;
+
+    border-color:#475569;
+
+}
+
+body.dark-theme .profile-name{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .profile-role{
+
+    color:#CBD5E1;
+
+}
+body.dark-theme .notification,
+body.dark-theme .menu-toggle{
+
+    background:#273548;
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .notification i,
+body.dark-theme .menu-toggle i{
+
+    color:#F8FAFC;
+
+}
+body.dark-theme .page-heading h1{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .page-heading p{
+
+    color:#CBD5E1;
+
+}
+.menu-item:hover{
+
+    background:color-mix(in srgb, var(--primary) 12%, var(--surface));
+
+    color:var(--primary);
+
+    transform:translateX(6px);
+
+}
+
+.menu-item i{
+
+    transition:.35s ease;
+
+}
