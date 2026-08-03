@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet"
-href="{% static 'doctor/patient_queue.css' %}">
+<link rel="stylesheet" href="{% static 'doctor/patient_queue.css' %}">
 {% endblock %}
 
 {% block page_title %}
@@ -12,108 +11,221 @@ Patient Queue
 
 {% block content %}
 
-<div class="filter-bar">
+<div class="queue-wrapper">
 
-    <a href="?"
-       class="filter-btn {% if not selected_status %}active-filter{% endif %}">
-        All Patients
-    </a>
+    <!-- ================= HEADER ================= -->
 
-    <a href="?status=waiting"
-       class="filter-btn {% if selected_status == 'waiting' %}active-filter{% endif %}">
-        Waiting
-    </a>
+    <div class="queue-header">
 
-    <a href="?status=completed"
-       class="filter-btn {% if selected_status == 'completed' %}active-filter{% endif %}">
-        Completed
-    </a>
+        <div>
 
-</div>
-<div class="table-card">
+            <span class="section-badge">
+                Doctor Dashboard
+            </span>
 
-    <table>
+            <h2>Today's Patient Queue</h2>
 
-        <thead>
+            <p>
+                Manage consultations and track today's patient queue efficiently.
+            </p>
 
-            <tr>
+        </div>
 
-                <th>Queue</th>
+    </div>
 
-                <th>Patient</th>
+    <!-- ================= SUMMARY ================= -->
 
-                <th>Patient ID</th>
+    <div class="stats-grid">
 
-                <th>Date</th>
+        <div class="stat-card waiting-card">
 
-                <th>Status</th>
+            <span>Waiting</span>
 
-                <th>Action</th>
+            <h3>{{ waiting_count|default:"0" }}</h3>
 
-            </tr>
+        </div>
 
-        </thead>
+        <div class="stat-card completed-card">
 
-        <tbody>
+            <span>Completed</span>
 
-        {% for appointment in appointments %}
+            <h3>{{ completed_count|default:"0" }}</h3>
 
-            <tr>
+        </div>
 
-                <td>{{ forloop.counter }}</td>
+        <div class="stat-card total-card">
 
-                <td>{{ appointment.patient.full_name }}</td>
+            <span>Total Today</span>
 
-                <td>{{ appointment.patient.patient_id }}</td>
+            <h3>{{ appointments|length }}</h3>
 
-                <td>{{ appointment.appointment_date }}</td>
+        </div>
 
-                <td> 
+    </div>
+
+    <!-- ================= FILTER ================= -->
+
+    <div class="filter-bar">
+
+        <a href="?"
+           class="{% if not selected_status %}active-filter{% endif %}">
+            All Patients
+        </a>
+
+        <a href="?status=waiting"
+           class="{% if selected_status == 'waiting' %}active-filter{% endif %}">
+            Waiting
+        </a>
+
+        <a href="?status=completed"
+           class="{% if selected_status == 'completed' %}active-filter{% endif %}">
+            Completed
+        </a>
+
+    </div>
+
+    <!-- ================= TABLE ================= -->
+
+    <div class="table-card">
+
+        <table class="patients-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Queue</th>
+
+                    <th>Patient</th>
+
+                    <th>Patient ID</th>
+
+                    <th>Date</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for appointment in appointments %}
+
+                <tr>
+
+                    <!-- Queue -->
+
+                    <td>
+                        <span class="queue-number">
+                            #{{ forloop.counter }}
+                        </span>
+                    </td>
+                    <!-- Patient -->
+
+                    <td>
+
+                        <div class="patient-cell">
+
+                            <div class="patient-avatar">
+
+                                {{ appointment.patient.full_name|first|upper }}
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+
+                                    {{ appointment.patient.full_name }}
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <!-- Patient ID -->
+
+                    <td>
+
+                        {{ appointment.patient.patient_id }}
+
+                    </td>
+
+                    <!-- Date -->
+
+                    <td>
+
+                        {{ appointment.appointment_date }}
+
+                    </td>
+
+                    <!-- Status -->
+
+                    <td>
+
                         {% if appointment.status == "completed" %}
 
                             <span class="completed-badge">
-                               Completed
+
+                                Completed
+
                             </span>
 
                         {% else %}
-                        <span class="waiting-badge">
-                             Waiting
-                        </span>
 
-                         {% endif %}
+                            <span class="waiting-badge">
 
-               </td>
+                                Waiting
 
-                <td>
-                    <a href="{% url 'consultation' appointment.id %}"
-                    class="open-btn">
+                            </span>
 
-                        Open
+                        {% endif %}
 
-                    </a>
+                    </td>
 
-                </td>
+                    <!-- Action -->
 
-            </tr>
+                    <td>
 
-        {% empty %}
+                        <a href="{% url 'consultation' appointment.id %}"
+                           class="open-btn">
 
-            <tr>
+                            Open
 
-                <td colspan="6">
+                        </a>
 
-                    No waiting patients.
+                    </td>
 
-                </td>
+                </tr>
 
-            </tr>
+            {% empty %}
 
-        {% endfor %}
+                <tr class="empty-row">
 
-        </tbody>
+                    <td colspan="6">
 
-    </table>
+                        No patients found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
+
+<script src="{% static 'doctor/patient_queue.js' %}"></script>
 
 {% endblock %}

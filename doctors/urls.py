@@ -52,22 +52,21 @@ urlpatterns = [
     views.doctor_settings,
     name="doctor_settings"
     ),
-    path(
-    "settings/",
-    views.doctor_settings,
-    name="doctor_settings"
-   ),
 
-path(
-    "settings/profile/edit/",
-    views.edit_doctor_profile,
-    name="edit_doctor_profile"
-),
+   path(
+    'profile/',
+    views.doctor_profile,
+    name='doctor_profile'
+    ),
 
 path(
     "settings/change-password/",
     views.doctor_change_password,
     name="doctor_change_password"
 ),
-
+path(
+    "clinic-management/",
+    views.clinic_management,
+    name="clinic_management"
+),
 ]

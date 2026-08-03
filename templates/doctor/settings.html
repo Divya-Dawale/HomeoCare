@@ -1,218 +1,228 @@
 {% extends 'doctor/base_doctor.html' %}
 {% load static %}
 
+{% block page_title %}
+Doctor Settings
+{% endblock %}
+
 {% block css %}
 <link rel="stylesheet"
       href="{% static 'doctor/settings.css' %}">
 {% endblock %}
 
-{% block page_title %}
-Doctor Settings
-{% endblock %}
-
 {% block content %}
-<div class="settings-container">
 
-    <div class="settings-card">
+<div class="settings-page">
 
-    <h2>👤 My Profile</h2>
+    <!-- ========================================
+                    HEADER
+    ========================================= -->
 
-    <p>
-        <strong>First Name:</strong>
-        {{ request.user.first_name }}
-    </p>
+    <div class="settings-header">
 
-    <p>
-        <strong>Last Name:</strong>
-        {{ request.user.last_name }}
-    </p>
+        <div>
 
-    <p>
-        <strong>Username:</strong>
-        {{ request.user.username }}
-    </p>
+            <span class="section-badge">
 
-    <p>
-        <strong>Email:</strong>
-        {{ request.user.email }}
-    </p>
+                Doctor Settings
 
-    <p>
-        <strong>Phone Number:</strong>
-        +91 {{ request.user.phone }}
-    </p>
+            </span>
 
-    <p>
-        <strong>Role:</strong>
-        {{ request.user.role|title }}
-    </p>
+            <h2>
 
-    <p>
-        <strong>Date Joined:</strong>
-        {{ request.user.date_joined|date:"d M Y" }}
-    </p>
+                Settings
 
-    <p>
-        <strong>Last Login:</strong>
-        {{ request.user.last_login|date:"d M Y H:i" }}
-    </p>
+            </h2>
 
-    <a href="{% url 'edit_doctor_profile' %}"
-       class="settings-btn">
+            <p>
 
-        Edit Profile
+                Manage your profile, clinic information, account security and personalize your HomeoCare experience.
 
-    </a>
+            </p>
 
-</div>
-
-    <div class="settings-card">
-
-        <h2>🔒 Security</h2>
-
-        <a href="{% url 'doctor_change_password' %}"
-           class="settings-btn">
-
-            Change Password
-
-        </a>
+        </div>
 
     </div>
 
-    <div class="settings-card">
 
-    <h2>🏥 Clinic Settings</h2>
+    <!-- ========================================
+                    SETTINGS GRID
+    ========================================= -->
 
-    <form method="POST">
+    <div class="settings-grid">
 
-        {% csrf_token %}
+        <!-- ==========================
+                PROFILE
+        =========================== -->
 
-        <h3 class="section-title">
-            Billing
-        </h3>
+        <div class="settings-card">
 
-        <div class="form-group">
+            <div class="card-icon">
 
-            <label>Consultation Fee</label>
-
-            {{ form.consultation_fee }}
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Medicine Fee (7 Days)</label>
-
-            {{ form.medicine_fee_7_days }}
-
-        </div>
-
-        <hr>
-
-        <h3 class="section-title">
-            Appointments
-        </h3>
-
-        <div class="form-group">
-
-            <label>Maximum Patients Per Day</label>
-
-            {{ form.max_patients_per_day }}
-
-        </div>
-
-        <div class="form-row">
-
-            <div class="form-group">
-
-                <label>Opening Time</label>
-
-                {{ form.opening_time }}
+                <i class="fa-solid fa-user-doctor"></i>
 
             </div>
 
-            <div class="form-group">
+            <div class="card-content">
 
-                <label>Closing Time</label>
+                <h3>
 
-                {{ form.closing_time }}
+                    Doctor Profile
+
+                </h3>
+
+                <p>
+
+                    View and update your personal information, email address and contact details.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'doctor_profile' %}"
+class="settings-btn">
+
+                View Profile
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- ==========================
+            CHANGE PASSWORD
+        =========================== -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-lock"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    Change Password
+
+                </h3>
+
+                <p>
+
+                    Update your password regularly to keep your HomeoCare account secure.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'doctor_change_password' %}"
+               class="settings-btn">
+
+                Change Password
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- ==========================
+            CLINIC SETTINGS
+        =========================== -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-hospital"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    Clinic Settings
+
+                </h3>
+
+                <p>
+
+                    Manage consultation fees, clinic timings, patient capacity and clinic information.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'clinic_management' %}"
+                class="settings-btn">
+
+                Manage Clinic
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+        </div>
+
+
+        <!-- ==========================
+                APPEARANCE
+        =========================== -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-palette"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    Appearance
+
+                </h3>
+
+                <p>
+
+                    Personalize your dashboard by switching between light and dark mode.
+
+                </p>
+
+            </div>
+
+            <div class="theme-setting">
+
+                <span class="theme-label">
+
+                    Dark Mode
+
+                </span>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="themeToggle">
+
+                    <span class="slider"></span>
+
+                </label>
 
             </div>
 
         </div>
 
-        <hr>
-
-        <h3 class="section-title">
-            Contact Information
-        </h3>
-
-        <div class="form-group">
-
-            <label>Clinic Phone</label>
-
-            {{ form.phone }}
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Clinic Email</label>
-
-            {{ form.email }}
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Clinic Address</label>
-
-            {{ form.address }}
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Google Maps Link</label>
-
-            {{ form.google_map_link }}
-
-        </div>
-
-        <button
-            type="submit"
-            class="save-btn">
-
-            Save Clinic Settings
-
-        </button>
-
-    </form>
-
-</div>
-     <div class="settings-card">
-
-        <h2>🎨 Appearance</h2>
-
-        <div class="theme-setting">
-
-            <span>Dark Mode</span>
-
-            <label class="switch">
-
-                <input
-                    type="checkbox"
-                    id="themeToggle">
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
     </div>
 
-    </div>
 </div>
 
 {% endblock %}

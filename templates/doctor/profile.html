@@ -1,0 +1,203 @@
+{% extends 'doctor/base_doctor.html' %}
+{% load static %}
+
+{% block page_title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+href="{% static 'doctor/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="profile-page">
+
+
+    <!-- HEADER -->
+
+    <div class="profile-page-header">
+
+        <div>
+
+            <span class="section-badge">
+                Account Settings
+            </span>
+
+
+            <h2>
+                Doctor Profile
+            </h2>
+
+
+            <p>
+                View and update your personal information and professional account details.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PROFILE CARD -->
+
+    <div class="profile-card">
+
+
+        <div class="profile-top">
+
+
+            <div class="profile-avatar">
+
+                {{ request.user.username|first|upper }}
+
+            </div>
+
+
+
+            <div class="profile-info">
+
+                <h2>
+
+                    {% if request.user.first_name or request.user.last_name %}
+
+                        {{ request.user.first_name }} {{ request.user.last_name }}
+
+                    {% else %}
+
+                        {{ request.user.username }}
+
+                    {% endif %}
+
+                </h2>
+
+
+
+                <span class="role-badge">
+
+                    Doctor
+
+                </span>
+
+
+                <p>
+                    HomeoCare Clinic Management System
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- EDIT PROFILE FORM -->
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="profile-grid">
+
+
+                <div class="profile-item">
+
+                    <label>
+                        First Name
+                    </label>
+
+                    {{ form.first_name }}
+
+                </div>
+
+
+
+                <div class="profile-item">
+
+                    <label>
+                        Last Name
+                    </label>
+
+                    {{ form.last_name }}
+
+                </div>
+
+
+
+                <div class="profile-item">
+
+                    <label>
+                        Username
+                    </label>
+
+                    {{ form.username }}
+
+                </div>
+
+
+
+                <div class="profile-item">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    {{ form.email }}
+
+                </div>
+
+
+
+                <div class="profile-item">
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    {{ form.phone }}
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="profile-actions">
+
+
+                <button 
+                type="submit"
+                class="profile-btn">
+
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Changes
+
+
+                </button>
+
+
+            </div>
+
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

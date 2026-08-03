@@ -1,0 +1,671 @@
+/*========================================
+        CLINIC MANAGEMENT PAGE
+========================================*/
+
+
+.clinic-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
+}
+
+
+
+/*========================================
+        HEADER
+========================================*/
+
+
+.clinic-header{
+
+    margin-bottom:4px;
+
+}
+
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+
+
+.clinic-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.clinic-header p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    max-width:650px;
+
+}
+
+
+
+
+
+/*========================================
+        MAIN CARD
+========================================*/
+
+
+.clinic-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E8F1EC;
+
+    border-radius:24px;
+
+    padding:36px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.clinic-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+
+
+
+
+
+
+/*========================================
+        CARD TOP
+========================================*/
+
+
+.card-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+    padding-bottom:24px;
+
+    border-bottom:1px solid #EEF4F1;
+
+}
+
+
+
+.card-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:22px;
+
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    color:white;
+
+    font-size:30px;
+
+
+    box-shadow:
+    0 15px 30px rgba(46,139,87,.25);
+
+
+}
+
+
+
+.card-top h3{
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+
+
+.card-top p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+
+
+/*========================================
+        FORM GRID
+========================================*/
+
+
+.clinic-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+
+
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+
+
+.form-group label{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+
+    color:#64748B;
+
+}
+
+
+
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+
+    width:100%;
+
+
+    padding:14px 16px;
+
+
+    border-radius:16px;
+
+
+    border:1px solid #E6F0EB;
+
+
+    background:#F8FBF9;
+
+
+    font-size:15px;
+
+
+    color:#1E293B;
+
+
+    outline:none;
+
+
+    transition:.35s;
+
+}
+
+
+
+
+.form-group textarea{
+
+    resize:none;
+
+}
+
+
+
+
+
+.form-group input:hover,
+.form-group textarea:hover{
+
+    background:#FFFFFF;
+
+    border-color:#CFE5D8;
+
+}
+
+
+
+
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+
+    background:#FFFFFF;
+
+
+    border-color:#2E8B57;
+
+
+    box-shadow:
+    0 0 0 5px rgba(46,139,87,.08);
+
+
+}
+
+
+
+
+
+.full-width{
+
+    width:100%;
+
+}
+
+
+
+
+
+
+
+/*========================================
+        TIME SECTION
+========================================*/
+
+
+.time-section{
+
+
+    background:#F8FBF9;
+
+
+    border:1px solid #E6F0EB;
+
+
+    border-radius:20px;
+
+
+    padding:24px;
+
+
+    margin-top:10px;
+
+
+}
+
+
+
+.time-section h4{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+
+    color:#2E8B57;
+
+
+    font-size:18px;
+
+
+    font-weight:800;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+
+/*========================================
+        BUTTON
+========================================*/
+
+
+.form-actions{
+
+
+    display:flex;
+
+
+    justify-content:flex-end;
+
+
+    padding-top:24px;
+
+
+    border-top:1px solid #EEF4F1;
+
+
+}
+
+
+
+
+.save-btn{
+
+
+    height:56px;
+
+
+    padding:0 30px;
+
+
+    border:none;
+
+
+    border-radius:16px;
+
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+
+    color:white;
+
+
+    font-size:15px;
+
+
+    font-weight:700;
+
+
+    cursor:pointer;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    transition:.35s;
+
+
+    box-shadow:
+    0 12px 28px rgba(46,139,87,.22);
+
+
+}
+
+
+
+
+.save-btn:hover{
+
+
+    transform:translateY(-4px);
+
+
+    box-shadow:
+    0 18px 40px rgba(46,139,87,.30);
+
+
+}
+
+
+
+
+
+
+
+/*========================================
+        ANIMATION
+========================================*/
+
+
+.clinic-card::after{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:-120%;
+
+
+    left:-60%;
+
+
+    width:40%;
+
+
+    height:280%;
+
+
+    background:rgba(255,255,255,.35);
+
+
+    transform:rotate(25deg);
+
+
+    transition:.8s;
+
+
+}
+
+
+
+.clinic-card:hover::after{
+
+
+    left:130%;
+
+
+}
+
+
+
+
+.clinic-card:hover .card-icon{
+
+
+    transform:rotate(-8deg) scale(1.06);
+
+
+}
+
+
+
+.card-icon{
+
+    transition:.35s;
+
+}
+
+
+
+
+
+
+
+/*========================================
+        RESPONSIVE
+========================================*/
+
+
+@media(max-width:900px){
+
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+    .clinic-card{
+
+        padding:24px;
+
+    }
+
+
+    .card-top{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+
+    .form-actions{
+
+        justify-content:center;
+
+    }
+
+
+    .save-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+
+}
+
+
+
+
+
+@media(max-width:480px){
+
+
+    .clinic-header h2{
+
+        font-size:26px;
+
+    }
+
+
+
+    .clinic-card{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+
+
+}

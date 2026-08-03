@@ -311,10 +311,9 @@ class DoctorSettings(models.Model):
         blank=True
     )
 
-    google_map_link = models.URLField(
-    max_length=2000,
+    google_map_link = models.TextField(
     blank=True
-   )
+)
 
     dark_mode = models.BooleanField(
         default=False

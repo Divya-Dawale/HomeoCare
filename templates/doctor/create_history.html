@@ -6,168 +6,335 @@ Create Medical History
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet"
-href="{% static 'doctor/create_history.css' %}">
+<link rel="stylesheet" href="{% static 'doctor/create_history.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="history-container">
+<div class="history-page">
 
-    <div class="history-card">
+    <!-- Header -->
 
-        <h2>🩺 Create Medical History</h2>
+    <div class="history-header">
 
-        <form method="POST">
+        <span class="section-badge">
+            Doctor Dashboard
+        </span>
 
-    {% csrf_token %}
+        <h2>Create Medical History</h2>
 
-    <div class="form-section">
-
-        <h3>🩺 Physical Metrics</h3>
-
-        {{ form.height.label_tag }}
-        {{ form.height }}
-
-        {{ form.weight.label_tag }}
-        {{ form.weight }}
-
-        {{ form.blood_group.label_tag }}
-        {{ form.blood_group }}
-
-        {{ form.blood_pressure.label_tag }}
-        {{ form.blood_pressure }}
-
-        {{ form.physical_build.label_tag }}
-        {{ form.physical_build }}
-
-        {{ form.side_affinity.label_tag }}
-        {{ form.side_affinity }}
-
-        {{ form.thermal_state.label_tag }}
-        {{ form.thermal_state }}
+        <p>
+            Record the patient's complete medical profile for accurate future consultations.
+        </p>
 
     </div>
 
+    <form method="POST">
 
-    <div class="form-section">
+        {% csrf_token %}
 
-        <h3>📋 Chief Complaint</h3>
+        <!-- ================= Physical ================= -->
 
-        {{ form.current_problem.label_tag }}
-        {{ form.current_problem }}
+        <div class="section-card">
 
-        {{ form.location_extension.label_tag }}
-        {{ form.location_extension }}
+            <div class="card-title">
 
-        {{ form.concomitants.label_tag }}
-        {{ form.concomitants }}
+                <h3>🩺 Physical Metrics</h3>
 
-        {{ form.etiology.label_tag }}
-        {{ form.etiology }}
+                <p>Basic body measurements and physical observations.</p>
 
-        {{ form.etiology_notes.label_tag }}
-        {{ form.etiology_notes }}
+            </div>
 
-    </div>
+            <div class="form-grid">
 
+                <div class="form-group">
+                    {{ form.height.label_tag }}
+                    {{ form.height }}
+                </div>
 
-    <div class="form-section">
+                <div class="form-group">
+                    {{ form.weight.label_tag }}
+                    {{ form.weight }}
+                </div>
 
-        <h3>🍎 Diet & Lifestyle</h3>
+                <div class="form-group">
+                    {{ form.blood_group.label_tag }}
+                    {{ form.blood_group }}
+                </div>
 
-        {{ form.diet_type.label_tag }}
-        {{ form.diet_type }}
+                <div class="form-group">
+                    {{ form.blood_pressure.label_tag }}
+                    {{ form.blood_pressure }}
+                </div>
 
-        {{ form.meal_pattern.label_tag }}
-        {{ form.meal_pattern }}
+                <div class="form-group">
+                    {{ form.physical_build.label_tag }}
+                    {{ form.physical_build }}
+                </div>
 
-        {{ form.appetite_scale.label_tag }}
-        {{ form.appetite_scale }}
+                <div class="form-group">
+                    {{ form.side_affinity.label_tag }}
+                    {{ form.side_affinity }}
+                </div>
 
-        {{ form.thirst_pattern.label_tag }}
-        {{ form.thirst_pattern }}
+                <div class="form-group full-width">
+                    {{ form.thermal_state.label_tag }}
+                    {{ form.thermal_state }}
+                </div>
 
-        <label>Food Cravings</label>
+            </div>
 
-        <div class="checkbox-group">
-            {{ form.food_cravings }}
         </div>
 
-        {{ form.sleep_posture.label_tag }}
-        {{ form.sleep_posture }}
+        <!-- ================= Chief Complaint ================= -->
 
-    </div>
+        <div class="section-card">
 
+            <div class="card-title">
 
-    <div class="form-section">
+                <h3>📋 Chief Complaint</h3>
 
-        <h3>🧠 Personality & Psychology</h3>
+                <p>Record the patient's current health concerns.</p>
 
-        {{ form.social_disposition.label_tag }}
-        {{ form.social_disposition }}
+            </div>
 
-        <label>Temperament</label>
+            <div class="form-grid">
 
-        <div class="checkbox-group">
-            {{ form.temperament }}
+                <div class="form-group full-width">
+                    {{ form.current_problem.label_tag }}
+                    {{ form.current_problem }}
+                </div>
+
+                <div class="form-group full-width">
+                    {{ form.location_extension.label_tag }}
+                    {{ form.location_extension }}
+                </div>
+
+                <div class="form-group full-width">
+                    {{ form.concomitants.label_tag }}
+                    {{ form.concomitants }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.etiology.label_tag }}
+                    {{ form.etiology }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.etiology_notes.label_tag }}
+                    {{ form.etiology_notes }}
+                </div>
+
+            </div>
+
         </div>
 
-        <label>Fears</label>
+        <!-- ================= Diet ================= -->
 
-        <div class="checkbox-group">
-            {{ form.fears }}
+        <div class="section-card">
+
+            <div class="card-title">
+
+                <h3>🍎 Diet & Lifestyle</h3>
+
+                <p>Understand eating habits and lifestyle.</p>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    {{ form.diet_type.label_tag }}
+                    {{ form.diet_type }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.meal_pattern.label_tag }}
+                    {{ form.meal_pattern }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.appetite_scale.label_tag }}
+                    {{ form.appetite_scale }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.thirst_pattern.label_tag }}
+                    {{ form.thirst_pattern }}
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Food Cravings</label>
+
+                    <div class="checkbox-card">
+
+                        {{ form.food_cravings }}
+
+                    </div>
+
+                </div>
+
+                <div class="form-group full-width">
+                    {{ form.sleep_posture.label_tag }}
+                    {{ form.sleep_posture }}
+                </div>
+
+            </div>
+
         </div>
 
-        {{ form.pace_of_actions.label_tag }}
-        {{ form.pace_of_actions }}
+        <!-- ================= Psychology ================= -->
 
-        {{ form.orderliness.label_tag }}
-        {{ form.orderliness }}
+        <div class="section-card">
 
-        {{ form.self_perception.label_tag }}
-        {{ form.self_perception }}
+            <div class="card-title">
 
-        {{ form.criticism_response.label_tag }}
-        {{ form.criticism_response }}
+                <h3>🧠 Personality & Psychology</h3>
 
-        {{ form.ambition.label_tag }}
-        {{ form.ambition }}
+                <p>Mental and emotional behaviour assessment.</p>
 
-        {{ form.future_outlook.label_tag }}
-        {{ form.future_outlook }}
+            </div>
 
-        {{ form.anger_reaction.label_tag }}
-        {{ form.anger_reaction }}
+            <div class="form-grid">
 
-        {{ form.consolation_reaction.label_tag }}
-        {{ form.consolation_reaction }}
+                <div class="form-group">
+                    {{ form.social_disposition.label_tag }}
+                    {{ form.social_disposition }}
+                </div>
 
-        {{ form.weeping_tendency.label_tag }}
-        {{ form.weeping_tendency }}
+                <div class="form-group">
+                    {{ form.pace_of_actions.label_tag }}
+                    {{ form.pace_of_actions }}
+                </div>
 
-    </div>
+                <div class="form-group">
+                    {{ form.orderliness.label_tag }}
+                    {{ form.orderliness }}
+                </div>
 
+                <div class="form-group">
+                    {{ form.self_perception.label_tag }}
+                    {{ form.self_perception }}
+                </div>
 
-    
+                <div class="form-group">
+                    {{ form.criticism_response.label_tag }}
+                    {{ form.criticism_response }}
+                </div>
 
+                <div class="form-group">
+                    {{ form.ambition.label_tag }}
+                    {{ form.ambition }}
+                </div>
 
-    <div class="form-section">
+                <div class="form-group">
+                    {{ form.future_outlook.label_tag }}
+                    {{ form.future_outlook }}
+                </div>
 
-        <h3>📝 Additional Notes</h3>
+                <div class="form-group">
+                    {{ form.anger_reaction.label_tag }}
+                    {{ form.anger_reaction }}
+                </div>
 
-        {{ form.additional_notes.label_tag }}
-        {{ form.additional_notes }}
+                <div class="form-group">
+                    {{ form.consolation_reaction.label_tag }}
+                    {{ form.consolation_reaction }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.weeping_tendency.label_tag }}
+                    {{ form.weeping_tendency }}
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Temperament</label>
+
+                    <div class="checkbox-card">
+
+                        {{ form.temperament }}
+
+                    </div>
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Fears</label>
+
+                    <div class="checkbox-card">
+
+                        {{ form.fears }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Notes ================= -->
+
+        <div class="section-card">
+
+            <div class="card-title">
+
+                <h3>📝 Additional Notes</h3>
+
+                <p>Any extra observations or information.</p>
+
+            </div>
+
+            <div class="form-group">
+
+                {{ form.additional_notes.label_tag }}
+
+                {{ form.additional_notes }}
+
+            </div>
+
+        </div>
+
+        <!-- Save -->
+
+        <div class="submit-card">
+
+    <div class="submit-left">
+
+        <div class="submit-icon">
+
+            <i class="fa-solid fa-file-medical"></i>
+
+        </div>
+
+        <div class="submit-info">
+
+    <span class="submit-badge">
+        HomeoCare Medical Record
+    </span>
+
+    <h3>
+        Save Patient Medical History
+    </h3>
+
+</div>
 
     </div>
 
     <button type="submit" class="save-btn">
-        Save History
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        Save Medical History
+
     </button>
 
-</form>
+</div>
 
-    </div>
+    </form>
 
 </div>
 

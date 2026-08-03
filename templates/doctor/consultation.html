@@ -10,230 +10,512 @@ Patient Consultation
 {% endblock %}
 
 {% block content %}
+<div class="consultation-page">
 
-<!-- Patient Information -->
+    <!-- ===========================
+            PAGE HEADER
+    ============================ -->
 
-<div class="patient-card">
-
-    <div class="patient-header">
-
-        <h2>{{ patient.full_name }}</h2>
-
-        <span class="patient-id">
-            {{ patient.patient_id }}
-        </span>
-
-    </div>
-
-    <div class="patient-grid">
+    <div class="consultation-header">
 
         <div>
-            <label>Phone Number</label>
-            <p>{{ patient.phone }}</p>
-        </div>
 
-        <div>
-            <label>Appointment Date</label>
-            <p>{{ appointment.appointment_date }}</p>
+            <span class="section-badge">
+                Doctor Consultation
+            </span>
+
+            <h2>Patient Consultation</h2>
+
+            <p>
+                Review the patient's information, record today's consultation and prescribe medicines.
+            </p>
+
         </div>
 
     </div>
 
-</div>
+
+    <!-- ===========================
+            PATIENT SUMMARY CARD
+    ============================ -->
+
+    <div class="patient-summary-card">
+
+        <div class="patient-profile">
+
+            <div class="patient-avatar">
+
+                {{ patient.full_name|first|upper }}
+
+            </div>
+
+            <div>
+
+                <h3>{{ patient.full_name }}</h3>
+
+                <span class="patient-id">
+                    {{ patient.patient_id }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-grid">
+
+            <div class="summary-item">
+
+                <span>Phone Number</span>
+
+                <strong>
+
+                    {{ patient.phone }}
+
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span>Appointment Date</span>
+
+                <strong>
+
+                    {{ appointment.appointment_date }}
+
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span>Queue Status</span>
+
+                {% if appointment.status == "completed" %}
+
+                    <span class="completed-badge">
+
+                        Completed
+
+                    </span>
+
+                {% else %}
+
+                    <span class="waiting-badge">
+
+                        Waiting
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
 
 <!-- Medical History -->
 
+<!-- ======================================
+            MEDICAL HISTORY
+======================================= -->
+
 <div class="section-card">
 
-    <h3>🩺 Medical History</h3>
+    <div class="section-header">
+
+        <div>
+
+            <h3>Medical History</h3>
+
+            <p>
+                Complete health profile collected during patient registration.
+            </p>
+
+        </div>
+
+    </div>
 
     {% if history %}
 
     <div class="history-grid">
 
-        <div>
-            <label>Height</label>
-            <p>{{ history.height }} cm</p>
+       
+
+    <div class="history-accordion">
+
+    <!-- ================= PHYSICAL ================= -->
+
+    <details class="history-dropdown" open>
+
+        <summary>
+
+            <div class="dropdown-title">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                <span>Physical Information</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </summary>
+
+        <div class="history-content">
+
+    <div class="history-row">
+        <span>Height</span>
+        <strong>{{ history.height }} cm</strong>
+    </div>
+
+    <div class="history-row">
+        <span>Weight</span>
+        <strong>{{ history.weight }} kg</strong>
+    </div>
+
+    <div class="history-row">
+        <span>Blood Group</span>
+        <strong>{{ history.blood_group }}</strong>
+    </div>
+
+    <div class="history-row">
+        <span>Blood Pressure</span>
+        <strong>{{ history.blood_pressure }}</strong>
+    </div>
+
+    <div class="history-row">
+        <span>Thermal State</span>
+        <strong>{{ history.thermal_state }}</strong>
+    </div>
+
+</div>
+    </details>
+
+
+
+    <!-- ================= CURRENT COMPLAINT ================= -->
+
+    <details class="history-dropdown">
+
+        <summary>
+
+            <div class="dropdown-title">
+
+                <i class="fa-solid fa-stethoscope"></i>
+
+                <span>Current Complaint</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </summary>
+
+        <div class="details-grid">
+
+            <div class="detail-card full">
+
+                <label>Current Problem</label>
+
+                <p>{{ history.current_problem }}</p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <label>Location & Extension</label>
+
+                <p>{{ history.location_extension }}</p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <label>Concomitants</label>
+
+                <p>{{ history.concomitants }}</p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <label>Etiology</label>
+
+                <p>{{ history.etiology }}</p>
+
+            </div>
+
+            <div class="detail-card full">
+
+                <label>Etiology Notes</label>
+
+                <p>{{ history.etiology_notes }}</p>
+
+            </div>
+
         </div>
 
-        <div>
-            <label>Weight</label>
-            <p>{{ history.weight }} kg</p>
+    </details>
+
+
+
+    <!-- ================= DIET ================= -->
+
+    <details class="history-dropdown">
+
+        <summary>
+
+            <div class="dropdown-title">
+
+                <i class="fa-solid fa-utensils"></i>
+
+                <span>Diet & Lifestyle</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </summary>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <label>Diet</label>
+
+                <strong>{{ history.diet_type }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Meal Pattern</label>
+
+                <strong>{{ history.meal_pattern }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Appetite</label>
+
+                <strong>{{ history.appetite_scale }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Thirst</label>
+
+                <strong>{{ history.thirst_pattern }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Sleep</label>
+
+                <strong>{{ history.sleep_posture }}</strong>
+
+            </div>
+
+            <div class="detail-card full">
+
+                <label>Food Cravings</label>
+
+                <p>{{ history.food_cravings|join:", " }}</p>
+
+            </div>
+
         </div>
 
-        <div>
-            <label>Blood Group</label>
-            <p>{{ history.blood_group }}</p>
+    </details>
+
+
+
+    <!-- ================= PSYCHOLOGY ================= -->
+
+    <details class="history-dropdown">
+
+        <summary>
+
+            <div class="dropdown-title">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <span>Mental & Emotional</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </summary>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <label>Temperament</label>
+
+                <strong>{{ history.temperament|join:", " }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Fears</label>
+
+                <strong>{{ history.fears|join:", " }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Social</label>
+
+                <strong>{{ history.social_disposition }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Pace</label>
+
+                <strong>{{ history.pace_of_actions }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Orderliness</label>
+
+                <strong>{{ history.orderliness }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Self Perception</label>
+
+                <strong>{{ history.self_perception }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Criticism</label>
+
+                <strong>{{ history.criticism_response }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Ambition</label>
+
+                <strong>{{ history.ambition }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Future</label>
+
+                <strong>{{ history.future_outlook }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Anger</label>
+
+                <strong>{{ history.anger_reaction }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Consolation</label>
+
+                <strong>{{ history.consolation_reaction }}</strong>
+
+            </div>
+
+            <div class="info-card">
+
+                <label>Weeping</label>
+
+                <strong>{{ history.weeping_tendency }}</strong>
+
+            </div>
+
         </div>
 
-        <div>
-            <label>Blood Pressure</label>
-            <p>{{ history.blood_pressure }}</p>
+    </details>
+
+<!-- ================= ADDITIONAL NOTES ================= -->
+
+<details class="history-dropdown">
+
+    <summary>
+
+        <div class="dropdown-title">
+
+            <i class="fa-solid fa-note-sticky"></i>
+
+            <span>Additional Notes</span>
+
         </div>
 
-        <div>
-            <label>Physical Build</label>
-            <p>{{ history.physical_build }}</p>
-        </div>
+        <i class="fa-solid fa-chevron-down"></i>
 
-        <div>
-            <label>Thermal State</label>
-            <p>{{ history.thermal_state }}</p>
-        </div>
+    </summary>
 
-        <div>
-            <label>Side Affinity</label>
-            <p>{{ history.side_affinity }}</p>
-        </div>
+    <div class="detail-card full">
 
-        <div>
-            <label>Current Problem</label>
-            <p>{{ history.current_problem }}</p>
-        </div>
+        <label>Doctor Notes</label>
 
-        <div>
-            <label>Location & Extension</label>
-            <p>{{ history.location_extension }}</p>
-        </div>
+        <p>
 
-        <div>
-            <label>Concomitants</label>
-            <p>{{ history.concomitants }}</p>
-        </div>
+            {{ history.additional_notes|default:"No additional notes available." }}
 
-        <div>
-            <label>Etiology</label>
-            <p>{{ history.etiology }}</p>
-        </div>
-
-        <div>
-            <label>Etiology Notes</label>
-            <p>{{ history.etiology_notes }}</p>
-        </div>
-
-        <div>
-            <label>Diet Type</label>
-            <p>{{ history.diet_type }}</p>
-        </div>
-
-        <div>
-            <label>Meal Pattern</label>
-            <p>{{ history.meal_pattern }}</p>
-        </div>
-
-        <div>
-            <label>Appetite</label>
-            <p>{{ history.appetite_scale }}</p>
-        </div>
-
-        <div>
-            <label>Thirst Pattern</label>
-            <p>{{ history.thirst_pattern }}</p>
-        </div>
-
-        <div>
-            <label>Sleep Posture</label>
-            <p>{{ history.sleep_posture }}</p>
-        </div>
-
-        <div>
-            <label>Food Cravings</label>
-            <p>{{ history.food_cravings|join:", " }}</p>
-        </div>
-
-        <div>
-            <label>Temperament</label>
-            <p>{{ history.temperament|join:", " }}</p>
-        </div>
-
-        <div>
-            <label>Fears</label>
-            <p>{{ history.fears|join:", " }}</p>
-        </div>
-
-        <div>
-            <label>Social Disposition</label>
-            <p>{{ history.social_disposition }}</p>
-        </div>
-
-        <div>
-            <label>Pace of Actions</label>
-            <p>{{ history.pace_of_actions }}</p>
-        </div>
-
-        <div>
-            <label>Orderliness</label>
-            <p>{{ history.orderliness }}</p>
-        </div>
-
-        <div>
-            <label>Self Perception</label>
-            <p>{{ history.self_perception }}</p>
-        </div>
-
-        <div>
-            <label>Reaction to Criticism</label>
-            <p>{{ history.criticism_response }}</p>
-        </div>
-
-        <div>
-            <label>Ambition</label>
-            <p>{{ history.ambition }}</p>
-        </div>
-
-        <div>
-            <label>Future Outlook</label>
-            <p>{{ history.future_outlook }}</p>
-        </div>
-
-        <div>
-            <label>Reaction to Anger</label>
-            <p>{{ history.anger_reaction }}</p>
-        </div>
-
-        <div>
-            <label>Reaction to Consolation</label>
-            <p>{{ history.consolation_reaction }}</p>
-        </div>
-
-        <div>
-            <label>Weeping Tendency</label>
-            <p>{{ history.weeping_tendency }}</p>
-        </div>
-
-        <div>
-            <label>Allergies</label>
-            <p>{{ history.allergies }}</p>
-        </div>
-
-        <div>
-            <label>Past Diseases</label>
-            <p>{{ history.past_diseases }}</p>
-        </div>
-
-        <div>
-            <label>Family History</label>
-            <p>{{ history.family_history }}</p>
-        </div>
-
-        <div>
-            <label>Additional Notes</label>
-            <p>{{ history.additional_notes }}</p>
-        </div>
+        </p>
 
     </div>
 
-    {% else %}
+</details>
+
+    
+
+        
+
+</div>
+    
+            
+{% else %}
 
     <div class="empty-state">
 
-        <h4>No Medical History Found</h4>
+        <div class="empty-icon">
+            🩺
+        </div>
 
-        <p>This patient does not have a medical history yet.</p>
+        <h4>No Medical History Available</h4>
+
+        <p>
+            The patient has not completed a medical history yet.
+        </p>
 
         <a href="{% url 'create_medical_history' appointment.id %}"
            class="action-btn">
+
             Create Medical History
+
         </a>
 
     </div>
@@ -242,53 +524,104 @@ Patient Consultation
 
 </div>
 
+
 <!-- Consultation + Prescription Form -->
 
 <!-- Today's Consultation -->
+<!-- ======================================
+        TODAY'S CONSULTATION
+======================================= -->
 
 <div class="section-card">
 
-    <h3>📝 Today's Consultation</h3>
+    <div class="section-header">
 
-    <form method="POST">
+        <div>
+
+            <h3>Today's Consultation</h3>
+
+            <p>
+                Record today's examination, diagnosis and follow-up details.
+            </p>
+
+        </div>
+
+    </div>
+
+    <form method="POST" class="consultation-form">
 
         {% csrf_token %}
 
-        {{ record_form.as_p }}
+        <div class="form-wrapper">
 
-        <button
-            type="submit"
-            name="save_record"
-            class="save-btn">
+            {{ record_form.as_p }}
 
-            Save Medical Record
+        </div>
 
-        </button>
+        <div class="form-actions">
+
+            <button
+                type="submit"
+                name="save_record"
+                class="save-btn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Consultation
+
+            </button>
+
+        </div>
 
     </form>
 
 </div>
 
-<!-- Prescription -->
+
+<!-- ======================================
+            PRESCRIPTION
+======================================= -->
 
 <div class="section-card">
 
-    <h3>💊 Prescription</h3>
+    <div class="section-header">
 
-    <form method="POST">
+        <div>
+
+            <h3>Prescription</h3>
+
+            <p>
+                Add medicines, dosage and instructions for the patient.
+            </p>
+
+        </div>
+
+    </div>
+
+    <form method="POST" class="consultation-form">
 
         {% csrf_token %}
 
-        {{ prescription_form.as_p }}
+        <div class="form-wrapper">
 
-        <button
-            type="submit"
-            name="save_prescription"
-            class="save-btn">
+            {{ prescription_form.as_p }}
 
-            Save Prescription
+        </div>
 
-        </button>
+        <div class="form-actions">
+
+            <button
+                type="submit"
+                name="save_prescription"
+                class="save-btn">
+
+                <i class="fa-solid fa-pills"></i>
+
+                Save Prescription
+
+            </button>
+
+        </div>
 
     </form>
 
@@ -296,139 +629,389 @@ Patient Consultation
 
 <!-- Previous Visits -->
 
+<!-- ======================================
+            HISTORY SECTION
+======================================= -->
+
+<div class="history-layout">
+
+    <!-- ==========================
+            PREVIOUS VISITS
+    =========================== -->
+<!-- ======================================
+        PREVIOUS VISITS
+====================================== -->
+
 <div class="section-card">
 
-    <h3>📋 Previous Visits</h3>
+    <div class="section-header">
+
+        <div>
+
+            <h3>Previous Visits</h3>
+
+            <p>
+                Consultation history of this patient.
+            </p>
+
+        </div>
+
+    </div>
 
     {% if previous_visits %}
 
+    <div class="visit-cards">
+
         {% for visit in previous_visits %}
 
-            <div class="visit-card">
+        <div class="visit-card">
 
-                <div class="visit-header">
+            <div class="visit-card-header">
+
+                <div>
 
                     <h4>
-                        Visit on {{ visit.created_at|date:"d M Y" }}
+
+                        {{ visit.created_at|date:"d M Y" }}
+
                     </h4>
 
-                    <span class="visit-id">
-                        #{{ visit.id }}
+                    <span>
+
+                        Consultation #{{ forloop.counter }}
+
                     </span>
 
                 </div>
 
-                <div class="visit-body">
+                <div class="visit-status">
 
-                    <p>
-                        <strong>Symptoms:</strong><br>
-                        {{ visit.symptoms }}
-                    </p>
-
-                    <p>
-                        <strong>Diagnosis:</strong><br>
-                        {{ visit.diagnosis_notes }}
-                    </p>
-
-                    {% if visit.observations %}
-                    <p>
-                        <strong>Observations:</strong><br>
-                        {{ visit.observations }}
-                    </p>
-                    {% endif %}
-
-                    {% if visit.follow_up_notes %}
-                    <p>
-                        <strong>Follow Up Notes:</strong><br>
-                        {{ visit.follow_up_notes }}
-                    </p>
-                    {% endif %}
+                    Completed
 
                 </div>
 
             </div>
 
+
+            <div class="visit-card-body">
+
+                <div class="visit-item">
+
+                    <label>
+
+                        Symptoms
+
+                    </label>
+
+                    <p>
+
+                        {{ visit.symptoms|default:"Not Available" }}
+
+                    </p>
+
+                </div>
+
+
+                <div class="visit-item">
+
+                    <label>
+
+                        Diagnosis
+
+                    </label>
+
+                    <p>
+
+                        {{ visit.diagnosis_notes|default:"Not Available" }}
+
+                    </p>
+
+                </div>
+
+
+                {% if visit.observations %}
+
+                <div class="visit-item">
+
+                    <label>
+
+                        Observations
+
+                    </label>
+
+                    <p>
+
+                        {{ visit.observations }}
+
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                {% if visit.follow_up_notes %}
+
+                <div class="visit-item">
+
+                    <label>
+
+                        Follow Up
+
+                    </label>
+
+                    <p>
+
+                        {{ visit.follow_up_notes }}
+
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
         {% endfor %}
+
+    </div>
 
     {% else %}
 
-        <p class="coming-soon">
-            No previous visits found.
+    <div class="empty-state">
+
+        <div class="empty-icon">
+
+            📋
+
+        </div>
+
+        <h4>
+
+            No Previous Visits
+
+        </h4>
+
+        <p>
+
+            Consultation history will appear here.
+
         </p>
+
+    </div>
 
     {% endif %}
 
 </div>
-<!-- Previous Prescriptions -->
+    
+    <!-- ==========================
+        PREVIOUS PRESCRIPTIONS
+    =========================== -->
+<!-- ======================================
+        PREVIOUS PRESCRIPTIONS
+====================================== -->
+
 <div class="section-card">
 
-    <h3>💊 Previous Prescriptions</h3>
+    <div class="section-header">
+
+        <div>
+
+            <h3>Previous Prescriptions</h3>
+
+            <p>
+                Medicines prescribed during previous consultations.
+            </p>
+
+        </div>
+
+    </div>
 
     {% if previous_prescriptions %}
 
+    <div class="prescription-cards">
+
         {% for prescription in previous_prescriptions %}
 
-            <div class="visit-card">
+        <div class="prescription-card">
 
-                <h4>
-                    Prescription on {{ prescription.created_at|date:"d M Y" }}
-                </h4>
+            <div class="prescription-header">
 
-                <span class="visit-id">
-                    Prescription #{{ forloop.counter }}
-                </span>
+                <div class="medicine-name">
+
+                    <div class="medicine-icon">
+
+                        <i class="fa-solid fa-pills"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h4>
+
+                            {{ prescription.medicine_name }}
+
+                        </h4>
+
+                        <span>
+
+                            {{ prescription.created_at|date:"d M Y" }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="prescription-grid">
+
+                <div class="prescription-info">
+
+                    <small>Dosage</small>
+
+                    <strong>
+
+                        {{ prescription.dosage }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="prescription-info">
+
+                    <small>Frequency</small>
+
+                    <strong>
+
+                        {{ prescription.frequency }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="prescription-info">
+
+                    <small>Duration</small>
+
+                    <strong>
+
+                        {{ prescription.duration }}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            {% if prescription.instructions %}
+
+            <div class="instruction-card">
+
+                <label>
+
+                    Instructions
+
+                </label>
 
                 <p>
-                    <strong>Medicine Name:</strong>
-                    {{ prescription.medicine_name }}
-                </p>
 
-                <p>
-                    <strong>Dosage:</strong>
-                    {{ prescription.dosage }}
-                </p>
-
-                <p>
-                    <strong>Frequency:</strong>
-                    {{ prescription.frequency }}
-                </p>
-
-                <p>
-                    <strong>Duration:</strong>
-                    {{ prescription.duration }}
-                </p>
-
-                <p>
-                    <strong>Instructions:</strong>
                     {{ prescription.instructions }}
+
                 </p>
 
             </div>
 
+            {% endif %}
+
+        </div>
+
         {% endfor %}
+
+    </div>
 
     {% else %}
 
-        <p class="coming-soon">
-            No previous prescriptions found.
+    <div class="empty-state">
+
+        <div class="empty-icon">
+
+            💊
+
+        </div>
+
+        <h4>
+
+            No Previous Prescriptions
+
+        </h4>
+
+        <p>
+
+            Previous prescriptions will appear here.
+
         </p>
+
+    </div>
 
     {% endif %}
 
 </div>
-<form method="POST">
+    
+    
+                            
+                
 
-    {% csrf_token %}
+            
 
-    <button
-        type="submit"
-        name="complete_consultation"
-        class="complete-btn">
 
-        ✅ Complete Consultation
+<!-- ======================================
+        COMPLETE CONSULTATION
+======================================= -->
 
-    </button>
+<div class="complete-card">
 
-</form>
+    <div class="complete-icon">
 
+        <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <div class="complete-content">
+
+        <h3>Complete Consultation</h3>
+
+        <p>
+            Finish this consultation, save today's medical record and move the patient to the completed queue.
+        </p>
+
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <button
+            type="submit"
+            name="complete_consultation"
+            class="complete-btn">
+
+            <i class="fa-solid fa-check"></i>
+
+            Complete
+
+        </button>
+
+    </form>
+
+</div>
+
+      
 {% endblock %}

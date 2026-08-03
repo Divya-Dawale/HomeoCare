@@ -170,6 +170,10 @@ from .models import DoctorSettings
 from django import forms
 from .models import DoctorSettings
 
+from django import forms
+from .models import DoctorSettings
+
+
 class DoctorSettingsForm(forms.ModelForm):
 
     class Meta:
@@ -198,39 +202,120 @@ class DoctorSettingsForm(forms.ModelForm):
 
         ]
 
+
         widgets = {
 
+
             "phone": forms.TextInput(
+
                 attrs={
+
                     "maxlength": "10",
+
                     "pattern": "[0-9]{10}",
+
                     "placeholder": "Clinic Phone Number"
+
                 }
+
             ),
+
+
+
+            "email": forms.EmailInput(
+
+                attrs={
+
+                    "placeholder": "Clinic Email Address"
+
+                }
+
+            ),
+
+
 
             "address": forms.Textarea(
+
                 attrs={
+
                     "rows": 3,
+
                     "placeholder": "Clinic Address"
+
                 }
+
             ),
+
+
 
             "opening_time": forms.TimeInput(
+
                 attrs={
+
                     "type": "time"
+
                 }
+
             ),
+
+
 
             "closing_time": forms.TimeInput(
+
                 attrs={
+
                     "type": "time"
+
                 }
+
             ),
 
+
+
             "google_map_link": forms.URLInput(
+
                 attrs={
+
                     "placeholder": "Google Maps Link"
+
                 }
+
+            ),
+
+
+
+            "consultation_fee": forms.NumberInput(
+
+                attrs={
+
+                    "placeholder": "Consultation Fee"
+
+                }
+
+            ),
+
+
+
+            "medicine_fee_7_days": forms.NumberInput(
+
+                attrs={
+
+                    "placeholder": "Medicine Fee (7 Days)"
+
+                }
+
+            ),
+
+
+
+            "max_patients_per_day": forms.NumberInput(
+
+                attrs={
+
+                    "placeholder": "Maximum Patients Per Day"
+
+                }
+
             ),
 
         }

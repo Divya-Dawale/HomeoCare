@@ -422,15 +422,14 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def doctor_settings(request):
 
-    print(request.user)
-    print(request.user.is_authenticated)
-    settings_obj, created = (
-        DoctorSettings.objects.get_or_create(
-            doctor=request.user
-        )
+    settings_obj, created = DoctorSettings.objects.get_or_create(
+        doctor=request.user
     )
 
     if request.method == "POST":
+
+        print("POST RECEIVED")
+        print(request.POST)
 
         form = DoctorSettingsForm(
             request.POST,
@@ -439,53 +438,25 @@ def doctor_settings(request):
 
         if form.is_valid():
 
-            form.save()
+            print("FORM VALID")
 
-            return redirect(
-                "doctor_settings"
-            )
+            obj = form.save()
+
+            print(obj.consultation_fee)
+
+            return redirect("doctor_settings")
+
+        else:
+
+            print(form.errors)
 
     else:
 
-        form = DoctorSettingsForm(
-            instance=settings_obj
-        )
+        form = DoctorSettingsForm(instance=settings_obj)
 
     return render(
         request,
         "doctor/settings.html",
-        {
-            "form": form
-        }
-    )
-
-
-def edit_doctor_profile(request):
-
-    if request.method == "POST":
-
-        form = DoctorProfileForm(
-            request.POST,
-            instance=request.user
-        )
-
-        if form.is_valid():
-
-            form.save()
-
-            return redirect(
-                "doctor_settings"
-            )
-
-    else:
-
-        form = DoctorProfileForm(
-            instance=request.user
-        )
-
-    return render(
-        request,
-        "doctor/edit_profile.html",
         {
             "form": form
         }
@@ -536,6 +507,79 @@ def doctor_change_password(request):
     return render(
         request,
         "doctor/change_password.html",
+        {
+            "form": form
+        }
+    )
+
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def doctor_profile(request):
+
+    if request.method == "POST":
+
+        form = DoctorProfileForm(
+            request.POST,
+            instance=request.user
+        )
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect(
+                "doctor_profile"
+            )
+
+    else:
+
+        form = DoctorProfileForm(
+            instance=request.user
+        )
+
+
+    return render(
+        request,
+        "doctor/profile.html",
+        {
+            "form": form
+        }
+    )
+
+@login_required
+def clinic_management(request):
+
+    settings_obj, created = DoctorSettings.objects.get_or_create(
+        doctor=request.user
+    )
+
+    if request.method == "POST":
+        print("POST RECEIVED")
+
+        form = DoctorSettingsForm(
+            request.POST,
+            instance=settings_obj
+        )
+
+        print(form.is_valid())
+        print(form.errors)
+
+        if form.is_valid():
+            form.save()
+            print("SAVED SUCCESSFULLY")
+
+            return redirect("clinic_management")
+
+    else:
+        form = DoctorSettingsForm(
+            instance=settings_obj
+        )
+
+    return render(
+        request,
+        "doctor/clinic_management.html",
         {
             "form": form
         }
