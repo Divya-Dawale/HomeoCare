@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Patient(models.Model):
@@ -8,9 +9,16 @@ class Patient(models.Model):
         unique=True,
         blank=True
     )
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="patient"
+    )
 
     full_name = models.CharField(
-        max_length=100
+        max_length=100 
     )
 
     phone = models.CharField(

@@ -52,117 +52,72 @@ def book_appointment(request):
                 }
             )
     
-    
+    # NEW PATIENT
+    if request_type == "new":
 
-        # -----------------------------
-        # NEW PATIENT
-        # -----------------------------
-        if request_type == "new":
+        AppointmentRequest.objects.create(
+            request_type="new",
+            full_name=request.POST.get("full_name"),
+            phone=request.POST.get("phone"),
+            email=request.POST.get("email"),
+            age=request.POST.get("age"),
+            gender=request.POST.get("gender"),
+            address=request.POST.get("address"),
+            preferred_date=date.today(),
+            reason_for_visit=request.POST.get("reason_for_visit")
+        )
 
-            AppointmentRequest.objects.create(
+        print("NEW REQUEST SAVED")
 
-                request_type="new",
+        success = "Appointment request submitted successfully."
 
-                full_name=request.POST.get(
-                    "full_name"
-                ),
 
-                phone=request.POST.get(
-                    "phone"
-                ),
+# EXISTING PATIENT
+    elif request_type == "existing":
 
-                email=request.POST.get(
-                    "email"
-                ),
+        patient = Patient.objects.filter(
 
-                age=request.POST.get(
-                    "age"
-                ),
+            patient_id=request.POST.get("patient_id"),
+            phone=request.POST.get("phone")
 
-                gender=request.POST.get(
-                    "gender"
-                ),
+        ).first()
 
-                address=request.POST.get(
-                    "address"
-                ),
 
-                preferred_date=date.today(),
+        if patient:
+
+            Appointment.objects.create(
+
+                patient=patient,
+
+                appointment_date=date.today(),
 
                 reason_for_visit=request.POST.get(
                     "reason_for_visit"
-                )
-
-            )
-            print("NEW REQUEST SAVED")
-            success = (
-                "Appointment request submitted successfully."
-            )
-
-        # -----------------------------
-        # EXISTING PATIENT
-        # -----------------------------
-        else:
-
-            patient = Patient.objects.filter(
-
-                patient_id=request.POST.get(
-                    "patient_id"
                 ),
 
-                phone=request.POST.get(
-                    "phone"
-                )
+                status="waiting"
 
-            ).first()
+            )
 
-            if patient:
+            print("EXISTING PATIENT APPOINTMENT SAVED")
 
-                AppointmentRequest.objects.create(
+            success = "Follow-up appointment booked successfully."
 
-                    request_type="existing",
 
-                    patient_id=patient.patient_id,
+        else:
 
-                    full_name=patient.full_name,
+            error_message = "Invalid Patient ID or Phone Number."
 
-                    phone=patient.phone,
-
-                    email=patient.email,
-
-                    age=patient.age,
-
-                    gender=patient.gender,
-
-                    address=patient.address,
-
-                    preferred_date=date.today(),
-
-                    reason_for_visit=request.POST.get(
-                        "reason_for_visit"
-                    )
-
-                )
-                
-                success = (
-                    "Follow-up appointment booked successfully."
-                )
-
-            else:
-
-                error_message = (
-                    "Invalid Patient ID or Phone Number."
-                )
-
+            
     return render(
         request,
         "public/appointment.html",
-        {
-            "success": success,
-            "error_message": error_message,
-            "request_type": request_type,
-            "booking_closed": booking_closed,
-        }
+            {
+                "success": success,
+                "error_message": error_message,
+                "request_type": request_type,
+                "booking_closed": booking_closed,
+            }
     )
 def patient_status(request):
 

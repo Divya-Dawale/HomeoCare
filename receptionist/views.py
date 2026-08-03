@@ -8,8 +8,7 @@ from .forms import ProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from datetime import date
-
-from datetime import date
+from accounts.models import User
 
 def dashboard(request):
 
@@ -224,6 +223,8 @@ def reject_request(request, request_id):
     appointment_request.save()
 
     return redirect("appointment_requests")
+
+
 def approve_request(request, request_id):
 
     appointment_request = get_object_or_404(
@@ -271,6 +272,23 @@ def approve_request(request, request_id):
             gender=appointment_request.gender,
             address=appointment_request.address,
         )
+
+        # Create login account for patient
+        if not User.objects.filter(username=patient.patient_id).exists():
+
+            user = User.objects.create_user(
+                username=patient.patient_id,
+                password=patient.patient_id,
+                first_name=patient.full_name,
+                email=patient.email,
+                role="patient",
+                phone=patient.phone,
+            )
+            patient.user = user
+            patient.save()
+
+            user.is_active = True
+            user.save()
 
     # Create appointment
     Appointment.objects.create(
@@ -579,3 +597,4 @@ def add_patient(request):
         }
 
     )
+

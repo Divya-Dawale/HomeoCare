@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        HomeoCare Patient Panel
+
+    </title>
+
+    <link rel="stylesheet"
+          href="{% static 'patients/base_patient.css' %}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ==============================
+            SIDEBAR
+    =============================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>HomeoCare</h2>
+
+                    <p>Patient Panel</p>
+
+                </div>
+
+            </div>
+
+            <div class="divider"></div>
+
+            <nav class="sidebar-menu">
+
+                <a href="{% url 'patient_dashboard' %}"
+                   class="menu-item {% if request.resolver_match.url_name == 'patient_dashboard' %}active{% endif %}">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+                <a href="{% url 'patient_appointments' %}"
+                   class="menu-item {% if request.resolver_match.url_name == 'patient_appointments' %}active{% endif %}">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    <span>Appointments</span>
+
+                </a>
+
+                <a href="{% url 'patient_records' %}"
+                   class="menu-item {% if request.resolver_match.url_name == 'patient_records' %}active{% endif %}">
+
+                    <i class="fa-solid fa-file-medical"></i>
+
+                    <span>Medical Records</span>
+
+                </a>
+
+                <a href="{% url 'patient_prescriptions' %}"
+                   class="menu-item {% if request.resolver_match.url_name == 'patient_prescriptions' %}active{% endif %}">
+
+                    <i class="fa-solid fa-pills"></i>
+
+                    <span>Prescriptions</span>
+
+                </a>
+
+                <a href="{% url 'patient_bills' %}"
+                   class="menu-item {% if request.resolver_match.url_name == 'patient_bills' %}active{% endif %}">
+
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                    <span>Bills</span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="divider"></div>
+
+            <nav class="sidebar-menu">
+
+                <a href="{% url 'patient_settings' %}"
+                   class="menu-item {% if request.resolver_match.url_name == 'patient_settings' %}active{% endif %}">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span>Settings</span>
+
+                </a>
+
+                <a href="{% url 'logout' %}"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+    <!-- ==============================
+            MAIN
+    =============================== -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-toggle">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div class="page-heading">
+
+                    <h1>
+
+                        {% block page_title %}
+
+                        Patient Dashboard
+
+                        {% endblock %}
+
+                    </h1>
+
+                    <p>
+
+                        {% block page_subtitle %}
+
+                        Welcome back.
+
+                        {% endblock %}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-count">
+
+                        {{ notification_count|default:"0" }}
+
+                    </span>
+
+                </button>
+
+                <a href="{% url 'patient_settings' %}"
+                   class="profile-link">
+
+                    <div class="profile">
+
+                        <div class="avatar">
+
+                            {{ request.user.first_name|first|upper }}
+
+                        </div>
+
+                        <div class="profile-details">
+
+                            <div class="profile-name">
+
+                                {{ request.user.first_name }}
+
+                            </div>
+
+                            <div class="profile-role">
+
+                                Patient
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </header>
+
+        <div class="content">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+    </main>
+
+</div>
+
+{% block js %}
+
+<script src="{% static 'js/patients.js' %}"></script>
+
+{% endblock %}
+
+</body>
+
+</html>

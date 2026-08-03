@@ -26,7 +26,7 @@
     <div class="left-side">
 
         <!-- Replace this image with your own -->
-        <img src="{% static 'accounts/images/login-image.png' %}" alt="HomeoCare">
+        <img src="{% static 'images/logimage.png' %}" alt="HomeoCare">
 
         <div class="overlay"></div>
 
@@ -117,10 +117,8 @@
 
                 New to HomeoCare?
 
-                <a href="#">
-
+                <a href="{% url 'register' %}">
                     Create an Account
-
                 </a>
 
             </p>

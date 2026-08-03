@@ -31,6 +31,9 @@ def staff_login(request):
             elif user.role == "doctor":
                 return redirect("doctor_dashboard")
 
+            elif user.role == "patient":
+                return redirect("patient_dashboard")
+
         else:
 
             error = "Invalid username or password"
