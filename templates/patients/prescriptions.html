@@ -1,0 +1,134 @@
+{% extends "patients/base_patient.html" %}
+{% load static %}
+
+{% block title %}
+Prescriptions
+{% endblock %}
+
+{% block page_title %}
+Prescriptions
+{% endblock %}
+
+{% block page_subtitle %}
+View your prescribed medicines.
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/prescriptions.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if prescriptions %}
+
+<div class="prescription-container">
+
+{% for prescription in prescriptions %}
+
+<div class="prescription-card">
+
+    <div class="prescription-header">
+
+        <h3>
+
+            {{ prescription.medicine_name }}
+
+        </h3>
+
+        <span>
+
+            {{ prescription.created_at|date:"d M Y" }}
+
+        </span>
+
+    </div>
+
+    <div class="prescription-body">
+
+        <div class="info">
+
+            <strong>Dosage</strong>
+
+            <p>{{ prescription.dosage }}</p>
+
+        </div>
+
+        <div class="info">
+
+            <strong>Frequency</strong>
+
+            <p>{{ prescription.frequency }}</p>
+
+        </div>
+
+        <div class="info">
+
+            <strong>Duration</strong>
+
+            <p>{{ prescription.duration }}</p>
+
+        </div>
+
+        <div class="info">
+
+            <strong>Instructions</strong>
+
+            <p>{{ prescription.instructions }}</p>
+
+        </div>
+
+        <div class="info">
+
+            <strong>Medicine Given</strong>
+
+            {% if prescription.medicine_given %}
+
+            <span class="status status-completed">
+
+                Yes
+
+            </span>
+
+            {% else %}
+
+            <span class="status status-pending">
+
+                Pending
+
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-card">
+
+<i class="fa-solid fa-pills"></i>
+
+<h3>
+
+No Prescriptions Available
+
+</h3>
+
+<p>
+
+Your prescribed medicines will appear here.
+
+</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

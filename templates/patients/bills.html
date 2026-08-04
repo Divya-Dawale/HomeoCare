@@ -1,0 +1,122 @@
+{% extends "patients/base_patient.html" %}
+{% load static %}
+
+{% block title %}
+Bills
+{% endblock %}
+
+{% block page_title %}
+Payment History
+{% endblock %}
+
+{% block page_subtitle %}
+View all your clinic bills.
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/bills.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if bills %}
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Bill ID</th>
+
+<th>Date</th>
+
+<th>Consultation</th>
+
+<th>Medicine</th>
+
+<th>Total</th>
+
+<th>Payment</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for bill in bills %}
+
+<tr>
+
+<td>#{{ bill.id }}</td>
+
+<td>{{ bill.created_at|date:"d M Y" }}</td>
+
+<td>₹ {{ bill.consultation_fee }}</td>
+
+<td>₹ {{ bill.medicine_fee }}</td>
+
+<td><strong>₹ {{ bill.total_amount }}</strong></td>
+
+<td>{{ bill.payment_method|title }}</td>
+
+<td>
+
+{% if bill.payment_status == "paid" %}
+
+<span class="status status-completed">
+
+Paid
+
+</span>
+
+{% else %}
+
+<span class="status status-pending">
+
+Pending
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% else %}
+
+<div class="empty-card">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<h3>
+
+No Bills Available
+
+</h3>
+
+<p>
+
+Your payment history will appear here.
+
+</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

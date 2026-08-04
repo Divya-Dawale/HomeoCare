@@ -6,50 +6,74 @@ from prescriptions.models import Prescription
 from patients.models import Patient
 from django.db import models
 from django.db.models import Sum
+from django.shortcuts import render, redirect, get_object_or_404
+from doctors.models import MedicalRecord
+from prescriptions.models import Prescription
+from patients.models import Patient
+from django.db import models
+from .forms import PatientForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from .models import MedicalHistory
+from .forms import MedicalHistoryForm
+from django.shortcuts import get_object_or_404, redirect, render
+
+
+
 
 @login_required
 def patient_dashboard(request):
+
     patient = request.user.patient
 
-    appointments = Appointment.objects.filter(patient=patient)
-
-    total_appointments = appointments.count()
-
-    completed_appointments = appointments.filter(
-        status="completed"
-    ).count()
-
-    cancelled_appointments = appointments.filter(
-        status="cancelled"
-    ).count()
+    appointments = Appointment.objects.filter(
+        patient=patient
+    )
 
     total_bill = Bill.objects.filter(
-        patient=patient,
-        payment_status="paid"
+        patient=patient
     ).aggregate(
         total=Sum("total_amount")
     )["total"] or 0
 
-    upcoming_appointments = appointments.filter(
-        status__in=["approved", "waiting"]
-    ).order_by("appointment_date")
+    recent_appointments = appointments.order_by(
+        "-appointment_date"
+    )[:5]
 
     context = {
+
         "patient": patient,
-        "total_appointments": total_appointments,
-        "completed_appointments": completed_appointments,
-        "cancelled_appointments": cancelled_appointments,
+
+        "total_appointments": appointments.count(),
+
+        "completed_appointments":
+            appointments.filter(
+                status="completed"
+            ).count(),
+
+        "cancelled_appointments":
+            appointments.filter(
+                status="cancelled"
+            ).count(),
+
         "total_bill": total_bill,
-        "upcoming_appointments": upcoming_appointments,
+
+        "recent_appointments": recent_appointments,
+
+        "notification_count": appointments.filter(
+            status="approved"
+        ).count(),
+
     }
 
     return render(
         request,
         "patients/dashboard.html",
-        context
+        context,
     )
 
-from appointments.models import Appointment
+
+from django.db.models import Q
 
 @login_required
 def patient_appointments(request):
@@ -60,11 +84,225 @@ def patient_appointments(request):
         patient=patient
     ).order_by("-appointment_date")
 
+    search = request.GET.get("search")
+
+    if search:
+        appointments = appointments.filter(
+            Q(reason_for_visit__icontains=search) |
+            Q(status__icontains=search) |
+            Q(appointment_date__icontains=search)
+        )
+
     return render(
         request,
         "patients/appointments.html",
         {
-            "patient": patient,
             "appointments": appointments,
+            "patient": patient,
+        },
+    )
+
+@login_required
+def cancel_appointment(request, id):
+
+    patient = request.user.patient
+
+    appointment = get_object_or_404(
+        Appointment,
+        id=id,
+        patient=patient,
+    )
+
+    if appointment.status in ["approved", "waiting"]:
+
+        appointment.status = "cancelled"
+        appointment.save()
+
+    return redirect("patient_appointments")
+
+@login_required
+def patient_records(request):
+
+    patient = request.user.patient
+
+    records = MedicalRecord.objects.filter(
+        patient=patient
+    ).order_by("-created_at")
+
+    return render(
+        request,
+        "patients/records.html",
+        {
+            "patient": patient,
+            "records": records,
+        },
+    )
+
+@login_required
+def patient_prescriptions(request):
+
+    patient = request.user.patient
+
+    prescriptions = Prescription.objects.filter(
+        patient=patient
+    ).order_by("-created_at")
+
+    return render(
+        request,
+        "patients/prescriptions.html",
+        {
+            "patient": patient,
+            "prescriptions": prescriptions,
+        },
+    )
+
+@login_required
+def patient_bills(request):
+
+    patient = request.user.patient
+
+    bills = Bill.objects.filter(
+        patient=patient
+    ).order_by("-created_at")
+
+
+    return render(
+        request,
+        "patients/bills.html",
+        {
+            "patient": patient,
+            "bills": bills,
+        },
+    )
+
+
+@login_required
+def patient_settings(request):
+
+    patient = request.user.patient
+
+    return render(
+        request,
+        "patients/settings.html",
+        {
+            "patient": patient,
+        },
+    )
+
+
+
+
+
+@login_required
+def patient_profile(request):
+    patient = request.user.patient
+
+    if request.method == "POST":
+        form = PatientForm(request.POST, instance=patient)
+
+        if form.is_valid():
+            form.save()
+
+            # Keep User model in sync
+            request.user.first_name = patient.full_name.split()[0]
+
+            if len(patient.full_name.split()) > 1:
+                request.user.last_name = " ".join(patient.full_name.split()[1:])
+            else:
+                request.user.last_name = ""
+
+            request.user.email = patient.email
+            request.user.save()
+
+            messages.success(request, "Profile updated successfully.")
+            return redirect("patient_profile")
+
+    else:
+        form = PatientForm(instance=patient)
+
+    return render(
+        request,
+        "patients/profile.html",
+        {
+            "patient": patient,
+            "form": form,
+        },
+    )
+
+@login_required
+def patient_change_password(request):
+
+    if request.method == "POST":
+
+        current_password = request.POST.get("current_password")
+        new_password = request.POST.get("new_password")
+        confirm_password = request.POST.get("confirm_password")
+
+        # Check current password
+        if not request.user.check_password(current_password):
+
+            messages.error(
+                request,
+                "Current password is incorrect."
+            )
+
+        # Check both passwords match
+        elif new_password != confirm_password:
+
+            messages.error(
+                request,
+                "New passwords do not match."
+            )
+
+        # Check minimum length
+        elif len(new_password) < 8:
+
+            messages.error(
+                request,
+                "Password must be at least 8 characters long."
+            )
+
+        else:
+
+            request.user.set_password(new_password)
+            request.user.save()
+
+            # Keep user logged in
+            update_session_auth_hash(request, request.user)
+
+            messages.success(
+                request,
+                "Password updated successfully."
+            )
+
+            return redirect("patient_change_password")
+
+    return render(
+        request,
+        "patients/change_password.html",
+        {
+            "patient": request.user.patient,
+        }
+    )
+
+from prescriptions.models import Prescription
+
+@login_required
+def patient_history(request):
+
+    patient = request.user.patient
+
+    prescriptions = Prescription.objects.filter(
+        patient=patient
+    ).select_related(
+        "appointment"
+    ).order_by("-appointment__appointment_date")
+
+    return render(
+        request,
+        "patients/history.html",
+        {
+            "patient": patient,
+            "prescriptions": prescriptions,
         },
     )

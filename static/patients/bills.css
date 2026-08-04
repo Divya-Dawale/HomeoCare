@@ -1,0 +1,183 @@
+/* ==========================================
+            TABLE WRAPPER
+========================================== */
+
+.table-wrapper{
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.05);
+
+    border:1px solid #E7EEF2;
+
+    overflow-x:auto;
+
+}
+
+/* ==========================================
+                TABLE
+========================================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+}
+
+thead{
+
+    background:#F8FAFC;
+
+}
+
+thead th{
+
+    padding:18px;
+
+    text-align:center;
+
+    color:#64748B;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+tbody td{
+
+    padding:18px;
+
+    text-align:center;
+
+    border-top:1px solid #EEF2F5;
+
+    color:#475569;
+
+}
+
+tbody tr{
+
+    transition:.3s;
+
+}
+
+tbody tr:hover{
+
+    background:#F9FCFB;
+
+}
+
+/* ==========================================
+            STATUS
+========================================== */
+
+.status{
+
+    display:inline-block;
+
+    padding:7px 16px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.status-completed{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.status-pending{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+/* ==========================================
+            TOTAL AMOUNT
+========================================== */
+
+tbody strong{
+
+    color:#2E8B57;
+
+    font-size:16px;
+
+}
+
+/* ==========================================
+            EMPTY CARD
+========================================== */
+
+.empty-card{
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:70px 40px;
+
+    text-align:center;
+
+    border:1px solid #E7EEF2;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.05);
+
+}
+
+.empty-card i{
+
+    font-size:70px;
+
+    color:#2E8B57;
+
+    margin-bottom:20px;
+
+}
+
+.empty-card h3{
+
+    margin-bottom:12px;
+
+    color:#1E293B;
+
+    font-size:24px;
+
+}
+
+.empty-card p{
+
+    color:#64748B;
+
+}
+
+/* ==========================================
+            RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+table{
+
+    min-width:850px;
+
+}
+
+}

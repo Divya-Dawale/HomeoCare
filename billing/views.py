@@ -26,8 +26,6 @@ def get_duration_days(duration):
     return 7
 
 
-from decimal import Decimal
-
 def billing_list(request):
 
     doctor_settings = DoctorSettings.objects.first()
@@ -64,33 +62,32 @@ def billing_list(request):
             id=prescription_id
         )
 
-        final_amount = Decimal(
-            request.POST.get("final_amount")
-            )
-
-        payment_method = request.POST.get(
-            "payment_method"
-        )
-
         duration_days = get_duration_days(
             prescription.duration
         )
 
         medicine_fee = round(
-        (weekly_medicine_fee / Decimal("7")) * duration_days
+            (weekly_medicine_fee / Decimal("7")) * duration_days
         )
 
         if duration_days >= 60:
 
-            medicine_fee = (
-             medicine_fee * Decimal("0.85")
-                 )
+            medicine_fee = medicine_fee * Decimal("0.85")
 
         elif duration_days >= 30:
 
-              medicine_fee = (
-                 medicine_fee * Decimal("0.90")
-                )
+            medicine_fee = medicine_fee * Decimal("0.90")
+
+
+        final_amount = (
+            consultation_fee + medicine_fee
+        )
+
+
+        payment_method = request.POST.get(
+            "payment_method"
+        )
+
 
         bill = Bill.objects.create(
 
@@ -110,8 +107,10 @@ def billing_list(request):
 
         )
 
+
         prescription.billing_done = True
         prescription.save()
+
 
         return redirect(
             "receipt",
@@ -120,15 +119,6 @@ def billing_list(request):
 
     for prescription in prescriptions:
 
-        duration_days = get_duration_days(
-            prescription.duration
-        )
-
-        daily_rate = weekly_medicine_fee / Decimal("7")
-
-        medicine_fee = (
-            daily_rate * duration_days
-        )
 
         if duration_days >= 60:
 
@@ -154,12 +144,12 @@ def billing_list(request):
             consultation_fee +
             medicine_fee
         )
-
     return render(
         request,
         "billing/billing_list.html",
         {
-            "prescriptions": prescriptions
+            "prescriptions": prescriptions,
+        
         }
     )
     

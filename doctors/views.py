@@ -86,9 +86,9 @@ def patient_queue(request):
 
     appointments = Appointment.objects.filter(
     appointment_date=date.today()
-    ).order_by(
-    "created_at"
-    )
+).exclude(
+    status="cancelled"
+).order_by("created_at")
 
     if status:
         appointments = appointments.filter(

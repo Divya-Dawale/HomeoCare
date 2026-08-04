@@ -1,0 +1,88 @@
+{% extends 'patients/base_patient.html' %}
+{% load static %}
+
+{% block page_title %}
+Medical History
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/history.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h2>Medical History</h2>
+
+        <p>Complete record of your previous consultations.</p>
+
+    </div>
+
+    <table class="history-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Queue</th>
+
+                <th>Date</th>
+
+                <th>Reason</th>
+
+                <th>Medicine</th>
+
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for prescription in prescriptions %}
+
+            <tr>
+
+                <td>#{{ forloop.counter }}</td>
+
+                <td>{{ prescription.appointment.appointment_date }}</td>
+
+                <td>{{ prescription.appointment.reason_for_visit }}</td>
+
+                <td>{{ prescription.medicine_name }}</td>
+
+                <td>
+
+                    <span class="status">
+
+                        {{ prescription.appointment.status }}
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="5">
+
+                    No medical history found.
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

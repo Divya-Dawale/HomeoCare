@@ -162,19 +162,25 @@ Appointments
 
                 {% if appointment.status == "waiting" %}
 
-                    <a href="{% url 'cancel_appointment' appointment.id %}"
-                       class="cancel-btn"
-                       onclick="return confirm('Are you sure you want to cancel this appointment?')">
+<a href="{% url 'cancel_appointment' appointment.id %}"
+   class="cancel-btn"
+   onclick="return confirm('Cancel this appointment?');">
 
-                        Cancel
+    Cancel
 
-                    </a>
+</a>
 
-                {% else %}
+{% elif appointment.status == "cancelled" %}
 
-                    -
+<span style="color:#DC2626;font-weight:700;">
+    Cancelled by Patient
+</span>
 
-                {% endif %}
+{% else %}
+
+—
+
+{% endif %}
 
             </td>
 

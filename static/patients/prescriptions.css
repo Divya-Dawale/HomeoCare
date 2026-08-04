@@ -1,0 +1,229 @@
+/* ==========================================
+        PRESCRIPTION CONTAINER
+========================================== */
+
+.prescription-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+/* ==========================================
+        PRESCRIPTION CARD
+========================================== */
+
+.prescription-card{
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    border:1px solid #E7EEF2;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+}
+
+.prescription-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 40px rgba(46,139,87,.12);
+
+}
+
+/* ==========================================
+        HEADER
+========================================== */
+
+.prescription-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:18px;
+
+    margin-bottom:24px;
+
+    border-bottom:1px solid #EEF2F5;
+
+}
+
+.prescription-header h3{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+
+.prescription-header span{
+
+    color:#64748B;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+        BODY
+========================================== */
+
+.prescription-body{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.info{
+
+    background:#F8FAFC;
+
+    border-radius:16px;
+
+    padding:18px;
+
+}
+
+.info strong{
+
+    display:block;
+
+    color:#2E8B57;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+}
+
+.info p{
+
+    color:#475569;
+
+    line-height:1.7;
+
+}
+
+/* ==========================================
+        STATUS
+========================================== */
+
+.status{
+
+    display:inline-block;
+
+    padding:7px 16px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.status-completed{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.status-pending{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+/* ==========================================
+        EMPTY CARD
+========================================== */
+
+.empty-card{
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:70px 40px;
+
+    text-align:center;
+
+    border:1px solid #E7EEF2;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.05);
+
+}
+
+.empty-card i{
+
+    font-size:70px;
+
+    color:#2E8B57;
+
+    margin-bottom:20px;
+
+}
+
+.empty-card h3{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+    color:#1E293B;
+
+}
+
+.empty-card p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+        RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+.prescription-body{
+
+    grid-template-columns:1fr;
+
+}
+
+.prescription-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+}
+
+}
