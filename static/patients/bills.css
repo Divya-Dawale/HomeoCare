@@ -4,17 +4,15 @@
 
 .search-container{
 
-    background:#FFFFFF;
-
-    border:1px solid #E7EFEA;
+    background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
 
     border-radius:24px;
 
     padding:20px;
 
     margin-bottom:25px;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
 }
 
@@ -51,12 +49,12 @@
     height:56px;
 
     padding:0 18px;
-
-    border:1px solid #DCE8E3;
+border:1px solid var(--border);
+background:var(--card-hover);
 
     border-radius:16px;
 
-    background:#FFFFFF;
+    
 
 }
 
@@ -74,7 +72,7 @@
 
 .search-box i{
 
-    color:#64748B;
+    color:var(--text-light);
 
     font-size:18px;
 
@@ -104,8 +102,7 @@
 
 .search-box input::placeholder{
 
-    color:#94A3B8;
-
+   color:var(--text-light);
 }
 
 
@@ -124,8 +121,7 @@
 
     border-radius:16px;
 
-    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
-
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
     color:#FFFFFF;
 
     font-size:16px;
@@ -188,9 +184,9 @@
 
 .bill-stat-card{
 
-    background:#FFFFFF;
-
-    border:1px solid #E5ECE9;
+    background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
 
     border-radius:24px;
 
@@ -201,8 +197,6 @@
     align-items:center;
 
     gap:20px;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
     transition:.3s;
 
@@ -236,7 +230,7 @@
 
     margin:0 0 8px;
 
-    color:#64748B;
+    color:var(--text-light);
 
     font-size:14px;
 
@@ -254,7 +248,7 @@
 
     font-weight:800;
 
-    color:#1E293B;
+    color:var(--text);
 
 }
 .stat-icon{
@@ -315,15 +309,14 @@
 
 .table-wrapper{
 
-    background:white;
+    background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
 
     border-radius:22px;
 
     padding:25px;
 
-    border:1px solid #E5ECE9;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
     overflow-x:auto;
 
@@ -334,8 +327,8 @@
 
 
 td:first-child{
-
-    color:#2E8B57;
+    
+    color:var(--primary);
 
     font-weight:700;
 
@@ -358,10 +351,8 @@ th{
 
     padding:15px;
 
-    color:#475569;
-
-    border-bottom:1px solid #E5ECE9;
-
+    color:var(--text-light);
+border-bottom:1px solid var(--border);
 }
 
 
@@ -370,9 +361,10 @@ td{
 
     padding:15px;
 
-    color:#334155;
+   color:var(--text);
 
-    border-bottom:1px solid #F1F5F9;
+    
+border-bottom:1px solid var(--border);
 
 }
 
@@ -380,8 +372,7 @@ td{
 
 tr:hover{
 
-    background:#F8FAFC;
-
+   background:var(--card-hover);
 }
 
 
@@ -402,3 +393,58 @@ tr:hover{
 
 
 }
+
+/* ==========================================
+            EMPTY CARD
+========================================== */
+
+.empty-card{
+   background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
+
+    border-radius:24px;
+
+    padding:80px 40px;
+
+    text-align:center;
+
+
+}
+
+
+
+.empty-card i{
+
+    font-size:70px;
+
+    color:var(--primary);
+
+    margin-bottom:22px;
+
+}
+
+
+
+.empty-card h3{
+
+    margin-bottom:12px;
+
+    color:var(--text);
+
+    font-size:26px;
+
+    font-weight:800;
+
+}
+
+
+
+.empty-card p{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
+

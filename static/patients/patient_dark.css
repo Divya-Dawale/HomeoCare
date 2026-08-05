@@ -1,0 +1,277 @@
+.sidebar{
+    background:white;
+}
+
+.topbar{
+    background:white;
+}
+
+.profile{
+    background:white;
+}
+body.dark-theme{
+
+    background:#0F172A;
+    color:#F8FAFC;
+
+    --card:#1E293B;
+    --card-light:#243447;
+    --surface:#334155;
+
+    --text:#F8FAFC;
+    --text-light:#CBD5E1;
+
+    --border:#475569;
+
+    --primary:#2E8B57;
+    --secondary:#5BC0BE;
+
+}
+body.dark-theme,
+body.dark-theme .main,
+body.dark-theme .content{
+
+    background:#0F172A;
+
+}
+body.dark-theme .sidebar{
+
+    background:#1E293B;
+
+    border-right:1px solid #334155;
+
+}
+body.dark-theme .topbar{
+
+    background:#1E293B;
+
+    border-bottom:1px solid #334155;
+
+}
+body.dark-theme .logo h2{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .logo p{
+
+    color:#CBD5E1;
+
+}body.dark-theme .menu-item{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-theme .menu-item:hover{
+
+    background:#334155;
+
+    color:#2E8B57;
+
+}
+body.dark-theme .profile{
+
+    background:#273548;
+
+    border-color:#475569;
+
+}
+
+body.dark-theme .profile-name{
+
+    color:white;
+
+}
+
+body.dark-theme .profile-role{
+
+    color:#CBD5E1;
+
+}
+body.dark-theme .notification,
+body.dark-theme .menu-toggle{
+
+    background:#273548;
+
+    color:white;
+
+}
+body.dark-theme .dashboard-card,
+body.dark-theme .glass-card{
+
+    background:#1E293B;
+
+    border-color:#475569;
+
+}
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5{
+
+    color:white;
+
+}
+body.dark-theme p,
+body.dark-theme span{
+
+    color:#CBD5E1;
+
+}
+body.dark-theme table{
+
+    background:#1E293B;
+
+}
+
+body.dark-theme thead{
+
+    background:#273548;
+
+}
+
+body.dark-theme th{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-theme td{
+
+    color:white;
+
+}
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select{
+
+    background:#273548;
+
+    color:white;
+
+    border-color:#475569;
+
+}
+body.dark-theme .primary-btn{
+
+    background:linear-gradient(
+        135deg,
+        #10B981,
+        #06B6D4
+    );
+
+}
+body.dark-theme .appointments-card{
+
+    background:var(--card);
+
+}
+
+body.dark-theme .bill-card{
+
+    background:var(--card);
+
+}
+
+body.dark-theme .record-card{
+
+    background:var(--card);
+
+}
+/* ===========================
+   Dashboard Cards
+=========================== */
+
+body.dark-theme .dashboard-card,
+body.dark-theme .glass-card{
+
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+
+}
+
+body.dark-theme .dashboard-card h2,
+body.dark-theme .glass-card h3{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .dashboard-card h5{
+
+    color:#CBD5E1;
+
+}
+
+
+/* ===========================
+   Table
+=========================== */
+
+body.dark-theme thead th{
+
+    background:#273548;
+    color:#CBD5E1;
+
+}
+
+body.dark-theme tbody td{
+
+    color:#F8FAFC;
+    border-top:1px solid #334155;
+
+}
+
+body.dark-theme tbody tr:hover{
+
+    background:#273548;
+
+}
+
+
+/* ===========================
+   Queue Number
+=========================== */
+
+body.dark-theme .queue-cell{
+
+    color:#4ADE80;
+
+}
+
+
+/* ===========================
+   Status Colors
+=========================== */
+
+body.dark-theme .status-approved{
+
+    background:#14532D;
+    color:#BBF7D0;
+
+}
+
+body.dark-theme .status-completed{
+
+    background:#14532D;
+    color:#BBF7D0;
+
+}
+
+body.dark-theme .status-waiting{
+
+    background:#713F12;
+    color:#FDE68A;
+
+}
+
+body.dark-theme .status-cancelled{
+
+    background:#7F1D1D;
+    color:#FECACA;
+
+}

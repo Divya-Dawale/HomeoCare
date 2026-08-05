@@ -27,8 +27,8 @@
     align-items:center;
     padding:8px 16px;
     border-radius:50px;
-    background:#EAF8F1;
-    color:#2E8B57;
+    background:var(--card-hover);
+    color:var(--primary);
     font-size:13px;
     font-weight:700;
     margin-bottom:14px;
@@ -37,12 +37,12 @@
 .appointments-header h2{
     font-size:30px;
     font-weight:800;
-    color:#1E293B;
+    color:var(--text);
     margin-bottom:8px;
 }
 
 .appointments-header p{
-    color:#64748B;
+    color:var(--text-light);
     font-size:15px;
 }
 
@@ -55,9 +55,9 @@
 ========================================== */
 .search-container{
 
-    background:#FFFFFF;
+    background:var(--card);
 
-    border:1px solid #E7EFEA;
+    border:1px solid var(--border);
 
     border-radius:24px;
 
@@ -65,7 +65,7 @@
 
     margin:0px 0;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    box-shadow:var(--shadow);
 
 }
 
@@ -93,12 +93,12 @@
 
     height:56px;
 
-    border:1px solid #DCE8E3;
-
+    border:1px solid var(--border);
+    transition:.3s;
     border-radius:16px;
 
     padding:0 18px;
-    background: #F8FCFA;
+    background:var(--card-hover);
 
 
 }
@@ -107,7 +107,7 @@
 
 .search-box i{
 
-    color:#64748B;
+    color:var(--text-light);
 
     margin-right:14px;
 
@@ -117,7 +117,7 @@
 
 .search-box input{
 
-    width:100%;
+    flex:1;
 
     border:none;
 
@@ -127,8 +127,16 @@
 
     font-size:16px;
 
-}
+     color:var(--text);
+     font-weight:500;
+    box-shadow:none;
 
+
+}
+.search-box input::placeholder{
+    color:var(--text-light);
+    opacity:1;
+}
 
 
 .search-form button{
@@ -141,7 +149,8 @@
 
     border-radius:16px;
 
-    background:linear-gradient(135deg,#2E8B57,#58C5B8);
+    
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
 
     color:#fff;
 
@@ -164,6 +173,10 @@
     box-shadow:0 10px 20px rgba(46,139,87,.20);
 
 }
+.search-box:focus-within{
+    border:1px solid var(--primary);
+    box-shadow:0 0 0 4px rgba(46,139,87,.08);
+}
 
 
 /*========================================
@@ -171,11 +184,11 @@
 ========================================*/
 
 .appointments-card{
-    background:#FFFFFF;
+    background:var(--card);
     border-radius:24px;
     padding:30px;
-    border:1px solid #E8F1EC;
-    box-shadow:0 12px 35px rgba(0,0,0,.05);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
     margin-top:0px;
 }
 
@@ -189,7 +202,7 @@
 
 .appointments-table td:first-child{
 
-    color:#2E8B57;
+    color:var(--primary);
 
     font-weight:700;
 
@@ -200,8 +213,8 @@
 }
 
 .appointments-table thead th{
-    background:#F8FBF9;
-    color:#64748B;
+    background:var(--card-hover);
+    color:var(--text-light);
     font-size:13px;
     text-transform:uppercase;
     letter-spacing:.7px;
@@ -211,9 +224,9 @@
 
 .appointments-table tbody td{
     padding:18px;
-    border-bottom:1px solid #EEF4F1;
+    border-bottom:1px solid var(--border);
     font-size:15px;
-    color:#334155;
+    color:var(--text);
 }
 
 .appointments-table tbody tr{
@@ -221,7 +234,7 @@
 }
 
 .appointments-table tbody tr:hover{
-    background:#F9FCFB;
+    background:var(--card-hover);
 }
 
 /*========================================
@@ -236,57 +249,35 @@
 }
 
 .status-approved{
-    background:#DCFCE7;
-    color:#15803D;
+    background:var(--success-bg);
+    color:var(--success-text);
 }
 
 .status-waiting{
-    background:#FEF3C7;
-    color:#B45309;
+    background:var(--warning-bg);
+    color:var(--warning-text);
 }
 
 .status-pending{
-    background:#E5E7EB;
-    color:#374151;
+    background:var(--secondary-bg);
+    color:var(--secondary-text);
 }
 
 .status-consulting{
-    background:#DBEAFE;
-    color:#1D4ED8;
+    background:var(--info-bg);
+    color:var(--info-text);
 }
 
 .status-completed{
-    background:#D1FAE5;
-    color:#047857;
+    background:var(--success-bg);
+    color:var(--success-text);
 }
 
 .status-cancelled{
-    background:#FEE2E2;
-    color:#DC2626;
+    background:var(--danger-bg);
+    color:var(--danger-text);
 }
 
-/*========================================
-            CANCEL BUTTON
-========================================*/
-
-.cancel-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:10px 18px;
-    border-radius:12px;
-    background:#EF4444;
-    color:#fff;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:700;
-    transition:.3s;
-}
-
-.cancel-btn:hover{
-    background:#DC2626;
-    transform:translateY(-2px);
-}
 
 /*========================================
             EMPTY ROW
@@ -299,55 +290,19 @@
 
 .empty-row i{
     font-size:48px;
-    color:#CBD5E1;
+    color:var(--text-light);
     display:block;
     margin-bottom:12px;
 }
 
 .empty-row p{
-    color:#64748B;
+    color:var(--text-light);
     font-size:15px;
 }
 
-/*========================================
-            DARK MODE
-========================================*/
 
-body.dark-theme .appointments-card{
-    background:#1E293B;
-    border-color:#334155;
-}
 
-body.dark-theme .appointments-header h2{
-    color:#F8FAFC;
-}
 
-body.dark-theme .appointments-header p{
-    color:#94A3B8;
-}
-
-body.dark-theme .appointments-table thead th{
-    background:#0F172A;
-    color:#94A3B8;
-}
-
-body.dark-theme .appointments-table tbody td{
-    color:#E2E8F0;
-    border-bottom:1px solid #334155;
-}
-
-body.dark-theme .appointments-table tbody tr:hover{
-    background:#0F172A;
-}
-
-body.dark-theme .search-form{
-    background:#0F172A;
-    border-color:#334155;
-}
-
-body.dark-theme .search-form input{
-    color:#F8FAFC;
-}
 
 /*========================================
             RESPONSIVE
@@ -392,5 +347,25 @@ body.dark-theme .search-form input{
         width:100%;
 
     }
+
+}
+
+body.dark-theme .cancel-btn{
+
+    background:#7F1D1D;
+
+    color:#FECACA;
+
+    border:1px solid #991B1B;
+
+}
+
+body.dark-theme .cancel-btn:hover{
+
+    background:#991B1B;
+
+    color:#FFFFFF;
+
+    box-shadow:0 8px 20px rgba(220,38,38,.25);
 
 }

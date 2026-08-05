@@ -14,9 +14,8 @@
 
 .search-container{
 
-    background:#FFFFFF;
-
-    border:1px solid #E7EFEA;
+  background:var(--card);
+border:1px solid var(--border);
 
     border-radius:24px;
 
@@ -24,7 +23,7 @@
 
     margin-bottom:25px;
 
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
+   box-shadow:var(--shadow);
 
 }
 
@@ -60,13 +59,14 @@
 
     height:56px;
 
-    border:1px solid #DCE8E3;
+    
 
     border-radius:16px;
 
     padding:0 18px;
 
-    background:#FFFFFF;
+   border:1px solid var(--border);
+background:var(--card);
 
 }
 
@@ -74,9 +74,9 @@
 
 .search-box:focus-within{
 
-    border-color:#2E8B57;
+    border-color:var(--primary);
 
-    box-shadow:0 0 0 4px rgba(46,139,87,.08);
+    box-shadow:0 0 0 4px rgba(46,139,87,.15);
 
 }
 
@@ -84,7 +84,7 @@
 
 .search-box i{
 
-    color:#64748B;
+   color:var(--text-light);
 
     font-size:18px;
 
@@ -110,7 +110,7 @@
 
     font-size:16px;
 
-    color:#334155;
+    color:var(--text);
 
     padding:0;
 
@@ -124,8 +124,7 @@
 
 .search-box input::placeholder{
 
-    color:#94A3B8;
-
+    color:var(--text-light);
 }
 
 
@@ -144,7 +143,7 @@
 
     border-radius:16px;
 
-    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
 
     color:#FFFFFF;
 
@@ -196,9 +195,10 @@
 
 .stat-card{
 
-    background:#FFFFFF;
-
-    border:1px solid #E7F0EC;
+    background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
+    
 
     border-radius:24px;
 
@@ -210,7 +210,7 @@
 
     gap:20px;
 
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
+    
 
     transition:.3s;
 
@@ -236,7 +236,7 @@
 
     font-weight:800;
 
-    color:#183153;
+    color:var(--text);
 
     line-height:1;
 
@@ -250,7 +250,7 @@
 
     font-size:14px;
 
-    color:#64748B;
+    color:var(--text-light);
 
     font-weight:500;
     margin-bottom: 6px;
@@ -280,16 +280,15 @@
 
 .record-card{
 
-    background:white;
+    background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
 
     border-radius:22px;
 
     padding:30px;
 
-    border:1px solid #E5ECE9;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
-
+   
     transition:.3s;
 
 }
@@ -321,7 +320,7 @@
 
     padding-bottom:18px;
 
-    border-bottom:1px solid #EEF2F5;
+    border-bottom:1px solid var(--border);
 
     margin-bottom:20px;
 
@@ -333,8 +332,7 @@
 
     font-weight:700;
 
-    color:#334155;
-
+    color:var(--text);
 }
 
 
@@ -372,7 +370,7 @@
 
 .record-section h4{
 
-    color:#2E8B57;
+    color:var(--primary);
 
     font-size:16px;
 
@@ -384,7 +382,7 @@
 
 .record-section p{
 
-    color:#475569;
+    color:var(--text-light);
 
     line-height:1.7;
 
@@ -434,7 +432,9 @@
 
 .empty-card{
 
-    background:white;
+    background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
 
     border-radius:22px;
 
@@ -442,10 +442,7 @@
 
     text-align:center;
 
-    border:1px solid #E5ECE9;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
-
+    
 }
 
 
@@ -454,7 +451,7 @@
 
     font-size:70px;
 
-    color:#2E8B57;
+    color:var(--primary);
 
     margin-bottom:20px;
 
@@ -464,7 +461,7 @@
 
 .empty-card h3{
 
-    color:#1E293B;
+   color:var(--text);
 
 }
 
@@ -472,7 +469,7 @@
 
 .empty-card p{
 
-    color:#64748B;
+    color:var(--text-light);
 
 }
 
@@ -560,4 +557,36 @@
 
     color:#9333EA;
 
+}
+body.dark-theme .status{
+
+    background:#163322;
+
+    color:#7EE2A8;
+
+    border:1px solid #29543A;
+
+}
+body.dark-theme .medicine-tag{
+
+    background:#1E3A5F;
+
+    color:#93C5FD;
+
+    border:1px solid #30557D;
+
+}
+body.dark-theme .stat-icon.green{
+    background:#173222;
+    color:#86EFAC;
+}
+
+body.dark-theme .stat-icon.blue{
+    background:#1C3656;
+    color:#93C5FD;
+}
+
+body.dark-theme .stat-icon.purple{
+    background:#33224A;
+    color:#D8B4FE;
 }
