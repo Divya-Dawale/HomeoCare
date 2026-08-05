@@ -1,0 +1,183 @@
+{% extends "patients/base_patient.html" %}
+{% load static %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block page_title %}
+Appointment History
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/appointments.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="appointments-page">
+
+    <div class="appointments-header">
+
+        <div>
+
+            <span class="section-badge">
+
+                Appointment Manager
+
+            </span>
+
+            <h2>
+
+                My Appointments
+
+            </h2>
+
+            <p>
+
+                View and manage all your appointments.
+
+            </p>
+
+        </div>
+    </div>
+    <div class="search-container">
+
+    <form method="GET" class="search-form">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input
+                id="appointmentSearch"
+                type="text"
+                name="search"
+                placeholder="Search by date or reason..."
+                value="{{ request.GET.search }}">
+
+        </div>
+
+        <button type="submit">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search
+
+        </button>
+
+    </form>
+
+</div>
+
+    <div class="appointments-card">
+
+        <table class="appointments-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Queue</th>
+
+                    <th>Date</th>
+
+                    <th>Reason</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for appointment in appointments %}
+
+                <tr>
+
+                    <td>#{{ forloop.counter }}</td>
+
+                    <td>{{ appointment.appointment_date }}</td>
+
+                    <td>{{ appointment.reason_for_visit }}</td>
+
+                    <td>
+
+                        <span class="status status-{{ appointment.status }}">
+
+                            {{ appointment.status|title }}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        {% if appointment.status == "approved" or appointment.status == "waiting" or appointment.status == "pending" %}
+
+                        <a href="{% url 'cancel_appointment' appointment.id %}"
+                           class="cancel-btn"
+                           onclick="return confirm('Cancel this appointment?');">
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                            Cancel
+
+                        </a>
+
+                        {% else %}
+
+                        —
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="5" class="empty-row">
+
+                        <i class="fa-solid fa-calendar-xmark"></i>
+
+                        <p>No appointments found.</p>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+<script>
+
+const search = document.getElementById("appointmentSearch");
+
+search.addEventListener("keyup", function(){
+
+    const value = this.value.toLowerCase();
+
+    const rows = document.querySelectorAll(".appointments-table tbody tr");
+
+    rows.forEach(function(row){
+
+        const text = row.innerText.toLowerCase();
+
+        row.style.display = text.includes(value) ? "" : "none";
+
+    });
+
+});
+
+</script>
+{% endblock %}

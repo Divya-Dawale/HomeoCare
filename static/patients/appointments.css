@@ -1,0 +1,396 @@
+/*========================================
+            APPOINTMENTS PAGE
+========================================*/
+
+.appointments-page{
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+        margin:25px;
+}
+
+/*========================================
+            HEADER
+========================================*/
+
+.appointments-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:0px;
+}
+
+.section-badge{
+    display:inline-flex;
+    align-items:center;
+    padding:8px 16px;
+    border-radius:50px;
+    background:#EAF8F1;
+    color:#2E8B57;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+.appointments-header h2{
+    font-size:30px;
+    font-weight:800;
+    color:#1E293B;
+    margin-bottom:8px;
+}
+
+.appointments-header p{
+    color:#64748B;
+    font-size:15px;
+}
+
+/*=========================
+    SEARCH BAR
+=========================*/
+
+/* ==========================================
+            SEARCH BAR
+========================================== */
+.search-container{
+
+    background:#FFFFFF;
+
+    border:1px solid #E7EFEA;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    margin:0px 0;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+
+
+.search-form{
+
+    display:flex;
+
+    gap:14px;
+
+    align-items:center;
+
+}
+
+
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    height:56px;
+
+    border:1px solid #DCE8E3;
+
+    border-radius:16px;
+
+    padding:0 18px;
+    background: #F8FCFA;
+
+
+}
+
+
+
+.search-box i{
+
+    color:#64748B;
+
+    margin-right:14px;
+
+    font-size:18px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:16px;
+
+}
+
+
+
+.search-form button{
+
+    width:150px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#2E8B57,#58C5B8);
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.search-form button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(46,139,87,.20);
+
+}
+
+
+/*========================================
+            CARD
+========================================*/
+
+.appointments-card{
+    background:#FFFFFF;
+    border-radius:24px;
+    padding:30px;
+    border:1px solid #E8F1EC;
+    box-shadow:0 12px 35px rgba(0,0,0,.05);
+    margin-top:0px;
+}
+
+/*========================================
+            TABLE
+========================================*/
+/* ==========================================
+            BILL ID STYLE
+========================================== */
+
+
+.appointments-table td:first-child{
+
+    color:#2E8B57;
+
+    font-weight:700;
+
+}
+.appointments-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.appointments-table thead th{
+    background:#F8FBF9;
+    color:#64748B;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    padding:18px;
+    text-align:left;
+}
+
+.appointments-table tbody td{
+    padding:18px;
+    border-bottom:1px solid #EEF4F1;
+    font-size:15px;
+    color:#334155;
+}
+
+.appointments-table tbody tr{
+    transition:.3s;
+}
+
+.appointments-table tbody tr:hover{
+    background:#F9FCFB;
+}
+
+/*========================================
+            STATUS BADGES
+========================================*/
+
+.status{
+    padding:8px 14px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.status-approved{
+    background:#DCFCE7;
+    color:#15803D;
+}
+
+.status-waiting{
+    background:#FEF3C7;
+    color:#B45309;
+}
+
+.status-pending{
+    background:#E5E7EB;
+    color:#374151;
+}
+
+.status-consulting{
+    background:#DBEAFE;
+    color:#1D4ED8;
+}
+
+.status-completed{
+    background:#D1FAE5;
+    color:#047857;
+}
+
+.status-cancelled{
+    background:#FEE2E2;
+    color:#DC2626;
+}
+
+/*========================================
+            CANCEL BUTTON
+========================================*/
+
+.cancel-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:12px;
+    background:#EF4444;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.cancel-btn:hover{
+    background:#DC2626;
+    transform:translateY(-2px);
+}
+
+/*========================================
+            EMPTY ROW
+========================================*/
+
+.empty-row{
+    text-align:center;
+    padding:50px !important;
+}
+
+.empty-row i{
+    font-size:48px;
+    color:#CBD5E1;
+    display:block;
+    margin-bottom:12px;
+}
+
+.empty-row p{
+    color:#64748B;
+    font-size:15px;
+}
+
+/*========================================
+            DARK MODE
+========================================*/
+
+body.dark-theme .appointments-card{
+    background:#1E293B;
+    border-color:#334155;
+}
+
+body.dark-theme .appointments-header h2{
+    color:#F8FAFC;
+}
+
+body.dark-theme .appointments-header p{
+    color:#94A3B8;
+}
+
+body.dark-theme .appointments-table thead th{
+    background:#0F172A;
+    color:#94A3B8;
+}
+
+body.dark-theme .appointments-table tbody td{
+    color:#E2E8F0;
+    border-bottom:1px solid #334155;
+}
+
+body.dark-theme .appointments-table tbody tr:hover{
+    background:#0F172A;
+}
+
+body.dark-theme .search-form{
+    background:#0F172A;
+    border-color:#334155;
+}
+
+body.dark-theme .search-form input{
+    color:#F8FAFC;
+}
+
+/*========================================
+            RESPONSIVE
+========================================*/
+
+@media(max-width:900px){
+
+    .appointments-header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-form{
+        width:100%;
+    }
+
+    .search-form input{
+        width:100%;
+    }
+
+    .appointments-card{
+        overflow-x:auto;
+    }
+
+    .appointments-table{
+        min-width:750px;
+    }
+}
+
+@media (max-width:768px){
+
+    .search-form{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .search-btn{
+
+        width:100%;
+
+    }
+
+}

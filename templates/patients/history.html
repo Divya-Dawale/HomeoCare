@@ -1,0 +1,219 @@
+{% extends 'patients/base_patient.html' %}
+{% load static %}
+
+{% block title %}
+Medical History
+{% endblock %}
+
+
+{% block page_title %}
+Medical History
+{% endblock %}
+
+
+{% block page_subtitle %}
+Your complete appointment history.
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/history.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="history-page">
+<!-- SUMMARY CARDS -->
+<div class="history-stats">
+
+
+    <div class="history-stat-card">
+
+    <div class="stat-icon visits">
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+    </div>
+
+    <div class="stat-content">
+
+        <p>Total Visits</p>
+
+        <h2>{{ total_visits }}</h2>
+
+    </div>
+
+</div>
+
+
+<div class="history-stat-card">
+
+    <div class="stat-icon completed">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <div class="stat-content">
+
+        <p>Completed Appointments</p>
+
+        <h2>{{ completed_visits }}</h2>
+
+    </div>
+
+</div>
+
+
+
+    <div class="history-stat-card">
+
+        <div class="stat-icon last">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+
+        <div class="stat-content">
+
+            <p>Last Visit</p>
+
+            <h2>
+
+                {% if last_visit %}
+                    {{ last_visit.appointment_date|date:"d M Y" }}
+                {% else %}
+                    -
+                {% endif %}
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+    
+
+
+
+
+
+
+<!-- APPOINTMENT HISTORY -->
+
+
+<div class="history-container">
+
+
+{% if appointments %}
+
+
+{% for appointment in appointments %}
+
+
+<div class="appointment-card">
+
+
+    <div class="appointment-header">
+
+
+        <h3>
+            🩺 Consultation Visit
+        </h3>
+
+
+        <span>
+            {{ appointment.appointment_date|date:"d M Y" }}
+        </span>
+
+
+    </div>
+
+
+
+
+    <div class="appointment-body">
+
+
+        <div class="history-info">
+
+            <strong>
+                Reason for Visit
+            </strong>
+
+            <p>
+                {{ appointment.reason_for_visit }}
+            </p>
+
+        </div>
+
+
+
+        <div class="history-info">
+
+            <strong>
+                Appointment Status
+            </strong>
+
+
+            {% if appointment.status == "completed" %}
+
+            <span class="status status-completed">
+                Completed
+            </span>
+
+            {% else %}
+
+            <span class="status status-cancelled">
+                {{ appointment.status|title }}
+            </span>
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<div class="empty-card">
+
+    <i class="fa-solid fa-calendar-xmark"></i>
+
+    <h3>
+        No Appointment History
+    </h3>
+
+    <p>
+        Your previous visits will appear here.
+    </p>
+
+</div>
+
+
+{% endif %}
+
+
+</div>
+</div>
+
+
+{% endblock %}

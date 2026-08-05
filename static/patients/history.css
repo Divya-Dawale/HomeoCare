@@ -1,0 +1,416 @@
+.history-page{
+    margin:25px;
+}
+/* ==========================================
+        HISTORY CONTAINER
+========================================== */
+
+.history-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+/* ==========================================
+            HISTORY SUMMARY CARDS
+========================================== */
+
+.history-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+    margin:30px 0;
+
+}
+
+
+
+.history-stat-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5ECE9;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+
+
+.history-stat-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 45px rgba(46,139,87,.10);
+
+}
+
+
+
+.stat-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+
+
+.stat-content p{
+
+    margin:0 0 8px;
+
+    color:#64748B;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+
+
+.stat-content h2{
+
+    margin:0;
+
+    font-size:25px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+.stat-icon{
+
+    width:64px;
+
+    height:64px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:26px;
+
+}
+
+
+
+.stat-icon.visits{
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+}
+
+
+
+.stat-icon.completed{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+
+
+.stat-icon.last{
+
+    background:#F3E8FF;
+
+    color:#9333EA;
+
+}
+/* ==========================================
+        APPOINTMENT CARD
+========================================== */
+
+
+.appointment-card{
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    border:1px solid #E5ECE9;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+
+
+.appointment-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 40px rgba(46,139,87,.10);
+
+}
+
+
+
+
+/* HEADER */
+
+
+.appointment-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:18px;
+
+    margin-bottom:20px;
+
+    border-bottom:1px solid #EEF2F5;
+
+}
+
+
+
+.appointment-header h3{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+
+
+
+.appointment-header span{
+
+    color:#64748B;
+
+    font-weight:600;
+
+}
+
+
+
+
+/* BODY */
+
+
+.appointment-body{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.history-info{
+
+    background:#F8FAFC;
+
+    padding:18px;
+
+    border-radius:16px;
+
+}
+
+
+
+.history-info strong{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#2E8B57;
+
+    font-size:15px;
+
+}
+
+
+
+.history-info p{
+
+    color:#475569;
+
+    line-height:1.6;
+
+}
+
+
+
+
+/* ==========================================
+        STATUS
+========================================== */
+
+
+.status{
+
+    display:inline-block;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+
+
+.status-completed{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+
+
+.status-cancelled{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+
+
+
+/* ==========================================
+        EMPTY CARD
+========================================== */
+
+
+.empty-card{
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    padding:70px 40px;
+
+    text-align:center;
+
+    border:1px solid #E5ECE9;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+}
+
+
+
+.empty-card i{
+
+    font-size:70px;
+
+    color:#2E8B57;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.empty-card h3{
+
+    color:#1E293B;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.empty-card p{
+
+    color:#64748B;
+
+}
+
+
+
+
+/* ==========================================
+        RESPONSIVE
+========================================== */
+
+
+@media(max-width:900px){
+
+
+.history-stats{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.appointment-body{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.appointment-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+}
+
+
+}

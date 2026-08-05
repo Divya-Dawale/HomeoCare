@@ -1,0 +1,318 @@
+.pre-page{
+    margin:25;
+}
+
+/* ==========================================
+            PAGE
+========================================== */
+
+.prescription-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    padding:25px;
+
+}
+
+
+
+/* ==========================================
+            PRESCRIPTION CARD
+========================================== */
+
+.prescription-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E7EEF2;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+}
+
+
+
+.prescription-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 45px rgba(46,139,87,.12);
+
+}
+
+
+
+/* ==========================================
+            HEADER
+========================================== */
+
+.prescription-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:18px;
+
+    margin-bottom:25px;
+
+    border-bottom:1px solid #EEF2F5;
+
+}
+
+
+
+
+.prescription-header span{
+
+    background:#F1F5F9;
+
+    color:#64748B;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+
+
+/* ==========================================
+            BODY
+========================================== */
+
+.prescription-body{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+}
+
+
+
+/* ==========================================
+            INFO CARD
+========================================== */
+
+.info{
+
+    background:#F8FAFC;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    border:1px solid #E5ECE9;
+
+}
+
+
+
+.info strong{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:14px;
+
+    color:#64748B;
+
+    font-weight:700;
+
+}
+
+
+
+.info p{
+
+    margin:0;
+
+    color:#1E293B;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    line-height:1.7;
+
+}
+
+
+
+/* ==========================================
+            STATUS
+========================================== */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+
+
+.status-completed{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+
+
+.status-pending{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+
+
+/* ==========================================
+            EMPTY CARD
+========================================== */
+
+.empty-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E7EEF2;
+
+    border-radius:24px;
+
+    padding:80px 40px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+}
+
+
+
+.empty-card i{
+
+    font-size:70px;
+
+    color:#2E8B57;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.empty-card h3{
+
+    margin-bottom:12px;
+
+    color:#1E293B;
+
+    font-size:26px;
+
+    font-weight:800;
+
+}
+
+
+
+.empty-card p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+
+
+/* ==========================================
+            RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+.prescription-container{
+
+    padding:15px;
+
+}
+
+.prescription-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+.prescription-body{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+.prescription-header h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
+
+.medicine-icon{
+
+    color:#2E8B57;
+
+    font-size:22px;
+
+}

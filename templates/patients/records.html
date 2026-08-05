@@ -1,0 +1,285 @@
+{% extends "patients/base_patient.html" %}
+{% load static %}
+
+{% block title %}
+Medical Records
+{% endblock %}
+
+
+{% block page_title %}
+🩺 Medical Records
+{% endblock %}
+
+
+{% block page_subtitle %}
+Your complete consultation history
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/records.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- STATISTICS -->
+<div class="records-page">
+<div class="record-stats">
+   <div class="stat-card">
+
+    <div class="stat-icon green">
+        <i class="fa-solid fa-file-medical"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Total Records</p>
+
+        <h2>{{ total_records }}</h2>
+
+    </div>
+
+</div>
+
+    
+    <div class="stat-card">
+
+    <div class="stat-icon blue">
+        <i class="fa-solid fa-calendar-check"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Last Visit</p>
+
+        <h2>
+            {% if last_visit %}
+                {{ last_visit.created_at|date:"d M Y" }}
+            {% else %}
+                -
+            {% endif %}
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+
+   <div class="stat-card">
+
+    <div class="stat-icon purple">
+        <i class="fa-solid fa-pills"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Total Medicines</p>
+
+        <h2>{{ total_medicines }}</h2>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<div class="search-container">
+
+    <form method="GET" class="search-form">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input
+                type="text"
+                name="q"
+                placeholder="Search by diagnosis, symptoms or medicine..."
+                value="{{ request.GET.q }}">
+
+        </div>
+
+        <button type="submit" class="search-btn">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- RECORD CARDS -->
+
+
+{% if records %}
+
+
+<div class="records-container">
+
+
+{% for record in records %}
+
+
+
+<div class="record-card">
+
+
+    <div class="record-header">
+
+
+        <span class="date">
+
+            📅 {{ record.created_at|date:"d M Y" }}
+
+        </span>
+
+
+        <span class="status">
+
+            🟢 Completed
+
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="record-section">
+
+
+        <h4>
+            🩺 Diagnosis
+        </h4>
+
+
+        <p>
+            {{ record.diagnosis_notes }}
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="record-section">
+
+
+        <h4>
+            💊 Medicines
+        </h4>
+
+
+
+        <div class="medicine-list">
+
+
+        {% for medicine in record.prescription_set.all %}
+
+
+            <span class="medicine-tag">
+
+                {{ medicine.medicine_name }}
+
+            </span>
+
+
+        {% empty %}
+
+
+            <p>
+                No medicines prescribed
+            </p>
+
+
+        {% endfor %}
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="record-section">
+
+
+        <h4>
+            📝 Notes
+        </h4>
+
+
+        <p>
+
+            {{ record.follow_up_notes|default:"No notes available" }}
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+{% else %}
+
+
+
+<div class="empty-card">
+
+
+<i class="fa-solid fa-file-medical"></i>
+
+
+<h3>
+No Medical Records Found
+</h3>
+
+
+<p>
+Your consultation records will appear here.
+</p>
+
+
+</div>
+</div>
+
+
+{% endif %}
+
+
+
+{% endblock %}

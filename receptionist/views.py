@@ -177,15 +177,14 @@ def appointments(request):
             status=status
         )
 
-    if search:
+    from django.db.models import Q
 
-        appointments = appointments.filter(
-            patient__full_name__icontains=search
-        ) | appointments.filter(
-            patient__patient_id__icontains=search
-        ) | appointments.filter(
-            patient__phone__icontains=search
-        )
+    if search:
+            appointments = appointments.filter(
+                Q(patient__full_name__icontains=search) |
+                Q(patient__patient_id__icontains=search) |
+                Q(patient__phone__icontains=search)
+            )
 
     return render(
         request,
@@ -208,10 +207,10 @@ def cancel_appointment(
         Appointment,
         id=appointment_id
     )
+    if appointment.status == "waiting":
+        appointment.status = "cancelled"
 
-    appointment.status = "cancelled"
-
-    appointment.save()
+        appointment.save()
 
     return redirect(
         "appointments"

@@ -1,0 +1,160 @@
+{% extends 'patients/base_patient.html' %}
+{% load static %}
+
+{% block page_title %}
+My Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <div class="profile-page-header">
+        {% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+        <div>
+
+            <span class="section-badge">
+
+                Account Settings
+
+            </span>
+
+            <h2>
+
+                Patient Profile
+
+            </h2>
+
+            <p>
+
+                View your personal information and account details.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <div class="profile-top">
+
+            <div class="profile-avatar">
+
+                {{ patient.full_name|first|upper }}
+
+            </div>
+
+            <div class="profile-info">
+
+                <h2>
+
+                {{ patient.full_name }}
+
+                </h2>
+
+                <span class="role-badge">
+
+                    Patient
+
+                </span>
+
+                <p>
+
+                    HomeoCare Clinic Management System
+
+                </p>
+
+            </div>
+
+        </div>
+            <form method="POST">
+
+    {% csrf_token %}
+
+    <div class="profile-grid">
+
+        <div class="profile-item">
+
+            <label>Full Name</label>
+
+            {{ form.full_name }}
+
+        </div>
+
+        <div class="profile-item">
+
+            <label>Phone Number</label>
+
+            {{ form.phone }}
+
+        </div>
+
+        <div class="profile-item">
+
+            <label>Email</label>
+
+            {{ form.email }}
+
+        </div>
+
+        <div class="profile-item">
+
+            <label>Age</label>
+
+            {{ form.age }}
+
+        </div>
+
+        <div class="profile-item">
+
+            <label>Gender</label>
+
+            {{ form.gender }}
+
+        </div>
+
+        <div class="profile-item full-width">
+
+    <label>Address</label>
+
+    {{ form.address }}
+
+</div>
+
+    </div>
+
+    <div class="profile-actions">
+
+        <button
+            type="submit"
+            class="profile-btn">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Changes
+
+        </button>
+
+    </div>
+
+</form>
+
+    </div>
+
+</div>
+
+{% endblock %}

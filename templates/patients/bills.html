@@ -1,0 +1,213 @@
+{% extends "patients/base_patient.html" %}
+{% load static %}
+
+{% block title %}
+Bills
+{% endblock %}
+
+{% block page_title %}
+Payment History
+{% endblock %}
+
+{% block page_subtitle %}
+View all your clinic bills.
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'patients/bills.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if bills %}
+<div class="bills-pages">
+<!-- SEARCH BAR -->
+<div class="search-container">
+
+    <form method="GET" class="search-form">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input
+                type="text"
+                name="q"
+                placeholder="Search bills by bill ID or payment status..."
+                value="{{ request.GET.q }}">
+
+        </div>
+
+        <button type="submit" class="search-btn">
+            Search
+        </button>
+
+    </form>
+
+</div>
+
+
+
+
+<!-- BILL SUMMARY CARDS -->
+
+
+<div class="bill-stats">
+
+
+    <div class="bill-stat-card">
+
+    <div class="stat-icon total">
+        <i class="fa-solid fa-wallet"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Total Bills</p>
+
+        <h2>₹ {{ total_bill|floatformat:0 }}</h2>
+
+    </div>
+
+</div>
+
+
+    <div class="bill-stat-card">
+
+    <div class="stat-icon consultation">
+        <i class="fa-solid fa-user-doctor"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Consultation Bills</p>
+
+        <h2>₹ {{ total_consultation|floatformat:0 }}</h2>
+
+    </div>
+
+</div>
+
+    <div class="bill-stat-card">
+
+    <div class="stat-icon medicine">
+        <i class="fa-solid fa-pills"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Medicine Bills</p>
+
+        <h2>₹ {{ total_medicine|floatformat:0 }}</h2>
+
+    </div>
+
+</div>
+
+
+    
+
+
+
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Bill ID</th>
+
+<th>Date</th>
+
+<th>Consultation</th>
+
+<th>Medicine</th>
+
+<th>Total</th>
+
+<th>Payment</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for bill in bills %}
+
+<tr>
+
+<td>#{{ bill.id }}</td>
+
+<td>{{ bill.created_at|date:"d M Y" }}</td>
+
+<td>₹ {{ bill.consultation_fee }}</td>
+
+<td>₹ {{ bill.medicine_fee }}</td>
+
+<td><strong>₹ {{ bill.total_amount }}</strong></td>
+
+<td>{{ bill.payment_method|title }}</td>
+
+<td>
+
+{% if bill.payment_status == "paid" %}
+
+<span class="status status-completed">
+
+Paid
+
+</span>
+
+{% else %}
+
+<span class="status status-pending">
+
+Pending
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% else %}
+
+<div class="empty-card">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<h3>
+
+No Bills Available
+
+</h3>
+
+<p>
+
+Your payment history will appear here.
+
+</p>
+
+</div>
+</div>
+{% endif %}
+
+
+{% endblock %}

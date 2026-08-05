@@ -1,0 +1,211 @@
+{% extends 'patients/base_patient.html' %}
+{% load static %}
+
+{% block page_title %}
+Patient Settings
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{% static 'patients/settings.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-page">
+
+    <div class="settings-header">
+
+        <div>
+
+            <span class="section-badge">
+
+                Patient Settings
+
+            </span>
+
+            <h2>
+
+                Settings
+
+            </h2>
+
+            <p>
+
+                Manage your profile, password and personalize your HomeoCare experience.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-grid">
+
+        <!-- PROFILE -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    My Profile
+
+                </h3>
+
+                <p>
+
+                    View and update your personal information.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'patient_profile' %}" class="settings-btn">
+
+                View Profile
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-lock"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    Change Password
+
+                </h3>
+
+                <p>
+
+                    Keep your HomeoCare account secure.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'patient_change_password' %}"
+               class="settings-btn">
+
+                Change Password
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-notes-medical"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    Medical History
+
+                </h3>
+
+                <p>
+
+                    View your complete medical history and records.
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'patient_history' %}"
+               class="settings-btn">
+
+                View Records
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- APPEARANCE -->
+
+        <div class="settings-card">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-palette"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>
+
+                    Appearance
+
+                </h3>
+
+                <p>
+
+                    Switch between Light and Dark mode.
+
+                </p>
+
+            </div>
+
+            <div class="theme-setting">
+
+                <span class="theme-label">
+
+                    Dark Mode
+
+                </span>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="themeToggle">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

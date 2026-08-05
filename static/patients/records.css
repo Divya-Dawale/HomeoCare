@@ -1,0 +1,563 @@
+/* ==========================================
+            PAGE
+========================================== */
+
+.records-page{
+
+    padding:25px;
+
+}
+
+/* ==========================================
+            SEARCH CONTAINER
+========================================== */
+
+.search-container{
+
+    background:#FFFFFF;
+
+    border:1px solid #E7EFEA;
+
+    border-radius:24px;
+
+    padding:20px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+}
+
+
+
+/* ==========================================
+            SEARCH FORM
+========================================== */
+
+.search-form{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+
+/* ==========================================
+            SEARCH BOX
+========================================== */
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    height:56px;
+
+    border:1px solid #DCE8E3;
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    background:#FFFFFF;
+
+}
+
+
+
+.search-box:focus-within{
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.08);
+
+}
+
+
+
+.search-box i{
+
+    color:#64748B;
+
+    font-size:18px;
+
+    margin-right:14px;
+
+    position:static;
+
+    transform:none;
+
+}
+
+
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:16px;
+
+    color:#334155;
+
+    padding:0;
+
+    box-shadow:none;
+
+    height:auto;
+
+}
+
+
+
+.search-box input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+
+/* ==========================================
+            SEARCH BUTTON
+========================================== */
+
+.search-btn{
+
+    width:150px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.search-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 22px rgba(46,139,87,.22);
+
+}
+/* ==========================================
+            STAT CARDS
+========================================== */
+
+.record-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+    margin:25px 0;
+    margin-top:0px;
+
+}
+
+
+
+.stat-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E7F0EC;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 40px rgba(46,139,87,.10);
+
+}
+
+
+
+.stat-card h3{
+
+    margin:0;
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:#183153;
+
+    line-height:1;
+
+}
+
+
+
+.stat-card p{
+
+    margin:8px 0 0;
+
+    font-size:14px;
+
+    color:#64748B;
+
+    font-weight:500;
+    margin-bottom: 6px;
+
+}
+/* ==========================================
+        RECORD CONTAINER
+========================================== */
+
+
+.records-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+
+/* ==========================================
+        RECORD CARD
+========================================== */
+
+
+.record-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    border:1px solid #E5ECE9;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+
+
+.record-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 40px rgba(46,139,87,.12);
+
+}
+
+
+
+/* ==========================================
+        HEADER
+========================================== */
+
+
+.record-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #EEF2F5;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.date{
+
+    font-weight:700;
+
+    color:#334155;
+
+}
+
+
+
+.status{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+
+
+/* ==========================================
+        RECORD SECTIONS
+========================================== */
+
+
+.record-section{
+
+    margin-bottom:22px;
+
+}
+
+
+
+.record-section h4{
+
+    color:#2E8B57;
+
+    font-size:16px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.record-section p{
+
+    color:#475569;
+
+    line-height:1.7;
+
+}
+
+
+
+/* ==========================================
+        MEDICINE TAGS
+========================================== */
+
+
+.medicine-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+
+
+.medicine-tag{
+
+    background:#EFF6FF;
+
+    color:#2563EB;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+/* ==========================================
+        EMPTY CARD
+========================================== */
+
+
+.empty-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:70px 40px;
+
+    text-align:center;
+
+    border:1px solid #E5ECE9;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+
+}
+
+
+
+.empty-card i{
+
+    font-size:70px;
+
+    color:#2E8B57;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.empty-card h3{
+
+    color:#1E293B;
+
+}
+
+
+
+.empty-card p{
+
+    color:#64748B;
+
+}
+
+
+
+/* ==========================================
+        RESPONSIVE
+========================================== */
+
+
+@media(max-width:900px){
+
+
+.record-stats{
+
+    grid-template-columns:1fr;
+
+}
+
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.record-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+
+}
+/* ==========================================
+            STAT ICON COLORS
+========================================== */
+.stat-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    flex-shrink:0;
+
+}
+
+
+.stat-icon.green{
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+}
+
+
+.stat-icon.blue{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+
+.stat-icon.purple{
+
+    background:#F3E8FF;
+
+    color:#9333EA;
+
+}
