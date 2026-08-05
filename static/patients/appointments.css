@@ -6,6 +6,7 @@
     display:flex;
     flex-direction:column;
     gap:32px;
+        margin:25px;
 }
 
 /*========================================
@@ -18,6 +19,7 @@
     align-items:flex-end;
     gap:20px;
     flex-wrap:wrap;
+    margin-bottom:0px;
 }
 
 .section-badge{
@@ -48,50 +50,120 @@
     SEARCH BAR
 =========================*/
 
-.search-form{
-    width:100%;
-    display:flex;
-    align-items:center;
-    gap:16px;
-    margin-top:20px;
-    margin-bottom:25px;
-}
+/* ==========================================
+            SEARCH BAR
+========================================== */
+.search-container{
 
-.search-form input{
-    flex:1;
-    height:58px;
-    padding:0 22px;
-    border:1px solid #DCE8E2;
-    border-radius:18px;
     background:#FFFFFF;
-    font-size:16px;
-    transition:.3s;
+
+    border:1px solid #E7EFEA;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    margin:0px 0;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
 }
 
-.search-form input:focus{
-    outline:none;
-    border-color:#2E8B57;
-    box-shadow:0 0 0 4px rgba(46,139,87,.08);
+
+
+.search-form{
+
+    display:flex;
+
+    gap:14px;
+
+    align-items:center;
+
 }
+
+
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    height:56px;
+
+    border:1px solid #DCE8E3;
+
+    border-radius:16px;
+
+    padding:0 18px;
+    background: #F8FCFA;
+
+
+}
+
+
+
+.search-box i{
+
+    color:#64748B;
+
+    margin-right:14px;
+
+    font-size:18px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:16px;
+
+}
+
+
 
 .search-form button{
-    width:130px;
-    height:58px;
+
+    width:150px;
+
+    height:56px;
+
     border:none;
-    border-radius:18px;
-    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#2E8B57,#58C5B8);
+
     color:#fff;
+
     font-size:16px;
+
     font-weight:700;
+
     cursor:pointer;
+
     transition:.3s;
+
 }
+
+
 
 .search-form button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(46,139,87,.20);
-}
 
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(46,139,87,.20);
+
+}
 
 
 /*========================================
@@ -104,6 +176,7 @@
     padding:30px;
     border:1px solid #E8F1EC;
     box-shadow:0 12px 35px rgba(0,0,0,.05);
+    margin-top:0px;
 }
 
 /*========================================
@@ -302,4 +375,22 @@ body.dark-theme .search-form input{
     .appointments-table{
         min-width:750px;
     }
+}
+
+@media (max-width:768px){
+
+    .search-form{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .search-btn{
+
+        width:100%;
+
+    }
+
 }

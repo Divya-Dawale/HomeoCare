@@ -1,25 +1,98 @@
 /* ==========================================
-        SEARCH BOX
+            PAGE
 ========================================== */
+
+.records-page{
+
+    padding:25px;
+
+}
 
 /* ==========================================
-            SEARCH BAR
+            SEARCH CONTAINER
 ========================================== */
 
+.search-container{
 
-.search-box{
+    background:#FFFFFF;
 
-    width:100%;
+    border:1px solid #E7EFEA;
+
+    border-radius:24px;
+
+    padding:20px;
 
     margin-bottom:25px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
 }
 
 
 
-.search-box form{
+/* ==========================================
+            SEARCH FORM
+========================================== */
 
-    width:100%;
+.search-form{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+
+/* ==========================================
+            SEARCH BOX
+========================================== */
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    height:56px;
+
+    border:1px solid #DCE8E3;
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    background:#FFFFFF;
+
+}
+
+
+
+.search-box:focus-within{
+
+    border-color:#2E8B57;
+
+    box-shadow:0 0 0 4px rgba(46,139,87,.08);
+
+}
+
+
+
+.search-box i{
+
+    color:#64748B;
+
+    font-size:18px;
+
+    margin-right:14px;
+
+    position:static;
+
+    transform:none;
 
 }
 
@@ -27,27 +100,23 @@
 
 .search-box input{
 
-    width:100%;
+    flex:1;
 
-    height:62px;
-
-    padding:0 20px 0 50px;
-
-    border-radius:16px;
-
-    border:1px solid #E5ECE9;
-
-    background:#FFFFFF;
+    border:none;
 
     outline:none;
 
-    font-size:15px;
+    background:transparent;
+
+    font-size:16px;
 
     color:#334155;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    padding:0;
 
-    transition:.3s;
+    box-shadow:none;
+
+    height:auto;
 
 }
 
@@ -61,86 +130,35 @@
 
 
 
-.search-box input:focus{
-
-    border-color:#2E8B57;
-
-    box-shadow:0 0 0 4px rgba(46,139,87,.12);
-
-}
-
-
-
-/* Search icon */
-
-.search-box{
-
-    position:relative;
-
-}
-
-
-
-.search-box i{
-
-    position:absolute;
-
-    left:20px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    color:#2E8B57;
-
-    font-size:18px;
-
-    z-index:1;
-
-}
 /* ==========================================
             SEARCH BUTTON
 ========================================== */
 
+.search-btn{
 
-.search-input{
+    width:150px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#2E8B57,#5BC0BE);
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
 
     display:flex;
 
     align-items:center;
 
-    position:relative;
+    justify-content:center;
 
-}
-
-
-.search-input input{
-
-    padding-right:120px;
-
-}
-
-
-
-.search-input button{
-
-    position:absolute;
-
-    right:8px;
-
-    height:38px;
-
-    padding:0 20px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#2E8B57;
-
-    color:white;
-
-    font-weight:600;
+    gap:8px;
 
     cursor:pointer;
 
@@ -150,18 +168,16 @@
 
 
 
-.search-input button:hover{
+.search-btn:hover{
 
-    background:#256f45;
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 22px rgba(46,139,87,.22);
 
 }
-    
-
-
 /* ==========================================
-        STATISTICS CARDS
+            STAT CARDS
 ========================================== */
-
 
 .record-stats{
 
@@ -169,9 +185,10 @@
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:20px;
+    gap:24px;
 
-    margin-bottom:30px;
+    margin:25px 0;
+    margin-top:0px;
 
 }
 
@@ -179,41 +196,33 @@
 
 .stat-card{
 
-    background:white;
+    background:#FFFFFF;
 
-    padding:22px;
+    border:1px solid #E7F0EC;
 
-    border-radius:20px;
+    border-radius:24px;
+
+    padding:28px;
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
+    gap:20px;
 
-    border:1px solid #E5ECE9;
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
-    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    transition:.3s;
 
 }
 
 
 
-.stat-icon{
+.stat-card:hover{
 
-    width:55px;
+    transform:translateY(-5px);
 
-    height:55px;
-
-    border-radius:15px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:25px;
+    box-shadow:0 18px 40px rgba(46,139,87,.10);
 
 }
 
@@ -223,9 +232,13 @@
 
     margin:0;
 
-    font-size:25px;
+    font-size:48px;
 
-    color:#1E293B;
+    font-weight:800;
+
+    color:#183153;
+
+    line-height:1;
 
 }
 
@@ -233,16 +246,16 @@
 
 .stat-card p{
 
-    margin-top:5px;
+    margin:8px 0 0;
+
+    font-size:14px;
 
     color:#64748B;
 
-    font-weight:600;
+    font-weight:500;
+    margin-bottom: 6px;
 
 }
-
-
-
 /* ==========================================
         RECORD CONTAINER
 ========================================== */
@@ -499,7 +512,31 @@
 
 
 }
-.green .stat-icon{
+/* ==========================================
+            STAT ICON COLORS
+========================================== */
+.stat-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    flex-shrink:0;
+
+}
+
+
+.stat-icon.green{
 
     background:#DCFCE7;
 
@@ -507,3 +544,20 @@
 
 }
 
+
+.stat-icon.blue{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+
+.stat-icon.purple{
+
+    background:#F3E8FF;
+
+    color:#9333EA;
+
+}

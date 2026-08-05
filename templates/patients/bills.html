@@ -20,28 +20,27 @@ View all your clinic bills.
 {% block content %}
 
 {% if bills %}
+<div class="bills-pages">
 <!-- SEARCH BAR -->
+<div class="search-container">
 
-<div class="search-box">
+    <form method="GET" class="search-form">
 
-    <form method="GET">
-
-        <div class="search-input">
+        <div class="search-box">
 
             <i class="fa-solid fa-search"></i>
 
-            <input 
-            type="text"
-            name="q"
-            placeholder="Search bills by bill ID or payment status..."
-            value="{{ request.GET.q }}">
-
-
-            <button type="submit">
-                Search
-            </button>
+            <input
+                type="text"
+                name="q"
+                placeholder="Search bills by bill ID or payment status..."
+                value="{{ request.GET.q }}">
 
         </div>
+
+        <button type="submit" class="search-btn">
+            Search
+        </button>
 
     </form>
 
@@ -56,88 +55,57 @@ View all your clinic bills.
 <div class="bill-stats">
 
 
-    <div class="bill-stat-card total">
+    <div class="bill-stat-card">
 
+    <div class="stat-icon total">
+        <i class="fa-solid fa-wallet"></i>
+    </div>
 
-        <div class="stat-icon">
+    <div class="stat-content">
 
-            <i class="fa-solid fa-wallet"></i>
+        <p>Total Bills</p>
 
-        </div>
-
-
-        <div>
-
-            <h3>
-               ₹ {{ total_bill|floatformat:0 }}
-            </h3>
-
-            <p>
-                Total Bills
-            </p>
-
-        </div>
-
+        <h2>₹ {{ total_bill|floatformat:0 }}</h2>
 
     </div>
 
+</div>
 
 
+    <div class="bill-stat-card">
 
+    <div class="stat-icon consultation">
+        <i class="fa-solid fa-user-doctor"></i>
+    </div>
 
-    <div class="bill-stat-card consultation">
+    <div class="stat-content">
 
+        <p>Consultation Bills</p>
 
-        <div class="stat-icon">
-
-            <i class="fa-solid fa-user-doctor"></i>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                ₹ {{ total_consultation|floatformat:0 }}
-            </h3>
-
-            <p>
-                Consultation Bills
-            </p>
-
-        </div>
-
+        <h2>₹ {{ total_consultation|floatformat:0 }}</h2>
 
     </div>
 
+</div>
 
+    <div class="bill-stat-card">
 
+    <div class="stat-icon medicine">
+        <i class="fa-solid fa-pills"></i>
+    </div>
 
+    <div class="stat-content">
 
-    <div class="bill-stat-card medicine">
+        <p>Medicine Bills</p>
 
-
-        <div class="stat-icon">
-
-            <i class="fa-solid fa-pills"></i>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                ₹ {{ total_medicine|floatformat:0 }}
-            </h3>
-
-            <p>
-                Medicine Bills
-            </p>
-
-        </div>
-
+        <h2>₹ {{ total_medicine|floatformat:0 }}</h2>
 
     </div>
+
+</div>
+
+
+    
 
 
 
@@ -238,7 +206,8 @@ Your payment history will appear here.
 </p>
 
 </div>
-
+</div>
 {% endif %}
+
 
 {% endblock %}

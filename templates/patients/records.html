@@ -24,119 +24,98 @@ Your complete consultation history
 
 {% block content %}
 
+<!-- STATISTICS -->
+<div class="records-page">
+<div class="record-stats">
+   <div class="stat-card">
 
-<!-- SEARCH -->
+    <div class="stat-icon green">
+        <i class="fa-solid fa-file-medical"></i>
+    </div>
 
-<div class="search-box">
+    <div class="stat-content">
 
-    <form method="GET">
+        <p>Total Records</p>
 
-        <div class="search-input">
+        <h2>{{ total_records }}</h2>
+
+    </div>
+
+</div>
+
+    
+    <div class="stat-card">
+
+    <div class="stat-icon blue">
+        <i class="fa-solid fa-calendar-check"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Last Visit</p>
+
+        <h2>
+            {% if last_visit %}
+                {{ last_visit.created_at|date:"d M Y" }}
+            {% else %}
+                -
+            {% endif %}
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+
+   <div class="stat-card">
+
+    <div class="stat-icon purple">
+        <i class="fa-solid fa-pills"></i>
+    </div>
+
+    <div class="stat-content">
+
+        <p>Total Medicines</p>
+
+        <h2>{{ total_medicines }}</h2>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<div class="search-container">
+
+    <form method="GET" class="search-form">
+
+        <div class="search-box">
 
             <i class="fa-solid fa-search"></i>
 
-            <input 
-            type="text"
-            name="q"
-            placeholder="Search by diagnosis, symptoms or medicine..."
-            value="{{ request.GET.q }}">
-
-
-            <button type="submit">
-                Search
-            </button>
+            <input
+                type="text"
+                name="q"
+                placeholder="Search by diagnosis, symptoms or medicine..."
+                value="{{ request.GET.q }}">
 
         </div>
+
+        <button type="submit" class="search-btn">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search
+
+        </button>
 
     </form>
 
 </div>
-
-
-
-<!-- STATISTICS -->
-
-<div class="record-stats">
-
-
-    <div class="stat-card green">
-
-        
-        <div class="stat-icon">
-    <i class="fa-solid fa-file-medical"></i>
-</div>
-
-        <div>
-            <h3>
-                {{ total_records }}
-            </h3>
-
-            <p>
-                Total Records
-            </p>
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card green">
-
-        <div class="stat-icon">
-    <i class="fa-solid fa-calendar-check"></i>
-</div>
-
-        <div>
-
-            <h3>
-
-                {% if last_visit %}
-                    {{ last_visit.created_at|date:"d M Y" }}
-                {% else %}
-                    -
-                {% endif %}
-
-            </h3>
-
-            <p>
-                Last Visit
-            </p>
-
-        </div>
-
-    </div>
-
-
-
-
-    <div class="stat-card green ">
-
-
-        <div class="stat-icon">
-    <i class="fa-solid fa-pills"></i>
-</div>
-
-
-        <div>
-
-            <h3>
-                {{ total_medicines }}
-            </h3>
-
-            <p>
-                Total Medicines
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
-
 
 
 <!-- RECORD CARDS -->
@@ -296,7 +275,7 @@ Your consultation records will appear here.
 
 
 </div>
-
+</div>
 
 
 {% endif %}

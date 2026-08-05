@@ -24,63 +24,69 @@ Your complete appointment history.
 
 {% block content %}
 
-
+<div class="history-page">
 <!-- SUMMARY CARDS -->
-
 <div class="history-stats">
 
 
-    <div class="history-stat-card visits">
+    <div class="history-stat-card">
 
-        <div class="stat-icon">
-            <i class="fa-solid fa-calendar-days"></i>
-        </div>
+    <div class="stat-icon visits">
 
-        <div>
-            <h3>{{ total_visits }}</h3>
-            <p>Total Visits</p>
-        </div>
+        <i class="fa-solid fa-calendar-days"></i>
 
     </div>
 
+    <div class="stat-content">
 
+        <p>Total Visits</p>
 
-    <div class="history-stat-card completed">
-
-        <div class="stat-icon">
-            <i class="fa-solid fa-circle-check"></i>
-        </div>
-
-        <div>
-            <h3>{{ completed_visits }}</h3>
-            <p>Completed Appointments</p>
-        </div>
+        <h2>{{ total_visits }}</h2>
 
     </div>
 
+</div>
 
 
-    <div class="history-stat-card last">
+<div class="history-stat-card">
 
-        <div class="stat-icon">
+    <div class="stat-icon completed">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <div class="stat-content">
+
+        <p>Completed Appointments</p>
+
+        <h2>{{ completed_visits }}</h2>
+
+    </div>
+
+</div>
+
+
+
+    <div class="history-stat-card">
+
+        <div class="stat-icon last">
             <i class="fa-solid fa-clock-rotate-left"></i>
         </div>
 
-        <div>
-
-            {% if last_visit %}
-
-            <h3>
-                {{ last_visit.appointment_date|date:"d M Y" }}
-            </h3>
-
-            {% else %}
-
-            <h3>-</h3>
-
-            {% endif %}
+        <div class="stat-content">
 
             <p>Last Visit</p>
+
+            <h2>
+
+                {% if last_visit %}
+                    {{ last_visit.appointment_date|date:"d M Y" }}
+                {% else %}
+                    -
+                {% endif %}
+
+            </h2>
 
         </div>
 
@@ -88,6 +94,12 @@ Your complete appointment history.
 
 
 </div>
+
+
+
+
+    
+
 
 
 
@@ -158,7 +170,7 @@ Your complete appointment history.
 
             {% else %}
 
-            <span class="status status-pending">
+            <span class="status status-cancelled">
                 {{ appointment.status|title }}
             </span>
 
@@ -201,7 +213,7 @@ Your complete appointment history.
 
 
 </div>
-
+</div>
 
 
 {% endblock %}

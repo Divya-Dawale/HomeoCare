@@ -221,3 +221,22 @@
 }
 
 }
+/* ==========================================
+            NAV ACTIONS
+========================================== */
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.nav-buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}

@@ -1,7 +1,24 @@
+.history-page{
+    margin:25px;
+}
 /* ==========================================
-        HISTORY SUMMARY CARDS
+        HISTORY CONTAINER
 ========================================== */
 
+.history-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+/* ==========================================
+            HISTORY SUMMARY CARDS
+========================================== */
 
 .history-stats{
 
@@ -9,9 +26,9 @@
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:22px;
+    gap:24px;
 
-    margin-bottom:30px;
+    margin:30px 0;
 
 }
 
@@ -19,21 +36,21 @@
 
 .history-stat-card{
 
-    background:#ffffff;
+    background:#FFFFFF;
 
-    padding:22px;
+    border:1px solid #E5ECE9;
 
-    border-radius:20px;
+    border-radius:24px;
+
+    padding:30px;
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
+    gap:20px;
 
-    border:1px solid #E5ECE9;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
     transition:.3s;
 
@@ -45,15 +62,54 @@
 
     transform:translateY(-5px);
 
+    box-shadow:0 20px 45px rgba(46,139,87,.10);
+
 }
 
 
 
+.stat-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+
+
+.stat-content p{
+
+    margin:0 0 8px;
+
+    color:#64748B;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+
+
+.stat-content h2{
+
+    margin:0;
+
+    font-size:25px;
+
+    font-weight:800;
+
+    color:#1E293B;
+
+}
 .stat-icon{
 
-    width:58px;
+    width:64px;
 
-    height:58px;
+    height:64px;
 
     border-radius:18px;
 
@@ -63,41 +119,13 @@
 
     align-items:center;
 
-    font-size:25px;
+    font-size:26px;
 
 }
 
 
 
-.history-stat-card h3{
-
-    margin:0;
-
-    font-size:22px;
-
-    color:#1E293B;
-
-}
-
-
-
-.history-stat-card p{
-
-    margin-top:5px;
-
-    color:#64748B;
-
-    font-weight:600;
-
-}
-
-
-
-
-/* ICON COLORS */
-
-
-.visits .stat-icon{
+.stat-icon.visits{
 
     background:#DCFCE7;
 
@@ -107,7 +135,7 @@
 
 
 
-.completed .stat-icon{
+.stat-icon.completed{
 
     background:#DBEAFE;
 
@@ -117,35 +145,13 @@
 
 
 
-.last .stat-icon{
+.stat-icon.last{
 
     background:#F3E8FF;
 
     color:#9333EA;
 
 }
-
-
-
-
-/* ==========================================
-        APPOINTMENT CONTAINER
-========================================== */
-
-
-.history-container{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:25px;
-
-}
-
-
-
-
 /* ==========================================
         APPOINTMENT CARD
 ========================================== */
@@ -307,11 +313,11 @@
 
 
 
-.status-pending{
+.status-cancelled{
 
-    background:#FEF3C7;
+    background:#FEE2E2;
 
-    color:#B45309;
+    color:#DC2626;
 
 }
 

@@ -20,7 +20,7 @@ View your prescribed medicines.
 {% block content %}
 
 {% if prescriptions %}
-
+<div class="pre-page">
 <div class="prescription-container">
 
 {% for prescription in prescriptions %}
@@ -30,7 +30,7 @@ View your prescribed medicines.
     <div class="prescription-header">
 
         <h3>
-
+            <i class="fa-solid fa-pills medicine-icon"></i>
             {{ prescription.medicine_name }}
 
         </h3>
@@ -128,7 +128,7 @@ Your prescribed medicines will appear here.
 </p>
 
 </div>
-
+</div>
 {% endif %}
 
 {% endblock %}
