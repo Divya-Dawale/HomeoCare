@@ -9,6 +9,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from datetime import date
 from accounts.models import User
+from notifications.utils import notify_doctors
+from django.utils import timezone
 
 def dashboard(request):
 
@@ -17,6 +19,12 @@ def dashboard(request):
         preferred_date=date.today()
     ).count()
 
+    notifications = request.user.notifications.filter(
+        is_read=False,
+        created_at__date=timezone.now().date()
+    ).order_by("-created_at")
+    notification_count = notifications.count()
+    
     approved_appointments = Appointment.objects.filter(
     appointment_date=date.today(),
     status="completed"
@@ -33,11 +41,21 @@ def dashboard(request):
     )[:5]
 
     context = {
-        "pending_requests": pending_requests,
-        "approved_appointments": approved_appointments,
-        "total_patients": total_patients,
-        "today_appointments": today_appointments,
-        "recent_requests": recent_requests,
+
+    "pending_requests": pending_requests,
+
+    "approved_appointments": approved_appointments,
+
+    "total_patients": total_patients,
+
+    "today_appointments": today_appointments,
+
+    "recent_requests": recent_requests,
+
+    "notifications": notifications,
+
+    "notification_count": notifications.count(),
+
     }
 
     return render(
@@ -301,7 +319,9 @@ def approve_request(request, request_id):
     # Mark request as approved
     appointment_request.status = "approved"
     appointment_request.save()
-
+    notify_doctors(
+    f"New appointment approved for {patient.full_name}."
+    )
     return redirect(
         "appointment_requests"
     )

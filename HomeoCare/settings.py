@@ -45,6 +45,7 @@ INSTALLED_APPS = ['accounts',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     
 ]
 
@@ -71,13 +72,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notifications.context_processors.notifications',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'HomeoCare.wsgi.application'
-
+ASGI_APPLICATION = 'HomeoCare.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
@@ -128,5 +130,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = "/staff-login/"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}

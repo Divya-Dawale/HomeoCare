@@ -59,6 +59,10 @@ path(
     include("appointments.urls")
 ),
 path("patient/", include("patients.urls")),
+path(
+    "notifications/",
+    include("notifications.urls")
+),
 ]
 if settings.DEBUG:
     urlpatterns += static(

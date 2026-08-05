@@ -19,6 +19,8 @@
 
     <link rel="stylesheet"
           href="{% static 'receptionist/base.css' %}">
+    <link rel="stylesheet"
+      href="{% static 'css/notification.css' %}">
 
     {% block css %}{% endblock %}
 
@@ -187,17 +189,92 @@
 
             <div class="topbar-right">
 
-                <button class="notification">
+                <div class="notification-wrapper">
 
-                    <i class="fa-regular fa-bell"></i>
+                        <button class="notification" id="notificationBell">
 
-                    <span class="notification-count">
+                            <i class="fa-regular fa-bell"></i>
 
-                        {{ notification_count|default:"0" }}
+                            <span class="notification-count">
+                                {{ notification_count|default:"0" }}
+                            </span>
 
-                    </span>
+                        </button>
 
-                </button>
+
+                
+
+              
+                        <div class="notification-dropdown" id="notificationDropdown">
+
+
+                            <div class="dropdown-header">
+
+                                <span>Notifications</span>
+
+                                <span class="notification-total">
+
+                                    {{ notification_count }}
+
+                                </span>
+
+                            </div>
+
+                            <div class="notification-list" id="notificationList">
+                                    
+                                    {% if notifications %}
+
+
+                                        {% for notification in notifications %}
+
+                                        <div class="notification-item">
+
+                                            <div class="notification-icon">
+
+                                                <i class="fa-solid fa-bell"></i>
+
+                                            </div>
+
+                                            <div class="notification-content">
+
+                                                <div class="notification-message">
+
+                                                    {{ notification.message }}
+
+                                                </div>
+
+                                                <div class="notification-time">
+
+                                                    {{ notification.created_at|timesince }} ago
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        {% endfor %}
+
+
+                                    {% else %}
+
+
+                                        <div class="empty-notification">
+
+                                            <i class="fa-regular fa-bell-slash"></i>
+
+                                            <p>No new notifications</p>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                            </div>
+
+                        </div>
+                </div>
 
                 <a href="{% url 'receptionist_profile' %}" class="profile-link">
 
@@ -248,11 +325,16 @@
 
 </div>
 
+<!-- Notification Toast Container -->
 
+<div id="notification-container"></div>
+<script src="{% static 'js/notification.js' %}"></script>
 <script src="{% static 'js/receptionist.js' %}"></script>
 
 {% block js %}
 {% endblock %}
+
+
 </body>
 
 </html>

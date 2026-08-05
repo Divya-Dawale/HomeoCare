@@ -1,3 +1,4 @@
+alert("Notification JS Loaded");
 /*=========================================
         HomeoCare Receptionist Panel
 =========================================*/

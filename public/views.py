@@ -15,16 +15,25 @@ def about(request):
 def services(request):
     return render(request, 'public/services.html')
 from datetime import date
+from notifications.utils import notify_receptionists
 def book_appointment(request):
 
     success = None
     error_message = None
     request_type = None
-    doctor_settings = DoctorSettings.objects.first()
+    doctor_settings = DoctorSettings.objects.get(
+    doctor__username="Doctor"
+)
 
-    today_count = AppointmentRequest.objects.filter(
-                preferred_date=date.today()
-                ).count()
+    new_patient_count = AppointmentRequest.objects.filter(
+        preferred_date=date.today()
+    ).count()
+
+    existing_patient_count = Appointment.objects.filter(
+        appointment_date=date.today()
+    ).count()
+
+    today_count = new_patient_count + existing_patient_count
 
     booking_closed = (
           doctor_settings and
@@ -65,6 +74,9 @@ def book_appointment(request):
             address=request.POST.get("address"),
             preferred_date=date.today(),
             reason_for_visit=request.POST.get("reason_for_visit")
+        )
+        notify_receptionists(
+        f"New appointment request from {request.POST.get('full_name')}."
         )
 
         print("NEW REQUEST SAVED")

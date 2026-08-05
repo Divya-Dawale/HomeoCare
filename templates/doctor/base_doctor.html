@@ -23,7 +23,14 @@
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/dark-theme.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/dark-theme.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/notification.css' %}">
 
     {% block css %}
     {% endblock %}
@@ -163,7 +170,8 @@
     =========================================== -->
 
     <main class="main">
-                <!-- ==========================================
+
+        <!-- ==========================================
                         TOPBAR
         =========================================== -->
 
@@ -203,20 +211,108 @@
 
             </div>
 
-
             <div class="topbar-right">
-<button class="notification">
 
-    <i class="fa-regular fa-bell"></i>
+                <!-- ==========================
+                        Notification
+                =========================== -->
 
-    <span class="notification-count">
+                <div class="notification-wrapper">
 
-        {{ notification_count|default:"0" }}
+                    <button
+                        class="notification"
+                        id="notificationBell">
 
-    </span>
+                        <i class="fa-regular fa-bell"></i>
 
-</button>
+                        <span class="notification-count">
 
+                            {{ notification_count|default:"0" }}
+
+                        </span>
+
+                    </button>
+                                        <div
+                        class="notification-dropdown"
+                        id="notificationDropdown">
+
+                        <div class="dropdown-header">
+
+                            <span>
+
+                                Notifications
+
+                            </span>
+
+                            <span class="notification-total">
+
+                                {{ notification_count }}
+
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="notification-list"
+                            id="notificationList">
+
+                            {% if notifications %}
+
+                                {% for notification in notifications %}
+
+                                    <div class="notification-item">
+
+                                        <div class="notification-icon">
+
+                                            <i class="fa-solid fa-bell"></i>
+
+                                        </div>
+
+                                        <div class="notification-content">
+
+                                            <div class="notification-message">
+
+                                                {{ notification.message }}
+
+                                            </div>
+
+                                            <div class="notification-time">
+
+                                                {{ notification.created_at|timesince }} ago
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                {% endfor %}
+
+                            {% else %}
+
+                                <div class="empty-notification">
+
+                                    <i class="fa-regular fa-bell-slash"></i>
+
+                                    <p>
+
+                                        No new notifications
+
+                                    </p>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ==========================
+                        Profile
+                =========================== -->
 
                 <a
                     href="{% url 'doctor_settings' %}"
@@ -232,19 +328,21 @@
 
                         <div class="profile-details">
 
-                            <div class="profile-name">
+                            <span class="profile-name">
 
                                 {{ request.user.username }}
 
-                            </div>
+                            </span>
 
-                            <div class="profile-role">
+                            <span class="profile-role">
 
                                 Doctor
 
-                            </div>
+                            </span>
 
                         </div>
+
+                        <i class="fa-solid fa-chevron-down profile-arrow"></i>
 
                     </div>
 
@@ -254,9 +352,8 @@
 
         </header>
 
-
         <!-- ==========================================
-                        PAGE CONTENT
+                    PAGE CONTENT
         =========================================== -->
 
         <div class="content">
@@ -270,75 +367,101 @@
 
 </div>
 
+<!-- ==========================
+        Toast Notifications
+========================== -->
 
+<div id="notification-container"></div>
 {% block js %}
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- ==========================
+            Chart.js
+    =========================== -->
 
-{{ revenue_labels|json_script:"labels-data" }}
-{{ revenue_values|json_script:"values-data" }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
+    {{ revenue_labels|json_script:"labels-data" }}
+    {{ revenue_values|json_script:"values-data" }}
 
-const labelsElement =
-document.getElementById("labels-data");
+    <script>
 
-const valuesElement =
-document.getElementById("values-data");
+    const labelsElement =
+    document.getElementById("labels-data");
 
-const chartCanvas =
-document.getElementById("revenueChart");
+    const valuesElement =
+    document.getElementById("values-data");
 
-if(labelsElement && valuesElement && chartCanvas){
+    const chartCanvas =
+    document.getElementById("revenueChart");
 
-    const labels =
-    JSON.parse(labelsElement.textContent);
+    if (
+        labelsElement &&
+        valuesElement &&
+        chartCanvas
+    ) {
 
-    const values =
-    JSON.parse(valuesElement.textContent);
+        const labels =
+        JSON.parse(labelsElement.textContent);
 
-    new Chart(chartCanvas,{
+        const values =
+        JSON.parse(valuesElement.textContent);
 
-        type:"line",
+        new Chart(chartCanvas, {
 
-        data:{
+            type: "line",
 
-            labels:labels,
+            data: {
 
-            datasets:[{
+                labels: labels,
 
-                label:"Revenue",
+                datasets: [
 
-                data:values,
+                    {
 
-                borderColor:"#2E8B57",
+                        label: "Revenue",
 
-                backgroundColor:"rgba(46,139,87,.15)",
+                        data: values,
 
-                fill:true,
+                        borderColor: "#2E8B57",
 
-                tension:.4
+                        backgroundColor:
+                            "rgba(46,139,87,.15)",
 
-            }]
+                        fill: true,
 
-        },
+                        tension: .4
 
-        options:{
+                    }
 
-            responsive:true,
+                ]
 
-            maintainAspectRatio:false
+            },
 
-        }
+            options: {
 
-    });
+                responsive: true,
 
-}
+                maintainAspectRatio: false
 
-</script>
+            }
 
-<!-- Doctor Panel JS -->
-<script src="{% static 'js/doctors.js' %}"></script>
+        });
+
+    }
+
+    </script>
+
+    <!-- ==========================
+            Shared Notification JS
+    =========================== -->
+
+    <script src="{% static 'js/notification.js' %}"></script>
+
+    <!-- ==========================
+            Doctor Panel JS
+    =========================== -->
+
+    <script src="{% static 'js/doctors.js' %}"></script>
 
 {% endblock %}
 

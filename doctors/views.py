@@ -22,6 +22,13 @@ from .forms import DoctorProfileForm
 
 
 def doctor_dashboard(request):
+    notifications = request.user.notifications.filter(
+        is_read=False,
+        created_at__date=timezone.now().date()
+    ).order_by("-created_at")
+    
+    
+    notification_count = notifications.count()
 
     today = timezone.now().date()
 
@@ -48,7 +55,10 @@ def doctor_dashboard(request):
         "consulting_patients": consulting_patients,
         "completed_today": completed_today,
         "total_records": total_records,
+        "notifications": notifications,
+        "notification_count": notification_count,
     }
+    
 
     return render(
         request,
