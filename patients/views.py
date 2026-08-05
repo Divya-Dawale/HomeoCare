@@ -120,22 +120,83 @@ def cancel_appointment(request, id):
 
     return redirect("patient_appointments")
 
-@login_required
-def patient_records(request):
+from django.shortcuts import render
+from doctors.models import MedicalRecord
+from prescriptions.models import Prescription
+
+
+from django.db.models import Q
+from prescriptions.models import Prescription
+from doctors.models import MedicalRecord
+
+
+def medical_records(request):
 
     patient = request.user.patient
 
+
     records = MedicalRecord.objects.filter(
         patient=patient
-    ).order_by("-created_at")
+    ).order_by(
+        "-created_at"
+    )
+
+
+    # SEARCH FUNCTIONALITY
+
+    query = request.GET.get("q")
+
+
+    if query:
+
+        records = records.filter(
+
+            Q(diagnosis_notes__icontains=query) |
+            Q(symptoms__icontains=query) |
+            Q(observations__icontains=query) |
+            Q(follow_up_notes__icontains=query)
+
+        )
+
+
+
+    total_records = MedicalRecord.objects.filter(
+        patient=patient
+    ).count()
+
+
+
+    last_visit = MedicalRecord.objects.filter(
+        patient=patient
+    ).order_by(
+        "-created_at"
+    ).first()
+
+
+
+    total_medicines = Prescription.objects.filter(
+        patient=patient
+    ).count()
+
+
+
+    context = {
+
+        "records": records,
+
+        "total_records": total_records,
+
+        "last_visit": last_visit,
+
+        "total_medicines": total_medicines,
+
+    }
+
 
     return render(
         request,
         "patients/records.html",
-        {
-            "patient": patient,
-            "records": records,
-        },
+        context
     )
 
 @login_required
@@ -156,6 +217,9 @@ def patient_prescriptions(request):
         },
     )
 
+from django.db.models import Sum
+
+
 @login_required
 def patient_bills(request):
 
@@ -166,12 +230,35 @@ def patient_bills(request):
     ).order_by("-created_at")
 
 
+    total_bill = bills.aggregate(
+        total=Sum("total_amount")
+    )["total"] or 0
+
+
+    total_consultation = bills.aggregate(
+        total=Sum("consultation_fee")
+    )["total"] or 0
+
+
+    total_medicine = bills.aggregate(
+        total=Sum("medicine_fee")
+    )["total"] or 0
+
+
+
     return render(
         request,
         "patients/bills.html",
         {
             "patient": patient,
+
             "bills": bills,
+
+            "total_bill": total_bill,
+
+            "total_consultation": total_consultation,
+
+            "total_medicine": total_medicine,
         },
     )
 
@@ -198,6 +285,7 @@ def patient_profile(request):
     patient = request.user.patient
 
     if request.method == "POST":
+    
         form = PatientForm(request.POST, instance=patient)
 
         if form.is_valid():
@@ -292,17 +380,38 @@ def patient_history(request):
 
     patient = request.user.patient
 
-    prescriptions = Prescription.objects.filter(
+
+    appointments = Appointment.objects.filter(
         patient=patient
-    ).select_related(
-        "appointment"
-    ).order_by("-appointment__appointment_date")
+    ).order_by(
+        "-appointment_date"
+    )
+
+
+    total_visits = appointments.count()
+
+
+    completed_visits = appointments.filter(
+        status="completed"
+    ).count()
+
+
+    last_visit = appointments.first()
+
+
 
     return render(
         request,
         "patients/history.html",
         {
             "patient": patient,
-            "prescriptions": prescriptions,
+
+            "appointments": appointments,
+
+            "total_visits": total_visits,
+
+            "completed_visits": completed_visits,
+
+            "last_visit": last_visit,
         },
     )

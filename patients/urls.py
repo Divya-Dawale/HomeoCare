@@ -19,8 +19,8 @@ path(
     name="cancel_appointment"
 ), 
     path(
-    "records/",
-    views.patient_records,
+    "medical-records/",
+    views.medical_records,
     name="patient_records"
 ),
 path(

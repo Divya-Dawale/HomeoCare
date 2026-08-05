@@ -1,88 +1,207 @@
 {% extends 'patients/base_patient.html' %}
 {% load static %}
 
+{% block title %}
+Medical History
+{% endblock %}
+
+
 {% block page_title %}
 Medical History
 {% endblock %}
+
+
+{% block page_subtitle %}
+Your complete appointment history.
+{% endblock %}
+
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'patients/history.css' %}">
 {% endblock %}
+
+
+
 {% block content %}
 
-<div class="table-card">
 
-    <div class="table-header">
+<!-- SUMMARY CARDS -->
 
-        <h2>Medical History</h2>
+<div class="history-stats">
 
-        <p>Complete record of your previous consultations.</p>
+
+    <div class="history-stat-card visits">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-calendar-days"></i>
+        </div>
+
+        <div>
+            <h3>{{ total_visits }}</h3>
+            <p>Total Visits</p>
+        </div>
 
     </div>
 
-    <table class="history-table">
 
-        <thead>
 
-            <tr>
+    <div class="history-stat-card completed">
 
-                <th>Queue</th>
+        <div class="stat-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
 
-                <th>Date</th>
+        <div>
+            <h3>{{ completed_visits }}</h3>
+            <p>Completed Appointments</p>
+        </div>
 
-                <th>Reason</th>
+    </div>
 
-                <th>Medicine</th>
 
-                <th>Status</th>
 
-            </tr>
+    <div class="history-stat-card last">
 
-        </thead>
+        <div class="stat-icon">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
 
-        <tbody>
+        <div>
 
-            {% for prescription in prescriptions %}
+            {% if last_visit %}
 
-            <tr>
+            <h3>
+                {{ last_visit.appointment_date|date:"d M Y" }}
+            </h3>
 
-                <td>#{{ forloop.counter }}</td>
+            {% else %}
 
-                <td>{{ prescription.appointment.appointment_date }}</td>
+            <h3>-</h3>
 
-                <td>{{ prescription.appointment.reason_for_visit }}</td>
+            {% endif %}
 
-                <td>{{ prescription.medicine_name }}</td>
+            <p>Last Visit</p>
 
-                <td>
+        </div>
 
-                    <span class="status">
+    </div>
 
-                        {{ prescription.appointment.status }}
-
-                    </span>
-
-                </td>
-
-            </tr>
-
-            {% empty %}
-
-            <tr>
-
-                <td colspan="5">
-
-                    No medical history found.
-
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-
-    </table>
 
 </div>
+
+
+
+
+
+<!-- APPOINTMENT HISTORY -->
+
+
+<div class="history-container">
+
+
+{% if appointments %}
+
+
+{% for appointment in appointments %}
+
+
+<div class="appointment-card">
+
+
+    <div class="appointment-header">
+
+
+        <h3>
+            🩺 Consultation Visit
+        </h3>
+
+
+        <span>
+            {{ appointment.appointment_date|date:"d M Y" }}
+        </span>
+
+
+    </div>
+
+
+
+
+    <div class="appointment-body">
+
+
+        <div class="history-info">
+
+            <strong>
+                Reason for Visit
+            </strong>
+
+            <p>
+                {{ appointment.reason_for_visit }}
+            </p>
+
+        </div>
+
+
+
+        <div class="history-info">
+
+            <strong>
+                Appointment Status
+            </strong>
+
+
+            {% if appointment.status == "completed" %}
+
+            <span class="status status-completed">
+                Completed
+            </span>
+
+            {% else %}
+
+            <span class="status status-pending">
+                {{ appointment.status|title }}
+            </span>
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<div class="empty-card">
+
+    <i class="fa-solid fa-calendar-xmark"></i>
+
+    <h3>
+        No Appointment History
+    </h3>
+
+    <p>
+        Your previous visits will appear here.
+    </p>
+
+</div>
+
+
+{% endif %}
+
+
+</div>
+
+
 
 {% endblock %}

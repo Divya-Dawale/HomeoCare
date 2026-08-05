@@ -5,102 +5,302 @@
 Medical Records
 {% endblock %}
 
+
 {% block page_title %}
-Medical Records
+🩺 Medical Records
 {% endblock %}
 
+
 {% block page_subtitle %}
-Your consultation history.
+Your complete consultation history
 {% endblock %}
+
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'patients/records.css' %}">
 {% endblock %}
 
+
+
 {% block content %}
 
-{% if records %}
 
-<div class="records-container">
+<!-- SEARCH -->
 
-    {% for record in records %}
+<div class="search-box">
 
-    <div class="record-card">
+    <form method="GET">
 
-        <div class="record-header">
+        <div class="search-input">
 
-            <h3>
+            <i class="fa-solid fa-search"></i>
 
-                Consultation #{{ record.id }}
+            <input 
+            type="text"
+            name="q"
+            placeholder="Search by diagnosis, symptoms or medicine..."
+            value="{{ request.GET.q }}">
 
-            </h3>
 
-            <span>
-
-                {{ record.created_at|date:"d M Y" }}
-
-            </span>
+            <button type="submit">
+                Search
+            </button>
 
         </div>
 
-        <div class="record-body">
+    </form>
 
-            <div class="info">
+</div>
 
-                <strong>Symptoms</strong>
 
-                <p>{{ record.symptoms }}</p>
 
-            </div>
+<!-- STATISTICS -->
 
-            <div class="info">
+<div class="record-stats">
 
-                <strong>Observations</strong>
 
-                <p>{{ record.observations|default:"-" }}</p>
+    <div class="stat-card green">
 
-            </div>
+        
+        <div class="stat-icon">
+    <i class="fa-solid fa-file-medical"></i>
+</div>
 
-            <div class="info">
+        <div>
+            <h3>
+                {{ total_records }}
+            </h3>
 
-                <strong>Diagnosis</strong>
+            <p>
+                Total Records
+            </p>
+        </div>
 
-                <p>{{ record.diagnosis_notes }}</p>
+    </div>
 
-            </div>
 
-            <div class="info">
 
-                <strong>Follow Up</strong>
+    <div class="stat-card green">
 
-                <p>{{ record.follow_up_notes|default:"-" }}</p>
+        <div class="stat-icon">
+    <i class="fa-solid fa-calendar-check"></i>
+</div>
 
-            </div>
+        <div>
+
+            <h3>
+
+                {% if last_visit %}
+                    {{ last_visit.created_at|date:"d M Y" }}
+                {% else %}
+                    -
+                {% endif %}
+
+            </h3>
+
+            <p>
+                Last Visit
+            </p>
 
         </div>
 
     </div>
 
-    {% endfor %}
+
+
+
+    <div class="stat-card green ">
+
+
+        <div class="stat-icon">
+    <i class="fa-solid fa-pills"></i>
+</div>
+
+
+        <div>
+
+            <h3>
+                {{ total_medicines }}
+            </h3>
+
+            <p>
+                Total Medicines
+            </p>
+
+        </div>
+
+
+    </div>
+
 
 </div>
+
+
+
+
+
+<!-- RECORD CARDS -->
+
+
+{% if records %}
+
+
+<div class="records-container">
+
+
+{% for record in records %}
+
+
+
+<div class="record-card">
+
+
+    <div class="record-header">
+
+
+        <span class="date">
+
+            📅 {{ record.created_at|date:"d M Y" }}
+
+        </span>
+
+
+        <span class="status">
+
+            🟢 Completed
+
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="record-section">
+
+
+        <h4>
+            🩺 Diagnosis
+        </h4>
+
+
+        <p>
+            {{ record.diagnosis_notes }}
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="record-section">
+
+
+        <h4>
+            💊 Medicines
+        </h4>
+
+
+
+        <div class="medicine-list">
+
+
+        {% for medicine in record.prescription_set.all %}
+
+
+            <span class="medicine-tag">
+
+                {{ medicine.medicine_name }}
+
+            </span>
+
+
+        {% empty %}
+
+
+            <p>
+                No medicines prescribed
+            </p>
+
+
+        {% endfor %}
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="record-section">
+
+
+        <h4>
+            📝 Notes
+        </h4>
+
+
+        <p>
+
+            {{ record.follow_up_notes|default:"No notes available" }}
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+</div>
+
+
 
 {% else %}
 
+
+
 <div class="empty-card">
 
-    <i class="fa-solid fa-file-medical"></i>
 
-    <h3>No Medical Records Found</h3>
+<i class="fa-solid fa-file-medical"></i>
 
-    <p>
 
-        Your consultation records will appear here.
+<h3>
+No Medical Records Found
+</h3>
 
-    </p>
+
+<p>
+Your consultation records will appear here.
+</p>
+
 
 </div>
 
+
+
 {% endif %}
+
+
 
 {% endblock %}

@@ -20,6 +20,128 @@ View all your clinic bills.
 {% block content %}
 
 {% if bills %}
+<!-- SEARCH BAR -->
+
+<div class="search-box">
+
+    <form method="GET">
+
+        <div class="search-input">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input 
+            type="text"
+            name="q"
+            placeholder="Search bills by bill ID or payment status..."
+            value="{{ request.GET.q }}">
+
+
+            <button type="submit">
+                Search
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+<!-- BILL SUMMARY CARDS -->
+
+
+<div class="bill-stats">
+
+
+    <div class="bill-stat-card total">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-wallet"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+               ₹ {{ total_bill|floatformat:0 }}
+            </h3>
+
+            <p>
+                Total Bills
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="bill-stat-card consultation">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-user-doctor"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                ₹ {{ total_consultation|floatformat:0 }}
+            </h3>
+
+            <p>
+                Consultation Bills
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="bill-stat-card medicine">
+
+
+        <div class="stat-icon">
+
+            <i class="fa-solid fa-pills"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                ₹ {{ total_medicine|floatformat:0 }}
+            </h3>
+
+            <p>
+                Medicine Bills
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
 
 <div class="table-wrapper">
 

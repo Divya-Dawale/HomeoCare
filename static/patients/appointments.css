@@ -109,7 +109,18 @@
 /*========================================
             TABLE
 ========================================*/
+/* ==========================================
+            BILL ID STYLE
+========================================== */
 
+
+.appointments-table td:first-child{
+
+    color:#2E8B57;
+
+    font-weight:700;
+
+}
 .appointments-table{
     width:100%;
     border-collapse:collapse;
