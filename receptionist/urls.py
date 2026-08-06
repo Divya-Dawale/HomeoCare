@@ -56,7 +56,7 @@ urlpatterns = [
     views.start_consultation,
     name="start_consultation"
     ),
-
+   
     path(
     "prescriptions/",
     views.prescriptions,
@@ -87,14 +87,16 @@ urlpatterns = [
     views.change_password,
     name="change_password"
     ),
-    path(
+   path(
     "appointments/cancel/<int:appointment_id>/",
     views.cancel_appointment,
-    name="cancel_appointment"
-    ),
-    path(
-    "patients/add/",
+    name="receptionist_cancel_appointment"
+),
+
+path(
+    "add-patient/",
     views.add_patient,
     name="add_patient"
-    ),
+),
+    
 ]

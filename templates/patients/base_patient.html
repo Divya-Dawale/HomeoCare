@@ -20,6 +20,8 @@
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet"
+      href="{% static 'css/notification.css' %}">
 
     {% block css %}
     {% endblock %}
@@ -187,17 +189,123 @@
 
             <div class="topbar-right">
 
-                <button class="notification">
+                <div class="notification-wrapper">
 
-                    <i class="fa-regular fa-bell"></i>
 
-                    <span class="notification-count">
+                    <button 
+                        class="notification"
+                        id="notificationBell">
 
-                        {{ notification_count|default:"0" }}
 
-                    </span>
+                        <i class="fa-regular fa-bell"></i>
 
-                </button>
+
+                        <span class="notification-count">
+
+                            {{ notification_count|default:"0" }}
+
+                        </span>
+
+
+                    </button>
+
+
+
+                    <div class="notification-dropdown"
+                        id="notificationDropdown">
+
+
+                        <div class="dropdown-header">
+
+                            <span>
+                                Notifications
+                            </span>
+
+
+                            <span class="notification-total">
+
+                                {{ notification_count|default:"0" }}
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <div class="notification-list"
+                            id="notificationList">
+
+
+                            {% if notifications %}
+
+
+                                {% for notification in notifications %}
+
+
+                                <div class="notification-item">
+
+
+                                    <div class="notification-icon">
+
+                                        <i class="fa-solid fa-bell"></i>
+
+                                    </div>
+
+
+                                    <div class="notification-content">
+
+
+                                        <div class="notification-message">
+
+                                            {{ notification.message }}
+
+                                        </div>
+
+
+                                        <div class="notification-time">
+
+                                            {{ notification.created_at|timesince }} ago
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                                {% endfor %}
+
+
+                            {% else %}
+
+
+                                <div class="empty-notification">
+
+
+                                    <i class="fa-regular fa-bell-slash"></i>
+
+
+                                    <p>
+                                        No new notifications
+                                    </p>
+
+
+                                </div>
+
+
+                            {% endif %}
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
 
                 <a href="#"
                    class="profile-link">
@@ -245,7 +353,9 @@
 
 </div>
 
+<div id="notification-container"></div>
 
+<script src="{% static 'js/notification.js' %}"></script>
 </body>
 
 </html>

@@ -14,10 +14,10 @@ urlpatterns = [
     name="patient_appointments",
 ),
 path(
-    "appointments/cancel/<int:id>/",
+    "appointments/cancel/<int:appointment_id>/",
     views.cancel_appointment,
     name="cancel_appointment"
-), 
+),
     path(
     "medical-records/",
     views.medical_records,

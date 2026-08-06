@@ -11,7 +11,12 @@ from datetime import date
 from accounts.models import User
 from notifications.utils import notify_doctors
 from django.utils import timezone
-
+from notifications.utils import notify_patient
+from notifications.email_utils import send_appointment_email
+from notifications.email_utils import (
+    send_appointment_email,
+    send_appointment_cancelled_email,
+)
 def dashboard(request):
 
     pending_requests = AppointmentRequest.objects.filter(
@@ -207,14 +212,27 @@ def cancel_appointment(
         Appointment,
         id=appointment_id
     )
-    if appointment.status == "waiting":
-        appointment.status = "cancelled"
 
+    if appointment.status == "waiting":
+
+        appointment.status = "cancelled"
+        appointment.cancelled_by = "receptionist"
         appointment.save()
 
-    return redirect(
-        "appointments"
-    )
+        notify_patient(
+            appointment.patient,
+            f"Your appointment on {appointment.appointment_date} has been cancelled by the receptionist."
+        )
+        notify_doctors(
+            f"Appointment for {appointment.patient.full_name} on {appointment.appointment_date} has been cancelled by the receptionist."
+        )
+        send_appointment_cancelled_email(
+            appointment.patient.email,
+            appointment.patient.full_name,
+            appointment.appointment_date
+        )
+
+    return redirect("appointments")
 def request_detail(request, request_id):
 
     appointment_request = get_object_or_404(
@@ -318,6 +336,11 @@ def approve_request(request, request_id):
     # Mark request as approved
     appointment_request.status = "approved"
     appointment_request.save()
+    send_appointment_email(
+        patient.email,
+        patient.full_name,
+        appointment_request.preferred_date
+    )
     notify_doctors(
     f"New appointment approved for {patient.full_name}."
     )

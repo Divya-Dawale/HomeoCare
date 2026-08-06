@@ -19,6 +19,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from accounts.models import User
 from .forms import DoctorProfileForm
+from notifications.utils import notify_doctors
+from notifications.utils import *
 
 
 def doctor_dashboard(request):
@@ -208,6 +210,10 @@ def consultation(request, appointment_id):
                 appointment.status = "completed"
 
                 appointment.save()
+                notify_receptionists(
+                    f"Consultation completed for {patient.full_name}."
+                )
+
 
                 return redirect(
                     "patient_queue"

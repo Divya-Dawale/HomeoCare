@@ -24,6 +24,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(
+    "test-email/",
+    views.test_email,
+),
     path('', include('public.urls')),
     path(
     'book-appointment/',

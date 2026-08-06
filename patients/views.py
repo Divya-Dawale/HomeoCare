@@ -17,6 +17,7 @@ from django.contrib.auth import update_session_auth_hash
 from .models import MedicalHistory
 from .forms import MedicalHistoryForm
 from django.shortcuts import get_object_or_404, redirect, render
+from notifications.models import Notification
 
 
 
@@ -25,6 +26,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 def patient_dashboard(request):
 
     patient = request.user.patient
+    notifications = Notification.objects.filter(
+        recipient=request.user,
+        is_read=False
+    ).order_by("-created_at")
 
     appointments = Appointment.objects.filter(
         patient=patient
@@ -60,9 +65,9 @@ def patient_dashboard(request):
 
         "recent_appointments": recent_appointments,
 
-        "notification_count": appointments.filter(
-            status="approved"
-        ).count(),
+        "notifications": notifications,
+
+        "notification_count": notifications.count(),
 
     }
 
@@ -103,22 +108,22 @@ def patient_appointments(request):
     )
 
 @login_required
-def cancel_appointment(request, id):
-
-    patient = request.user.patient
+def cancel_appointment(request, appointment_id):
 
     appointment = get_object_or_404(
         Appointment,
-        id=id,
-        patient=patient,
+        id=appointment_id
     )
 
-    if appointment.status in ["approved", "waiting"]:
+    appointment.status = "cancelled"
 
-        appointment.status = "cancelled"
-        appointment.save()
+    appointment.cancelled_by = "patient"
 
-    return redirect("patient_appointments")
+    appointment.save()
+
+    return redirect(
+        "patient_appointments"
+    )
 
 from django.shortcuts import render
 from doctors.models import MedicalRecord

@@ -142,17 +142,11 @@ Appointments
                         Completed
                     </span>
 
-                {% elif appointment.status == "cancelled" %}
+               {% elif appointment.status == "cancelled" %}
 
-                    <span class="cancelled-badge">
-                        Cancelled
-                    </span>
-
-                {% else %}
-
-                    <span class="status-badge">
-                        {{ appointment.status|title }}
-                    </span>
+                        <span class="cancelled-badge">
+                            Cancelled
+                        </span>
 
                 {% endif %}
 
@@ -160,29 +154,39 @@ Appointments
 
             <td>
 
-                {% if appointment.status == "waiting" %}
+    {% if appointment.status == "waiting" %}
 
-<a href="{% url 'cancel_appointment' appointment.id %}"
-   class="cancel-btn"
-   onclick="return confirm('Cancel this appointment?');">
+        <a href="{% url 'receptionist_cancel_appointment' appointment.id %}"
+           class="cancel-btn"
+           onclick="return confirm('Cancel this appointment?');">
 
-    Cancel
+            Cancel
 
-</a>
+        </a>
 
-{% elif appointment.status == "cancelled" %}
 
-<span style="color:#DC2626;font-weight:700;">
-    Cancelled by Patient
-</span>
+    {% elif appointment.status == "cancelled" %}
 
-{% else %}
+        {% if appointment.cancelled_by == "patient" %}
 
-—
+            <span style="color:#DC2626;font-weight:700;">
+                Cancelled by Patient
+            </span>
 
-{% endif %}
+        {% else %}
 
-            </td>
+            -
+
+        {% endif %}
+
+
+    {% else %}
+
+        -
+
+    {% endif %}
+
+</td>
 
         </tr>
 
