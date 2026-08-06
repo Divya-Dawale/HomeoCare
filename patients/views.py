@@ -186,6 +186,7 @@ def medical_records(request):
 
 
     context = {
+        "patient": patient,
 
         "records": records,
 

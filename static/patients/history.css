@@ -36,10 +36,9 @@
 
 .history-stat-card{
 
-    background:#FFFFFF;
-
-    border:1px solid #E5ECE9;
-
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
     border-radius:24px;
 
     padding:30px;
@@ -49,8 +48,6 @@
     align-items:center;
 
     gap:20px;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
     transition:.3s;
 
@@ -84,7 +81,7 @@
 
     margin:0 0 8px;
 
-    color:#64748B;
+    color:var(--text-light);
 
     font-size:14px;
 
@@ -101,8 +98,8 @@
     font-size:25px;
 
     font-weight:800;
+ color:var(--text);
 
-    color:#1E293B;
 
 }
 .stat-icon{
@@ -159,15 +156,13 @@
 
 .appointment-card{
 
-    background:#ffffff;
-
     border-radius:22px;
 
     padding:28px;
 
-    border:1px solid #E5ECE9;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
+     background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
 
     transition:.3s;
 
@@ -201,7 +196,7 @@
 
     margin-bottom:20px;
 
-    border-bottom:1px solid #EEF2F5;
+    border-bottom:1px solid var(--border);
 
 }
 
@@ -213,7 +208,7 @@
 
     font-weight:800;
 
-    color:#1E293B;
+    color:var(--text);
 
 }
 
@@ -221,7 +216,7 @@
 
 .appointment-header span{
 
-    color:#64748B;
+     color:var(--text-light);
 
     font-weight:600;
 
@@ -247,7 +242,7 @@
 
 .history-info{
 
-    background:#F8FAFC;
+    background:var(--card-hover);
 
     padding:18px;
 
@@ -273,7 +268,7 @@
 
 .history-info p{
 
-    color:#475569;
+    color:var(--text-light);
 
     line-height:1.6;
 
@@ -331,17 +326,15 @@
 
 .empty-card{
 
-    background:#ffffff;
-
     border-radius:22px;
 
     padding:70px 40px;
 
     text-align:center;
 
-    border:1px solid #E5ECE9;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.05);
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
 
 }
 
@@ -351,7 +344,7 @@
 
     font-size:70px;
 
-    color:#2E8B57;
+    color:var(--primary);
 
     margin-bottom:20px;
 
@@ -361,7 +354,7 @@
 
 .empty-card h3{
 
-    color:#1E293B;
+    color:var(--text);
 
     margin-bottom:10px;
 
@@ -371,7 +364,7 @@
 
 .empty-card p{
 
-    color:#64748B;
+    color:var(--text-light);
 
 }
 
