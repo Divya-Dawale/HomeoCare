@@ -22,8 +22,8 @@ def book_appointment(request):
     error_message = None
     request_type = None
     doctor_settings = DoctorSettings.objects.get(
-    doctor__username="Doctor"
-)
+        doctor__role="doctor"
+    )
 
     new_patient_count = AppointmentRequest.objects.filter(
         preferred_date=date.today()

@@ -120,11 +120,11 @@
 }
 
 .nav-links a:hover{
-    color:#6B63FF;
+     color: #2E8B57;
 }
 
 .nav-links a.active{
-    color:#6B63FF;
+        color: #2E8B57;
     font-weight:700;
 }
 
@@ -141,7 +141,7 @@
 
     border-radius:20px;
 
-    background:#6B63FF;
+    background: #2E8B57;
 }
 
 .contact-btn{

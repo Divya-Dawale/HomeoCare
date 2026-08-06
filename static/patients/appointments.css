@@ -242,10 +242,21 @@
 ========================================*/
 
 .status{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
     padding:8px 14px;
+
     border-radius:50px;
+
     font-size:13px;
+
     font-weight:700;
+
+    border:1px solid transparent;
+
 }
 
 .status-approved{
@@ -274,8 +285,8 @@
 }
 
 .status-cancelled{
-    background:var(--danger-bg);
-    color:var(--danger-text);
+    background:#FEE2E2;
+    color:#DC2626;
 }
 
 
@@ -350,22 +361,14 @@
 
 }
 
+/*========================================
+        DARK MODE - CANCELLED STATUS
+========================================*/
+
 body.dark-theme .cancel-btn{
 
-    background:#7F1D1D;
-
-    color:#FECACA;
-
-    border:1px solid #991B1B;
-
-}
-
-body.dark-theme .cancel-btn:hover{
-
-    background:#991B1B;
-
-    color:#FFFFFF;
-
-    box-shadow:0 8px 20px rgba(220,38,38,.25);
+    background:#2A1C1C;
+    color:#D97A7A;
+    border:1px solid #442929;
 
 }
