@@ -472,27 +472,34 @@
 
     position:absolute;
 
-    top:-120%;
+    top:-40%;
 
-    left:-60%;
+    left:-120px;
 
-    width:40%;
+    width:70px;
 
-    height:280%;
+    height:220%;
 
-    background:rgba(255,255,255,.35);
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.45),
+        rgba(255,255,255,0)
+    );
 
     transform:rotate(25deg);
 
-    transition:.8s;
+    transition:left .9s ease;
+
+    pointer-events:none;
 
 }
 
 .edit-profile-card:hover::after{
 
-    left:130%;
+    left:120%;
 
-}
+}}
 
 .card-icon{
 

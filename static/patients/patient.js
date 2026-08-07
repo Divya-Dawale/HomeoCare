@@ -39,3 +39,26 @@ function initializeDarkMode() {
     });
 
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bell = document.getElementById("notificationBell");
+
+    if (!bell) return;
+
+    bell.addEventListener("click", function () {
+
+        bell.classList.remove("shake");
+
+        void bell.offsetWidth;
+
+        bell.classList.add("shake");
+
+    });
+
+    bell.addEventListener("animationend", function () {
+
+        bell.classList.remove("shake");
+
+    });
+
+});

@@ -550,6 +550,64 @@
     animation:notificationAppear .35s ease;
 
 }
+/* Bell jiggle animation */
+
+.notification.shake{
+    animation: bellShake .8s ease;
+}
+
+@keyframes bellShake{
+
+    0%{
+        transform: rotate(0deg);
+    }
+
+    15%{
+        transform: rotate(18deg);
+    }
+
+    30%{
+        transform: rotate(-18deg);
+    }
+
+    45%{
+        transform: rotate(14deg);
+    }
+
+    60%{
+        transform: rotate(-14deg);
+    }
+
+    75%{
+        transform: rotate(8deg);
+    }
+
+    90%{
+        transform: rotate(-8deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+
+}
+.notification.shake{
+
+    animation: bellShake .6s ease;
+
+}
+
+@keyframes bellShake{
+
+    0%{ transform: rotate(0deg); }
+    15%{ transform: rotate(18deg); }
+    30%{ transform: rotate(-18deg); }
+    45%{ transform: rotate(12deg); }
+    60%{ transform: rotate(-12deg); }
+    75%{ transform: rotate(6deg); }
+    100%{ transform: rotate(0deg); }
+
+}
 
 @keyframes progress{
     from{width:100%;}

@@ -25,7 +25,7 @@ socket.onmessage = function (event) {
 
     const data =
     JSON.parse(event.data);
-
+    
     showNotification(
         data.message
     );
