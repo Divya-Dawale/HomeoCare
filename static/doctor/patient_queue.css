@@ -12,6 +12,7 @@
 .queue-header p{
     color:#64748B;
     font-size:15px;
+    margin-bottom: 25px;
 }
 
 .section-badge{
@@ -237,16 +238,46 @@
 }
 
 .waiting-badge{
-    background:#FFF8E5;
-    color:#D97706;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:110px;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:13px;
+    font-weight:700;
+
+    background:#FEF9C3;
+    color:#CA8A04;
+    
+
 }
 
 .completed-badge{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:110px;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:13px;
+    font-weight:700;
+
     background:#EAF8F1;
     color:#2E8B57;
+    border:1px solid #BFE8CF;
+
 }
-
-
 /*========================================
             OPEN BUTTON
 ========================================*/

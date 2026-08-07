@@ -92,7 +92,21 @@ body.dark-theme .form-card{
     color:var(--text);
 
 }
+/*========================================
+        RECEPTIONIST PROFILE VALUES
+========================================*/
 
+body.dark-theme .profile-item strong{
+    display:block;
+    width:100%;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#273548;
+    color:var(--text);
+    font-size:15px;
+    font-weight:450;
+}
 
 /*========================================
             LIGHT BOXES
@@ -748,8 +762,13 @@ body.dark-theme .queue-number{
 /* Status */
 
 body.dark-theme .waiting-badge{
-    background:#5A4714;
-    color:#FACC15;
+
+    background:#2A2416;
+
+    color:#D6A94C;
+
+    border:1px solid #3B3220;
+
 }
 
 body.dark-theme .completed-badge{

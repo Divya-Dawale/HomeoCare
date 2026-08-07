@@ -51,7 +51,7 @@
 
     font-weight:800;
 
-    color:#1E293B;
+     color:var(--text);
 
     margin-bottom:8px;
 
@@ -59,7 +59,7 @@
 
 .history-header p{
 
-    color:#64748B;
+    color:var(--text-light);
 
     font-size:15px;
 
@@ -756,4 +756,148 @@
 
     }
 
+}
+/*========================================
+            DARK MODE
+========================================*/
+
+body.dark-theme .toolbar-card,
+body.dark-theme .history-card{
+    background:#1E293B;
+    border-color:#334155;
+    box-shadow:none;
+}
+
+body.dark-theme .table-header{
+    border-bottom:1px solid #334155;
+}
+
+body.dark-theme .table-header h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .table-header span{
+    background:#16291F;
+    color:#63C786;
+}
+
+body.dark-theme .table-wrapper thead{
+    background:#273548;
+}
+
+body.dark-theme .table-wrapper th{
+    color:#CBD5E1;
+    border-bottom:1px solid #334155;
+}
+
+body.dark-theme .table-wrapper td{
+    color:#F8FAFC;
+    border-bottom:1px solid #334155;
+}
+
+body.dark-theme .table-wrapper tbody tr:hover{
+    background:#273548;
+}
+
+body.dark-theme .date-cell{
+    color:#F8FAFC;
+}
+
+body.dark-theme .date-cell i{
+    color:#63C786;
+}
+
+body.dark-theme .patient-info strong{
+    color:#F8FAFC;
+}
+
+body.dark-theme .patient-id{
+    background:#16291F;
+    border-color:#234332;
+    color:#63C786;
+}
+
+body.dark-theme .reason-text{
+    color:#CBD5E1;
+}
+
+/* Status */
+
+body.dark-theme .status-badge{
+    border:1px solid transparent;
+}
+
+body.dark-theme .status-badge.completed{
+    background:#16291F;
+    color:#63C786;
+    border-color:#234332;
+}
+
+body.dark-theme .status-badge.cancelled{
+    background:#2A1C1C;
+    color:#D97A7A;
+    border-color:#442929;
+}
+
+body.dark-theme .status-badge.pending{
+    background:#2A2416;
+    color:#D6A94C;
+    border-color:#3B3220;
+}
+
+/* Empty State */
+
+body.dark-theme .empty-table h3{
+    color:#F8FAFC;
+}
+
+body.dark-theme .empty-table p{
+    color:#CBD5E1;
+}
+
+body.dark-theme .empty-table i{
+    color:#63C786;
+}
+
+/* Scrollbar */
+
+body.dark-theme .table-wrapper::-webkit-scrollbar-track{
+    background:#273548;
+}
+
+body.dark-theme .table-wrapper::-webkit-scrollbar-thumb{
+    background:#475569;
+}
+/*========================================
+        HISTORY PAGE DARK MODE FIX
+========================================*/
+
+body.dark-theme .history-header h2{
+    color:#F8FAFC !important;
+}
+
+body.dark-theme .history-header p{
+    color:#CBD5E1 !important;
+}
+
+body.dark-theme .section-badge{
+    background:#16291F !important;
+    color:#63C786 !important;
+}
+
+body.dark-theme .search-box{
+    background:#273548 !important;
+    border-color:#475569 !important;
+}
+
+body.dark-theme .search-box input{
+    color:#F8FAFC !important;
+}
+
+body.dark-theme .search-box input::placeholder{
+    color:#94A3B8 !important;
+}
+
+body.dark-theme .search-box i{
+    color:#94A3B8 !important;
 }

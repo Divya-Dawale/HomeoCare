@@ -169,8 +169,8 @@ body.dark-theme .patient-id{
 }
 
 .waiting-badge{
-    background:#FFF4DB;
-    color:#F59E0B !important;
+    background:#FEF9C3;
+    color:#CA8A04;
     display:inline-flex;
     align-items:center;
     justify-content:center;
