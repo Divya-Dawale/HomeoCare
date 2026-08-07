@@ -6,8 +6,7 @@ Profile
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet"
-href="{% static 'receptionist/profile.css' %}">
+<link rel="stylesheet" href="{% static 'receptionist/profile.css' %}">
 <link rel="stylesheet" href="{% static 'css/dark-theme.css' %}">
 {% endblock %}
 
@@ -15,7 +14,15 @@ href="{% static 'receptionist/profile.css' %}">
 
 <div class="profile-page">
 
-    <!-- ================= HEADER ================= -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="success-message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- HEADER -->
 
     <div class="profile-page-header">
 
@@ -35,7 +42,7 @@ href="{% static 'receptionist/profile.css' %}">
 
             <p>
 
-                View and manage your personal information and account details.
+                View and update your personal information and account details.
 
             </p>
 
@@ -44,7 +51,7 @@ href="{% static 'receptionist/profile.css' %}">
     </div>
 
 
-    <!-- ================= PROFILE CARD ================= -->
+    <!-- PROFILE CARD -->
 
     <div class="profile-card">
 
@@ -61,9 +68,13 @@ href="{% static 'receptionist/profile.css' %}">
                 <h2>
 
                     {% if request.user.first_name or request.user.last_name %}
+
                         {{ request.user.first_name }} {{ request.user.last_name }}
+
                     {% else %}
+
                         {{ request.user.username }}
+
                     {% endif %}
 
                 </h2>
@@ -85,91 +96,147 @@ href="{% static 'receptionist/profile.css' %}">
         </div>
 
 
-        <!-- ================= INFORMATION GRID ================= -->
+        <!-- EDIT PROFILE FORM -->
 
-        <div class="profile-grid">
+        <form method="POST">
 
-                    <div class="profile-item">
+            {% csrf_token %}
 
-                <label>First Name</label>
+            <div class="profile-grid">
 
-                <strong>{{ request.user.first_name }}</strong>
+                <div class="profile-item">
+
+                    <label>
+
+                        First Name
+
+                    </label>
+
+                    {{ form.first_name }}
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Last Name
+
+                    </label>
+
+                    {{ form.last_name }}
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Username
+
+                    </label>
+
+                    {{ form.username }}
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    {{ form.email }}
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Phone Number
+
+                    </label>
+
+                    {{ form.phone }}
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Role
+
+                    </label>
+
+                    <strong>
+
+                        {{ request.user.role|title }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Date Joined
+
+                    </label>
+
+                    <strong>
+
+                        {{ request.user.date_joined|date:"d M Y" }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <label>
+
+                        Last Login
+
+                    </label>
+
+                    <strong>
+
+                        {{ request.user.last_login|date:"d M Y H:i" }}
+
+                    </strong>
+
+                </div>
 
             </div>
 
-            <div class="profile-item">
 
-                <label>Last Name</label>
+            <div class="profile-actions">
 
-                <strong>{{ request.user.last_name }}</strong>
+                <button
+                    type="submit"
+                    class="profile-btn">
 
-            </div>
+                    <i class="fa-solid fa-floppy-disk"></i>
 
-            <div class="profile-item">
-
-                <label>Username</label>
-
-                <strong>{{ request.user.username }}</strong>
-
-            </div>
-
-            <div class="profile-item">
-
-                <label>Email Address</label>
-
-                <strong>{{ request.user.email }}</strong>
-
-            </div>
-
-            <div class="profile-item">
-
-                <label>Phone Number</label>
-
-                <strong>+91 {{ request.user.phone }}</strong>
-
-            </div>
-
-            <div class="profile-item">
-
-                <label>Role</label>
-
-                <strong>{{ request.user.role|title }}</strong>
-
-            </div>
-
-            <div class="profile-item">
-
-                <label>Date Joined</label>
-
-                <strong>{{ request.user.date_joined|date:"d M Y" }}</strong>
-
-            </div>
-
-            <div class="profile-item">
-
-                <label>Last Login</label>
-
-                <strong>{{ request.user.last_login|date:"d M Y H:i" }}</strong>
-
-            </div>
-
-        </div>
-
-
-        <!-- ================= ACTION ================= -->
-
-        <div class="profile-actions">
-
-            <button type="submit" class="profile-btn">
-
-                <i class="fa-solid fa-user-pen"></i>
-
-                Save Profile
+                    Save Changes
 
                 </button>
-                            
 
-        </div>
+            </div>
+
+        </form>
 
     </div>
 

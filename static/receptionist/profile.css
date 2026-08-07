@@ -289,7 +289,26 @@
 
 }
 
+.profile-item input,
+.profile-item textarea,
+.profile-item select {
+    width:100%;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid #DCE8E2;
+    background:#FFFFFF;
+    font-size:15px;
+    color:#1E293B;
+    transition:.3s;
+}
 
+.profile-item input:focus,
+.profile-item textarea:focus,
+.profile-item select:focus {
+    outline:none;
+    border-color:#2E8B57;
+    box-shadow:0 0 0 4px rgba(46,139,87,.12);
+}
 /*========================================
             ACTIONS
 ========================================*/
@@ -544,5 +563,20 @@
         font-size:14px;
 
     }
+
+}
+.success-message{
+
+    background:#EAF8F1;
+
+    color:#2E8B57;
+
+    border:1px solid #B7E4C7;
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    font-weight:600;
 
 }

@@ -17,6 +17,8 @@ from notifications.email_utils import (
     send_appointment_email,
     send_appointment_cancelled_email,
 )
+from django.contrib import messages
+from .forms import ReceptionistProfileForm
 def dashboard(request):
 
     pending_requests = AppointmentRequest.objects.filter(
@@ -442,9 +444,38 @@ def settings(request):
 @login_required
 def profile(request):
 
+    if request.method == "POST":
+
+        form = ReceptionistProfileForm(
+            request.POST,
+            instance=request.user
+        )
+
+        if form.is_valid():
+
+            form.save()
+
+            messages.success(
+                 request,
+                "Profile updated successfully."
+                )
+
+            return redirect(
+                "receptionist_profile"
+            )
+
+    else:
+
+        form = ReceptionistProfileForm(
+            instance=request.user
+        )
+
     return render(
         request,
-        "receptionist/profile.html"
+        "receptionist/profile.html",
+        {
+            "form": form
+        }
     )
 
 @login_required

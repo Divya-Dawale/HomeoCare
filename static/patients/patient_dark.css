@@ -294,3 +294,12 @@ body.dark-theme .status-cancelled{
     border-color:#442929;
 
 }
+body.dark-theme .status-consulting{
+
+    background:#2A2416;
+
+    color:#D6A94C;
+
+    border:1px solid #3B3220;
+
+}

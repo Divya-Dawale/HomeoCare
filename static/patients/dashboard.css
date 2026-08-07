@@ -268,7 +268,10 @@ td:nth-child(4){
     color:#CA8A04;
 
 }
-
+.status-consulting{
+    background:var(--info-bg);
+    color:var(--info-text);
+}
 .status-cancelled{
 
     background:#FEE2E2;

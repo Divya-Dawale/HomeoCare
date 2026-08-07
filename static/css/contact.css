@@ -135,7 +135,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    background:linear-gradient(135deg,#365F57,#5D8A82);
+    background: linear-gradient(135deg, #14c3a1, #1c6a5d);
     color:#fff;
     font-size:26px;
     transition:.4s;
