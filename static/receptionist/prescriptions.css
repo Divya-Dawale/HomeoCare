@@ -938,40 +938,81 @@
             RESPONSIVE
 ========================================*/
 
-@media(max-width:900px){
+/*========================================*
+* SMALL MOBILE
+*========================================*/
 
-    .details-grid{
+@media(max-width:640px){
 
-        grid-template-columns:1fr;
-
-    }
-
-    .date-info{
-
+    .card-top{
         flex-direction:column;
-
-        gap:14px;
-
+        align-items:flex-start;
+        gap:18px;
     }
+
+    .patient-info{
+        width:100%;
+    }
+
+    .medicine-card{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .patient-avatar{
+        width:52px;
+        height:52px;
+        font-size:20px;
+    }
+
+    /* ================================
+       SMALL PHONE SEARCH
+       ================================ */
 
     .toolbar-card{
-
-        flex-direction:column;
-
-        align-items:stretch;
-
+        padding:18px;
+        border-radius:20px;
     }
 
     .search-form{
+        width:100%;
+        flex-direction:row;
+        align-items:center;
+        gap:10px;
+    }
 
-        flex-direction:column;
+    .search-box{
+        flex:1;
+        min-width:0;
 
+        height:52px;
+
+        padding:0 13px;
+
+        border-radius:16px;
+    }
+
+    .search-box i{
+        font-size:16px;
+        flex-shrink:0;
+    }
+
+    .search-box input{
+        min-width:0;
+        font-size:13px;
     }
 
     .search-form button{
+        flex:0 0 95px;
 
-        width:100%;
+        width:95px;
+        height:52px;
 
+        padding:0 8px;
+
+        border-radius:16px;
+
+        font-size:13px;
     }
 
 }

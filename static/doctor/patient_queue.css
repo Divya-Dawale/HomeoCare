@@ -103,9 +103,14 @@
 .table-card{
     background:#FFFFFF;
     border-radius:24px;
-    overflow:hidden;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
     border:1px solid #E6F0EB;
     box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+    width:100%;
 }
 
 
@@ -354,3 +359,62 @@
     box-shadow:0 18px 35px rgba(0,0,0,.08);
 }
 
+/*========================================*
+* MOBILE QUEUE TABLE
+*========================================*/
+
+@media (max-width:768px){
+
+    .queue-wrapper{
+        padding:15px;
+        width:100%;
+    }
+
+    .queue-header h2{
+        font-size:24px;
+    }
+
+    .queue-header p{
+        font-size:14px;
+    }
+
+    /* Keep the three statistic cards usable */
+
+    .stats-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    /* Filter buttons can scroll horizontally */
+
+    .filter-bar{
+        overflow-x:auto;
+        padding-bottom:5px;
+        flex-wrap:nowrap;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .filter-bar a{
+        flex-shrink:0;
+        white-space:nowrap;
+    }
+
+    /* TABLE */
+
+    .table-card{
+        width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .table-card table{
+        min-width:850px;
+    }
+
+    .table-card th,
+    .table-card td{
+        white-space:nowrap;
+    }
+
+}

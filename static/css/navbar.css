@@ -181,6 +181,11 @@
     border-radius:20px;
 
 }
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
 
 /* ==========================================
            RESPONSIVE NAVBAR
@@ -355,6 +360,7 @@
 }
 
 @media(max-width:980px){
+
 
     .mobile-nav-action {
         display: block;

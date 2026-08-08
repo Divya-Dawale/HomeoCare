@@ -834,3 +834,246 @@
     }
 
 }
+/*======================================================*
+* RECEIPT - DARK MODE
+*======================================================*/
+
+body.dark-theme .receipt-card{
+
+    background:#1E293B;
+
+    color:#F8FAFC;
+
+    border-color:#334155;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+
+}
+
+
+/*======================================================*
+* RECEIPT HEADER
+*======================================================*/
+
+body.dark-theme .receipt-card .receipt-header{
+
+    border-bottom-color:#334155;
+
+}
+
+body.dark-theme .receipt-card .clinic-info h1{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .receipt-card .clinic-info p{
+
+    color:#94A3B8;
+
+}
+
+body.dark-theme .receipt-card .receipt-number span{
+
+    color:#94A3B8;
+
+}
+
+body.dark-theme .receipt-card .receipt-number strong{
+
+    color:#5BC0BE;
+
+}
+
+
+/*======================================================*
+* RECEIPT TITLE
+*======================================================*/
+
+body.dark-theme .receipt-card .receipt-title h2{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .receipt-card .receipt-title p{
+
+    color:#94A3B8;
+
+}
+
+
+/*======================================================*
+* INFORMATION SECTIONS
+*======================================================*/
+
+body.dark-theme .receipt-card .info-section{
+
+    background:#273548;
+
+    border-color:#3B4A5C;
+
+}
+
+body.dark-theme .receipt-card .info-section h3{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .receipt-card .info-grid > div{
+
+    background:#273548;
+
+    border-color:#475569;
+
+}
+
+body.dark-theme .receipt-card .info-grid label{
+
+    color:#94A3B8;
+
+}
+
+body.dark-theme .receipt-card .info-grid strong{
+
+    color:#F8FAFC;
+
+}
+
+
+/*======================================================*
+* PAYMENT SUMMARY
+*======================================================*/
+
+body.dark-theme .receipt-card .payment-summary{
+
+    background:#273548;
+
+    border-color:#3B4A5C;
+
+}
+
+body.dark-theme .receipt-card .payment-summary h3{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-theme .receipt-card .payment-summary table{
+
+    background:#273548;
+
+}
+
+body.dark-theme .receipt-card .payment-summary td{
+
+    color:#CBD5E1;
+
+    border-color:#3B4A5C;
+
+}
+
+
+/* Total row */
+
+body.dark-theme .receipt-card .payment-summary .total-row{
+
+    background:#173B2A;
+
+}
+
+body.dark-theme .receipt-card .payment-summary .total-row td{
+
+    color:#4ADE80;
+
+}
+
+
+/*======================================================*
+* RECEIPT FOOTER
+*======================================================*/
+
+body.dark-theme .receipt-card .receipt-footer{
+
+    border-top-color:#334155;
+
+}
+
+body.dark-theme .receipt-card .receipt-footer > div{
+
+    background:#273548;
+
+    border-color:#3B4A5C;
+
+}
+
+body.dark-theme .receipt-card .receipt-footer label{
+
+    color:#94A3B8;
+
+}
+
+body.dark-theme .receipt-card .receipt-footer strong{
+
+    color:#F8FAFC;
+
+}
+
+
+/*======================================================*
+* THANK YOU
+*======================================================*/
+
+body.dark-theme .receipt-card .thank-you{
+
+    background:#173B2A;
+
+    border-color:#285C42;
+
+}
+
+body.dark-theme .receipt-card .thank-you i{
+
+    color:#5BC0BE;
+
+}
+
+body.dark-theme .receipt-card .thank-you p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-theme .receipt-card .thank-you strong{
+
+    color:#5BC0BE;
+
+}
+
+
+/*======================================================*
+* BUTTONS
+*======================================================*/
+
+body.dark-theme .receipt-card .print-btn{
+
+    color:#FFFFFF;
+
+}
+
+body.dark-theme .receipt-card .back-btn{
+
+    background:#273548;
+
+    color:#F8FAFC;
+
+    border-color:#475569;
+
+}
+
+body.dark-theme .receipt-card .back-btn:hover{
+
+    background:#334155;
+
+}

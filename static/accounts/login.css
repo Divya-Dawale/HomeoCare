@@ -11,7 +11,8 @@
 body{
     font-family:'Segoe UI',sans-serif;
     background:#F4FBF8;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 /* ===========================
@@ -548,64 +549,224 @@ h2{
     text-decoration:underline;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
 
-@media(max-width:992px){
+/* =========================================================
+                    RESPONSIVE LOGIN
+========================================================= */
 
-.container{
+/* ---------- TABLET / MOBILE ---------- */
 
-    flex-direction:column;
+@media (max-width: 992px){
+
+    body{
+        overflow-y:auto;
+        overflow-x:hidden;
+        min-height:100vh;
+    }
+
+    .container{
+        width:100%;
+        min-height:100vh;
+        height:auto;
+
+        display:flex;
+        flex-direction:column;
+    }
+
+    /* Hide image section */
+    .left-side{
+        display:none;
+    }
+
+    /* Login area */
+    .right-side{
+
+        width:100%;
+        min-height:100vh;
+
+        display:flex;
+
+        justify-content:center;
+        align-items:center;
+
+        padding:30px 20px;
+
+        background:#F9FFFC;
+
+        position:relative;
+    }
+
+    /* Background glow */
+    .right-side::before{
+
+        width:300px;
+        height:300px;
+
+        top:-100px;
+        right:-100px;
+
+        filter:blur(100px);
+    }
+
+    /* Login card */
+    .login-card{
+
+        width:100%;
+        max-width:430px;
+
+        padding:30px 28px;
+
+        margin:auto;
+
+        position:relative;
+        z-index:2;
+    }
+
 }
 
-.left-side{
 
-    display:none;
+/* =========================================================
+                    SMALL MOBILE
+========================================================= */
+
+@media (max-width:576px){
+
+    .right-side{
+
+        min-height:100vh;
+
+        padding:25px 16px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .login-card{
+
+        width:100%;
+        max-width:400px;
+
+        padding:26px 22px;
+
+        border-radius:24px;
+    }
+
+    .logo-circle{
+
+        width:68px;
+        height:68px;
+
+        font-size:28px;
+
+        margin-bottom:14px;
+    }
+
+    h1{
+
+        font-size:30px;
+    }
+
+    h2{
+
+        font-size:21px;
+    }
+
+    .subtitle{
+
+        font-size:13px;
+
+        margin-top:10px;
+        margin-bottom:25px;
+
+        line-height:1.5;
+    }
+
+    .input-box{
+
+        height:50px;
+
+        padding:0 15px;
+
+        margin-bottom:12px;
+    }
+
+    .input-box input{
+
+        font-size:15px;
+    }
+
+    .login-btn{
+
+        height:52px;
+
+        font-size:16px;
+    }
+
+    .create-btn{
+
+        height:52px;
+
+        padding:14px;
+
+        font-size:15px;
+    }
+
 }
 
-.right-side{
 
-    width:100%;
+/* =========================================================
+                    VERY SMALL PHONES
+========================================================= */
+
+@media (max-width:380px){
+
+    .right-side{
+
+        padding:20px 12px;
+    }
+
+    .login-card{
+
+        padding:22px 18px;
+
+        border-radius:22px;
+    }
+
+    .logo-circle{
+
+        width:60px;
+        height:60px;
+
+        font-size:25px;
+    }
+
+    h1{
+
+        font-size:27px;
+    }
+
+    h2{
+
+        font-size:19px;
+    }
+
+    .subtitle{
+
+        font-size:12px;
+
+        margin-bottom:20px;
+    }
+
+    .input-box{
+
+        height:48px;
+    }
+
+    .login-btn,
+    .create-btn{
+
+        height:50px;
+    }
+
 }
 
-.login-card{
-
-    width:90%;
-
-    max-width:450px;
-
-    padding:35px;
-}
-}
-
-@media(max-width:500px){
-
-.login-card{
-
-    padding:28px;
-}
-
-h1{
-
-    font-size:34px;
-}
-
-h2{
-
-    font-size:24px;
-}
-
-.subtitle{
-
-    font-size:14px;
-}
-
-.logo-circle{
-
-    width:75px;
-    height:75px;
-
-    font-size:32px;
-}
-}

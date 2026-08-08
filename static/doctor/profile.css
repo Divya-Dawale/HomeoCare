@@ -474,36 +474,6 @@
 ========================================*/
 
 
-.profile-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:-120%;
-
-    left:-60%;
-
-    width:40%;
-
-    height:280%;
-
-
-    background:rgba(255,255,255,.35);
-
-    transform:rotate(25deg);
-
-    transition:.8s;
-
-}
-
-
-.profile-card:hover::after{
-
-    left:130%;
-
-}
-
 
 
 .profile-card:hover .profile-avatar{

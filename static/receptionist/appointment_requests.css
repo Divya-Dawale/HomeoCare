@@ -80,10 +80,11 @@
 
     box-shadow:0 12px 35px rgba(0,0,0,.05);
 
-    overflow:hidden;
+    overflow-x:auto;
+    overflow-y:hidden;
 
+    width:100%;
 }
-
 
 
 /*======================================================
@@ -645,5 +646,46 @@ body.dark-theme .empty-icon i{
 body.dark-theme .empty-row:hover{
 
     background:var(--surface) !important;
+
+}
+
+/* ======================================================
+   MOBILE APPOINTMENT TABLE
+====================================================== */
+
+@media (max-width: 768px){
+
+    .appointment-page{
+        padding:15px;
+        width:100%;
+    }
+
+    .appointment-header{
+        margin-bottom:20px;
+    }
+
+    .appointment-header h2{
+        font-size:23px;
+    }
+
+    .appointment-header p{
+        font-size:14px;
+    }
+
+    .appointment-table-card{
+        width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .appointment-table{
+        min-width:900px;
+    }
+
+    .appointment-table th,
+    .appointment-table td{
+        white-space:nowrap;
+    }
 
 }

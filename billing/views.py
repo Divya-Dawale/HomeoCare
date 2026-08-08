@@ -30,6 +30,10 @@ def billing_list(request):
 
     doctor_settings = DoctorSettings.objects.first()
 
+    # -------------------------------
+    # FEES
+    # -------------------------------
+
     if doctor_settings:
 
         consultation_fee = (
@@ -46,10 +50,20 @@ def billing_list(request):
 
         weekly_medicine_fee = Decimal("200")
 
+
+    # -------------------------------
+    # PRESCRIPTIONS READY FOR BILLING
+    # -------------------------------
+
     prescriptions = Prescription.objects.filter(
         status="given",
         billing_done=False
     ).order_by("-created_at")
+
+
+    # -------------------------------
+    # GENERATE BILL
+    # -------------------------------
 
     if request.method == "POST":
 
@@ -67,17 +81,31 @@ def billing_list(request):
         )
 
         medicine_fee = round(
-            (weekly_medicine_fee / Decimal("7")) * duration_days
+            (weekly_medicine_fee / Decimal("7"))
+            * duration_days
         )
+
+
+        # -------------------------------
+        # DISCOUNT
+        # -------------------------------
 
         if duration_days >= 60:
 
-            medicine_fee = medicine_fee * Decimal("0.85")
+            medicine_fee = (
+                medicine_fee * Decimal("0.85")
+            )
 
         elif duration_days >= 30:
 
-            medicine_fee = medicine_fee * Decimal("0.90")
+            medicine_fee = (
+                medicine_fee * Decimal("0.90")
+            )
 
+
+        # -------------------------------
+        # FINAL AMOUNT
+        # -------------------------------
 
         final_amount = (
             consultation_fee + medicine_fee
@@ -88,6 +116,10 @@ def billing_list(request):
             "payment_method"
         )
 
+
+        # -------------------------------
+        # CREATE BILL
+        # -------------------------------
 
         bill = Bill.objects.create(
 
@@ -108,6 +140,10 @@ def billing_list(request):
         )
 
 
+        # -------------------------------
+        # MARK BILLING COMPLETE
+        # -------------------------------
+
         prescription.billing_done = True
         prescription.save()
 
@@ -117,7 +153,21 @@ def billing_list(request):
             bill_id=bill.id
         )
 
+
+    # -------------------------------
+    # CALCULATE PRICES FOR DISPLAY
+    # -------------------------------
+
     for prescription in prescriptions:
+
+        duration_days = get_duration_days(
+            prescription.duration
+        )
+
+        medicine_fee = round(
+            (weekly_medicine_fee / Decimal("7"))
+            * duration_days
+        )
 
 
         if duration_days >= 60:
@@ -132,6 +182,11 @@ def billing_list(request):
                 medicine_fee * Decimal("0.90")
             )
 
+
+        # These are ONLY temporary values
+        # for displaying them in the template.
+        # No database save happens here.
+
         prescription.consultation_fee = (
             consultation_fee
         )
@@ -141,20 +196,21 @@ def billing_list(request):
         )
 
         prescription.total_amount = (
-            consultation_fee +
-            medicine_fee
+            consultation_fee + medicine_fee
         )
+
+
+    # -------------------------------
+    # DISPLAY BILLING PAGE
+    # -------------------------------
+
     return render(
         request,
         "billing/billing_list.html",
         {
             "prescriptions": prescriptions,
-        
         }
     )
-    
-        
-
 
 def receipt(
     request,

@@ -1180,3 +1180,418 @@ body.dark-theme .patient-id{
 .history-dropdown:last-child{
     margin-bottom:35px;
 }
+/*========================================================*
+ * DOCTOR CONSULTATION - MOBILE RESPONSIVE
+ *========================================================*/
+
+@media (max-width: 768px){
+
+    /*----------------------------------------*
+     * MAIN PAGE
+     *----------------------------------------*/
+
+    .consultation-page{
+        width:100%;
+        max-width:100%;
+        padding:20px 16px;
+        gap:22px;
+        box-sizing:border-box;
+        overflow-x:hidden;
+    }
+
+
+    /*----------------------------------------*
+     * PAGE HEADER
+     *----------------------------------------*/
+
+    .consultation-header{
+        width:100%;
+    }
+
+    .consultation-header h2{
+        font-size:27px;
+        line-height:1.25;
+    }
+
+    .consultation-header p{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+
+    /*----------------------------------------*
+     * COMMON CARDS
+     *----------------------------------------*/
+
+    .section-card,
+    .patient-summary-card,
+    .complete-card{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+    }
+
+    .section-card{
+        padding:20px;
+        margin-bottom:25px;
+    }
+
+    .patient-summary-card{
+        padding:20px;
+    }
+
+
+    /*----------------------------------------*
+     * PATIENT PROFILE
+     *----------------------------------------*/
+
+    .patient-profile{
+        flex-wrap:wrap;
+        gap:14px;
+        margin-bottom:22px;
+    }
+
+    .patient-avatar{
+        width:62px;
+        height:62px;
+        font-size:24px;
+        flex-shrink:0;
+    }
+
+    .patient-profile h3{
+        font-size:21px;
+        word-break:break-word;
+    }
+
+
+    /*----------------------------------------*
+     * PATIENT SUMMARY
+     * IMPORTANT: FIXES 3-COLUMN OVERFLOW
+     *----------------------------------------*/
+
+    .summary-grid{
+        grid-template-columns:1fr;
+        width:100%;
+        gap:14px;
+    }
+
+    .summary-item{
+        width:100%;
+        min-width:0;
+        box-sizing:border-box;
+        padding:17px;
+    }
+
+    .summary-item strong{
+        font-size:16px;
+        word-break:break-word;
+    }
+
+    .waiting-badge,
+    .completed-badge{
+        max-width:100%;
+        box-sizing:border-box;
+    }
+
+
+    /*----------------------------------------*
+     * SECTION HEADERS
+     *----------------------------------------*/
+
+    .section-header{
+        align-items:flex-start;
+        margin-bottom:18px;
+    }
+
+    .section-header h3{
+        font-size:21px;
+        line-height:1.3;
+    }
+
+    .section-header p{
+        font-size:13px;
+        line-height:1.6;
+    }
+
+
+    /*----------------------------------------*
+     * MEDICAL HISTORY DROPDOWNS
+     *----------------------------------------*/
+
+    .history-dropdown{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+        margin-bottom:15px;
+    }
+
+    .history-dropdown summary{
+        padding:15px;
+        gap:10px;
+    }
+
+    .dropdown-title{
+        min-width:0;
+        gap:10px;
+    }
+
+    .dropdown-title span{
+        font-size:14px;
+        line-height:1.4;
+    }
+
+    .dropdown-title i{
+        width:40px;
+        height:40px;
+        flex-shrink:0;
+        font-size:16px;
+    }
+
+
+    /*----------------------------------------*
+     * HISTORY CONTENT
+     *----------------------------------------*/
+
+    .history-content,
+    .details-grid,
+    .info-grid{
+        grid-template-columns:1fr;
+        width:100%;
+        box-sizing:border-box;
+        padding:14px;
+        gap:12px;
+    }
+
+    .history-row,
+    .detail-card,
+    .info-card{
+        width:100%;
+        min-width:0;
+        box-sizing:border-box;
+        padding:16px;
+    }
+
+    .detail-card.full{
+        grid-column:auto;
+    }
+
+    .detail-card p,
+    .info-card strong,
+    .history-row strong{
+        word-break:break-word;
+        overflow-wrap:anywhere;
+    }
+
+
+    /*----------------------------------------*
+     * FORM
+     *----------------------------------------*/
+
+    .form-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .section-card form p{
+        margin-bottom:16px;
+    }
+
+    .section-card input,
+    .section-card textarea,
+    .section-card select{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+        font-size:14px;
+        padding:13px 14px;
+    }
+
+    .section-card textarea{
+        min-height:120px;
+    }
+
+
+    /*----------------------------------------*
+     * SAVE BUTTON
+     *----------------------------------------*/
+
+    .save-btn{
+        width:100%;
+        min-height:54px;
+        padding:14px 20px;
+    }
+
+
+    /*----------------------------------------*
+     * PREVIOUS VISITS
+     *----------------------------------------*/
+
+    .visit-card{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+        padding:18px;
+    }
+
+    .visit-card-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .visit-card-body{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .visit-item{
+        width:100%;
+        min-width:0;
+        box-sizing:border-box;
+        padding:16px;
+    }
+
+    .visit-item.full{
+        grid-column:auto;
+    }
+
+    .visit-item p{
+        overflow-wrap:anywhere;
+        word-break:break-word;
+    }
+
+
+    /*----------------------------------------*
+     * PREVIOUS PRESCRIPTIONS
+     *----------------------------------------*/
+
+    .prescription-card{
+        width:100%;
+        max-width:100%;
+        box-sizing:border-box;
+        padding:18px;
+    }
+
+    .prescription-header{
+        margin-bottom:18px;
+    }
+
+    .medicine-name{
+        min-width:0;
+    }
+
+    .medicine-name h4{
+        font-size:17px;
+        word-break:break-word;
+    }
+
+    .medicine-name span{
+        font-size:12px;
+    }
+
+    .medicine-icon{
+        width:52px;
+        height:52px;
+        flex-shrink:0;
+    }
+
+    .prescription-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .prescription-info{
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+    }
+
+    .instruction-card{
+        width:100%;
+        box-sizing:border-box;
+        padding:16px;
+    }
+
+    .instruction-card p{
+        overflow-wrap:anywhere;
+        word-break:break-word;
+    }
+
+
+    /*----------------------------------------*
+     * COMPLETE CONSULTATION
+     *----------------------------------------*/
+
+    .complete-card{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        padding:20px;
+        margin:25px 0;
+    }
+
+    .complete-icon{
+        width:60px;
+        height:60px;
+        border-radius:18px;
+        font-size:25px;
+    }
+
+    .complete-content{
+        width:100%;
+    }
+
+    .complete-content h3{
+        font-size:19px;
+    }
+
+    .complete-content p{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .complete-card form{
+        width:100%;
+    }
+
+    .complete-btn{
+        width:100%;
+        min-width:0;
+        height:54px;
+    }
+
+
+    /*----------------------------------------*
+     * EMPTY STATE
+     *----------------------------------------*/
+
+    .empty-state{
+        padding:45px 15px;
+    }
+
+    .empty-state h4{
+        font-size:20px;
+    }
+
+    .empty-state p{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .action-btn{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+
+    /*----------------------------------------*
+     * PREVENT HORIZONTAL OVERFLOW
+     *----------------------------------------*/
+
+    .consultation-page *,
+    .consultation-page *::before,
+    .consultation-page *::after{
+        box-sizing:border-box;
+    }
+
+}

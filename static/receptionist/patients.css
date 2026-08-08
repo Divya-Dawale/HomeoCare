@@ -598,45 +598,141 @@
             RESPONSIVE
 ========================================*/
 
+/*========================================*
+* RESPONSIVE
+*========================================*/
 
 @media(max-width:900px){
 
-
+    /* Search stays in one row */
     .patient-search-form{
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-    }
-
-
-
-    .patient-search-form button{
-
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        gap:12px;
         width:100%;
-
     }
 
+    /* Input takes remaining space */
+    .search-input{
+        flex:1;
+        min-width:0;
+        height:54px;
+        padding:0 16px;
+    }
 
+    .search-input input{
+        min-width:0;
+        width:100%;
+        font-size:15px;
+    }
 
+    .search-input i{
+        flex-shrink:0;
+    }
+
+    /* Search button stays beside input */
+    .patient-search-form button{
+        flex:0 0 110px;
+        width:110px;
+        height:54px;
+        padding:0 12px;
+        border-radius:16px;
+        font-size:14px;
+    }
+
+    /* Keep table horizontally scrollable */
     .patients-table-card{
-
         overflow-x:auto;
-
     }
-
-
 
     .patients-table{
-
         min-width:750px;
-
     }
-
 
 }
 
+
+@media(max-width:600px){
+
+    .patients-page{
+        padding:18px;
+    }
+
+    .patients-header h2{
+        font-size:24px;
+    }
+
+    .patient-search-card{
+        padding:18px;
+        border-radius:18px;
+    }
+
+    .patient-search-form{
+        gap:10px;
+    }
+
+    .search-input{
+        height:54px;
+        padding:0 14px;
+    }
+
+    .search-input input{
+        font-size:14px;
+    }
+
+    .search-input input::placeholder{
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .patient-search-form button{
+        flex:0 0 105px;
+        width:105px;
+        height:54px;
+        padding:0 10px;
+        font-size:14px;
+    }
+
+}
+
+
+@media(max-width:400px){
+
+    .patient-search-card{
+        padding:15px;
+    }
+
+    .patient-search-form{
+        gap:8px;
+    }
+
+    .search-input{
+        padding:0 11px;
+    }
+
+    .search-input i{
+        font-size:14px;
+        margin-right:0;
+    }
+
+    .search-input input{
+        font-size:13px;
+    }
+
+    .patient-search-form button{
+        flex:0 0 92px;
+        width:92px;
+        font-size:13px;
+        gap:6px;
+    }
+
+}
+
+
+
+    
 
 
 @media(max-width:600px){
