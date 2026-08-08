@@ -410,3 +410,19 @@ if(bell && dropdown){
     );
 
 }
+// ===================================================
+//              MOBILE SIDEBAR
+// ===================================================
+
+const sidebar = document.querySelector(".sidebar");
+const menuBtn = document.getElementById("menuBtn");
+
+if (menuBtn && sidebar) {
+
+    menuBtn.addEventListener("click", function () {
+
+        sidebar.classList.toggle("show");
+
+    });
+
+}

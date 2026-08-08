@@ -79,14 +79,30 @@ if(darkBtn){
 // =========================================
 
 const sidebar = document.querySelector(".sidebar");
-
 const menuBtn = document.getElementById("menuBtn");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-if(menuBtn){
+if(menuBtn && sidebar){
 
-    menuBtn.addEventListener("click",()=>{
+    menuBtn.addEventListener("click", () => {
 
         sidebar.classList.toggle("show");
+
+        if(sidebarOverlay){
+            sidebarOverlay.classList.toggle("show");
+        }
+
+    });
+
+}
+
+
+if(sidebarOverlay){
+
+    sidebarOverlay.addEventListener("click", () => {
+
+        sidebar.classList.remove("show");
+        sidebarOverlay.classList.remove("show");
 
     });
 

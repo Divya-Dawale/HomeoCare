@@ -237,6 +237,8 @@
 
     position:relative;
 
+    z-index:10000;
+
 }
 .notification-dropdown::before{
 
@@ -293,7 +295,7 @@
 
     transition:.25s ease;
 
-    z-index:999;
+    z-index:10001;
 
 }
 
@@ -649,4 +651,286 @@
 
     }
 
+}
+/*========================================
+        NOTIFICATION DARK MODE
+========================================*/
+
+/* Notification dropdown */
+body.dark-theme .notification-dropdown{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+}
+
+
+/* Dropdown header */
+body.dark-theme .dropdown-header{
+
+    background:#1E293B;
+
+    color:#F8FAFC;
+
+    border-bottom-color:#334155;
+
+}
+
+
+/* Notification total badge */
+body.dark-theme .notification-total{
+
+    background:#173126;
+
+    color:#7EE0A5;
+
+}
+
+
+/* Notification item */
+body.dark-theme .notification-item{
+
+    background:#1E293B;
+
+    border-bottom-color:#334155;
+
+}
+
+
+/* Hover */
+body.dark-theme .notification-item:hover{
+
+    background:#162032;
+
+}
+
+
+/* Notification icon */
+body.dark-theme .notification-icon{
+
+    background:#173126;
+
+    color:#7EE0A5;
+
+}
+
+
+/* Notification message */
+body.dark-theme .notification-message{
+
+    color:#F8FAFC;
+
+}
+
+
+/* Notification time */
+body.dark-theme .notification-time{
+
+    color:#94A3B8;
+
+}
+
+
+/* Empty notification */
+body.dark-theme .empty-notification{
+
+    color:#94A3B8;
+
+}
+
+
+/* Empty notification icon */
+body.dark-theme .empty-notification i{
+    background:#173126 !important;
+    color:#7EE0A5 !important;
+}
+
+
+/*========================================
+            TOAST NOTIFICATION
+========================================*/
+
+body.dark-theme .notification-toast{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.4);
+
+}
+
+
+/* Toast header */
+body.dark-theme .toast-header{
+
+    border-bottom-color:#334155;
+
+}
+
+
+/* Toast title */
+body.dark-theme .toast-title{
+
+    color:#F8FAFC;
+
+}
+
+
+/* Toast title bell */
+body.dark-theme .toast-title i{
+
+    color:#7EE0A5;
+
+}
+
+
+/* Toast time */
+body.dark-theme .toast-time{
+
+    color:#94A3B8;
+
+}
+
+
+/* Toast close button */
+body.dark-theme .toast-close{
+
+    color:#94A3B8;
+
+}
+
+
+/* Close button hover */
+body.dark-theme .toast-close:hover{
+
+    color:#F8FAFC;
+
+    background:#334155;
+
+}
+
+
+/* Toast message */
+body.dark-theme .toast-message{
+
+    color:#CBD5E1;
+
+}
+
+
+/* Toast progress */
+body.dark-theme .toast-progress{
+
+    background:linear-gradient(
+        90deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+}
+/*========================================
+    FIX DROPDOWN NOTIFICATION TEXT
+========================================*/
+
+body.dark-theme .notification-dropdown .notification-message{
+    color:#F8FAFC !important;
+}
+
+body.dark-theme .notification-dropdown .notification-content{
+    color:#F8FAFC !important;
+}
+
+body.dark-theme .notification-dropdown .notification-time{
+    color:#94A3B8 !important;
+}/*========================================
+        NOTIFICATION DARK MODE
+========================================*/
+
+/* Dropdown background */
+body.dark-theme .notification-dropdown {
+    background:#1E293B !important;
+    border-color:#334155 !important;
+    box-shadow:0 20px 45px rgba(0,0,0,.35) !important;
+}
+
+
+/* Dropdown header */
+body.dark-theme .notification-dropdown .dropdown-header {
+    background:#1E293B !important;
+    color:#F8FAFC !important;
+    border-bottom-color:#334155 !important;
+}
+
+
+/* Header notification count */
+body.dark-theme .notification-dropdown .notification-total {
+    color:#7EE0A5 !important;
+}
+
+
+/* Notification list */
+body.dark-theme .notification-dropdown .notification-list {
+    background:#1E293B !important;
+}
+
+
+/* Individual notification */
+body.dark-theme .notification-dropdown .notification-item {
+    background:#1E293B !important;
+    border-bottom-color:#334155 !important;
+}
+
+
+/* Notification message */
+body.dark-theme .notification-dropdown .notification-message {
+    color:#F8FAFC !important;
+}
+
+
+/* Notification content */
+body.dark-theme .notification-dropdown .notification-content {
+    color:#F8FAFC !important;
+}
+
+
+/* Notification time */
+body.dark-theme .notification-dropdown .notification-time {
+    color:#94A3B8 !important;
+}
+
+
+/* Notification icon */
+body.dark-theme .notification-dropdown .notification-icon {
+    background:#173126 !important;
+    color:#7EE0A5 !important;
+}
+
+
+/* Empty notification area */
+body.dark-theme .notification-dropdown .empty-notification {
+    background:#1E293B !important;
+    color:#94A3B8 !important;
+}
+
+
+/* Empty notification icon */
+body.dark-theme .notification-dropdown .empty-notification i {
+    color:#64748B !important;
+}
+
+
+/* Empty notification paragraph */
+body.dark-theme .notification-dropdown .empty-notification p {
+    color:#94A3B8 !important;
+}
+/*========================================
+    NOTIFICATION DROPDOWN HEADER DARK MODE
+========================================*/
+
+body.dark-theme .notification-dropdown .dropdown-header span:first-child{
+    color:#F8FAFC !important;
 }

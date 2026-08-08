@@ -1014,95 +1014,97 @@ display:inline-block;
 
 @media(max-width:1100px){
 
-.services-grid{
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-grid-template-columns:repeat(2,1fr);
+    .process-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-}
+    .doctor-container{
+        grid-template-columns:1fr;
+        gap:50px;
+        text-align:center;
 
-.process-grid{
+        /* Remove desktop positioning on smaller screens */
+        margin-left:0;
+    }
 
-grid-template-columns:repeat(2,1fr);
+    .doctor-image{
+        width:100%;
+        max-width:450px;
+        margin:0 auto;
+    }
 
-}
-
-.doctor-container{
-
-grid-template-columns:1fr;
-
-gap:50px;
-
-text-align:center;
-
-}
-
-.doctor-features{
-
-justify-content:center;
-
-}
+    .doctor-features{
+        justify-content:center;
+    }
 
 }
 
 @media(max-width:768px){
 
-.services-section,
+    .services-section,
+    .doctor-section,
+    .process-section{
+        padding:80px 0;
+    }
 
-.doctor-section,
+    .services-grid{
+        grid-template-columns:1fr;
+    }
 
-.process-section{
+    .process-grid{
+        grid-template-columns:1fr;
+    }
 
-padding:80px 0;
+    .doctor-content h2{
+        font-size:36px;
+    }
 
-}
+    .doctor-features{
+        grid-template-columns:1fr;
+    }
 
-.services-grid{
+    .service-card{
+        padding:30px;
+    }
 
-grid-template-columns:1fr;
+    .process-card{
+        padding:35px 25px;
+    }
 
-}
+    /* ==============================
+       DOCTOR IMAGE - MOBILE
+    ============================== */
 
-.process-grid{
+   .doctor-image{
+        width:100%;
+        max-width:450px;
+        height:360px;
+        margin:0 auto;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
 
-grid-template-columns:1fr;
+    .doctor-image::before{
+        width:220px;
+        height:220px;
 
-}
+        left:50%;
+        top:50%;
 
-.doctor-content h2{
+        transform:translate(-50%, -50%);
+    }
 
-font-size:36px;
-
-}
-
-.doctor-features{
-
-grid-template-columns:1fr;
-
-}
-
-.service-card{
-
-padding:30px;
-
-}
-
-.process-card{
-
-padding:35px 25px;
-
-}
-
-.doctor-image::before{
-
-width:220px;
-
-height:220px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-}
+    .doctor-image img{
+        width:min(330px, 90%);
+        height:auto;
+        aspect-ratio:1 / 1;
+        object-fit:cover;
+    }
 
 }
 /*=========================================
@@ -1596,7 +1598,7 @@ to{
 
 transform:scale(4);
 
-opacity:0;
+opacity:0;  
 
 }
 
@@ -1627,5 +1629,61 @@ NAVBAR
 box-shadow:0 15px 35px rgba(0,0,0,.08);
 
 backdrop-filter:blur(20px);
+
+}
+/* =========================================
+   MOBILE - CARING BEYOND TREATMENT
+========================================= */
+
+@media (max-width: 768px) {
+
+    .doctor-section .doctor-container {
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 35px;
+    }
+
+    .doctor-section .doctor-image {
+        width: 100%;
+        max-width: 360px;
+        height: 360px;
+
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .doctor-section .doctor-image::before {
+        width: 220px;
+        height: 220px;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+    }
+
+    .doctor-section .doctor-image img {
+        width: 300px;
+        height: 300px;
+
+        max-width: 90%;
+        object-fit: cover;
+    }
+
+    .doctor-section .doctor-content {
+        width: 100%;
+        max-width: 600px;
+
+        text-align: center;
+    }
 
 }

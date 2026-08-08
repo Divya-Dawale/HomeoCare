@@ -725,3 +725,141 @@ text-align:center;
 }
 
 }
+/* =========================================
+        MOBILE WIDTH FIX
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Keep every section inside the phone width */
+    .about-hero,
+    .story-section,
+    .timeline-section,
+    .values-section,
+    .mission-section,
+    .impact-section,
+    .quote-section,
+    .about-cta {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Prevent container content from becoming wider */
+    .about-hero .container,
+    .story-section .container,
+    .timeline-section .container,
+    .values-section .container,
+    .mission-section .container,
+    .impact-section .container,
+    .quote-section .container,
+    .about-cta .container {
+        width: 92%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Hero text */
+    .about-hero h1 {
+        font-size: 38px;
+        overflow-wrap: break-word;
+    }
+
+    .about-hero p {
+        width: 100%;
+        max-width: 100%;
+        font-size: 17px;
+    }
+
+    /* Hero statistics */
+    .hero-highlights {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .hero-highlights div {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* Story */
+    .story-grid {
+        width: 100%;
+    }
+
+    .story-left,
+    .story-right {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .story-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Timeline */
+    .timeline {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .timeline-item,
+    .timeline-item.left,
+    .timeline-item.right {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .timeline-content {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Values */
+    .value-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Mission */
+    .mission-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Impact */
+    .impact-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Quote */
+    .quote-section blockquote {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+    }
+
+    /* CTA */
+    .about-cta .cta-box {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 40px 25px;
+    }
+
+    .about-cta h2 {
+        font-size: 34px;
+        overflow-wrap: break-word;
+    }
+
+}

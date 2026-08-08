@@ -1,22 +1,50 @@
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", function () {
 
-menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-});
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-window.addEventListener("scroll", () => {
+    if (menuBtn && navLinks) {
+
+        menuBtn.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            navLinks.classList.toggle("active");
+
+        });
+
+        navLinks.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        document.addEventListener("click", function (event) {
+
+            if (
+                navLinks.classList.contains("active") &&
+                !navLinks.contains(event.target) &&
+                !menuBtn.contains(event.target)
+            ) {
+                navLinks.classList.remove("active");
+            }
+
+        });
+
+    }
+
 
     const navbar = document.querySelector(".navbar");
 
-    if(window.scrollY > 40){
+    if (navbar) {
 
-        navbar.classList.add("scrolled");
+        window.addEventListener("scroll", function () {
 
-    }
-    else{
+            if (window.scrollY > 40) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
 
-        navbar.classList.remove("scrolled");
+        });
 
     }
 

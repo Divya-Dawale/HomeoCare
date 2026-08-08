@@ -61,6 +61,18 @@
             Patient Status
         </a>
     </li>
+    <li class="mobile-nav-action">
+        <a href="{% url 'contact' %}"
+        class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+            Contact
+        </a>
+    </li>
+
+    <li class="mobile-nav-action">
+        <a href="{% url 'staff_login' %}">
+            Login
+        </a>
+    </li>
 
 </ul>
         <div class="nav-actions">
