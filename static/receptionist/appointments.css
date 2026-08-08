@@ -522,7 +522,18 @@
     color:#2E8B57;
 
 }
-
+.consulting-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    background: #dbeafe;
+    color: #2563eb;
+    white-space: nowrap;
+}
 .cancelled-badge{
 
     background:#FDECEC;
@@ -795,6 +806,14 @@ body.dark-theme .waiting-badge{
     color:#D6A94C;
 
     border:1px solid #3B3220;
+
+}
+
+body.dark-theme .consulting-badge{
+
+    background:#172A3A;
+    color:#60A5FA;
+    border:1px solid #294866;
 
 }
 

@@ -136,6 +136,12 @@ Appointments
                         Waiting
                     </span>
 
+                {% elif appointment.status == "consulting" %}
+
+                    <span class="consulting-badge">
+                        Consulting
+                    </span>
+
                 {% elif appointment.status == "completed" %}
 
                     <span class="completed-badge">

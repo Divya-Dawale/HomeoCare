@@ -140,9 +140,17 @@ href="{% static 'css/appointment.css' %}">
                     </div>
 
                     <div class="form-group">
-                        <label>Age</label>
-                        <input type="number" name="age" required>
-                    </div>
+    <label>Age</label>
+
+    <input
+        type="number"
+        name="age"
+        min="1"
+        max="120"
+        step="1"
+        required
+    >
+</div>
 
                 </div>
 

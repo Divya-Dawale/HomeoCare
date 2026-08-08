@@ -144,7 +144,11 @@ body.dark-theme td{
     color:white;
 
 }
-body.dark-theme input,
+body.dark-theme input{
+    color:white;
+   
+    border-color:#475569;
+}
 body.dark-theme textarea,
 body.dark-theme select{
 

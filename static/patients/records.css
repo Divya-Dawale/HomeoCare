@@ -59,14 +59,14 @@ border:1px solid var(--border);
 
     height:56px;
 
-    
-
     border-radius:16px;
 
     padding:0 18px;
 
-   border:1px solid var(--border);
-background:var(--card);
+    border:1px solid var(--border);
+
+    background: var(--card-hover);
+  
 
 }
 

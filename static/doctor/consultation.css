@@ -143,6 +143,13 @@ body.dark-theme .summary-item strong{
 body.dark-theme .summary-item span{
     color:#CBD5E1;
 }
+body.dark-theme .summary-item .waiting-badge{
+background: #2A2416;
+    color: #D6A94C;
+    border: 1px solid #3B3220;
+}
+
+
 /*========================================
         PATIENT ID BADGE (DARK MODE)
 ========================================*/
@@ -169,6 +176,7 @@ body.dark-theme .patient-id{
 }
 
 .waiting-badge{
+    border:1px solid #efca79;
     background:#FEF9C3;
     color:#CA8A04;
     display:inline-flex;

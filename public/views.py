@@ -62,28 +62,50 @@ def book_appointment(request):
             )
     
     # NEW PATIENT
+    # NEW PATIENT
     if request_type == "new":
 
-        AppointmentRequest.objects.create(
-            request_type="new",
-            full_name=request.POST.get("full_name"),
-            phone=request.POST.get("phone"),
-            email=request.POST.get("email"),
-            age=request.POST.get("age"),
-            gender=request.POST.get("gender"),
-            address=request.POST.get("address"),
-            preferred_date=date.today(),
-            reason_for_visit=request.POST.get("reason_for_visit")
-        )
-        notify_receptionists(
-        f"New appointment request from {request.POST.get('full_name')}."
-        )
+        age = request.POST.get("age")
 
-        print("NEW REQUEST SAVED")
+        # Validate age
+        try:
+            age = int(age)
+        except (TypeError, ValueError):
 
-        success = "Appointment request submitted successfully."
+            error_message = "Please enter a valid age."
 
+        else:
 
+            if age < 1 or age > 120:
+
+                error_message = "Age must be between 1 and 120."
+
+            else:
+
+                AppointmentRequest.objects.create(
+                    request_type="new",
+                    full_name=request.POST.get("full_name"),
+                    phone=request.POST.get("phone"),
+                    email=request.POST.get("email"),
+                    age=age,
+                    gender=request.POST.get("gender"),
+                    address=request.POST.get("address"),
+                    preferred_date=date.today(),
+                    reason_for_visit=request.POST.get(
+                        "reason_for_visit"
+                    )
+                )
+
+                notify_receptionists(
+                    f"New appointment request from "
+                    f"{request.POST.get('full_name')}."
+                )
+
+                print("NEW REQUEST SAVED")
+
+                success = (
+                    "Appointment request submitted successfully."
+                )
 # EXISTING PATIENT
     elif request_type == "existing":
 
