@@ -12,8 +12,8 @@ from django.utils import timezone
 from datetime import date
 from billing.models import Bill
 from datetime import date, timedelta
-from django.db.models import Sum, Max, Min, Avg
-from django.db.models.functions import TruncDate
+from django.db.models import Sum, Max, Min, Avg,Count 
+from django.db.models.functions import TruncDate,Lower
 from django.db.models import Sum
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
@@ -22,14 +22,16 @@ from .forms import DoctorProfileForm
 from notifications.utils import notify_doctors
 from notifications.utils import *
 
+from django.db.models import Count
+
 
 def doctor_dashboard(request):
+
     notifications = request.user.notifications.filter(
         is_read=False,
         created_at__date=timezone.now().date()
     ).order_by("-created_at")
-    
-    
+
     notification_count = notifications.count()
 
     today = timezone.now().date()
@@ -52,21 +54,58 @@ def doctor_dashboard(request):
     total_records = Appointment.objects.filter(
         status="completed"
     ).count()
+
+    # ==========================================
+    # MEDICAL SUMMARY
+    # ==========================================
+
+    # Top 3 most common symptoms / reasons
+    common_symptoms = (
+    Appointment.objects
+    .filter(status="completed")
+    .exclude(reason_for_visit="")
+    .annotate(
+        normalized_symptom=Lower("reason_for_visit")
+    )
+    .values("normalized_symptom")
+    .annotate(count=Count("id"))
+    .order_by("-count")[:3]
+)
+
+    # Top 3 most prescribed medicines
+    common_medicines = (
+    Prescription.objects
+    .annotate(
+        normalized_medicine=Lower("medicine_name")
+    )
+    .values("normalized_medicine")
+    .annotate(count=Count("id"))
+    .order_by("-count")[:3]
+)
+
     context = {
         "waiting_patients": waiting_patients,
         "consulting_patients": consulting_patients,
         "completed_today": completed_today,
         "total_records": total_records,
+
         "notifications": notifications,
         "notification_count": notification_count,
+
+        # Medical Summary
+        "common_symptoms": common_symptoms,
+        "common_medicines": common_medicines,
     }
-    
 
     return render(
         request,
         "doctor/dashboard.html",
         context
-    )  
+    )
+
+
+   
+
 
 
 def patient_queue(request):

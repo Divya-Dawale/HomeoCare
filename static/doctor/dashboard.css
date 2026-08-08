@@ -284,7 +284,35 @@
 /*======================================================
                     OVERVIEW SECTION
 ======================================================*/
+/* Medical Summary Count */
 
+.overview-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.overview-count {
+    margin-left: auto;
+
+    min-width: 32px;
+    height: 28px;
+
+    padding: 0 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: rgba(46, 139, 87, 0.12);
+
+    color: #2E8B57;
+
+    font-size: 13px;
+    font-weight: 700;
+}
 .overview-section{
 
     margin-top:10px;

@@ -182,131 +182,126 @@ Manage today's consultations and patient records.
 
     <div class="overview-section">
 
-        <div class="overview-card">
+       <div class="overview-card">
 
-            <div class="overview-header">
+    <div class="overview-header">
 
-                <div>
+        <div>
 
-                    <span class="section-badge">
+            <span class="section-badge">
+                Clinic Overview
+            </span>
 
-                        Clinic Overview
+            <h2>
+                Today's Medical Summary
+            </h2>
 
-                    </span>
-
-                    <h2>
-
-                        Today's Medical Summary
-
-                    </h2>
-
-                    <p>
-
-                        A quick overview of the most common cases
-                        and medicines prescribed today.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="overview-grid">
-
-                <!-- Symptoms -->
-
-                <div class="overview-box">
-
-                    <div class="overview-title">
-
-                        <i class="fa-solid fa-notes-medical"></i>
-
-                        <h3>
-
-                            Most Common Symptoms
-
-                        </h3>
-
-                    </div>
-
-                    <ul class="overview-list">
-
-                        {% for symptom in common_symptoms %}
-
-                            <li>
-
-                                <i class="fa-solid fa-circle"></i>
-
-                                {{ symptom }}
-
-                            </li>
-
-                        {% empty %}
-
-                            <li class="empty-item">
-
-                                <i class="fa-regular fa-face-smile"></i>
-
-                                No symptom data available.
-
-                            </li>
-
-                        {% endfor %}
-
-                    </ul>
-
-                </div>
-
-
-
-                <!-- Medicines -->
-
-                <div class="overview-box">
-
-                    <div class="overview-title">
-
-                        <i class="fa-solid fa-pills"></i>
-
-                        <h3>
-
-                            Most Prescribed Medicines
-
-                        </h3>
-
-                    </div>
-
-                    <ul class="overview-list">
-                                                {% for medicine in common_medicines %}
-
-                            <li>
-
-                                <i class="fa-solid fa-circle"></i>
-
-                                {{ medicine }}
-
-                            </li>
-
-                        {% empty %}
-
-                            <li class="empty-item">
-
-                                <i class="fa-regular fa-face-smile"></i>
-
-                                No medicine data available.
-
-                            </li>
-
-                        {% endfor %}
-
-                    </ul>
-
-                </div>
-
-            </div>
+            <p>
+                A quick overview of the most common cases
+                and medicines prescribed today.
+            </p>
 
         </div>
+
+    </div>
+
+
+    <div class="overview-grid">
+
+        <!-- Symptoms -->
+
+        <div class="overview-box">
+
+            <div class="overview-title">
+
+                <i class="fa-solid fa-notes-medical"></i>
+
+                <h3>
+                    Most Common Symptoms
+                </h3>
+
+            </div>
+
+            <ul class="overview-list">
+
+                {% for symptom in common_symptoms %}
+
+                    <li>
+
+                        <i class="fa-solid fa-circle"></i>
+
+                        {{ symptom.normalized_symptom }}
+                        <span class="overview-count">
+                            {{ symptom.count }}
+                        </span>
+
+                    </li>
+
+                {% empty %}
+
+                    <li class="empty-item">
+
+                        <i class="fa-regular fa-face-smile"></i>
+
+                        No symptom data available.
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <!-- Medicines -->
+
+        <div class="overview-box">
+
+            <div class="overview-title">
+
+                <i class="fa-solid fa-pills"></i>
+
+                <h3>
+                    Most Prescribed Medicines
+                </h3>
+
+            </div>
+
+            <ul class="overview-list">
+
+                {% for medicine in common_medicines %}
+
+                    <li>
+
+                        <i class="fa-solid fa-circle"></i>
+
+                        {{ medicine.normalized_medicine }}
+                        <span class="overview-count">
+                            {{ medicine.count }}
+                        </span>
+
+                    </li>
+
+                {% empty %}
+
+                    <li class="empty-item">
+
+                        <i class="fa-regular fa-face-smile"></i>
+
+                        No medicine data available.
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
 
     </div>
 
