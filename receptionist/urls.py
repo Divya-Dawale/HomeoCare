@@ -98,5 +98,10 @@ path(
     views.add_patient,
     name="add_patient"
 ),
+path(
+    "approve-all-requests/",
+    views.approve_all_requests,
+    name="approve_all_requests",
+),
     
 ]

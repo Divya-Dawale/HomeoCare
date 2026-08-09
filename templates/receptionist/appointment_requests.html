@@ -47,10 +47,27 @@ Review and manage incoming patient appointments.
             </p>
 
         </div>
+       <form method="POST"
+            action="{% url 'approve_all_requests' %}"
+            onsubmit="return confirm(
+                'Approve all pending appointment requests in first-come-first-served order?'
+            );">
+
+            {% csrf_token %}
+
+            <button type="submit" class="approve-all-btn">
+
+                Approve All
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </form>
 
 
     </div>
-
+    
 
 
 

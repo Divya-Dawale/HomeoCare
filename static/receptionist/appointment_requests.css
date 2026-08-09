@@ -648,7 +648,221 @@ body.dark-theme .empty-row:hover{
     background:var(--surface) !important;
 
 }
+/* ==========================================
+   APPROVE ALL BUTTON
+========================================== */
 
+.appointment-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+
+.approve-all-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    padding:13px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #42A66F
+    );
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 8px 20px rgba(46,139,87,.15);
+
+}
+
+
+.approve-all-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 14px 28px rgba(46,139,87,.25);
+
+}
+
+
+.approve-all-btn i{
+
+    font-size:15px;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .appointment-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .approve-all-btn{
+
+        width:100%;
+
+    }
+
+}
+/* ==========================================
+   APPOINTMENT HEADER
+========================================== */
+
+.appointment-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:20px;
+
+    margin-bottom:22px;
+
+}
+
+
+/* ==========================================
+   APPROVE ALL BUTTON
+========================================== */
+
+.approve-all-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--surface);
+
+    color:#2E8B57;
+
+    border:1px solid var(--border);
+
+    font-family:'Manrope',sans-serif;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.approve-all-btn:hover{
+
+    background:#2E8B57;
+
+    color:#FFFFFF;
+
+}
+
+
+.approve-all-btn i{
+
+    transition:.3s;
+
+}
+
+
+.approve-all-btn:hover i{
+
+    transform:translateX(4px);
+
+}
+
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark-theme .approve-all-btn{
+
+    background:var(--surface);
+
+    color:#7EE2A8;
+
+    border-color:var(--border);
+
+}
+
+
+body.dark-theme .approve-all-btn:hover{
+
+    background:#2E8B57;
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .appointment-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .approve-all-btn{
+
+        margin-top:5px;
+
+    }
+
+}
 /* ======================================================
    MOBILE APPOINTMENT TABLE
 ====================================================== */

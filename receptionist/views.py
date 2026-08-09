@@ -349,6 +349,213 @@ def approve_request(request, request_id):
     return redirect(
         "appointment_requests"
     )
+from django.db import transaction
+from datetime import date
+from doctors.models import DoctorSettings
+
+
+def approve_all_requests(request):
+
+    if request.method != "POST":
+        return redirect("appointment_requests")
+
+    today = date.today()
+
+    # Get doctor's settings
+    doctor_settings = DoctorSettings.objects.first()
+
+    if not doctor_settings:
+        messages.error(
+            request,
+            "Doctor settings could not be found."
+        )
+        return redirect("appointment_requests")
+
+    # --------------------------------------------------
+    # COUNT TODAY'S ALREADY BOOKED APPOINTMENTS
+    # --------------------------------------------------
+
+    existing_appointments = Appointment.objects.filter(
+        appointment_date=today
+    ).count()
+
+    # --------------------------------------------------
+    # REMAINING CAPACITY
+    # --------------------------------------------------
+
+    remaining_slots = (
+        doctor_settings.max_patients_per_day
+        - existing_appointments
+    )
+
+    if remaining_slots <= 0:
+
+        messages.warning(
+            request,
+            "Today's appointment limit has already been reached."
+        )
+
+        return redirect("appointment_requests")
+
+    # --------------------------------------------------
+    # GET PENDING REQUESTS
+    # FIRST COME = OLDEST CREATED_AT FIRST
+    # --------------------------------------------------
+
+    pending_requests = AppointmentRequest.objects.filter(
+        request_type="new",
+        status="pending",
+        preferred_date=today
+    ).order_by("created_at")
+
+    approved_count = 0
+
+    # --------------------------------------------------
+    # APPROVE REQUESTS ONE BY ONE
+    # --------------------------------------------------
+
+    for appointment_request in pending_requests:
+
+        # Stop when today's capacity is full
+        if approved_count >= remaining_slots:
+            break
+
+        with transaction.atomic():
+
+            # ------------------------------------------
+            # CHECK IF PATIENT ALREADY EXISTS
+            # ------------------------------------------
+
+            patient = Patient.objects.filter(
+                phone=appointment_request.phone
+            ).first()
+
+            # ------------------------------------------
+            # CREATE PATIENT IF NOT FOUND
+            # ------------------------------------------
+
+            if not patient:
+
+                last_patient = Patient.objects.order_by(
+                    "-id"
+                ).first()
+
+                if last_patient:
+
+                    last_number = int(
+                        last_patient.patient_id.replace(
+                            "HC",
+                            ""
+                        )
+                    )
+
+                    new_id = f"HC{last_number + 1:04d}"
+
+                else:
+
+                    new_id = "HC0001"
+
+                patient = Patient.objects.create(
+                    patient_id=new_id,
+                    full_name=appointment_request.full_name,
+                    phone=appointment_request.phone,
+                    email=appointment_request.email,
+                    age=appointment_request.age,
+                    gender=appointment_request.gender,
+                    address=appointment_request.address,
+                )
+
+                # --------------------------------------
+                # CREATE PATIENT LOGIN
+                # --------------------------------------
+
+                if not User.objects.filter(
+                    username=patient.patient_id
+                ).exists():
+
+                    user = User.objects.create_user(
+                        username=patient.patient_id,
+                        password=patient.patient_id,
+                        first_name=patient.full_name,
+                        email=patient.email,
+                        role="patient",
+                        phone=patient.phone,
+                    )
+
+                    patient.user = user
+                    patient.save()
+
+                    user.is_active = True
+                    user.save()
+
+            # ------------------------------------------
+            # CREATE APPOINTMENT
+            # ------------------------------------------
+
+            Appointment.objects.create(
+                patient=patient,
+                appointment_date=appointment_request.preferred_date,
+                reason_for_visit=appointment_request.reason_for_visit,
+                status="waiting"
+            )
+
+            # ------------------------------------------
+            # MARK REQUEST APPROVED
+            # ------------------------------------------
+
+            appointment_request.status = "approved"
+            appointment_request.save()
+
+            # ------------------------------------------
+            # SEND EMAIL
+            # ------------------------------------------
+
+            send_appointment_email(
+                patient.email,
+                patient.full_name,
+                appointment_request.preferred_date
+            )
+
+            # ------------------------------------------
+            # NOTIFY DOCTOR
+            # ------------------------------------------
+
+            notify_doctors(
+                f"New appointment approved for "
+                f"{patient.full_name}."
+            )
+
+            approved_count += 1
+
+    # --------------------------------------------------
+    # RESULT MESSAGE
+    # --------------------------------------------------
+
+    if approved_count == 0:
+
+        messages.info(
+            request,
+            "There are no pending appointment requests to approve."
+        )
+
+    elif approved_count < pending_requests.count():
+
+        messages.success(
+            request,
+            f"{approved_count} appointment request(s) "
+            f"approved. Today's remaining capacity has been reached. "
+            f"Other requests remain pending."
+        )
+
+    else:
+
+        messages.success(
+            request,
+            f"{approved_count} appointment request(s) "
+            f"approved successfully."
+        )
+
+    return redirect("appointment_requests")
 def start_consultation(request, appointment_id):
 
     appointment = get_object_or_404(
