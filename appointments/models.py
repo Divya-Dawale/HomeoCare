@@ -18,8 +18,17 @@ class Appointment(models.Model):
         on_delete=models.CASCADE,
         related_name='appointments'
     )
+    appointment_no = models.PositiveIntegerField(
+        null=True,
+        blank=True
+    )
 
     appointment_date = models.DateField()
+    
+    appointment_time = models.TimeField(
+        null=True,
+        blank=True
+    )
 
     reason_for_visit = models.TextField()
 
