@@ -5,7 +5,9 @@ from django.conf import settings
 def send_appointment_email(
     patient_email,
     patient_name,
-    appointment_date
+    appointment_date,
+    appointment_no,
+    appointment_time
 ):
 
     send_mail(
@@ -17,10 +19,18 @@ Hello {patient_name},
 
 Your appointment has been approved.
 
+Appointment Details:
+
+Appointment Number:
+#{appointment_no}
+
 Appointment Date:
 {appointment_date}
 
-Please visit HomeoCare clinic on your scheduled date.
+Appointment Time:
+{appointment_time.strftime("%I:%M %p")}
+
+Please visit HomeoCare clinic on your scheduled date and arrive a few minutes before your appointment time.
 
 Thank you.
 HomeoCare Team

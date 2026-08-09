@@ -96,10 +96,31 @@
         </div>
 
         <div class="status-item">
+            <span>Appointment Number</span>
+            <strong>
+                {% if appointment.appointment_no %}
+                    #{{ appointment.appointment_no }}
+                {% else %}
+                    To be assigned
+                {% endif %}
+            </strong>
+        </div>
+
+        <div class="status-item">
             <span>Appointment Date</span>
             <strong>{{ appointment.appointment_date }}</strong>
         </div>
+        <div class="status-item">
+            <span>Approximate Appointment Time</span>
 
+            <strong>
+                {% if appointment.appointment_time %}
+                    {{ appointment.appointment_time|time:"h:i A" }}
+                {% else %}
+                    To be confirmed
+                {% endif %}
+            </strong>
+        </div>
         <div class="status-item">
             <span>Reason</span>
             <strong>{{ appointment.reason_for_visit }}</strong>

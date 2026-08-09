@@ -332,33 +332,55 @@ def approve_request(request, request_id):
             user.save()
 
     # Create appointment
+# ------------------------------------------
+# CREATE APPOINTMENT
+# ------------------------------------------
+
     appointment_no = get_next_appointment_no(
         appointment_request.preferred_date
+    )
+
+    appointment_time = get_appointment_time(
+        appointment_request.preferred_date,
+        appointment_no
     )
 
     Appointment.objects.create(
         patient=patient,
         appointment_no=appointment_no,
-        appointment_time=get_appointment_time(
-            appointment_request.preferred_date,
-            appointment_no
-        ),
+        appointment_time=appointment_time,
         appointment_date=appointment_request.preferred_date,
         reason_for_visit=appointment_request.reason_for_visit,
         status="waiting"
     )
 
-    # Mark request as approved
+    # ------------------------------------------
+    # MARK REQUEST APPROVED
+    # ------------------------------------------
+
     appointment_request.status = "approved"
     appointment_request.save()
+
+    # ------------------------------------------
+    # SEND EMAIL
+    # ------------------------------------------
+
     send_appointment_email(
         patient.email,
         patient.full_name,
-        appointment_request.preferred_date
+        appointment_request.preferred_date,
+        appointment_no,
+        appointment_time
     )
+
+    # ------------------------------------------
+    # NOTIFY DOCTOR
+    # ------------------------------------------
+
     notify_doctors(
-    f"New appointment approved for {patient.full_name}."
+        f"New appointment approved for {patient.full_name}."
     )
+
     return redirect(
         "appointment_requests"
     )
@@ -509,13 +531,15 @@ def approve_all_requests(request):
                 appointment_request.preferred_date
             )
 
+            appointment_time = get_appointment_time(
+                appointment_request.preferred_date,
+                appointment_no
+            )
+
             Appointment.objects.create(
                 patient=patient,
                 appointment_no=appointment_no,
-                appointment_time=get_appointment_time(
-                    appointment_request.preferred_date,
-                    appointment_no
-                ),
+                appointment_time=appointment_time,
                 appointment_date=appointment_request.preferred_date,
                 reason_for_visit=appointment_request.reason_for_visit,
                 status="waiting"
@@ -535,7 +559,9 @@ def approve_all_requests(request):
             send_appointment_email(
                 patient.email,
                 patient.full_name,
-                appointment_request.preferred_date
+                appointment_request.preferred_date,
+                appointment_no,
+                appointment_time
             )
 
             # ------------------------------------------
