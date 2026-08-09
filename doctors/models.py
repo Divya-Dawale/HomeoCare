@@ -288,6 +288,11 @@ class DoctorSettings(models.Model):
         default=20
     )
 
+    appointment_duration = models.PositiveIntegerField(
+        default=15,
+        help_text="Approximate appointment duration in minutes."
+    )
+
     phone = models.CharField(
     max_length=10,
     blank=True
@@ -313,7 +318,7 @@ class DoctorSettings(models.Model):
 
     google_map_link = models.TextField(
     blank=True
-)
+    )
 
     dark_mode = models.BooleanField(
         default=False

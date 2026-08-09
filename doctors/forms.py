@@ -188,6 +188,8 @@ class DoctorSettingsForm(forms.ModelForm):
 
             "max_patients_per_day",
 
+            "appointment_duration",
+
             "phone",
 
             "email",
@@ -313,6 +315,20 @@ class DoctorSettingsForm(forms.ModelForm):
                 attrs={
 
                     "placeholder": "Maximum Patients Per Day"
+
+                }
+
+            ),
+
+            "appointment_duration": forms.NumberInput(
+
+                attrs={
+
+                    "min": "5",
+
+                    "max": "120",
+
+                    "placeholder": "Appointment Duration (minutes)"
 
                 }
 

@@ -5,6 +5,10 @@ from patients.models import Patient
 from appointments.models import Appointment
 from doctors.models import DoctorSettings
 from appointments.models import Appointment
+from appointments.utils import (
+    get_next_appointment_no,
+    get_appointment_time,
+)
 
 def home(request):
     return render(request, 'public/home.html')
@@ -119,18 +123,29 @@ def book_appointment(request):
 
         if patient:
 
-            Appointment.objects.create(
+            appointment_date = date.today()
 
+            appointment_no = get_next_appointment_no(
+                appointment_date
+            )
+
+            Appointment.objects.create(
                 patient=patient,
 
-                appointment_date=date.today(),
+                appointment_no=appointment_no,
+
+                appointment_time=get_appointment_time(
+                    appointment_date,
+                    appointment_no
+                ),
+
+                appointment_date=appointment_date,
 
                 reason_for_visit=request.POST.get(
                     "reason_for_visit"
                 ),
 
                 status="waiting"
-
             )
 
             print("EXISTING PATIENT APPOINTMENT SAVED")

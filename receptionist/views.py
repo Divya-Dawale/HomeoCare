@@ -19,6 +19,10 @@ from notifications.email_utils import (
 )
 from django.contrib import messages
 from .forms import ReceptionistProfileForm
+from appointments.utils import (
+    get_next_appointment_no,
+    get_appointment_time,
+)
 def dashboard(request):
 
     pending_requests = AppointmentRequest.objects.filter(
@@ -328,8 +332,17 @@ def approve_request(request, request_id):
             user.save()
 
     # Create appointment
+    appointment_no = get_next_appointment_no(
+        appointment_request.preferred_date
+    )
+
     Appointment.objects.create(
         patient=patient,
+        appointment_no=appointment_no,
+        appointment_time=get_appointment_time(
+            appointment_request.preferred_date,
+            appointment_no
+        ),
         appointment_date=appointment_request.preferred_date,
         reason_for_visit=appointment_request.reason_for_visit,
         status="waiting"
@@ -492,8 +505,17 @@ def approve_all_requests(request):
             # CREATE APPOINTMENT
             # ------------------------------------------
 
+            appointment_no = get_next_appointment_no(
+                appointment_request.preferred_date
+            )
+
             Appointment.objects.create(
                 patient=patient,
+                appointment_no=appointment_no,
+                appointment_time=get_appointment_time(
+                    appointment_request.preferred_date,
+                    appointment_no
+                ),
                 appointment_date=appointment_request.preferred_date,
                 reason_for_visit=appointment_request.reason_for_visit,
                 status="waiting"
@@ -788,20 +810,31 @@ def add_patient(request):
 
                 patient = form.save()
 
-                Appointment.objects.create(
+                appointment_date = form.cleaned_data[
+                    "appointment_date"
+                ]
 
+                appointment_no = get_next_appointment_no(
+                    appointment_date
+                )
+
+                Appointment.objects.create(
                     patient=patient,
 
-                    appointment_date=form.cleaned_data[
-                        "appointment_date"
-                    ],
+                    appointment_no=appointment_no,
+
+                    appointment_time=get_appointment_time(
+                        appointment_date,
+                        appointment_no
+                    ),
+
+                    appointment_date=appointment_date,
 
                     reason_for_visit=form.cleaned_data[
                         "reason_for_visit"
                     ],
 
                     status="waiting"
-
                 )
 
                 success = (
@@ -839,20 +872,31 @@ def add_patient(request):
                 id=patient_id
             )
 
-            Appointment.objects.create(
+            appointment_date = request.POST.get(
+                "appointment_date"
+            )
 
+            appointment_no = get_next_appointment_no(
+                appointment_date
+            )
+
+            Appointment.objects.create(
                 patient=patient,
 
-                appointment_date=request.POST.get(
-                    "appointment_date"
+                appointment_no=appointment_no,
+
+                appointment_time=get_appointment_time(
+                    appointment_date,
+                    appointment_no
                 ),
+
+                appointment_date=appointment_date,
 
                 reason_for_visit=request.POST.get(
                     "reason_for_visit"
                 ),
 
                 status="waiting"
-
             )
 
             success = (
