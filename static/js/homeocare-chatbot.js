@@ -6,14 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const messages = document.getElementById("homeocare-chat-messages");
     const input = document.getElementById("homeocare-chat-input");
     const sendButton = document.getElementById("homeocare-chat-send");
+    let patientAppointmentData = null;
 
     if (!chatButton || !chatWindow || !messages || !input || !sendButton) {
         console.log("HomeoCare chatbot elements not found.");
         return;
     }
-
+    loadPatientAppointmentData();
     console.log("HomeoCare chatbot loaded.");
-
+  
     /* ==============================
        OPEN CHAT
     ============================== */
@@ -127,18 +128,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+        /* ==============================
+   REAL APPOINTMENT INFORMATION
+============================== */
 
-        /* APPOINTMENT */
+if (
+    text.includes("next appointment") ||
+    text.includes("upcoming appointment") ||
+    text.includes("my next appointment")
+) {
 
-        if (
-            text.includes("appointment") ||
-            text.includes("booking") ||
-            text.includes("book")
-        ) {
+    if (
+        !patientAppointmentData ||
+        !patientAppointmentData.upcoming
+    ) {
 
-            return "You can view your appointment date, appointment number and current appointment status from the Appointments section of your patient panel.";
+        return "You don't currently have an upcoming appointment.";
 
-        }
+    }
+
+    const appointment =
+        patientAppointmentData.upcoming;
+
+    return `📅 Your next appointment is on ${appointment.date} at ${appointment.time}. Reason: ${appointment.reason}. Status: ${appointment.status}. Appointment No: ${appointment.appointment_no || "Not assigned"}.`;
+
+}
+
+
+if (
+    text.includes("appointment status") ||
+    text.includes("status of my appointment") ||
+    text.includes("check my appointment status")
+) {
+
+    if (
+        !patientAppointmentData ||
+        !patientAppointmentData.latest
+    ) {
+
+        return "I couldn't find an appointment associated with your account.";
+
+    }
+
+    return `📋 Your latest appointment status is ${patientAppointmentData.latest.status}.`;
+
+}
+
+
+if (
+    text.includes("check my appointment") ||
+    text.includes("show my appointment") ||
+    text.includes("view my appointment") ||
+    text.includes("see my appointment")
+) {
+
+    if (
+        !patientAppointmentData ||
+        !patientAppointmentData.latest
+    ) {
+
+        return "I couldn't find an appointment associated with your account.";
+
+    }
+
+    const appointment =
+        patientAppointmentData.latest;
+
+    return `📅 Appointment No: ${appointment.appointment_no || "Not assigned"} | Date: ${appointment.date} | Time: ${appointment.time} | Reason: ${appointment.reason} | Status: ${appointment.status}.`;
+
+}
+        
+
 
 
         /* MEDICAL RECORDS */
@@ -330,3 +390,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 });
+async function loadPatientAppointmentData() {
+
+    try {
+
+        const response = await fetch(
+            "/patient/chatbot/appointment/"
+        );
+
+        if (!response.ok) {
+            return;
+        }
+
+        patientAppointmentData = await response.json();
+
+    } catch (error) {
+
+        console.error(
+            "Could not load appointment information:",
+            error
+        );
+
+    }
+}

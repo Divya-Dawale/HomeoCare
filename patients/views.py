@@ -18,10 +18,50 @@ from .models import MedicalHistory
 from .forms import MedicalHistoryForm
 from django.shortcuts import get_object_or_404, redirect, render
 from notifications.models import Notification
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from appointments.models import Appointment
 
 
+@login_required
+def patient_chatbot_appointment(request):
 
+    patient = request.user.patient
 
+    appointments = Appointment.objects.filter(
+        patient=patient
+    ).order_by("appointment_date", "appointment_time")
+
+    upcoming = appointments.filter(
+        status__in=["pending", "approved", "waiting", "consulting"]
+    ).first()
+
+    latest = appointments.order_by(
+        "-appointment_date",
+        "-appointment_time"
+    ).first()
+
+    def appointment_data(appointment):
+
+        if not appointment:
+            return None
+
+        return {
+            "appointment_no": appointment.appointment_no,
+            "date": appointment.appointment_date.strftime("%d %B %Y"),
+            "time": (
+                appointment.appointment_time.strftime("%I:%M %p")
+                if appointment.appointment_time
+                else "Time not specified"
+            ),
+            "reason": appointment.reason_for_visit,
+            "status": appointment.get_status_display(),
+        }
+
+    return JsonResponse({
+        "upcoming": appointment_data(upcoming),
+        "latest": appointment_data(latest),
+    })
 @login_required
 def patient_dashboard(request):
 

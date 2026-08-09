@@ -54,5 +54,9 @@ path(
     views.patient_history,
     name="patient_history",
 ),
-
+path(
+    "chatbot/appointment/",
+    views.patient_chatbot_appointment,
+    name="patient_chatbot_appointment"
+),
 ]

@@ -15,7 +15,8 @@ Welcome back, {{ patient.full_name }}
 
 {% block css %}
 
-
+<link rel="stylesheet"
+      href="{% static 'css/homeocare-chatbot.css' %}">
 <link rel="stylesheet" href="{% static 'patients/dashboard.css' %}">
 {% endblock %}
 
@@ -310,6 +311,24 @@ Welcome back, {{ patient.full_name }}
                     data-question="How can I contact the clinic?">
 
                     📞 Contact Clinic
+
+                </button>
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="What is my next appointment?">
+
+                    📅 My Next Appointment
+
+                </button>
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="What is my appointment status?">
+
+                    🔎 Appointment Status
 
                 </button>
 
