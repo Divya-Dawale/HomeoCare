@@ -14,6 +14,8 @@ Welcome back, {{ patient.full_name }}
 {% endblock %}
 
 {% block css %}
+
+
 <link rel="stylesheet" href="{% static 'patients/dashboard.css' %}">
 {% endblock %}
 
@@ -187,5 +189,158 @@ Welcome back, {{ patient.full_name }}
 
 </div>
 </div>
+<!-- ==========================================
+     PATIENT CHATBOT
+========================================== -->
 
+<div class="homeocare-chatbot">
+
+    <!-- Floating Button -->
+    <button
+        type="button"
+        class="homeocare-chat-button"
+        id="homeocare-chat-button"
+        aria-label="Open HomeoCare assistant">
+
+        <i class="fa-solid fa-comments"></i>
+
+    </button>
+
+
+    <!-- Chat Window -->
+    <div
+        class="homeocare-chat-window"
+        id="homeocare-chat-window">
+
+        <!-- Header -->
+        <div class="homeocare-chat-header">
+
+            <div class="homeocare-chat-title">
+
+                <div class="homeocare-chat-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+
+                <div>
+
+                    <h3>HomeoCare Patient Assistant</h3>
+                        <span>Here to help with your clinic journey</span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="homeocare-chat-close"
+                id="homeocare-chat-close"
+                aria-label="Close chatbot">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- Messages -->
+        <div
+            class="homeocare-chat-messages"
+            id="homeocare-chat-messages">
+
+            <div class="homeocare-chat-message bot">
+
+                Hello! 👋 Welcome back, {{ patient.full_name }}.
+
+                I can help you find information about your
+                appointments, prescriptions, medical records,
+                bills and medical history.
+
+            </div>
+
+
+            <!-- Quick Questions -->
+
+            <div class="homeocare-quick-questions">
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="How can I check my appointment status?">
+
+                    📋 Appointment Status
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="How can I view my medical records?">
+
+                    📄 Medical Records
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="How can I view my prescription?">
+
+                    💊 Prescription
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="How can I check my bills?">
+
+                    💰 My Bills
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="homeocare-quick-question"
+                    data-question="How can I contact the clinic?">
+
+                    📞 Contact Clinic
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Input -->
+        <div class="homeocare-chat-input-area">
+
+            <input
+                id="homeocare-chat-input"
+                type="text"
+                placeholder="Ask something..."
+                autocomplete="off">
+
+
+            <button
+                id="homeocare-chat-send"
+                type="button"
+                aria-label="Send message">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="{% static 'js/homeocare-chatbot.js' %}"></script>
 {% endblock %}

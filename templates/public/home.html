@@ -2,6 +2,8 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/homeocare-chatbot.css' %}">
+
 {% endblock %}
 
 
@@ -910,4 +912,154 @@
 {% block extra_js %}
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
+<!-- ================= HOMECARE CHATBOT ================= -->
+
+<div class="homeocare-chatbot">
+
+    <!-- Floating Button -->
+    <button
+        id="homeocare-chat-button"
+        class="homeocare-chat-button"
+        type="button"
+        aria-label="Open HomeoCare Chatbot">
+
+        <i class="fa-solid fa-comment-medical"></i>
+
+    </button>
+
+
+    <!-- Chat Window -->
+    <div
+        id="homeocare-chat-window"
+        class="homeocare-chat-window">
+
+
+        <!-- Header -->
+        <div class="homeocare-chat-header">
+
+            <div class="homeocare-chat-title">
+
+                <div class="homeocare-chat-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+
+                <div>
+
+                    <h3>HomeoCare Assistant</h3>
+
+                    <span>
+                        Here to help you
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="homeocare-chat-close"
+                class="homeocare-chat-close"
+                type="button"
+                aria-label="Close chatbot">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- Messages -->
+        <div
+    id="homeocare-chat-messages"
+    class="homeocare-chat-messages">
+
+    <div class="homeocare-chat-message bot">
+
+        Hello! 👋 I'm the HomeoCare Assistant.
+        How can I help you today?
+
+    </div>
+
+    <!-- Quick Questions -->
+    <div class="homeocare-quick-questions">
+
+        <button
+            type="button"
+            class="homeocare-quick-question"
+            data-question="How do I book an appointment?">
+
+            📅 Book Appointment
+
+        </button>
+
+        <button
+            type="button"
+            class="homeocare-quick-question"
+            data-question="What services does HomeoCare provide?">
+
+            🏥 Our Services
+
+        </button>
+
+        <button
+            type="button"
+            class="homeocare-quick-question"
+            data-question="What is homeopathy?">
+
+            🩺 What is Homeopathy?
+
+        </button>
+
+        <button
+            type="button"
+            class="homeocare-quick-question"
+            data-question="How can I check my patient status?">
+
+            📋 Patient Status
+
+        </button>
+
+        <button
+            type="button"
+            class="homeocare-quick-question"
+            data-question="How can I contact HomeoCare?">
+
+            📞 Contact Clinic
+
+        </button>
+
+    </div>
+
+</div>
+
+
+        <!-- Input -->
+        <div class="homeocare-chat-input-area">
+
+            <input
+                id="homeocare-chat-input"
+                type="text"
+                placeholder="Ask something..."
+                autocomplete="off">
+
+            <button
+                id="homeocare-chat-send"
+                type="button"
+                aria-label="Send message">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- HomeoCare Chatbot JavaScript -->
+<script src="{% static 'js/homeocare-chatbot.js' %}"></script>
 {% endblock %}

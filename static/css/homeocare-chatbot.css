@@ -1,0 +1,685 @@
+/* =========================================================
+   HOMECARE CHATBOT
+   HomeoCare Green / Mint Theme
+========================================================= */
+
+.homeocare-chatbot {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* =========================================================
+   FLOATING CHAT BUTTON
+========================================================= */
+
+.homeocare-chat-button {
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(46, 139, 87, 0.28);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.homeocare-chat-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 32px rgba(46, 139, 87, 0.35);
+}
+
+
+/* =========================================================
+   CHAT WINDOW
+========================================================= */
+
+.homeocare-chat-window {
+    position: absolute;
+
+    right: 0;
+    bottom: 75px;
+
+    width: 370px;
+    height: 520px;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(46, 139, 87, 0.10);
+
+    box-shadow:
+        0 20px 55px rgba(35, 49, 58, 0.16);
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(18px)
+        scale(0.96);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   OPEN STATE
+========================================================= */
+
+.homeocare-chat-window.chatbot-open {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   CHAT HEADER
+========================================================= */
+
+.homeocare-chat-header {
+    min-height: 76px;
+
+    padding: 12px 16px;
+
+    background: linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   CHAT TITLE
+========================================================= */
+
+.homeocare-chat-title {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.homeocare-chat-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+.homeocare-chat-title h3 {
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+.homeocare-chat-title span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   ONLINE INDICATOR
+========================================================= */
+
+.homeocare-chat-title span::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 5px;
+
+    border-radius: 50%;
+
+    background: #D9FFE9;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.homeocare-chat-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.homeocare-chat-close:hover {
+    background: rgba(255, 255, 255, 0.16);
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   MESSAGE AREA
+========================================================= */
+
+.homeocare-chat-messages {
+    flex: 1;
+
+    padding: 18px 15px;
+
+    background: #F7FCFA;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #B7DED0 transparent;
+}
+
+
+/* Chrome / Edge scrollbar */
+
+.homeocare-chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.homeocare-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.homeocare-chat-messages::-webkit-scrollbar-thumb {
+    background: #B7DED0;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   MESSAGE BUBBLE
+========================================================= */
+
+.homeocare-chat-message {
+    max-width: 82%;
+
+    padding: 11px 14px;
+
+    border-radius: 16px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    word-wrap: break-word;
+
+    animation: homeocareMessageIn 0.2s ease;
+}
+
+
+/* =========================================================
+   BOT MESSAGE
+========================================================= */
+
+.homeocare-chat-message.bot {
+    align-self: flex-start;
+
+    background: #ffffff;
+
+    color: #23313A;
+
+    border: 1px solid rgba(46, 139, 87, 0.10);
+
+    border-bottom-left-radius: 5px;
+
+    box-shadow:
+        0 4px 14px rgba(46, 139, 87, 0.05);
+}
+
+
+/* =========================================================
+   USER MESSAGE
+========================================================= */
+
+.homeocare-chat-message.user {
+    align-self: flex-end;
+
+    background: linear-gradient(
+        135deg,
+        #1f9b56, #09fed3
+    );
+
+    color: #ffffff;
+
+    border-bottom-right-radius: 5px;
+
+    box-shadow:
+        0 5px 14px rgba(46, 139, 87, 0.16);
+}
+
+
+/* =========================================================
+   INPUT AREA
+========================================================= */
+
+.homeocare-chat-input-area {
+    min-height: 68px;
+
+    padding: 11px;
+
+    background: #ffffff;
+
+    border-top: 1px solid #E4F1EB;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.homeocare-chat-input-area input {
+    flex: 1;
+
+    height: 43px;
+
+    border: 1px solid #CDE4DA;
+
+    border-radius: 24px;
+
+    padding: 0 16px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    color: #23313A;
+
+    background: #F7FCFA;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.homeocare-chat-input-area input::placeholder {
+    color: #8A999F;
+}
+
+.homeocare-chat-input-area input:focus {
+    border-color: #5BC0BE;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(91, 192, 190, 0.12);
+}
+
+
+/* =========================================================
+   SEND BUTTON
+========================================================= */
+
+.homeocare-chat-input-area button {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #2E8B57,
+        #5BC0BE
+    );
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 5px 14px rgba(46, 139, 87, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.homeocare-chat-input-area button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(46, 139, 87, 0.25);
+}
+
+
+/* =========================================================
+   QUICK QUESTIONS
+========================================================= */
+
+.homeocare-quick-questions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   QUICK QUESTION BUTTON
+========================================================= */
+
+.homeocare-quick-question {
+    border: 1px solid #B7DED0;
+
+    background: #EFFFF5;
+
+    color: #2E8B57;
+
+    border-radius: 50px;
+
+    padding: 8px 12px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.homeocare-quick-question:hover {
+    background: #2E8B57;
+
+    color: #ffffff;
+
+    border-color: #2E8B57;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TYPING INDICATOR
+========================================================= */
+
+.homeocare-typing {
+    font-size: 11px;
+
+    color: #6C7A89;
+
+    font-style: italic;
+
+    background: #ffffff;
+
+    border: 1px solid #E1EEE8;
+
+    border-radius: 14px;
+
+    padding: 8px 12px;
+
+    align-self: flex-start;
+}
+
+
+/* =========================================================
+   MESSAGE ANIMATION
+========================================================= */
+
+@keyframes homeocareMessageIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .homeocare-chatbot {
+        right: 15px;
+        bottom: 15px;
+    }
+
+
+    .homeocare-chat-button {
+        width: 56px;
+        height: 56px;
+
+        font-size: 21px;
+    }
+
+
+    .homeocare-chat-window {
+        width: calc(100vw - 30px);
+
+        height: min(
+            520px,
+            calc(100vh - 95px)
+        );
+
+        right: 0;
+
+        bottom: 68px;
+
+        border-radius: 20px;
+    }
+
+
+    .homeocare-chat-header {
+        min-height: 70px;
+
+        padding: 10px 13px;
+    }
+
+
+    .homeocare-chat-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 16px;
+    }
+
+
+    .homeocare-chat-title h3 {
+        font-size: 14px;
+    }
+
+
+    .homeocare-chat-title span {
+        font-size: 10px;
+    }
+
+
+    .homeocare-chat-messages {
+        padding: 14px 11px;
+    }
+
+
+    .homeocare-chat-message {
+        max-width: 88%;
+
+        font-size: 12.5px;
+    }
+
+
+    .homeocare-chat-input-area {
+        padding: 9px;
+    }
+
+
+    .homeocare-chat-input-area input {
+        height: 41px;
+
+        font-size: 12px;
+    }
+
+
+    .homeocare-chat-input-area button {
+        width: 41px;
+        height: 41px;
+    }
+
+
+    .homeocare-quick-question {
+        padding: 7px 10px;
+
+        font-size: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .homeocare-chatbot {
+        right: 10px;
+        bottom: 10px;
+    }
+
+
+    .homeocare-chat-window {
+        width: calc(100vw - 20px);
+
+        height: calc(100vh - 85px);
+
+        bottom: 65px;
+
+        border-radius: 18px;
+    }
+
+
+    .homeocare-chat-message {
+        max-width: 90%;
+    }
+
+
+    .homeocare-quick-questions {
+        gap: 5px;
+    }
+
+
+    .homeocare-quick-question {
+        padding: 6px 9px;
+
+        font-size: 9.5px;
+    }
+
+}
