@@ -163,26 +163,53 @@ body.dark-theme .patient-id{
         STATUS BADGES
 ========================================*/
 
-.waiting-badge,
-.completed-badge{
-    display:inline-flex;
+
+.summary-item .completed-badge{
+    display:flex;
     align-items:center;
     justify-content:center;
-    min-width:110px;
-    padding:8px 18px;
+
+    width:240px;
+    height:36px;
+
+    margin:0 auto;
+    padding:0;
+
+    border:1px solid #BFE8CF;
+     background:#EAF8F1;
+    color:#2E8B57;
+
     border-radius:50px;
+
     font-size:13px;
     font-weight:700;
+    line-height:1;
+    white-space:nowrap;
+    box-sizing:border-box;
 }
 
-.waiting-badge{
+.summary-item .waiting-badge{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:240px;
+    height:36px;
+
+    margin:0 auto;
+    padding:0;
+
     border:1px solid #efca79;
     background:#FEF9C3;
     color:#CA8A04;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    text-align: center;
+
+    border-radius:50px;
+
+    font-size:13px;
+    font-weight:700;
+    line-height:1;
+    white-space:nowrap;
+    box-sizing:border-box;
 }
 
 
