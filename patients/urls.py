@@ -59,4 +59,28 @@ path(
     views.patient_chatbot_appointment,
     name="patient_chatbot_appointment"
 ),
+
+path(
+    "chatbot/medical-records/",
+    views.patient_chatbot_medical_records,
+    name="patient_chatbot_medical_records"
+),
+
+path(
+    "chatbot/prescriptions/",
+    views.patient_chatbot_prescriptions,
+    name="patient_chatbot_prescriptions"
+),
+
+path(
+    "chatbot/bills/",
+    views.patient_chatbot_bills,
+    name="patient_chatbot_bills"
+),
+
+path(
+    "chatbot/history/",
+    views.patient_chatbot_history,
+    name="patient_chatbot_history"
+),
 ]

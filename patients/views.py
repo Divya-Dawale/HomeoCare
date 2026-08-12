@@ -21,6 +21,7 @@ from notifications.models import Notification
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from appointments.models import Appointment
+from django.utils import timezone
 
 
 @login_required
@@ -30,10 +31,21 @@ def patient_chatbot_appointment(request):
 
     appointments = Appointment.objects.filter(
         patient=patient
-    ).order_by("appointment_date", "appointment_time")
+    )
+
+    today = timezone.localdate()
 
     upcoming = appointments.filter(
-        status__in=["pending", "approved", "waiting", "consulting"]
+        appointment_date__gte=today,
+        status__in=[
+            "pending",
+            "approved",
+            "waiting",
+            "consulting"
+        ]
+    ).order_by(
+        "appointment_date",
+        "appointment_time"
     ).first()
 
     latest = appointments.order_by(
@@ -48,7 +60,9 @@ def patient_chatbot_appointment(request):
 
         return {
             "appointment_no": appointment.appointment_no,
-            "date": appointment.appointment_date.strftime("%d %B %Y"),
+            "date": appointment.appointment_date.strftime(
+                "%d %B %Y"
+            ),
             "time": (
                 appointment.appointment_time.strftime("%I:%M %p")
                 if appointment.appointment_time
@@ -62,6 +76,149 @@ def patient_chatbot_appointment(request):
         "upcoming": appointment_data(upcoming),
         "latest": appointment_data(latest),
     })
+
+
+@login_required
+def patient_chatbot_medical_records(request):
+
+    patient = request.user.patient
+
+    records = MedicalRecord.objects.filter(
+        patient=patient
+    ).order_by("-created_at")
+
+    latest = records.first()
+
+    if not latest:
+        return JsonResponse({
+            "latest": None,
+            "total": 0
+        })
+
+    return JsonResponse({
+        "latest": {
+            "id": latest.id,
+            "date": latest.created_at.strftime("%d %B %Y"),
+            "symptoms": latest.symptoms,
+            "observations": latest.observations,
+            "diagnosis": latest.diagnosis_notes,
+            "follow_up": latest.follow_up_notes,
+        },
+        "total": records.count()
+    })
+    
+@login_required
+def patient_chatbot_prescriptions(request):
+
+    patient = request.user.patient
+
+    prescriptions = Prescription.objects.filter(
+        patient=patient
+    ).order_by("-created_at")
+
+    if not prescriptions.exists():
+        return JsonResponse({
+            "latest": None,
+            "total": 0
+        })
+
+    latest = prescriptions.first()
+
+    return JsonResponse({
+        "latest": {
+            "id": latest.id,
+            "date": latest.created_at.strftime("%d %B %Y"),
+            "medicine_name": latest.medicine_name,
+            "dosage": latest.dosage,
+            "frequency": latest.frequency,
+            "duration": latest.duration,
+            "instructions": latest.instructions,
+            "medicine_given": latest.medicine_given,
+            "status": latest.status,
+        },
+        "total": prescriptions.count()
+    })
+
+@login_required
+def patient_chatbot_bills(request):
+
+    patient = request.user.patient
+
+    bills = Bill.objects.filter(
+        patient=patient
+    ).order_by("-created_at")
+
+    if not bills.exists():
+        return JsonResponse({
+            "latest": None,
+            "total": 0
+        })
+
+    latest = bills.first()
+
+    return JsonResponse({
+        "latest": {
+            "id": latest.id,
+            "date": latest.created_at.strftime("%d %B %Y"),
+            "total_amount": str(latest.total_amount),
+            "consultation_fee": str(latest.consultation_fee),
+            "medicine_fee": str(latest.medicine_fee),
+        },
+        "total": bills.count()
+    })
+
+@login_required
+def patient_chatbot_history(request):
+
+    patient = request.user.patient
+
+    appointments = Appointment.objects.filter(
+        patient=patient,
+        appointment_date__lt=timezone.localdate()
+    ).order_by(
+        "-appointment_date",
+        "-appointment_time"
+    )
+
+    total_visits = Appointment.objects.filter(
+        patient=patient
+    ).count()
+
+    completed_visits = Appointment.objects.filter(
+        patient=patient,
+        status="completed"
+    ).count()
+
+    last_visit = appointments.first()
+
+    if not last_visit:
+        return JsonResponse({
+            "latest": None,
+            "total_visits": total_visits,
+            "completed_visits": completed_visits
+        })
+
+    return JsonResponse({
+        "latest": {
+            "appointment_no": last_visit.appointment_no,
+            "date": last_visit.appointment_date.strftime(
+                "%d %B %Y"
+            ),
+            "time": (
+                last_visit.appointment_time.strftime("%I:%M %p")
+                if last_visit.appointment_time
+                else "Time not specified"
+            ),
+            "reason": last_visit.reason_for_visit,
+            "status": last_visit.get_status_display(),
+        },
+
+        "total_visits": total_visits,
+
+        "completed_visits": completed_visits,
+    })
+
+
 @login_required
 def patient_dashboard(request):
 
