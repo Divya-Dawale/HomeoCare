@@ -863,3 +863,61 @@ text-align:center;
     }
 
 }
+/* =========================================
+        HORIZONTAL OVERFLOW FIX
+========================================= */
+
+/* Make width calculations predictable */
+.about-hero *,
+.story-section *,
+.timeline-section *,
+.values-section *,
+.mission-section *,
+.impact-section *,
+.quote-section *,
+.about-cta * {
+    box-sizing: border-box;
+}
+
+
+/* Prevent decorative elements from creating
+   horizontal page overflow */
+.about-hero,
+.story-section,
+.timeline-section,
+.values-section,
+.mission-section,
+.impact-section,
+.quote-section,
+.about-cta {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* Fix timeline width calculation */
+.timeline-item {
+    box-sizing: border-box;
+}
+
+
+/* Keep the right timeline item inside
+   the timeline container */
+.timeline-item.right {
+    box-sizing: border-box;
+}
+
+
+/* Prevent CTA decorative circles from
+   increasing page width */
+.about-cta {
+    overflow: hidden;
+}
+
+
+/* Final page-level safety */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
